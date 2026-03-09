@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PacificMeister — Open-Source Foiling Innovation</title>
+    <meta name="description" content="PacificMeister: Pioneer of DIY electric hydrofoils. Free tools, build guides, and community resources for tow boogie, eFoil, and foiling enthusiasts.">
+    <meta name="keywords" content="PacificMeister, DIY eFoil, tow boogie, electric hydrofoil, foiling, AXIS foils, FOIL.zone, open source">
+    <meta name="author" content="PacificMeister">
+    <link rel="canonical" href="https://pacificmeister.github.io/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="PacificMeister — Open-Source Foiling Innovation">
+    <meta property="og:description" content="Free tools, build guides, and community for foiling enthusiasts. From the pioneer who open-sourced the DIY eFoil.">
+    <meta property="og:url" content="https://pacificmeister.github.io/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://pacificmeister.github.io/og-image.png">
+    <meta property="og:site_name" content="PacificMeister">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PacificMeister — Open-Source Foiling Innovation">
+    <meta name="twitter:description" content="Free tools, build guides, and community for foiling enthusiasts.">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "PacificMeister",
+        "url": "https://pacificmeister.github.io",
+        "description": "Open-source foiling innovation. Free tools, build guides, and community resources for tow boogie, eFoil, and foiling enthusiasts.",
+        "founder": {
+            "@type": "Person",
+            "name": "PacificMeister",
+            "sameAs": [
+                "https://www.youtube.com/@PacificMeister",
+                "https://foil.zone/u/pacificmeister"
+            ]
+        },
+        "sameAs": [
+            "https://foil.zone",
+            "https://www.youtube.com/@PacificMeister",
+            "https://github.com/pacificmeister"
+        ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --ocean-deep: #0a1628;
+            --ocean-mid: #0f2847;
+            --ocean-light: #1a4a7a;
+            --foam: #e8f4f8;
+            --white: #ffffff;
+            --accent: #00d4aa;
+            --accent-glow: #00ffcc;
+            --sun: #ffd700;
+            --coral: #ff6b6b;
+            --text: #c8dae8;
+            --text-bright: #f0f6fc;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: var(--ocean-deep);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated ocean gradient background */
+        .ocean-bg {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(180deg,
+                #0a1628 0%,
+                #0c1e3a 30%,
+                #0f2847 50%,
+                #0a1628 100%
+            );
+            z-index: -2;
+        }
+
+        .wave-layer {
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            height: 200px;
+            z-index: -1;
+            opacity: 0.08;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 40px,
+                var(--accent) 40px,
+                var(--accent) 42px
+            );
+            animation: wave-drift 20s linear infinite;
+        }
+
+        @keyframes wave-drift {
+            from { transform: translateX(0); }
+            to { transform: translateX(-82px); }
+        }
+
+        /* Header */
+        header {
+            padding: 2rem 2rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span { color: var(--accent); }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--accent); }
+
+        /* Hero */
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.4rem 1.2rem;
+            background: rgba(0, 212, 170, 0.1);
+            border: 1px solid rgba(0, 212, 170, 0.3);
+            border-radius: 100px;
+            font-size: 0.85rem;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            letter-spacing: 0.5px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            color: var(--white);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 em {
+            font-style: normal;
+            background: linear-gradient(135deg, var(--accent), var(--accent-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-sub {
+            font-size: 1.25rem;
+            color: var(--text);
+            max-width: 650px;
+            margin: 0 auto 3rem;
+            line-height: 1.7;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text);
+            margin-top: 0.3rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Section */
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .section-desc {
+            color: var(--text);
+            max-width: 600px;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        /* Tool Cards */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tool-card {
+            background: linear-gradient(135deg, rgba(15, 40, 71, 0.8), rgba(10, 22, 40, 0.9));
+            border: 1px solid rgba(0, 212, 170, 0.15);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tool-card:hover {
+            border-color: rgba(0, 212, 170, 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .tool-card:hover::before { opacity: 1; }
+
+        .tool-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tool-card h3 {
+            font-size: 1.3rem;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+
+        .tool-card p {
+            color: var(--text);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .tool-tag {
+            display: inline-block;
+            padding: 0.2rem 0.7rem;
+            background: rgba(0, 212, 170, 0.1);
+            border-radius: 100px;
+            font-size: 0.75rem;
+            color: var(--accent);
+            margin-right: 0.5rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .tool-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        .tool-cta svg {
+            transition: transform 0.2s;
+        }
+
+        .tool-card:hover .tool-cta svg {
+            transform: translateX(4px);
+        }
+
+        /* Story section */
+        .story {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--accent), transparent);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 1rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.35rem;
+            top: 0.5rem;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 10px var(--accent);
+        }
+
+        .timeline-year {
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .timeline-text {
+            font-size: 1rem;
+            color: var(--text-bright);
+            margin-top: 0.25rem;
+        }
+
+        .timeline-detail {
+            font-size: 0.85rem;
+            color: var(--text);
+            margin-top: 0.25rem;
+        }
+
+        .story-text h2 {
+            font-size: 2.2rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .story-text p {
+            color: var(--text);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        /* Community */
+        .community {
+            text-align: center;
+            padding: 5rem 2rem;
+            position: relative;
+        }
+
+        .community::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 10%; right: 10%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 170, 0.3), transparent);
+        }
+
+        .community h2 {
+            font-size: 2.5rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .community p {
+            color: var(--text);
+            font-size: 1.15rem;
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .community-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--accent), #00b894);
+            color: var(--ocean-deep);
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(0, 212, 170, 0.3);
+        }
+
+        .community-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 212, 170, 0.5);
+        }
+
+        /* Footer */
+        footer {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        footer p {
+            color: rgba(200, 218, 232, 0.5);
+            font-size: 0.85rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: rgba(200, 218, 232, 0.5);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover { color: var(--accent); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero { padding: 4rem 1.5rem 3rem; }
+            .hero-stats { gap: 2rem; }
+            .tools-grid { grid-template-columns: 1fr; }
+            .story-grid { grid-template-columns: 1fr; gap: 2rem; }
+            footer { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="ocean-bg"></div>
+    <div class="wave-layer"></div>
+
+    <header>
+        <nav>
+            <a href="/" class="logo">Pacific<span>Meister</span></a>
+            <ul class="nav-links">
+                <li><a href="#tools">Tools</a></li>
+                <li><a href="#story">Story</a></li>
+                <li><a href="https://foil.zone" target="_blank">Community</a></li>
+                <li><a href="https://www.youtube.com/@PacificMeister" target="_blank">YouTube</a></li>
+                <li><a href="https://github.com/pacificmeister" target="_blank">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-badge">🌊 Open-source foiling since 2016</div>
+            <h1>Build it. <em>Ride it.</em> Share it.</h1>
+            <p class="hero-sub">
+                Free tools, build guides, and community for the DIY foiling world.
+                From the maker who open-sourced the electric hydrofoil.
+            </p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">5,300+</div>
+                    <div class="stat-label">Community Members</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">135K+</div>
+                    <div class="stat-label">Forum Posts</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">9</div>
+                    <div class="stat-label">Years Open Source</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Free Tools</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tools">
+            <div class="section-label">Free & Open Source</div>
+            <h2 class="section-title">Tools for Builders</h2>
+            <p class="section-desc">Everything you need to research, plan, and build — no account required, no paywalls.</p>
+
+            <div class="tools-grid">
+                <a href="https://pacificmeister.github.io/towboogie-build/" class="tool-card" target="_blank">
+                    <div class="tool-icon">🚀</div>
+                    <h3>Tow Boogie Build Configurator</h3>
+                    <p>Pick your motor, battery, ESC, and hull — see real-time costs and get a complete shopping list with buy links. Share your build with anyone.</p>
+                    <div>
+                        <span class="tool-tag">Interactive</span>
+                        <span class="tool-tag">Cost Calculator</span>
+                        <span class="tool-tag">Shopping List</span>
+                    </div>
+                    <div class="tool-cta">
+                        Configure a build <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </div>
+                </a>
+
+                <a href="https://pacificmeister.github.io/towboogie-build/guide.html" class="tool-card" target="_blank">
+                    <div class="tool-icon">🔧</div>
+                    <h3>DIY Build Guide</h3>
+                    <p>Step-by-step 4-day build sequence from community-tested designs. Shopping lists, assembly tips, and lessons from dozens of real builds.</p>
+                    <div>
+                        <span class="tool-tag">4-Day Build</span>
+                        <span class="tool-tag">Community Tested</span>
+                        <span class="tool-tag">$750–$1,200</span>
+                    </div>
+                    <div class="tool-cta">
+                        Read the guide <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </div>
+                </a>
+
+                <a href="https://pacificmeister.github.io/towboogie-build/calculator.html" class="tool-card" target="_blank">
+                    <div class="tool-icon">⚡</div>
+                    <h3>Performance Calculator</h3>
+                    <p>Physics-based speed, range, and runtime predictions for any tow boogie setup. Compare against commercial options and calculate your breakeven point.</p>
+                    <div>
+                        <span class="tool-tag">Physics Engine</span>
+                        <span class="tool-tag">5 Ride Profiles</span>
+                        <span class="tool-tag">Breakeven Analysis</span>
+                    </div>
+                    <div class="tool-cta">
+                        Calculate performance <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </div>
+                </a>
+
+                <a href="https://pacificmeister.github.io/towboogie-build/compare.html" class="tool-card" target="_blank">
+                    <div class="tool-icon">🏆</div>
+                    <h3>Buyer's Guide & Comparison</h3>
+                    <p>Honest reviews of every tow boogie on the market: Zero Tow V3, Foil Fusion, Wave Escort, and DIY. Price maps, feature matrices, and use-case recommendations.</p>
+                    <div>
+                        <span class="tool-tag">4 Products Reviewed</span>
+                        <span class="tool-tag">Price Comparison</span>
+                        <span class="tool-tag">Use Cases</span>
+                    </div>
+                    <div class="tool-cta">
+                        Compare options <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </div>
+                </a>
+
+                <a href="https://axis-advisor.vercel.app" class="tool-card" target="_blank">
+                    <div class="tool-icon">🔴</div>
+                    <h3>AXIS Foil Advisor</h3>
+                    <p>Look up, compare, and get personalized recommendations for AXIS foils. Built on 530+ rider feedback posts, 80+ weight data points, and the full product catalog.</p>
+                    <div>
+                        <span class="tool-tag">Smart Recommendations</span>
+                        <span class="tool-tag">530+ Reviews</span>
+                        <span class="tool-tag">Anti-Counterfeit</span>
+                    </div>
+                    <div class="tool-cta">
+                        Find your setup <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </div>
+                </a>
+
+                <a href="https://foil.zone" class="tool-card" target="_blank">
+                    <div class="tool-icon">🛠️</div>
+                    <h3>FOIL.zone Forum</h3>
+                    <p>The original DIY eFoil community. 5,300+ members, 135K+ posts. Build logs, motor guides, battery discussions, and real-world test data from builders worldwide.</p>
+                    <div>
+                        <span class="tool-tag">Since 2017</span>
+                        <span class="tool-tag">Global Community</span>
+                        <span class="tool-tag">Build Logs</span>
+                    </div>
+                    <div class="tool-cta">
+                        Join the forum <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="story" id="story">
+            <div class="story-grid">
+                <div class="story-text">
+                    <div class="section-label">The Origin Story</div>
+                    <h2>From garage project to global movement</h2>
+                    <p>
+                        In 2016, I started building electric hydrofoils in my garage and sharing everything on YouTube. No patents, no paywalls — just open designs and honest build logs.
+                    </p>
+                    <p>
+                        That decision kicked off a worldwide DIY eFoil movement. Builders from 50+ countries started modifying, improving, and sharing their own designs. FOIL.zone became the hub.
+                    </p>
+                    <p>
+                        The eFoil itself was invented in 2008 by Jakob Kuttenkeuler at KTH Stockholm — the first person to combine a foiling surfboard with electric propulsion. My contribution was making it accessible to everyone.
+                    </p>
+                    <p>
+                        Today, the mission continues: build tools that help people build things. Open source. Free forever.
+                    </p>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">2008</div>
+                        <div class="timeline-text">eFoil invented</div>
+                        <div class="timeline-detail">Jakob Kuttenkeuler & Stefan Hallström at KTH Stockholm create the Evolo — first electric hydrofoil surfboard</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2016</div>
+                        <div class="timeline-text">First YouTube build</div>
+                        <div class="timeline-detail">PacificMeister publishes open-source DIY eFoil designs — the spark that lit the movement</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2017</div>
+                        <div class="timeline-text">FOIL.zone founded</div>
+                        <div class="timeline-detail">The forum launches, quickly becoming the #1 DIY eFoil community worldwide</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2018–2024</div>
+                        <div class="timeline-text">Community grows</div>
+                        <div class="timeline-detail">5,300+ members, 135K+ posts. Builders in 50+ countries. Multiple commercial products inspired by community designs</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2025–2026</div>
+                        <div class="timeline-text">New chapter: Tow Boogie</div>
+                        <div class="timeline-detail">Free build tools, configurators, and guides for the next wave of DIY foiling innovation</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="community">
+            <h2>Join the builders</h2>
+            <p>Whether you're planning your first build or your tenth, there's a place for you. All tools are free. All designs are open.</p>
+            <a href="https://foil.zone" class="community-btn" target="_blank">
+                🌊 Visit FOIL.zone
+            </a>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2016–2026 PacificMeister. Open source, always.</p>
+        <ul class="footer-links">
+            <li><a href="https://github.com/pacificmeister" target="_blank">GitHub</a></li>
+            <li><a href="https://www.youtube.com/@PacificMeister" target="_blank">YouTube</a></li>
+            <li><a href="https://foil.zone" target="_blank">FOIL.zone</a></li>
+            <li><a href="https://axis-advisor.vercel.app" target="_blank">AXIS Advisor</a></li>
+        </ul>
+    </footer>
+</body>
+</html>
