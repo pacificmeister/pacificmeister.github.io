@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog — PacificMeister</title>
+    <meta name="description" content="Articles, guides, and stories from the pioneer of DIY electric hydrofoils. eFoil history, tow boogie builds, foiling tips, and open-source innovation.">
+    <meta name="keywords" content="PacificMeister blog, eFoil history, tow boogie, DIY hydrofoil, foiling articles, open source foiling">
+    <link rel="canonical" href="https://pacificmeister.github.io/blog.html">
+
+    <meta property="og:title" content="Blog — PacificMeister">
+    <meta property="og:description" content="Articles, guides, and stories from the pioneer of DIY electric hydrofoils.">
+    <meta property="og:url" content="https://pacificmeister.github.io/blog.html">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://pacificmeister.github.io/og-image.png">
+    <meta property="og:site_name" content="PacificMeister">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Blog — PacificMeister">
+    <meta name="twitter:description" content="Articles, guides, and stories from the pioneer of DIY electric hydrofoils.">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "PacificMeister Blog",
+        "url": "https://pacificmeister.github.io/blog.html",
+        "description": "Articles, guides, and stories from the pioneer of DIY electric hydrofoils.",
+        "publisher": {
+            "@type": "Organization",
+            "name": "PacificMeister",
+            "url": "https://pacificmeister.github.io"
+        },
+        "blogPost": [
+            {
+                "@type": "BlogPosting",
+                "headline": "The Complete History of the eFoil: From 2008 Invention to Global Movement",
+                "url": "https://pacificmeister.github.io/blog-history-of-efoil.html",
+                "datePublished": "2026-03-16",
+                "author": { "@type": "Person", "name": "PacificMeister" },
+                "description": "The definitive insider account of how the electric hydrofoil was invented, open-sourced, and became a worldwide phenomenon."
+            },
+            {
+                "@type": "BlogPosting",
+                "headline": "Tow Boogie vs eFoil: Which One Is Right for You?",
+                "url": "https://pacificmeister.github.io/blog-tow-boogie-vs-efoil.html",
+                "datePublished": "2026-03-16",
+                "author": { "@type": "Person", "name": "PacificMeister" },
+                "description": "An honest comparison of tow boogies and eFoils — cost, performance, riding experience, and which suits your goals."
+            }
+        ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --ocean-deep: #0a1628;
+            --ocean-mid: #0f2847;
+            --ocean-light: #1a4a7a;
+            --foam: #e8f4f8;
+            --white: #ffffff;
+            --accent: #00d4aa;
+            --accent-glow: #00ffcc;
+            --text: #c8dae8;
+            --text-bright: #f0f6fc;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: var(--ocean-deep);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .ocean-bg {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(180deg, #0a1628 0%, #0c1e3a 30%, #0f2847 50%, #0a1628 100%);
+            z-index: -2;
+        }
+
+        header {
+            padding: 2rem 2rem 0;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+        }
+        .logo span { color: var(--accent); }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--accent); }
+
+        .page-hero {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 5rem 2rem 3rem;
+        }
+
+        .page-hero h1 {
+            font-size: 3rem;
+            color: var(--white);
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .page-hero p {
+            font-size: 1.2rem;
+            color: var(--text);
+            max-width: 650px;
+        }
+
+        .blog-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+            display: grid;
+            gap: 2rem;
+        }
+
+        .blog-card {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 2rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(15, 40, 71, 0.8), rgba(10, 22, 40, 0.9));
+            border: 1px solid rgba(0, 212, 170, 0.12);
+            border-radius: 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--accent), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .blog-card:hover {
+            border-color: rgba(0, 212, 170, 0.35);
+            transform: translateY(-3px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+        }
+        .blog-card:hover::before { opacity: 1; }
+
+        .blog-card-icon {
+            font-size: 3.5rem;
+            line-height: 1;
+            padding-top: 0.25rem;
+        }
+
+        .blog-card-meta {
+            font-size: 0.8rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.4rem;
+        }
+
+        .blog-card h2 {
+            font-size: 1.5rem;
+            color: var(--white);
+            margin-bottom: 0.6rem;
+            line-height: 1.3;
+        }
+
+        .blog-card p {
+            color: var(--text);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .blog-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .blog-tag {
+            padding: 0.2rem 0.7rem;
+            background: rgba(0, 212, 170, 0.1);
+            border-radius: 100px;
+            font-size: 0.75rem;
+            color: var(--accent);
+        }
+
+        .blog-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .blog-cta svg { transition: transform 0.2s; }
+        .blog-card:hover .blog-cta svg { transform: translateX(4px); }
+
+        footer {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        footer p { color: rgba(200, 218, 232, 0.5); font-size: 0.85rem; }
+        .footer-links { display: flex; gap: 1.5rem; list-style: none; }
+        .footer-links a { color: rgba(200, 218, 232, 0.5); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--accent); }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .page-hero h1 { font-size: 2rem; }
+            .blog-card { grid-template-columns: 1fr; gap: 1rem; }
+            .blog-card-icon { font-size: 2.5rem; }
+            footer { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="ocean-bg"></div>
+
+    <header>
+        <nav>
+            <a href="/" class="logo">Pacific<span>Meister</span></a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/#tools">Tools</a></li>
+                <li><a href="/blog.html" style="color: var(--accent);">Blog</a></li>
+                <li><a href="https://foil.zone" target="_blank">Community</a></li>
+                <li><a href="https://www.youtube.com/@PacificMeister" target="_blank">YouTube</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <h1>Blog</h1>
+            <p>Deep dives, origin stories, and honest takes on foiling — from someone who's been building since day one.</p>
+        </section>
+
+        <div class="blog-grid">
+            <a href="/blog-history-of-efoil.html" class="blog-card">
+                <div class="blog-card-icon">⚡</div>
+                <div>
+                    <div class="blog-card-meta">March 2026 · 12 min read</div>
+                    <h2>The Complete History of the eFoil: From 2008 Invention to Global Movement</h2>
+                    <p>The definitive insider account. How a KTH professor's experiment became a garage project, then an open-source movement, then a billion-dollar industry — and what got lost along the way.</p>
+                    <div class="blog-tags">
+                        <span class="blog-tag">eFoil History</span>
+                        <span class="blog-tag">Open Source</span>
+                        <span class="blog-tag">Origin Story</span>
+                    </div>
+                    <div class="blog-cta">
+                        Read article <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </div>
+                </div>
+            </a>
+
+            <a href="/blog-tow-boogie-vs-efoil.html" class="blog-card">
+                <div class="blog-card-icon">🤔</div>
+                <div>
+                    <div class="blog-card-meta">March 2026 · 10 min read</div>
+                    <h2>Tow Boogie vs eFoil: Which One Is Right for You?</h2>
+                    <p>They both get you on foil, but the experience couldn't be more different. An honest breakdown of cost, performance, maintenance, riding feel, and which one fits your goals — from someone who's ridden both extensively.</p>
+                    <div class="blog-tags">
+                        <span class="blog-tag">Comparison</span>
+                        <span class="blog-tag">Tow Boogie</span>
+                        <span class="blog-tag">Buying Guide</span>
+                    </div>
+                    <div class="blog-cta">
+                        Read article <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2016–2026 PacificMeister. Open source, always.</p>
+        <ul class="footer-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="https://github.com/pacificmeister" target="_blank">GitHub</a></li>
+            <li><a href="https://www.youtube.com/@PacificMeister" target="_blank">YouTube</a></li>
+            <li><a href="https://foil.zone" target="_blank">FOIL.zone</a></li>
+        </ul>
+    </footer>
+</body>
+</html>
