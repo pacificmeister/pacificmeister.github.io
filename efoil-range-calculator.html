@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DIY eFoil Range Calculator (Free) — PacificMeister</title>
+  <meta name="description" content="Free DIY eFoil range calculator. Estimate runtime, distance, and cost per session based on battery size, rider weight, and riding style.">
+  <meta name="keywords" content="efoil range calculator, diy efoil battery calculator, efoil runtime calculator, electric hydrofoil range">
+  <link rel="canonical" href="https://pacificmeister.github.io/efoil-range-calculator.html">
+
+  <meta property="og:title" content="DIY eFoil Range Calculator (Free) — PacificMeister">
+  <meta property="og:description" content="Estimate eFoil runtime and range from your battery, rider weight, and riding style.">
+  <meta property="og:url" content="https://pacificmeister.github.io/efoil-range-calculator.html">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://pacificmeister.github.io/og-image.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DIY eFoil Range Calculator (Free)">
+  <meta name="twitter:description" content="Free tool to estimate eFoil runtime, range, and session cost.">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "DIY eFoil Range Calculator",
+    "applicationCategory": "SportsApplication",
+    "operatingSystem": "Web",
+    "url": "https://pacificmeister.github.io/efoil-range-calculator.html",
+    "description": "Free calculator for estimating DIY eFoil runtime, range, and cost per ride session.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "PacificMeister"
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg:#0a1628;
+      --panel:#102742;
+      --text:#d3e2ef;
+      --muted:#8ea8bd;
+      --accent:#00d4aa;
+      --line:rgba(0,212,170,.25);
+      --white:#fff;
+    }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body {
+      font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+      background:linear-gradient(180deg,#091426 0%, #0f2847 40%, #091426 100%);
+      color:var(--text);
+      line-height:1.55;
+      min-height:100vh;
+    }
+    .wrap { max-width:980px; margin:0 auto; padding:2rem 1.2rem 3rem; }
+    nav { display:flex; justify-content:space-between; align-items:center; margin-bottom:2rem; }
+    .logo { color:var(--white); text-decoration:none; font-weight:700; font-size:1.3rem; }
+    .logo span { color:var(--accent); }
+    .links a { color:var(--muted); text-decoration:none; margin-left:1rem; font-size:.9rem; }
+    .links a:hover { color:var(--accent); }
+    h1 { color:var(--white); font-size:clamp(1.8rem,4vw,2.6rem); margin-bottom:.6rem; }
+    .sub { color:var(--muted); max-width:700px; margin-bottom:2rem; }
+    .grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+    .card {
+      background:linear-gradient(140deg, rgba(16,39,66,.9), rgba(8,22,40,.9));
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:1.1rem;
+    }
+    .card h2 { color:var(--white); font-size:1.1rem; margin-bottom:.9rem; }
+    .field { margin-bottom:.8rem; }
+    label { display:block; color:var(--muted); font-size:.82rem; margin-bottom:.3rem; }
+    input, select {
+      width:100%; padding:.62rem .7rem; border-radius:10px; border:1px solid #29507a;
+      background:#0f2239; color:var(--text); font-size:.95rem;
+    }
+    .presets { display:flex; gap:.5rem; flex-wrap:wrap; margin:.8rem 0 0; }
+    button {
+      border:1px solid var(--line); background:rgba(0,212,170,.1); color:var(--accent);
+      border-radius:999px; padding:.35rem .75rem; cursor:pointer; font-size:.82rem;
+    }
+    .result { margin-bottom:.7rem; padding:.65rem .75rem; background:rgba(0,212,170,.07); border-radius:10px; }
+    .result .k { color:var(--muted); font-size:.8rem; }
+    .result .v { color:var(--white); font-size:1.2rem; font-weight:700; }
+    .note { color:var(--muted); font-size:.82rem; margin-top:.6rem; }
+    .cta { margin-top:1.2rem; color:var(--muted); font-size:.9rem; }
+    .cta a { color:var(--accent); }
+    @media (max-width: 800px) {
+      .grid { grid-template-columns:1fr; }
+      .links { display:none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav>
+      <a class="logo" href="/">Pacific<span>Meister</span></a>
+      <div class="links">
+        <a href="/">Home</a>
+        <a href="/blog.html">Blog</a>
+        <a href="https://foil.zone" target="_blank">FOIL.zone</a>
+      </div>
+    </nav>
+
+    <h1>DIY eFoil Range Calculator</h1>
+    <p class="sub">Estimate runtime, distance, and session cost from your battery and setup. This gives realistic planning numbers before you buy parts or head to the beach.</p>
+
+    <div class="grid">
+      <section class="card">
+        <h2>Inputs</h2>
+
+        <div class="field">
+          <label for="voltage">Battery nominal voltage (V)</label>
+          <input id="voltage" type="number" value="50.4" step="0.1">
+        </div>
+
+        <div class="field">
+          <label for="ah">Battery capacity (Ah)</label>
+          <input id="ah" type="number" value="40" step="0.1">
+        </div>
+
+        <div class="field">
+          <label for="usable">Usable battery percentage (%)</label>
+          <input id="usable" type="number" value="88" step="1" min="50" max="100">
+        </div>
+
+        <div class="field">
+          <label for="rider">Rider weight (kg)</label>
+          <input id="rider" type="number" value="82" step="1">
+        </div>
+
+        <div class="field">
+          <label for="board">Board + foil + drivetrain weight (kg)</label>
+          <input id="board" type="number" value="22" step="0.5">
+        </div>
+
+        <div class="field">
+          <label for="style">Riding style</label>
+          <select id="style">
+            <option value="0.78">Efficient cruise (flat water)</option>
+            <option value="1" selected>Mixed riding</option>
+            <option value="1.2">Aggressive carving</option>
+            <option value="1.35">Heavy chop / hard accelerations</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="price">Electricity price ($ / kWh)</label>
+          <input id="price" type="number" value="0.28" step="0.01">
+        </div>
+
+        <div class="presets">
+          <button onclick="preset('entry')">Entry 12S</button>
+          <button onclick="preset('performance')">Performance 14S</button>
+          <button onclick="preset('long')">Long Range</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Estimated Results</h2>
+        <div class="result"><div class="k">Usable energy</div><div class="v" id="energy">—</div></div>
+        <div class="result"><div class="k">Average power draw</div><div class="v" id="power">—</div></div>
+        <div class="result"><div class="k">Ride time</div><div class="v" id="time">—</div></div>
+        <div class="result"><div class="k">Estimated range</div><div class="v" id="range">—</div></div>
+        <div class="result"><div class="k">Energy cost per session</div><div class="v" id="cost">—</div></div>
+
+        <p class="note" id="quality"></p>
+
+        <p class="cta">
+          Want higher confidence? Compare your estimate with real-world logs from builders on
+          <a href="https://foil.zone" target="_blank">FOIL.zone</a> and tune the style factor.
+        </p>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    const ids = ['voltage','ah','usable','rider','board','style','price'];
+    ids.forEach(id => document.getElementById(id).addEventListener('input', calc));
+
+    function preset(kind) {
+      const presets = {
+        entry: { voltage: 44.4, ah: 30, usable: 85, rider: 78, board: 21, style: 1.0, price: 0.28 },
+        performance: { voltage: 58.8, ah: 42, usable: 88, rider: 85, board: 23, style: 1.2, price: 0.28 },
+        long: { voltage: 50.4, ah: 55, usable: 90, rider: 82, board: 24, style: 0.9, price: 0.28 }
+      };
+      const p = presets[kind];
+      for (const k in p) document.getElementById(k).value = p[k];
+      calc();
+    }
+
+    function calc() {
+      const v = +document.getElementById('voltage').value || 0;
+      const ah = +document.getElementById('ah').value || 0;
+      const usablePct = (+document.getElementById('usable').value || 0) / 100;
+      const rider = +document.getElementById('rider').value || 0;
+      const board = +document.getElementById('board').value || 0;
+      const style = +document.getElementById('style').value || 1;
+      const price = +document.getElementById('price').value || 0;
+
+      const totalMass = rider + board;
+      const basePowerKw = 0.95 + (totalMass - 95) * 0.009; // practical baseline model
+      const avgPowerKw = Math.max(0.6, basePowerKw * style);
+      const energyKwh = (v * ah / 1000) * usablePct;
+
+      const hours = energyKwh / avgPowerKw;
+      const avgSpeedKmh = 24 * (1.03 - (style - 1) * 0.15);
+      const rangeKm = Math.max(0, hours * avgSpeedKmh);
+      const sessionCost = energyKwh * price;
+
+      document.getElementById('energy').textContent = `${energyKwh.toFixed(2)} kWh`;
+      document.getElementById('power').textContent = `${avgPowerKw.toFixed(2)} kW`;
+      document.getElementById('time').textContent = `${(hours*60).toFixed(0)} min`;
+      document.getElementById('range').textContent = `${rangeKm.toFixed(1)} km`;
+      document.getElementById('cost').textContent = `$${sessionCost.toFixed(2)}`;
+
+      const quality = document.getElementById('quality');
+      if (hours < 0.6) quality.textContent = 'Range outlook: short session build. Good for training or tow-assist use.';
+      else if (hours < 1.2) quality.textContent = 'Range outlook: balanced all-round session. Typical DIY setup territory.';
+      else quality.textContent = 'Range outlook: long-session setup. Great for downwind exploration and repeated runs.';
+    }
+
+    calc();
+  </script>
+</body>
+</html>
