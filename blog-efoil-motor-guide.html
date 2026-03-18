@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIY eFoil Motor & Propulsion Guide: Inrunner vs Outrunner, ESC, Propellers (2026) — PacificMeister</title>
+    <meta name="description" content="The definitive guide to DIY eFoil motors, ESCs, and propellers. Inrunner vs outrunner, 65161 vs 65162 vs 63100, VESC setup, propeller selection, and waterproofing — from the community that pioneered it all.">
+    <meta name="keywords" content="eFoil motor, DIY eFoil motor, 65161 motor, 65162 motor, 63100 outrunner, eFoil ESC, VESC eFoil, eFoil propeller, inrunner vs outrunner, Flipsky motor, Maytech motor, eFoil propulsion, waterproof motor, eFoil motor guide, PacificMeister">
+    <link rel="canonical" href="https://pacificmeister.github.io/blog-efoil-motor-guide.html">
+
+    <meta property="og:title" content="DIY eFoil Motor & Propulsion Guide: Inrunner vs Outrunner, ESC, Propellers (2026)">
+    <meta property="og:description" content="Everything you need to choose and set up your eFoil motor, ESC, and propeller — the definitive guide from PacificMeister.">
+    <meta property="og:url" content="https://pacificmeister.github.io/blog-efoil-motor-guide.html">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://pacificmeister.github.io/og-image.png">
+    <meta property="og:site_name" content="PacificMeister">
+    <meta property="article:published_time" content="2026-03-18">
+    <meta property="article:author" content="PacificMeister">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="DIY eFoil Motor & Propulsion Guide (2026)">
+    <meta name="twitter:description" content="Inrunner vs outrunner, ESC setup, propeller selection — the definitive eFoil motor guide from PacificMeister.">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "DIY eFoil Motor & Propulsion Guide: Inrunner vs Outrunner, ESC, Propellers (2026)",
+        "datePublished": "2026-03-18",
+        "dateModified": "2026-03-18",
+        "author": {
+            "@type": "Person",
+            "name": "PacificMeister",
+            "url": "https://pacificmeister.github.io"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "PacificMeister",
+            "url": "https://pacificmeister.github.io"
+        },
+        "description": "The definitive guide to DIY eFoil motors, ESCs, and propellers. Inrunner vs outrunner, motor selection, VESC configuration, propeller choices, and waterproofing best practices.",
+        "mainEntityOfPage": "https://pacificmeister.github.io/blog-efoil-motor-guide.html"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is the best motor for a DIY eFoil?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The 65161 120KV inrunner is the community standard for full-power DIY eFoils. It delivers 6kW+, is fully waterproof out of the box, and has a huge ecosystem of compatible propellers and mounts. For budget builds or foil-assist setups, the 6384 or 63100 outrunner motors are excellent alternatives at a fraction of the cost."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Should I use an inrunner or outrunner motor for my eFoil?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Inrunners (like the 65161/65162) are sealed, maintenance-free, and the standard choice for full eFoil builds. Outrunners (like the 63100 or 6384) are cheaper, lighter, and great for foil-assist or budget builds, but require waterproofing modifications — sealing the stator with thermal epoxy, replacing bearings with stainless steel or ceramic, and regular corrosion maintenance."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What ESC should I use for a DIY eFoil?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "VESC-based ESCs are the community standard. The Flipsky 75100 and 75200 are popular choices, offering FOC (Field-Oriented Control) for smooth, quiet operation. For budget builds, the Flipsky FSESC 75100 runs around $150-200. Higher-end options include the VESC 75/300 and custom water-cooled units. Always use a VESC that supports your battery voltage (75V models for 14S setups)."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What propeller should I use for a DIY eFoil?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "For inrunner motors (65161), use a propeller with 12mm round shaft and M8 thread. Common sizes are 140-160mm diameter with 5-8 inch pitch. Aluminum propellers from Highfly, PropellerKing, or Flite are popular choices. 3D-printed propellers work too but need reinforcement. For best efficiency on foil, consider a folding propeller to reduce drag when cruising."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do I waterproof an outrunner motor for eFoil use?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Outrunner waterproofing involves three steps: (1) Seal the stator windings with thermal epoxy resin or marine-grade conformal coating to prevent saltwater corrosion, (2) Replace standard steel bearings with stainless steel or ceramic bearings, (3) After each session, rinse with fresh water and periodically apply Corrosion-X or similar protectant to the stator. Some builders use white oil baths for ongoing protection."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How much does a DIY eFoil motor setup cost?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "A complete propulsion setup (motor + ESC + propeller + remote) costs $400-$900 depending on your choices. Budget outrunner path: ~$50-80 motor + $150 ESC + $30 propeller + $100 remote = ~$330-360. Standard inrunner path: ~$250-450 motor + $150-200 ESC + $40-80 propeller + $100-150 remote = ~$540-880. Premium setups with Flying Rodeo motors can exceed $1,500 for motor alone."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --ocean-deep: #0a1628;
+            --ocean-mid: #0f2847;
+            --ocean-light: #1a4a7a;
+            --foam: #e8f4f8;
+            --white: #ffffff;
+            --accent: #00d4aa;
+            --accent-glow: #00ffcc;
+            --text: #c8dae8;
+            --text-bright: #f0f6fc;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: var(--ocean-deep);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .ocean-bg {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(180deg, #0a1628 0%, #0c1e3a 30%, #0f2847 50%, #0a1628 100%);
+            z-index: -2;
+        }
+
+        header {
+            padding: 2rem 2rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span { color: var(--accent); }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--accent); }
+
+        .article-header {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .article-date {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .article-tag {
+            display: inline-block;
+            padding: 0.2rem 0.7rem;
+            background: rgba(0, 212, 170, 0.1);
+            border: 1px solid rgba(0, 212, 170, 0.2);
+            border-radius: 100px;
+            font-size: 0.75rem;
+            color: var(--accent);
+        }
+
+        .article-header h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: var(--white);
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .article-intro {
+            font-size: 1.2rem;
+            color: var(--text);
+            line-height: 1.8;
+            border-left: 3px solid var(--accent);
+            padding-left: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .article-body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+
+        .article-body h2 {
+            font-size: 1.8rem;
+            color: var(--white);
+            margin: 3rem 0 1rem;
+            font-weight: 700;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .article-body h2:first-child {
+            border-top: none;
+            margin-top: 0;
+        }
+
+        .article-body h3 {
+            font-size: 1.3rem;
+            color: var(--text-bright);
+            margin: 2rem 0 0.75rem;
+            font-weight: 600;
+        }
+
+        .article-body p {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .article-body ul, .article-body ol {
+            margin: 1rem 0 1.5rem 1.5rem;
+        }
+
+        .article-body li {
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .article-body strong {
+            color: var(--text-bright);
+        }
+
+        .article-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        .article-body a:hover {
+            color: var(--accent-glow);
+        }
+
+        /* Info boxes */
+        .info-box {
+            background: rgba(0, 212, 170, 0.08);
+            border: 1px solid rgba(0, 212, 170, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-box.warning {
+            background: rgba(255, 107, 107, 0.08);
+            border-color: rgba(255, 107, 107, 0.3);
+        }
+
+        .info-box.tip {
+            background: rgba(255, 215, 0, 0.08);
+            border-color: rgba(255, 215, 0, 0.25);
+        }
+
+        .info-box-title {
+            font-weight: 700;
+            color: var(--text-bright);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .info-box p {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .info-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Comparison table */
+        .cost-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        .cost-table th {
+            text-align: left;
+            padding: 0.75rem 1rem;
+            background: rgba(0, 212, 170, 0.1);
+            color: var(--accent);
+            font-weight: 600;
+            border-bottom: 2px solid rgba(0, 212, 170, 0.2);
+        }
+
+        .cost-table td {
+            padding: 0.6rem 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            color: var(--text);
+        }
+
+        .cost-table tr:hover td {
+            background: rgba(0, 212, 170, 0.03);
+        }
+
+        .cost-table .highlight td {
+            background: rgba(0, 212, 170, 0.06);
+            color: var(--text-bright);
+        }
+
+        /* Component cards */
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .component-card {
+            background: rgba(15, 40, 71, 0.6);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .component-card h4 {
+            color: var(--accent);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .component-card .price {
+            color: var(--accent-glow);
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .component-card p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .component-card ul {
+            margin: 0.5rem 0 0 1rem;
+            font-size: 0.9rem;
+        }
+
+        .component-card li {
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        /* TOC */
+        .toc {
+            background: rgba(15, 40, 71, 0.6);
+            border: 1px solid rgba(0, 212, 170, 0.15);
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            margin: 0 0 2.5rem;
+        }
+
+        .toc h3 {
+            color: var(--accent);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+        }
+
+        .toc ol {
+            margin: 0;
+            padding-left: 1.2rem;
+        }
+
+        .toc li {
+            margin-bottom: 0.4rem;
+            font-size: 0.95rem;
+        }
+
+        .toc a {
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .toc a:hover {
+            color: var(--accent);
+        }
+
+        /* Verdict box */
+        .verdict-box {
+            background: linear-gradient(135deg, rgba(0, 212, 170, 0.12), rgba(0, 212, 170, 0.04));
+            border: 2px solid rgba(0, 212, 170, 0.3);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .verdict-box h3 {
+            color: var(--accent);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .verdict-box p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        /* Related articles */
+        .related-articles {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+
+        .related-articles h2 {
+            font-size: 1.5rem;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .related-card {
+            display: block;
+            padding: 1.5rem;
+            background: rgba(15, 40, 71, 0.6);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .related-card:hover {
+            border-color: rgba(0, 212, 170, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .related-card .icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .related-card h3 {
+            font-size: 1rem;
+            color: var(--white);
+            margin-bottom: 0.4rem;
+        }
+
+        .related-card p {
+            font-size: 0.85rem;
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        /* Back to blog */
+        .back-link {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem 2rem;
+        }
+
+        .back-link a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-link a:hover {
+            color: var(--accent-glow);
+        }
+
+        footer {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        footer p { color: rgba(200, 218, 232, 0.5); font-size: 0.85rem; }
+        .footer-links { display: flex; gap: 1.5rem; list-style: none; }
+        .footer-links a { color: rgba(200, 218, 232, 0.5); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--accent); }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .article-header h1 { font-size: 1.8rem; }
+            .article-header { padding: 3rem 1.5rem 1.5rem; }
+            .article-body { padding: 0 1.5rem 3rem; }
+            .component-grid { grid-template-columns: 1fr; }
+            .cost-table { font-size: 0.8rem; }
+            .cost-table th, .cost-table td { padding: 0.5rem 0.6rem; }
+            footer { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="ocean-bg"></div>
+
+    <header>
+        <nav>
+            <a href="/" class="logo">Pacific<span>Meister</span></a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/#tools">Tools</a></li>
+                <li><a href="/blog.html">Blog</a></li>
+                <li><a href="https://foil.zone" target="_blank">Community</a></li>
+                <li><a href="https://www.youtube.com/@PacificMeister" target="_blank">YouTube</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="back-link">
+        <a href="/blog.html">← Back to all articles</a>
+    </div>
+
+    <article>
+        <div class="article-header">
+            <div class="article-meta">
+                <span class="article-date">March 18, 2026</span>
+                <span class="article-tag">Deep Dive</span>
+                <span class="article-tag">Motors</span>
+                <span class="article-tag">Propulsion</span>
+            </div>
+            <h1>DIY eFoil Motor & Propulsion Guide: Inrunner vs Outrunner, ESC & Propellers</h1>
+            <p class="article-intro">
+                The motor, ESC, and propeller are the heart of your eFoil. Get them right, and you'll have a quiet, efficient ride that lasts for years. Get them wrong, and you'll burn through components, lose power in the water, or spend weekends troubleshooting instead of riding. This is everything we've learned from thousands of community builds since 2016.
+            </p>
+        </div>
+
+        <div class="article-body">
+            <div class="toc">
+                <h3>In This Guide</h3>
+                <ol>
+                    <li><a href="#inrunner-vs-outrunner">Inrunner vs Outrunner — The Fundamental Choice</a></li>
+                    <li><a href="#inrunner-motors">Inrunner Motors: The Community Standard</a></li>
+                    <li><a href="#outrunner-motors">Outrunner Motors: Budget & Lightweight Builds</a></li>
+                    <li><a href="#esc-selection">ESC Selection & VESC Configuration</a></li>
+                    <li><a href="#propellers">Propeller Selection: Diameter, Pitch & Materials</a></li>
+                    <li><a href="#remote-control">Remote Control Options</a></li>
+                    <li><a href="#waterproofing">Motor Waterproofing & Maintenance</a></li>
+                    <li><a href="#motor-mounting">Motor Mounting & Mechanical Setup</a></li>
+                    <li><a href="#complete-setups">Complete Propulsion Setups by Budget</a></li>
+                    <li><a href="#common-mistakes">Common Mistakes & Troubleshooting</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ol>
+            </div>
+
+            <h2 id="inrunner-vs-outrunner">Inrunner vs Outrunner — The Fundamental Choice</h2>
+
+            <p>Before you pick a specific motor, you need to understand the two motor architectures used in DIY eFoils. This choice affects everything downstream — your propeller options, waterproofing strategy, maintenance schedule, and total build cost.</p>
+
+            <h3>How They Work</h3>
+
+            <p><strong>Inrunner motors</strong> have the rotor (spinning part) on the inside, surrounded by a sealed housing. The motor shaft spins inside a stationary outer shell. Think of it like a conventional motor — compact, sealed, and the shaft pokes out one end to drive the propeller.</p>
+
+            <p><strong>Outrunner motors</strong> are the opposite — the outer bell (housing) spins around a stationary core. The magnets are on the outside, the windings are on the inside. This gives them more torque per size, but the open design means water flows right through the motor.</p>
+
+            <table class="cost-table">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Inrunner</th>
+                        <th>Outrunner</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Waterproofing</strong></td>
+                        <td>Sealed from factory</td>
+                        <td>Requires DIY sealing</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Maintenance</strong></td>
+                        <td>Oil fill every 6-12 months</td>
+                        <td>Rinse + re-seal periodically</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cost</strong></td>
+                        <td>$250–$450+</td>
+                        <td>$50–$150</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Weight</strong></td>
+                        <td>Heavier (2-3 kg)</td>
+                        <td>Lighter (0.8-1.5 kg)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Torque</strong></td>
+                        <td>Lower (needs gearing/prop)</td>
+                        <td>Higher per size</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cooling</strong></td>
+                        <td>Internal oil cooling</td>
+                        <td>Direct water cooling (excellent)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Propeller Ecosystem</strong></td>
+                        <td>Huge (12mm shaft standard)</td>
+                        <td>Limited, often custom</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Best For</strong></td>
+                        <td>Full eFoil builds</td>
+                        <td>Foil-assist, budget builds</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="verdict-box">
+                <h3>⚡ The Quick Answer</h3>
+                <p><strong>Building a full eFoil?</strong> Go inrunner (65161 or 65162). It's the path of least resistance — sealed, proven, massive community support, and tons of compatible parts.</p>
+                <p><strong>Building a foil-assist or on a tight budget?</strong> Outrunner (63100 or 6384) will save you $200-300 and is lighter. You'll spend a few hours on waterproofing, but the performance can be excellent.</p>
+            </div>
+
+            <h2 id="inrunner-motors">Inrunner Motors: The Community Standard</h2>
+
+            <p>If the <a href="/blog-efoil-battery-guide.html">battery is the fuel tank</a>, the inrunner motor is the engine that 90%+ of the community relies on. Here are the motors that actually get used in real builds:</p>
+
+            <h3>65161 — The Original Workhorse</h3>
+
+            <p>The Flipsky/Maytech 65161 120KV is the motor that built the DIY eFoil movement. It's a 6kW sealed inrunner with a 12mm shaft. You'll find it in thousands of builds worldwide.</p>
+
+            <ul>
+                <li><strong>Power:</strong> 6kW continuous, 8kW+ peak</li>
+                <li><strong>KV rating:</strong> 120KV (standard) or 100KV (more torque, less top speed)</li>
+                <li><strong>Shaft:</strong> 12mm round with M8 thread — fits the entire prop ecosystem</li>
+                <li><strong>Weight:</strong> ~2.2 kg</li>
+                <li><strong>Price:</strong> $250–$400 depending on source</li>
+                <li><strong>Pros:</strong> Proven, massive community knowledge, tons of prop options</li>
+                <li><strong>Cons:</strong> Earlier batches had bearing issues; oil-fill is essential</li>
+            </ul>
+
+            <h3>65162 — The Updated Version</h3>
+
+            <p>The 65162 is Maytech's updated motor with a threaded shaft (instead of the older keyway design). This makes propeller mounting more secure and eliminates the common issue of props loosening at high RPM.</p>
+
+            <ul>
+                <li><strong>Key difference:</strong> Screw/thread shaft for more secure prop mounting</li>
+                <li><strong>KV options:</strong> 100KV and 120KV</li>
+                <li><strong>Price:</strong> $280–$450</li>
+                <li><strong>Recommendation:</strong> If buying new, get the 65162 over the 65161 — the improved shaft alone is worth it</li>
+            </ul>
+
+            <h3>70182 — More Power</h3>
+
+            <p>For riders who want more torque and higher speeds (50+ km/h), the Maytech 70182 is a step up. Larger diameter means more copper, more magnets, more power. It's overkill for most recreational riding but popular with performance builders.</p>
+
+            <ul>
+                <li><strong>Power:</strong> 8-10kW continuous</li>
+                <li><strong>Weight:</strong> ~3.5 kg</li>
+                <li><strong>Price:</strong> $400–$600</li>
+                <li><strong>Best for:</strong> Heavy riders, high-speed builds, large boards</li>
+            </ul>
+
+            <h3>Flying Rodeo — The Premium Choice</h3>
+
+            <p>Used by Lift Foils in their commercial eFoils, the Flying Rodeo motor is the gold standard for quality. Precision manufacturing, excellent bearings, smooth operation. But you're paying for it.</p>
+
+            <ul>
+                <li><strong>Price:</strong> $1,000+</li>
+                <li><strong>Best for:</strong> Premium builds where cost isn't the primary concern</li>
+                <li><strong>Note:</strong> Unless you're chasing absolute quality or 50+ km/h speeds, the 65162 at 1/3 the price is the smarter choice for most builders</li>
+            </ul>
+
+            <div class="info-box tip">
+                <div class="info-box-title">💡 Community Tip: Oil-Fill Your Inrunner</div>
+                <p>Fill your inrunner with lightweight oil (many use automatic transmission fluid or a thin mineral oil). This lubricates the bearings, displaces water from any micro-leaks, and extends motor life dramatically. The FOIL.zone community has extensive threads on the best oils and fill procedures. Do this before your first ride — it takes 10 minutes and can add years to your motor's life.</p>
+            </div>
+
+            <h2 id="outrunner-motors">Outrunner Motors: Budget & Lightweight Builds</h2>
+
+            <p>Outrunners are the scrappy underdog of the eFoil world. Cheaper, lighter, and available from every RC motor supplier on the planet. The trade-off: you need to do some prep work to make them survive saltwater.</p>
+
+            <h3>63100 — Full Power Outrunner</h3>
+
+            <p>The 63100 is the big outrunner. At 63mm diameter and 100mm length, it packs enough power for a full eFoil build. It's the go-to choice for builders who want outrunner benefits at full eFoil power.</p>
+
+            <ul>
+                <li><strong>Power:</strong> 5-7kW (water-cooled, can exceed datasheet ratings)</li>
+                <li><strong>KV options:</strong> 130KV, 190KV</li>
+                <li><strong>Weight:</strong> ~1.2 kg</li>
+                <li><strong>Price:</strong> $80–$150</li>
+                <li><strong>Key advantage:</strong> Direct water cooling means it can handle sustained high current without overheating</li>
+                <li><strong>Prep needed:</strong> Stator sealing, bearing swap, custom prop adapter</li>
+            </ul>
+
+            <h3>6384 — The Foil-Assist Motor</h3>
+
+            <p>Small, light, cheap. The 6384 is perfect for foil-assist builds — a small electric drive that helps you get on foil, rather than powering the entire ride. Popular with wing foilers, kiters, and SUP foilers who want a boost without the weight.</p>
+
+            <ul>
+                <li><strong>Power:</strong> 2-4kW</li>
+                <li><strong>Weight:</strong> ~0.8 kg</li>
+                <li><strong>Price:</strong> $50–$80</li>
+                <li><strong>Best for:</strong> Foil-assist setups, ultra-light builds, supplement to wind/paddle power</li>
+            </ul>
+
+            <div class="info-box warning">
+                <div class="info-box-title">⚠️ Outrunner Waterproofing Is Not Optional</div>
+                <p>An unsealed outrunner in saltwater will corrode within a single session. At minimum: seal the stator with thermal epoxy resin, swap steel bearings for stainless/ceramic, and rinse with fresh water after every single ride. Many builders also apply Corrosion-X or soak the stator in white oil between sessions. This isn't "nice to have" — it's the difference between a motor that lasts years and one that's dead in a month.</p>
+            </div>
+
+            <h2 id="esc-selection">ESC Selection & VESC Configuration</h2>
+
+            <p>The ESC (Electronic Speed Controller) is the brain of your propulsion system. It converts DC battery power into the three-phase AC that drives the motor. For DIY eFoils, the VESC platform is the clear winner — open-source, configurable, and supported by a huge community.</p>
+
+            <h3>Why VESC?</h3>
+
+            <p>VESC (originally designed by Benjamin Vedder) offers <strong>FOC — Field-Oriented Control</strong>. This means:</p>
+
+            <ul>
+                <li><strong>Smooth, quiet operation</strong> — no motor whine at low speeds</li>
+                <li><strong>Better efficiency</strong> — 5-15% better than trapezoidal/BLDC mode</li>
+                <li><strong>Configurable everything</strong> — current limits, throttle curves, ramp rates, temperature cutoffs</li>
+                <li><strong>Data logging</strong> — battery voltage, motor temp, current draw, RPM in real time</li>
+            </ul>
+
+            <h3>Recommended ESCs</h3>
+
+            <table class="cost-table">
+                <thead>
+                    <tr>
+                        <th>ESC</th>
+                        <th>Voltage</th>
+                        <th>Current</th>
+                        <th>Price</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="highlight">
+                        <td><strong>Flipsky 75100</strong></td>
+                        <td>75V (14S)</td>
+                        <td>100A</td>
+                        <td>$150–$200</td>
+                        <td>Community favorite, great value</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Flipsky 75200</strong></td>
+                        <td>75V (14S)</td>
+                        <td>200A</td>
+                        <td>$250–$350</td>
+                        <td>Dual motor or high-power builds</td>
+                    </tr>
+                    <tr>
+                        <td><strong>VESC 75/300</strong></td>
+                        <td>75V</td>
+                        <td>300A</td>
+                        <td>$400+</td>
+                        <td>Premium, overkill for most builds</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Flipsky 75100 V2</strong></td>
+                        <td>75V</td>
+                        <td>100A</td>
+                        <td>$180–$220</td>
+                        <td>Improved thermals, aluminum case</td>
+                    </tr>
+                    <tr>
+                        <td><strong>HGLTech SeaLion</strong></td>
+                        <td>75V</td>
+                        <td>120A</td>
+                        <td>$200–$280</td>
+                        <td>Water-cooled, purpose-built for eFoils</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="info-box">
+                <div class="info-box-title">🔧 Key VESC Settings for eFoils</div>
+                <p><strong>Motor current limit:</strong> Start at 60-80A, increase as needed. This is the main performance control.</p>
+                <p><strong>Battery current limit:</strong> Match your battery's continuous discharge capability (typically 80-120A for a well-built 14S pack).</p>
+                <p><strong>Temperature cutoff:</strong> Set MOSFET temp limit at 80°C start / 100°C end. Set motor temp limit if you have a sensor.</p>
+                <p><strong>Throttle curve:</strong> Start with a gentle ramp (expo curve) until you're comfortable. Full-linear throttle on an eFoil is wild for beginners.</p>
+                <p><strong>Motor detection:</strong> Always run the VESC Tool motor detection wizard before first ride. This calibrates the FOC parameters for your specific motor.</p>
+            </div>
+
+            <div class="info-box warning">
+                <div class="info-box-title">⚠️ 12S vs 14S Voltage Compatibility</div>
+                <p>If you're running a 14S battery (58.8V fully charged), you <strong>must</strong> use a 75V-rated ESC. Standard 60V VESCs will smoke on a fully charged 14S pack. This is the single most common expensive mistake in DIY eFoil builds. Double-check your ESC voltage rating before you buy.</p>
+            </div>
+
+            <h3>Water-Cooling Your ESC</h3>
+
+            <p>At 60-100A continuous, your ESC generates serious heat. Most builders water-cool their ESC using a small pump and tubing that runs through the motor pod, using the surrounding water as a heat sink. Some ESCs (like the HGLTech SeaLion) come with water-cooling built in.</p>
+
+            <p>For air-cooled setups: mount the ESC to the aluminum enclosure with thermal paste, and ensure good airflow in the electronics compartment. This works for moderate riding but may thermal-throttle during extended full-power runs.</p>
+
+            <h2 id="propellers">Propeller Selection: Diameter, Pitch & Materials</h2>
+
+            <p>The propeller is where rubber meets road — or more accurately, where watts meet water. A badly matched prop will waste energy, cavitate at speed, or fail to get you on foil. A well-chosen prop makes everything feel effortless.</p>
+
+            <h3>Key Specifications</h3>
+
+            <ul>
+                <li><strong>Diameter:</strong> 140–160mm is the sweet spot for eFoils. Larger = more thrust but more drag. Most builds settle on 150mm.</li>
+                <li><strong>Pitch:</strong> Measured in inches — how far the prop would advance in one rotation. Low pitch (5") = more thrust, lower speed. High pitch (8") = higher speed, needs more power to start. 6-7" is the typical range.</li>
+                <li><strong>Blades:</strong> 2-blade is most efficient, 3-blade is smoother. Folding props reduce drag when coasting on foil.</li>
+                <li><strong>Shaft compatibility:</strong> For 65161/65162 inrunners: 12mm round shaft with M8 thread. Confirm before buying!</li>
+            </ul>
+
+            <div class="info-box warning">
+                <div class="info-box-title">⚠️ Don't Use the Included Propeller</div>
+                <p>The propellers that ship with inrunner motors are designed for outboard boat engines, NOT eFoils. They're the wrong pitch, wrong diameter, and will give you terrible performance. This is the #1 source of "my eFoil doesn't work" posts on FOIL.zone. Budget $40-80 for a proper prop from the start.</p>
+            </div>
+
+            <h3>Propeller Sources</h3>
+
+            <div class="component-grid">
+                <div class="component-card">
+                    <h4>Aluminum Props</h4>
+                    <div class="price">$40–$80</div>
+                    <ul>
+                        <li>Highfly — popular, good balance</li>
+                        <li>PropellerKing — precision CNC'd</li>
+                        <li>Flite — from Fliteboard's ecosystem</li>
+                        <li>Manta — various pitch options</li>
+                    </ul>
+                    <p>Best for: Most builders. Durable, efficient, well-balanced out of the box.</p>
+                </div>
+                <div class="component-card">
+                    <h4>3D-Printed Props</h4>
+                    <div class="price">$5–$15 (material cost)</div>
+                    <ul>
+                        <li>Free designs on FOIL.zone</li>
+                        <li>PETG or nylon filament</li>
+                        <li>Needs sanding + reinforcement</li>
+                        <li>Great for prototyping pitch/diameter</li>
+                    </ul>
+                    <p>Best for: Experimentation. Print multiple pitches, test, then buy aluminum in your preferred spec.</p>
+                </div>
+                <div class="component-card">
+                    <h4>Folding Props</h4>
+                    <div class="price">$60–$120</div>
+                    <ul>
+                        <li>Blades fold back when not powered</li>
+                        <li>Reduced drag while cruising on foil</li>
+                        <li>Popular for foil-assist builds</li>
+                        <li>Slightly less efficient when spinning</li>
+                    </ul>
+                    <p>Best for: Foil-assist setups, efficiency-focused builds, wave riding where you want minimal drag.</p>
+                </div>
+            </div>
+
+            <h3>Propeller Sizing Guide</h3>
+
+            <table class="cost-table">
+                <thead>
+                    <tr>
+                        <th>Rider Weight</th>
+                        <th>Build Type</th>
+                        <th>Recommended Prop</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>&lt;75 kg</td>
+                        <td>Full eFoil</td>
+                        <td>140mm, 7" pitch</td>
+                        <td>Higher pitch OK — less thrust needed</td>
+                    </tr>
+                    <tr class="highlight">
+                        <td>75–95 kg</td>
+                        <td>Full eFoil</td>
+                        <td>150mm, 6-7" pitch</td>
+                        <td>The sweet spot for most riders</td>
+                    </tr>
+                    <tr>
+                        <td>&gt;95 kg</td>
+                        <td>Full eFoil</td>
+                        <td>155-160mm, 5-6" pitch</td>
+                        <td>More thrust, lower pitch for heavier riders</td>
+                    </tr>
+                    <tr>
+                        <td>Any</td>
+                        <td>Foil-assist</td>
+                        <td>120-140mm, folding</td>
+                        <td>Minimize drag when wind/paddle-powered</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 id="remote-control">Remote Control Options</h2>
+
+            <p>The remote is your throttle. It needs to be waterproof, reliable, and comfortable to hold while standing on a moving board. There are fewer options than you'd think — and some important gotchas.</p>
+
+            <h3>Popular Remotes</h3>
+
+            <ul>
+                <li><strong>Flipsky VX3 / VX3 Pro</strong> ($100–$150) — The community standard. Waterproof (IP67), thumb-wheel throttle, OLED display showing speed/battery/current. Pairs directly with VESC via UART. The VX3 Pro adds Bluetooth logging.</li>
+                <li><strong>Maytech MTSKR1905WF</strong> ($100–$130) — Waterproof remote with screen. Works well, widely available. Common in kit bundles.</li>
+                <li><strong>DIY PPM remotes</strong> ($30–$50) — Standard RC remotes (like the Flipsky VX1 or generic trigger remotes). Cheaper but usually not waterproof without modification. Fine for testing, risky for regular water use.</li>
+            </ul>
+
+            <div class="info-box tip">
+                <div class="info-box-title">💡 Deadman's Switch</div>
+                <p>Always use a remote with a deadman's switch — a trigger or button that must be held to maintain throttle. If you fall off, the motor should stop immediately. Most VESC-compatible remotes have this built in, but verify it works during bench testing. A runaway eFoil with a spinning propeller is genuinely dangerous.</p>
+            </div>
+
+            <h2 id="waterproofing">Motor Waterproofing & Maintenance</h2>
+
+            <h3>Inrunner Maintenance Schedule</h3>
+
+            <p>Sealed inrunners are low-maintenance, but "sealed" doesn't mean "set and forget." Here's the routine that keeps motors running for thousands of hours:</p>
+
+            <ol>
+                <li><strong>Before first ride:</strong> Oil-fill the motor (ATF or thin mineral oil through the drain ports)</li>
+                <li><strong>After every session:</strong> Rinse motor + pod with fresh water for 30+ seconds</li>
+                <li><strong>Every 3 months:</strong> Check oil level, top off if needed</li>
+                <li><strong>Every 6-12 months:</strong> Full oil change — drain, flush, refill</li>
+                <li><strong>Annually:</strong> Inspect shaft seal and bearings for play. Replace if needed.</li>
+            </ol>
+
+            <h3>Outrunner Waterproofing Procedure</h3>
+
+            <p>Waterproofing an outrunner is a rite of passage in DIY eFoil building. Here's the proven process:</p>
+
+            <ol>
+                <li><strong>Disassemble:</strong> Remove the motor bell (outer part). Clean everything with isopropyl alcohol.</li>
+                <li><strong>Seal stator:</strong> Apply thermal epoxy resin (like MG Chemicals 832) to the stator windings. Coat every surface — the epoxy prevents saltwater from reaching copper. Let cure fully (24h).</li>
+                <li><strong>Replace bearings:</strong> Swap the stock steel bearings with stainless steel (316 grade) or ceramic bearings. Same size — just press the old ones out, new ones in.</li>
+                <li><strong>Reassemble and test:</strong> Make sure the rotor spins freely. Any rubbing means the bearing press went wrong.</li>
+                <li><strong>Post-session ritual:</strong> After EVERY ride: 1) Rinse motor 60 seconds with fresh water, 2) Spin the shaft by hand to flush water through bearings, 3) If using Corrosion-X, spray into the motor and spin. If using white oil bath, submerge the motor overnight periodically.</li>
+            </ol>
+
+            <div class="info-box">
+                <div class="info-box-title">🔧 Outrunner Longevity Tips from the Community</div>
+                <p><strong>YouTube resource:</strong> Check out <strong>luckygen1001</strong> on YouTube for excellent motor waterproofing walkthroughs. Also <strong>Backyard Foundry</strong> and <strong>myfordboy</strong> for general metal/motor work.</p>
+                <p><strong>The Corrosion-X method:</strong> Many FOIL.zone builders swear by spraying Corrosion-X Heavy Duty into the motor after every session. It displaces water, prevents oxidation, and is non-conductive. A $15 can lasts hundreds of sessions.</p>
+                <p><strong>Ceramic bearings:</strong> They cost $15-25 per set vs $3-5 for stainless. But they last 3-5x longer in saltwater and are smoother. Worth it if you ride regularly.</p>
+            </div>
+
+            <h2 id="motor-mounting">Motor Mounting & Mechanical Setup</h2>
+
+            <p>How you mount the motor to the mast/pod affects vibration, alignment, cooling, and serviceability. There are two main approaches:</p>
+
+            <h3>Direct-Drive Pod</h3>
+
+            <p>The motor sits inside a pod (usually aluminum or 3D-printed), bolted to the bottom of the mast. The propeller shaft exits the back of the pod directly. This is the simplest, most common setup for inrunner motors.</p>
+
+            <ul>
+                <li><strong>Pros:</strong> Simple, reliable, easy to service, proven designs available</li>
+                <li><strong>Cons:</strong> Pod size adds drag, motor position is fixed</li>
+                <li><strong>Where to find designs:</strong> FOIL.zone has dozens of pod designs for the 65161/65162. Many are 3D-printable, others are CNC aluminum.</li>
+            </ul>
+
+            <h3>Alignment Is Everything</h3>
+
+            <p>A misaligned motor-to-propeller shaft creates vibration, which creates noise, which loosens fasteners, which leads to failure. When mounting:</p>
+
+            <ul>
+                <li>Use quality bearings in the pod (not just the motor bearings)</li>
+                <li>Check shaft runout with a dial indicator if possible</li>
+                <li>Use Loctite (medium-strength) on all mounting bolts</li>
+                <li>Torque bolts evenly in a cross pattern</li>
+                <li>Run the motor out of water first — any vibration will be amplified underwater</li>
+            </ul>
+
+            <h2 id="complete-setups">Complete Propulsion Setups by Budget</h2>
+
+            <p>Here's what a complete propulsion system looks like at three price points. All prices are approximate and exclude the battery (covered in our <a href="/blog-efoil-battery-guide.html">battery guide</a>).</p>
+
+            <div class="component-grid">
+                <div class="component-card">
+                    <h4>💰 Budget Build</h4>
+                    <div class="price">~$350–$450</div>
+                    <ul>
+                        <li>63100 outrunner: $100</li>
+                        <li>Flipsky 75100 ESC: $170</li>
+                        <li>3D-printed or basic prop: $15-30</li>
+                        <li>Flipsky VX3 remote: $100</li>
+                        <li>Waterproofing supplies: $30</li>
+                    </ul>
+                    <p>Best for: Budget-conscious builders, foil-assist, or first builds where you want to learn before investing more.</p>
+                </div>
+                <div class="component-card">
+                    <h4>⚡ Standard Build</h4>
+                    <div class="price">~$550–$750</div>
+                    <ul>
+                        <li>65162 inrunner: $300</li>
+                        <li>Flipsky 75100 V2 ESC: $200</li>
+                        <li>Aluminum prop (Highfly): $60</li>
+                        <li>VX3 Pro remote: $130</li>
+                        <li>Oil + mounting hardware: $30</li>
+                    </ul>
+                    <p>Best for: Most builders. Proven, reliable, and enough power for any rider under 100kg. This is the community sweet spot.</p>
+                </div>
+                <div class="component-card">
+                    <h4>🏆 Performance Build</h4>
+                    <div class="price">~$1,200–$1,800+</div>
+                    <ul>
+                        <li>Flying Rodeo motor: $1,000+</li>
+                        <li>VESC 75/300: $400</li>
+                        <li>Premium CNC prop: $80</li>
+                        <li>VX3 Pro remote: $130</li>
+                        <li>Water cooling system: $50</li>
+                    </ul>
+                    <p>Best for: Speed chasers (50+ km/h), heavy riders, or builders who want the absolute best components.</p>
+                </div>
+            </div>
+
+            <h2 id="common-mistakes">Common Mistakes & Troubleshooting</h2>
+
+            <p>After watching thousands of builds on FOIL.zone, these are the mistakes that come up again and again:</p>
+
+            <h3>1. Using the Stock Propeller</h3>
+            <p>We said it above, we'll say it again: the propellers shipped with 65161/65162 motors are boat props, not eFoil props. They're the wrong pitch and diameter. Replace them. This single change fixes 50% of "my build doesn't perform" complaints.</p>
+
+            <h3>2. Skipping Motor Detection in VESC Tool</h3>
+            <p>The VESC needs to "learn" your specific motor's electrical characteristics. Running motor detection (Wizards → FOC → Setup) takes 60 seconds and is absolutely essential. Without it, you'll get rough operation, reduced power, or motor cogging.</p>
+
+            <h3>3. Running 14S Battery on a 60V ESC</h3>
+            <p>A 14S lithium battery hits 58.8V when fully charged. A "60V" VESC can handle 60V nominal but may not handle the spikes. Use a 75V-rated ESC for 14S builds. Period. Replacing a fried ESC costs $200 and ruins a weekend.</p>
+
+            <h3>4. Not Oil-Filling the Inrunner</h3>
+            <p>Inrunner motors are "sealed" but not perfectly sealed. Over time, small amounts of water can get past the shaft seal. Oil fill displaces this water and lubricates the bearings. Skip it, and your $300 motor may only last one season instead of five.</p>
+
+            <h3>5. Ignoring Phase Wire Waterproofing</h3>
+            <p>The three thick phase wires from ESC to motor carry 50-100A of current. If the connections get wet, you'll get corrosion, resistance, heat, and eventually failure. Solder all connections (no bullet connectors in the wet zone), cover with adhesive-lined heat shrink, and seal with marine potting compound.</p>
+
+            <h3>6. Prop Cavitation</h3>
+            <p>If you hear a grinding/buzzing noise at high throttle and lose thrust, the propeller is cavitating — air bubbles forming on the blade surface. Causes: prop too close to surface, too much pitch for the motor, damaged blade edges. Solutions: deeper motor pod, lower pitch prop, smooth/polish prop edges.</p>
+
+            <h3>7. Motor Overheating</h3>
+            <p>The motor runs in water, which is a great coolant — unless part of it is exposed to air (shallow water, weed clog, prop out of water). If the VESC shows motor temps above 80°C, investigate. Water cooling should keep temps well below 60°C during normal riding.</p>
+
+            <h2 id="faq">Frequently Asked Questions</h2>
+
+            <h3>Can I use a standard RC motor from a drone/car?</h3>
+            <p>Technically yes for foil-assist, but standard RC motors aren't designed for sustained saltwater use. The 6384 and 63100 are RC-scale motors that the community has proven in water use — stick with those unless you enjoy experiments.</p>
+
+            <h3>120KV or 100KV — which should I choose?</h3>
+            <p><strong>120KV</strong> is the standard choice — higher RPM, works well with 6-7" pitch props. <strong>100KV</strong> gives more torque at lower RPM, good for larger props or heavier riders. If in doubt, go 120KV — it's what 80% of builds use and most community advice assumes.</p>
+
+            <h3>How long does a motor last?</h3>
+            <p>With proper maintenance (oil fill, fresh water rinse, periodic bearing inspection), an inrunner motor can last 500-2000+ hours of riding. The bearings are the wear item — expect to replace them every 200-500 hours depending on saltwater exposure. A well-maintained outrunner can last similarly, but requires more attention.</p>
+
+            <h3>Do I need a motor with sensor wires?</h3>
+            <p>No. Sensorless operation with VESC FOC is the community standard for eFoils. Sensors add complexity, more wires to waterproof, and failure points. The startup behavior of sensorless FOC is smooth enough for water use (you're not starting from a dead stop on land).</p>
+
+            <h3>Can I run two motors?</h3>
+            <p>Possible but rarely done in eFoils — double the complexity, weight, cost, and drag for marginal benefits. Dual-motor setups are more common in jet boards (which use twin jet drives). For eFoils, a single 65162 provides more than enough power for any rider.</p>
+
+            <h3>Where do I buy these motors?</h3>
+            <p>Common sources: Flipsky (direct), Maytech (direct), MiChobby, Firduo, AliExpress (search "65162 motor"). Buy from established sellers with return policies. Counterfeit/re-labeled motors exist — check FOIL.zone reviews before buying from an unfamiliar seller. The <a href="https://foil.zone">FOIL.zone community</a> maintains active threads with verified seller recommendations.</p>
+
+            <div class="verdict-box">
+                <h3>🎯 The Bottom Line</h3>
+                <p>For most builders: <strong>65162 120KV motor + Flipsky 75100 ESC + 150mm aluminum prop + VX3 remote</strong>. Total: ~$600. This combination powers 90% of successful community builds and has years of proven reliability. Don't overthink it — get these, build it, and start riding. You can always upgrade the propeller or ESC later once you know what you want.</p>
+                <p>Already built your battery? Check our <a href="/blog-diy-efoil-guide.html">complete DIY eFoil build guide</a> for the full picture, or visit <a href="https://foil.zone">FOIL.zone</a> to join 5,300+ builders who've been there before.</p>
+            </div>
+        </div>
+    </article>
+
+    <section class="related-articles">
+        <h2>Continue Reading</h2>
+        <div class="related-grid">
+            <a href="/blog-efoil-battery-guide.html" class="related-card">
+                <div class="icon">🔋</div>
+                <h3>DIY eFoil Battery Guide</h3>
+                <p>Cell selection, BMS, waterproofing & safety — the complete battery deep dive.</p>
+            </a>
+            <a href="/blog-diy-efoil-guide.html" class="related-card">
+                <div class="icon">🔧</div>
+                <h3>Complete DIY eFoil Build Guide</h3>
+                <p>Everything you need to build your first electric hydrofoil from scratch.</p>
+            </a>
+            <a href="/blog-tow-boogie-vs-efoil.html" class="related-card">
+                <div class="icon">🤔</div>
+                <h3>Tow Boogie vs eFoil</h3>
+                <p>Which one is right for you? An honest comparison of cost, performance, and experience.</p>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2016–2026 PacificMeister. Open source, always.</p>
+        <ul class="footer-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/blog.html">Blog</a></li>
+            <li><a href="https://github.com/pacificmeister" target="_blank">GitHub</a></li>
+            <li><a href="https://www.youtube.com/@PacificMeister" target="_blank">YouTube</a></li>
+            <li><a href="https://foil.zone" target="_blank">FOIL.zone</a></li>
+        </ul>
+    </footer>
+</body>
+</html>
