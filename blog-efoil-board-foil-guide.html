@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIY eFoil Board & Hydrofoil Guide: Size, Shape, Foil Selection (2026) — PacificMeister</title>
+    <meta name="description" content="How to choose the right board and hydrofoil for your DIY eFoil. Board sizing, build vs buy, battery compartment design, foil wing area, mast length, and mounting — from the pioneer of open-source eFoils.">
+    <meta name="keywords" content="eFoil board, DIY eFoil board, efoil hydrofoil, foil wing area, efoil mast length, efoil board size, efoil board build, tuttle box, foil mount, EPS foam board, efoil board dimensions, efoil foil selection, PacificMeister">
+    <link rel="canonical" href="https://pacificmeister.github.io/blog-efoil-board-foil-guide.html">
+
+    <meta property="og:title" content="DIY eFoil Board & Hydrofoil Guide: Size, Shape, Foil Selection (2026)">
+    <meta property="og:description" content="Everything you need to choose (or build) the right board and hydrofoil for your DIY eFoil — sizing, materials, mounting, and budget options.">
+    <meta property="og:url" content="https://pacificmeister.github.io/blog-efoil-board-foil-guide.html">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://pacificmeister.github.io/og-image.png">
+    <meta property="og:site_name" content="PacificMeister">
+    <meta property="article:published_time" content="2026-03-19">
+    <meta property="article:author" content="PacificMeister">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="DIY eFoil Board & Hydrofoil Guide (2026)">
+    <meta name="twitter:description" content="Board sizing, foil selection, mounting options — the complete physical platform guide for DIY eFoils.">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "DIY eFoil Board & Hydrofoil Guide: Size, Shape, Foil Selection (2026)",
+        "datePublished": "2026-03-19",
+        "dateModified": "2026-03-19",
+        "author": {
+            "@type": "Person",
+            "name": "PacificMeister",
+            "url": "https://pacificmeister.github.io"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "PacificMeister",
+            "url": "https://pacificmeister.github.io"
+        },
+        "description": "How to choose or build the right board and hydrofoil for a DIY eFoil. Board sizing, construction methods, battery compartment design, foil wing area, mast length, materials, and mounting standards.",
+        "mainEntityOfPage": "https://pacificmeister.github.io/blog-efoil-board-foil-guide.html"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What size board do I need for a DIY eFoil?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "For beginners, use a board with at least 60–80 liters of volume for riders under 85 kg (187 lbs) and 80–120+ liters for heavier riders. Typical DIY eFoil boards are 150–180 cm long and 55–70 cm wide. Larger boards are more stable for learning but harder to transport. Once you can ride confidently, you can downsize to smaller, more agile boards."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I convert an existing surfboard into an eFoil?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, but with caveats. You need a board thick enough to house a battery compartment (at least 10–12 cm thick), and you'll need to add a foil mounting plate or tuttle box. Foam longboards (soft tops) don't work — the foam is too soft for foil loads. Fiberglass shortboards, funboards, or SUPs can work, but cutting into an existing board to add a battery box is tricky and can compromise structural integrity. Purpose-built boards are recommended for first builds."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What wing area should I use for a DIY eFoil foil?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "For beginners under 85 kg, a wing area of 1500–2000 cm² provides early lift, stability, and a forgiving ride. Heavier riders (85–110 kg) should aim for 1800–2500 cm². Advanced riders who want speed typically drop to 1000–1500 cm². The community's most popular all-around choice is in the 1500–1800 cm² range — big enough to get on foil at low speeds, small enough not to feel sluggish at speed."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How long should my eFoil mast be?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Most DIY builders use 60–75 cm (24–30 inch) masts. Shorter masts (60 cm) are more forgiving for beginners — less leverage means gentler corrections and you're closer to the water if you fall. Longer masts (75+ cm) give more clearance in chop and allow bigger turns, but amplify mistakes. Start with 60–65 cm and upgrade later once you're comfortable riding."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Should I use aluminum or carbon fiber for my eFoil foil?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "For DIY builds, aluminum foils are the practical choice: they're affordable ($200–$600), durable, repairable, and widely available. Carbon fiber foils are lighter and stiffer (better performance), but cost 2–5x more and are more fragile at impact points. Most community builders start with aluminum and upgrade to carbon later if they want more performance. The mast is where material matters most — an aluminum mast flexes more under load, which some beginners actually prefer."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What foil mounting system should I use for my eFoil?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The two main options are plate mount (foil base plate screwed to the bottom of the board) and tuttle box (a recessed slot built into the board that the mast slides into). Plate mounts are simpler for DIY — just drill holes and bolt on. Tuttle boxes are stronger and more streamlined but require precise installation during board construction. For first builds, a reinforced plate mount with stainless steel backing plate is the easiest and most forgiving approach."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --ocean-deep: #0a1628;
+            --ocean-mid: #0f2847;
+            --ocean-light: #1a4a7a;
+            --foam: #e8f4f8;
+            --white: #ffffff;
+            --accent: #00d4aa;
+            --accent-glow: #00ffcc;
+            --text: #c8dae8;
+            --text-bright: #f0f6fc;
+            --warning: #ff6b35;
+            --success: #00d4aa;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: var(--ocean-deep);
+            color: var(--text);
+            line-height: 1.8;
+        }
+
+        .ocean-bg {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(180deg, #0a1628 0%, #0c1e3a 30%, #0f2847 50%, #0a1628 100%);
+            z-index: -2;
+        }
+
+        header {
+            padding: 2rem 2rem 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+        }
+        .logo span { color: var(--accent); }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--accent); }
+
+        article {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem 4rem;
+        }
+
+        .article-meta {
+            font-size: 0.85rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--white);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-intro {
+            font-size: 1.15rem;
+            color: var(--text);
+            line-height: 1.9;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        h2 {
+            font-size: 1.7rem;
+            color: var(--white);
+            font-weight: 700;
+            margin: 3rem 0 1.2rem;
+            padding-top: 1rem;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            color: var(--text-bright);
+            font-weight: 600;
+            margin: 2rem 0 0.8rem;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            color: var(--text);
+        }
+
+        strong { color: var(--text-bright); }
+
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .info-box {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(0, 212, 170, 0.08), rgba(0, 212, 170, 0.03));
+            border: 1px solid rgba(0, 212, 170, 0.2);
+            border-radius: 12px;
+            margin: 1.5rem 0;
+        }
+
+        .info-box h4 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .warning-box {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.08), rgba(255, 107, 53, 0.03));
+            border: 1px solid rgba(255, 107, 53, 0.25);
+            border-radius: 12px;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box h4 {
+            color: var(--warning);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.2rem;
+            margin: 1.5rem 0;
+        }
+
+        .option-card {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(15, 40, 71, 0.8), rgba(10, 22, 40, 0.9));
+            border: 1px solid rgba(0, 212, 170, 0.12);
+            border-radius: 12px;
+        }
+
+        .option-card h4 {
+            color: var(--white);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .option-card .price {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .option-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .option-card li {
+            padding: 0.25rem 0;
+            font-size: 0.9rem;
+            color: var(--text);
+        }
+
+        .option-card li::before {
+            content: '→ ';
+            color: var(--accent);
+        }
+
+        .sizing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        .sizing-table th {
+            background: rgba(0, 212, 170, 0.1);
+            color: var(--accent);
+            padding: 0.8rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .sizing-table td {
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            color: var(--text);
+        }
+
+        .sizing-table tr:hover td {
+            background: rgba(0, 212, 170, 0.03);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .badge-best { background: rgba(0, 212, 170, 0.2); color: var(--accent); }
+        .badge-budget { background: rgba(0, 140, 255, 0.2); color: #5cb8ff; }
+        .badge-advanced { background: rgba(255, 107, 53, 0.2); color: var(--warning); }
+
+        .step-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+            counter-reset: steps;
+        }
+
+        .step-list li {
+            counter-increment: steps;
+            padding: 1rem 1rem 1rem 3.5rem;
+            margin-bottom: 0.8rem;
+            background: rgba(15, 40, 71, 0.5);
+            border-radius: 10px;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .step-list li::before {
+            content: counter(steps);
+            position: absolute;
+            left: 1rem;
+            top: 1rem;
+            width: 1.8rem;
+            height: 1.8rem;
+            background: rgba(0, 212, 170, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 0.85rem;
+        }
+
+        .mistakes-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+
+        .mistakes-list li {
+            padding: 1rem 1rem 1rem 2.5rem;
+            margin-bottom: 0.8rem;
+            background: rgba(255, 107, 53, 0.04);
+            border: 1px solid rgba(255, 107, 53, 0.12);
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .mistakes-list li::before {
+            content: '⚠️';
+            position: absolute;
+            left: 0.8rem;
+            top: 1rem;
+        }
+
+        .cross-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .cross-link {
+            display: block;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, rgba(15, 40, 71, 0.8), rgba(10, 22, 40, 0.9));
+            border: 1px solid rgba(0, 212, 170, 0.12);
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .cross-link:hover {
+            border-color: rgba(0, 212, 170, 0.35);
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+
+        .cross-link .emoji { font-size: 1.5rem; margin-bottom: 0.4rem; display: block; }
+        .cross-link .title { color: var(--white); font-weight: 600; display: block; margin-bottom: 0.3rem; }
+        .cross-link .desc { color: var(--text); font-size: 0.85rem; }
+
+        footer {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        footer p { color: rgba(200, 218, 232, 0.5); font-size: 0.85rem; }
+        .footer-links { display: flex; gap: 1.5rem; list-style: none; }
+        .footer-links a { color: rgba(200, 218, 232, 0.5); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--accent); }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.4rem; }
+            .nav-links { display: none; }
+            .comparison-grid { grid-template-columns: 1fr; }
+            .sizing-table { font-size: 0.85rem; }
+            .sizing-table th, .sizing-table td { padding: 0.6rem 0.5rem; }
+            footer { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="ocean-bg"></div>
+
+    <header>
+        <nav>
+            <a href="/" class="logo">Pacific<span>Meister</span></a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/#tools">Tools</a></li>
+                <li><a href="/blog.html">Blog</a></li>
+                <li><a href="https://foil.zone" target="_blank">Community</a></li>
+                <li><a href="https://www.youtube.com/@PacificMeister" target="_blank">YouTube</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <article>
+        <div class="article-meta">March 2026 · 18 min read</div>
+
+        <h1>DIY eFoil Board & Hydrofoil Guide: Size, Shape, and Foil Selection</h1>
+
+        <div class="article-intro">
+            <p>Your motor, ESC, and battery are the brains and heart of a DIY eFoil. But the <strong>board and hydrofoil are the body</strong> — get them wrong and nothing else matters. A board that's too small won't float your battery. A foil that's too small won't lift you. A mast that's too long will amplify every mistake into a faceplant.</p>
+            <p>After thousands of community builds on <a href="https://foil.zone">FOIL.zone</a>, we've seen every combination that works — and plenty that don't. This guide covers everything: board sizing, build vs. buy, battery compartment design, foil wing area, mast length, materials, and mounting systems. Whether you're converting a surfboard or building from scratch, this is the reference.</p>
+        </div>
+
+        <!-- PART 1: THE BOARD -->
+        <h2>Part 1: The Board</h2>
+
+        <p>The board does three jobs: <strong>float you and your battery</strong> at rest, <strong>house the electronics</strong> (battery, ESC, wiring), and <strong>provide a stable platform</strong> for standing and riding. Every choice you make about the board flows from these three requirements.</p>
+
+        <h3>Board Sizing: Volume and Dimensions</h3>
+
+        <p>Board volume is measured in liters and determines how much flotation you get. As a rule of thumb, your board volume should equal or exceed your body weight in kilograms — <strong>plus</strong> the weight of your battery and electronics (typically 8–15 kg / 18–33 lbs).</p>
+
+        <table class="sizing-table">
+            <thead>
+                <tr>
+                    <th>Rider Weight</th>
+                    <th>Min Volume</th>
+                    <th>Board Length</th>
+                    <th>Board Width</th>
+                    <th>Thickness</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>55–70 kg (120–155 lbs)</td>
+                    <td>60–75 L</td>
+                    <td>150–165 cm</td>
+                    <td>55–63 cm</td>
+                    <td>10–12 cm</td>
+                </tr>
+                <tr>
+                    <td>70–85 kg (155–187 lbs)</td>
+                    <td>75–95 L</td>
+                    <td>160–175 cm</td>
+                    <td>60–68 cm</td>
+                    <td>11–14 cm</td>
+                </tr>
+                <tr>
+                    <td>85–100 kg (187–220 lbs)</td>
+                    <td>95–120 L</td>
+                    <td>170–185 cm</td>
+                    <td>65–72 cm</td>
+                    <td>12–15 cm</td>
+                </tr>
+                <tr>
+                    <td>100+ kg (220+ lbs)</td>
+                    <td>120+ L</td>
+                    <td>180+ cm</td>
+                    <td>70+ cm</td>
+                    <td>14+ cm</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="info-box">
+            <h4>💡 Why Thickness Matters Most</h4>
+            <p>Thickness is the dimension most DIY builders underestimate. Your battery pack is typically <strong>6–10 cm tall</strong>, and you need at least 2–3 cm of board material above and below it for structure and waterproofing. That means 10 cm is the absolute minimum board thickness — and 12–14 cm is much more comfortable to work with. Thin boards force you into awkward battery layouts or leave dangerously little material around the compartment.</p>
+        </div>
+
+        <h3>Board Shape: What Works for eFoils</h3>
+
+        <p>eFoil boards aren't surfboards. You're not carving off the lip — you're standing relatively still while a motor pushes you onto a foil. The ideal eFoil board shape is:</p>
+
+        <ul style="padding-left: 1.5rem; margin: 1rem 0 1.5rem;">
+            <li style="margin-bottom: 0.5rem;"><strong>Flat bottom</strong> — maximum stability at low speeds and easy foil mounting</li>
+            <li style="margin-bottom: 0.5rem;"><strong>Wide tail</strong> — stability during the critical takeoff phase</li>
+            <li style="margin-bottom: 0.5rem;"><strong>Moderate rocker</strong> — slight nose kick to prevent pearling, but mostly flat for efficient planing</li>
+            <li style="margin-bottom: 0.5rem;"><strong>Blunt nose</strong> — you're not paddling into waves, so a pointed nose just wastes volume</li>
+            <li style="margin-bottom: 0.5rem;"><strong>Squared-off or rounded tail</strong> — wide platform for foil mount area</li>
+        </ul>
+
+        <p>Think <strong>"floating platform"</strong> more than "surfboard." The board's only job on the water surface is to get you up and stable. Once you're on foil, the board is above the water and shape barely matters.</p>
+
+        <h3>Three Approaches: Buy, Convert, or Build</h3>
+
+        <div class="comparison-grid">
+            <div class="option-card">
+                <h4>🛒 Buy a Ready-Made Board</h4>
+                <div class="price">$300–$800</div>
+                <ul>
+                    <li>Used eFoil/SUP foil boards (eBay, FB Marketplace)</li>
+                    <li>Battery compartment may need adding</li>
+                    <li>Foil mount plates usually pre-installed</li>
+                    <li>Best for: first builds, speed to water</li>
+                    <li>Look for: used Lift, Fliteboard, or Takuma boards</li>
+                </ul>
+            </div>
+            <div class="option-card">
+                <h4>🔄 Convert a Board</h4>
+                <div class="price">$100–$400</div>
+                <ul>
+                    <li>Use existing SUP, kite, or wake foil board</li>
+                    <li>Must add battery box + foil mount</li>
+                    <li>Board needs 10+ cm thickness</li>
+                    <li>Best for: riders with spare boards</li>
+                    <li>Risk: cutting weakens structure</li>
+                </ul>
+            </div>
+            <div class="option-card">
+                <h4>🏗️ Build from Scratch</h4>
+                <div class="price">$150–$500</div>
+                <ul>
+                    <li>EPS foam blank + fiberglass/epoxy</li>
+                    <li>Full control of dimensions and layout</li>
+                    <li>Requires laminating skill (or willingness to learn)</li>
+                    <li>Best for: custom builds, experienced makers</li>
+                    <li>CNC cutting available for precision shapes</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h4>🏆 Community Recommendation</h4>
+            <p>For your first build, <strong>buy a used board</strong> if you can find one. The FOIL.zone marketplace and Facebook groups regularly have used eFoil or foil-ready boards for $200–$500. A used Lift or Fliteboard hull already has the battery compartment sorted, which eliminates one of the hardest parts of a DIY build. If you can't find one, building from an EPS blank is the next best option — it's surprisingly forgiving and lets you design around your specific battery pack.</p>
+        </div>
+
+        <h3>Building from Scratch: EPS Foam Construction</h3>
+
+        <p>The classic DIY approach: shape a board from EPS (expanded polystyrene) foam, then wrap it in fiberglass and epoxy resin. This is the most popular method on FOIL.zone because it's affordable, customizable, and proven.</p>
+
+        <ol class="step-list">
+            <li><strong>Get an EPS foam blank.</strong> Standard 2 lb/ft³ density is fine. You can glue multiple blocks together to get the right thickness. Typical blank: 180 × 70 × 15 cm. Cost: $30–$80 for a block from insulation suppliers or surfboard blank shops.</li>
+            <li><strong>Shape the outline.</strong> Hot wire cutter for straight cuts, hand tools (surform, sandpaper) for curves. Template from plywood or cardboard. Sand to final shape — EPS sands easily.</li>
+            <li><strong>Cut the battery compartment.</strong> Route out a rectangular cavity sized for your battery pack plus 1 cm clearance on all sides. Typical dimensions: 30–45 cm long × 20–30 cm wide × 8–10 cm deep. Position it forward of center — this keeps the board's center of gravity under your front foot.</li>
+            <li><strong>Install the foil mounting system.</strong> Either embed a tuttle box (recommended) or install threaded inserts for a plate mount (easier). The mount goes in the tail section, typically 25–35 cm from the tail end. Reinforce heavily — all foil loads concentrate here.</li>
+            <li><strong>Laminate with fiberglass and epoxy.</strong> Two layers of 6 oz fiberglass cloth on the bottom (structural), one layer on top. Use <strong>epoxy resin only</strong> — polyester resin dissolves EPS foam. Key: overlap layers at the rails, work quickly, and squeegee out excess resin for a light, strong shell.</li>
+            <li><strong>Build the battery hatch.</strong> The hatch needs to be watertight under pressure. Options: threaded screw-down lid with O-ring gasket, or a hinged lid with cam latches and gasket. Many builders use 3D-printed hatch frames with standard O-ring grooves.</li>
+            <li><strong>Final finishing.</strong> Sand, fill pinholes with fairing compound, add a final coat or paint. Install deck grip pad (EVA foam) over the standing area.</li>
+        </ol>
+
+        <div class="warning-box">
+            <h4>⚠️ Waterproofing Is Non-Negotiable</h4>
+            <p>EPS foam absorbs water like a sponge if the fiberglass shell is breached. Every hole, hatch edge, and fitting must be sealed with marine-grade sealant. The battery compartment is the most critical area — a leaking hatch means saltwater on lithium cells, which is a serious fire/explosion risk. Test your waterproofing in a bathtub before your first ride. Many builders do a "pressure test" by sealing the hatch and pressing down on the board in the water — any bubbles mean leaks.</p>
+        </div>
+
+        <h3>Battery Compartment Design</h3>
+
+        <p>The battery compartment is where most DIY builds succeed or fail. It needs to be:</p>
+
+        <ul style="padding-left: 1.5rem; margin: 1rem 0 1.5rem;">
+            <li style="margin-bottom: 0.5rem;"><strong>Sized for your pack</strong> — leave 1 cm clearance on all sides. Common pack sizes: 12S6P is ~28 × 18 × 7 cm, 14S8P is ~35 × 22 × 8 cm</li>
+            <li style="margin-bottom: 0.5rem;"><strong>Forward of center</strong> — battery weight (5–12 kg) acts as ballast; position it under your front foot area for stability</li>
+            <li style="margin-bottom: 0.5rem;"><strong>Lined with closed-cell foam</strong> — protects battery from impacts, provides vibration dampening</li>
+            <li style="margin-bottom: 0.5rem;"><strong>Watertight</strong> — O-ring sealed hatch, cable glands for wiring pass-throughs, marine sealant on all joints</li>
+            <li style="margin-bottom: 0.5rem;"><strong>Ventilated with a one-way valve</strong> — heat from charging/discharging creates pressure. A small Gore-Tex vent or one-way check valve prevents ballooning without letting water in</li>
+        </ul>
+
+        <p>Route your wiring from the battery compartment through sealed conduits to the mast base, where they connect to the ESC. The ESC can live in the battery compartment or in its own smaller sealed compartment near the tail. Keep high-current wires (battery → ESC → motor) as short as possible.</p>
+
+        <!-- PART 2: THE HYDROFOIL -->
+        <h2>Part 2: The Hydrofoil</h2>
+
+        <p>The hydrofoil is the magic underneath — the thing that turns a motorized surfboard into a flying machine. It has four parts: <strong>front wing</strong> (main lift), <strong>stabilizer/rear wing</strong> (pitch control), <strong>fuselage</strong> (connects the two wings), and <strong>mast</strong> (connects everything to the board).</p>
+
+        <h3>Front Wing: Size and Aspect Ratio</h3>
+
+        <p>The front wing generates lift. Its two key parameters are <strong>wing area</strong> (how much surface, in cm²) and <strong>aspect ratio</strong> (wingspan divided by chord — basically, long and narrow vs. short and fat).</p>
+
+        <table class="sizing-table">
+            <thead>
+                <tr>
+                    <th>Rider Weight</th>
+                    <th>Wing Area</th>
+                    <th>Aspect Ratio</th>
+                    <th>Takeoff Speed</th>
+                    <th>Feel</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>55–70 kg</td>
+                    <td>1200–1600 cm²</td>
+                    <td>4–6 (medium)</td>
+                    <td>12–15 km/h</td>
+                    <td>Agile, responsive</td>
+                </tr>
+                <tr>
+                    <td>70–85 kg</td>
+                    <td>1500–2000 cm²</td>
+                    <td>4–7</td>
+                    <td>14–18 km/h</td>
+                    <td>Balanced</td>
+                </tr>
+                <tr>
+                    <td>85–100 kg</td>
+                    <td>1800–2500 cm²</td>
+                    <td>5–7</td>
+                    <td>16–20 km/h</td>
+                    <td>Stable, forgiving</td>
+                </tr>
+                <tr>
+                    <td>100+ kg</td>
+                    <td>2200+ cm²</td>
+                    <td>5–8</td>
+                    <td>18–22 km/h</td>
+                    <td>Max stability needed</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="info-box">
+            <h4>📐 Aspect Ratio Explained</h4>
+            <p><strong>Low aspect ratio (3–5):</strong> Short, wide wings. Easier to ride, more forgiving, better at slow speeds. Think training wheels. Common on beginner eFoils.</p>
+            <p><strong>High aspect ratio (6–10):</strong> Long, narrow wings. More efficient, faster, less drag, but twitchier. Takes skill to ride smoothly. Common on performance foils and downwind boards.</p>
+            <p>For a first DIY eFoil, <strong>aim for medium aspect ratio (4–6)</strong> in the 1500–2000 cm² range. That's the sweet spot — easy enough to learn on, efficient enough to ride comfortably.</p>
+        </div>
+
+        <h3>Stabilizer (Rear Wing)</h3>
+
+        <p>The stabilizer controls pitch — it prevents the nose from shooting up when you shift weight back, and keeps the ride smooth. Typical stabilizer area is <strong>15–25% of the front wing area</strong>. Too small = pitchy and unpredictable. Too large = sluggish turns.</p>
+
+        <p>Most affordable foil packages include a matched stabilizer, so this isn't usually a separate decision. If you're mixing and matching components, look for a stabilizer in the 250–400 cm² range for a 1500–2000 cm² front wing.</p>
+
+        <h3>Fuselage Length</h3>
+
+        <p>The fuselage is the horizontal bar connecting the front and rear wings. Length matters:</p>
+
+        <ul style="padding-left: 1.5rem; margin: 1rem 0 1.5rem;">
+            <li style="margin-bottom: 0.5rem;"><strong>Short fuselage (50–60 cm):</strong> More responsive turns, less pitch stability. Better for experienced riders.</li>
+            <li style="margin-bottom: 0.5rem;"><strong>Long fuselage (65–80 cm):</strong> More pitch stable, easier to ride, slower turn response. Better for beginners and eFoils.</li>
+        </ul>
+
+        <p>For eFoils, <strong>lean toward longer fuselages</strong>. You want stability, not quick snaps. 65–75 cm is the sweet spot for most DIY builds.</p>
+
+        <h3>Mast Length</h3>
+
+        <p>The mast is the vertical piece connecting the board to the fuselage/wings underwater. Length directly affects ride height and error tolerance.</p>
+
+        <table class="sizing-table">
+            <thead>
+                <tr>
+                    <th>Mast Length</th>
+                    <th>Ride Height</th>
+                    <th>Best For</th>
+                    <th>Pros</th>
+                    <th>Cons</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>50–60 cm (20–24")</td>
+                    <td>Low</td>
+                    <td>Beginners, flat water</td>
+                    <td>Very forgiving, easy to learn, less scary falls</td>
+                    <td>Limited clearance in chop, ventilation risk</td>
+                </tr>
+                <tr>
+                    <td>60–75 cm (24–30")</td>
+                    <td>Medium</td>
+                    <td>All-around, most eFoils</td>
+                    <td>Good balance of stability and clearance</td>
+                    <td>Falls are from higher</td>
+                </tr>
+                <tr>
+                    <td>75–90 cm (30–36")</td>
+                    <td>High</td>
+                    <td>Experienced, choppy water</td>
+                    <td>Maximum clearance, big turns</td>
+                    <td>Amplifies mistakes, hard to learn on</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>The community consensus is clear: <strong>start with 60–65 cm</strong>. You can always get a longer mast later. Learning on a 90 cm mast is like learning to drive in a Formula 1 car — technically possible, but why make it harder than it needs to be?</p>
+
+        <h3>Foil Materials: Aluminum vs. Carbon Fiber</h3>
+
+        <div class="comparison-grid">
+            <div class="option-card">
+                <h4>🔩 Aluminum</h4>
+                <div class="price">$200–$600 complete</div>
+                <ul>
+                    <li>Durable — dents but rarely breaks</li>
+                    <li>Repairable with basic tools</li>
+                    <li>Heavier (2–4 kg more than carbon)</li>
+                    <li>Flexes more under load</li>
+                    <li>Salt corrosion if not rinsed</li>
+                    <li>Wide availability, many brands</li>
+                    <li><span class="badge badge-best">Best for DIY</span></li>
+                </ul>
+            </div>
+            <div class="option-card">
+                <h4>🏎️ Carbon Fiber</h4>
+                <div class="price">$800–$3,000+ complete</div>
+                <ul>
+                    <li>Lighter (1.5–3 kg for full assembly)</li>
+                    <li>Stiffer — more responsive, efficient</li>
+                    <li>Brittle at connection points</li>
+                    <li>Expensive to repair or replace</li>
+                    <li>No corrosion issues</li>
+                    <li>Better performance at speed</li>
+                    <li><span class="badge badge-advanced">Best for upgrades</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <p>Most community members start with aluminum and never feel the need to upgrade. The weight difference is noticeable but doesn't fundamentally change the ride. If you're chasing maximum performance or range, carbon reduces drag and saves weight — but it's not worth the premium for a first build.</p>
+
+        <h3>Popular DIY eFoil Foil Options</h3>
+
+        <p>These are the foils the FOIL.zone community uses most often for DIY eFoils, ranked by value:</p>
+
+        <div class="comparison-grid">
+            <div class="option-card">
+                <h4>Gong Curve V2</h4>
+                <div class="price">$250–$400</div>
+                <ul>
+                    <li>1500–2000 cm² wings available</li>
+                    <li>Aluminum mast, carbon-glass wings</li>
+                    <li>Plate mount (easy install)</li>
+                    <li>Excellent beginner-to-intermediate</li>
+                    <li><span class="badge badge-best">Best Value</span></li>
+                </ul>
+            </div>
+            <div class="option-card">
+                <h4>Slingshot Hover Glide</h4>
+                <div class="price">$400–$700</div>
+                <ul>
+                    <li>Modular system, many wing sizes</li>
+                    <li>Aluminum construction</li>
+                    <li>Huge aftermarket support</li>
+                    <li>Plate mount, tuttle adapter available</li>
+                    <li><span class="badge badge-budget">Great Ecosystem</span></li>
+                </ul>
+            </div>
+            <div class="option-card">
+                <h4>AliExpress / No-Name</h4>
+                <div class="price">$120–$300</div>
+                <ul>
+                    <li>Full aluminum setups from China</li>
+                    <li>Variable quality — inspect welds</li>
+                    <li>Good enough for first build</li>
+                    <li>Often copies of name-brand designs</li>
+                    <li><span class="badge badge-budget">Budget King</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="comparison-grid">
+            <div class="option-card">
+                <h4>Axis / Lift / Flite (Used)</h4>
+                <div class="price">$400–$900 used</div>
+                <ul>
+                    <li>Premium carbon or aluminum</li>
+                    <li>Designed specifically for eFoils</li>
+                    <li>Check secondhand markets</li>
+                    <li>May need adapter for DIY boards</li>
+                    <li><span class="badge badge-advanced">Premium Used</span></li>
+                </ul>
+            </div>
+            <div class="option-card">
+                <h4>Takuma (Used/Clearance)</h4>
+                <div class="price">$200–$500</div>
+                <ul>
+                    <li>Quality French brand</li>
+                    <li>eFoil line discontinued (2024)</li>
+                    <li>Great clearance deals sometimes</li>
+                    <li>Tuttle mount standard</li>
+                    <li><span class="badge badge-budget">Clearance Gems</span></li>
+                </ul>
+            </div>
+            <div class="option-card">
+                <h4>DIY 3D-Printed Wings</h4>
+                <div class="price">$50–$150</div>
+                <ul>
+                    <li>NACA / custom hydrofoil profiles</li>
+                    <li>PLA/PETG with fiberglass overlay</li>
+                    <li>Experimental — learn wing design</li>
+                    <li>Not for high-speed or heavy riders</li>
+                    <li><span class="badge badge-advanced">Experimental</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>Foil Mounting Systems</h3>
+
+        <p>How the foil connects to your board is a critical engineering decision. The mount must handle <strong>all the dynamic loads</strong> of riding — your weight, the motor's thrust, impacts with water, and the leverage of a 60+ cm mast.</p>
+
+        <div class="comparison-grid">
+            <div class="option-card">
+                <h4>📋 Plate Mount</h4>
+                <div class="price">Simplest for DIY</div>
+                <ul>
+                    <li>Flat plate bolted to bottom of board</li>
+                    <li>4–8 stainless steel bolts through the board</li>
+                    <li>Requires backing plate on top side</li>
+                    <li>Easy to install on any board</li>
+                    <li>Slightly more drag (plate in water)</li>
+                    <li>Can crack board if under-reinforced</li>
+                </ul>
+            </div>
+            <div class="option-card">
+                <h4>📐 Tuttle Box</h4>
+                <div class="price">Strongest, cleanest</div>
+                <ul>
+                    <li>Recessed slot in the board bottom</li>
+                    <li>Mast slides in, 2 bolts secure it</li>
+                    <li>Industry standard for kite/surf foils</li>
+                    <li>Best load distribution</li>
+                    <li>Must be built into the board</li>
+                    <li>Deep Tuttle for eFoil loads preferred</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="warning-box">
+            <h4>⚠️ Reinforcement Is Critical</h4>
+            <p>The foil mount is the single highest-stress point on an eFoil. A 60 cm mast with your weight on it creates enormous leverage on the connection point. <strong>Reinforce heavily:</strong> use a stainless steel backing plate (3–4 mm thick), additional fiberglass layers in the mount area (4–6 layers), and marine-grade stainless bolts with nyloc nuts. Under-reinforced mounts will crack the board — this is the #1 structural failure mode in DIY builds.</p>
+        </div>
+
+        <!-- PART 3: PUTTING IT ALL TOGETHER -->
+        <h2>Part 3: Complete Board + Foil Setups by Budget</h2>
+
+        <div class="comparison-grid">
+            <div class="option-card">
+                <h4>💰 Budget Build</h4>
+                <div class="price">$250–$500 total</div>
+                <ul>
+                    <li>EPS foam blank ($50–$80)</li>
+                    <li>Fiberglass + epoxy ($80–$120)</li>
+                    <li>AliExpress aluminum foil ($120–$250)</li>
+                    <li>Hardware + hatch ($40–$60)</li>
+                    <li>Best for: first build, learning</li>
+                </ul>
+            </div>
+            <div class="option-card">
+                <h4>⚡ Mid-Range</h4>
+                <div class="price">$500–$1,000 total</div>
+                <ul>
+                    <li>Used eFoil/SUP board ($200–$400)</li>
+                    <li>Gong or Slingshot foil ($300–$600)</li>
+                    <li>Quality hardware ($50–$80)</li>
+                    <li>Best for: reliability, good ride</li>
+                </ul>
+            </div>
+            <div class="option-card">
+                <h4>🏆 Premium</h4>
+                <div class="price">$1,000–$2,000+ total</div>
+                <ul>
+                    <li>Used Lift/Flite board ($400–$800)</li>
+                    <li>Carbon foil setup ($600–$1,200+)</li>
+                    <li>Premium hardware ($80–$120)</li>
+                    <li>Best for: performance, longevity</li>
+                </ul>
+            </div>
+        </div>
+
+        <p>Combined with a <a href="/blog-efoil-battery-guide.html">battery ($300–$800)</a> and <a href="/blog-efoil-motor-guide.html">motor/ESC/prop ($350–$1,800)</a>, a complete DIY eFoil comes in at <strong>$900–$4,500</strong> — versus $5,000–$15,000 for a commercial unit. Use our <a href="/efoil-range-calculator.html">range calculator</a> to plan your battery for the board you're building.</p>
+
+        <!-- MISTAKES SECTION -->
+        <h2>8 Common Mistakes (and How to Avoid Them)</h2>
+
+        <ul class="mistakes-list">
+            <li><strong>Board too thin.</strong> Trying to squeeze a 12S8P battery into a 9 cm thick board. It won't fit. Or it'll fit with zero structural material around it, and you'll crack the board on the first ride. Design the board around the battery, not the other way around.</li>
+            <li><strong>Foil mount under-reinforced.</strong> The #1 structural failure in DIY eFoils. Four bolts through bare foam won't hold. You need a metal backing plate, extra fiberglass layers, and proper load-spreading. Budget 2–3 extra hours for reinforcement — it's worth it.</li>
+            <li><strong>Wing too small for your weight.</strong> A 1000 cm² wing works great for a 65 kg rider. For a 95 kg rider, it means you need 25+ km/h to get on foil — which is fast, scary, and power-hungry. Size up. You can always ride a big wing slowly, but you can't ride a small wing if you can't get on it.</li>
+            <li><strong>Mast too long for a beginner.</strong> Starting with an 85 cm mast because "I'll grow into it." You won't grow into it, you'll crash into it. Get a 60 cm mast, learn to ride, and then upgrade. The $100 for a second mast is way cheaper than the medical bills from a high-speed faceplant.</li>
+            <li><strong>Using polyester resin on EPS foam.</strong> Polyester resin dissolves EPS (expanded polystyrene) foam. Use <strong>epoxy resin only</strong>. This mistake ruins the entire board instantly — there's no fixing it.</li>
+            <li><strong>Skipping the waterproofing test.</strong> "I sealed it well, it'll be fine." Test in a bathtub or pool first. Submerge the board, press down, look for bubbles. One small leak in the battery compartment means saltwater on lithium cells — a fire/explosion risk. Every. Single. Time.</li>
+            <li><strong>Battery too far back.</strong> Placing the battery over the foil mount area seems logical (center of the board), but it makes the board tail-heavy. You want the battery <strong>forward of center</strong> — roughly under where your front foot will stand. This distributes weight properly and makes takeoff more natural.</li>
+            <li><strong>Ignoring wiring routing.</strong> Running unprotected wires through the board without conduit or strain relief. Vibration, water pressure, and flex will eventually wear through insulation. Use watertight cable glands, heat-shrink tubing, and protect high-current wires in flexible conduit.</li>
+        </ul>
+
+        <!-- CROSS-LINKS -->
+        <h2>Continue Your Build</h2>
+
+        <p>This guide covers the physical platform. For the electronics that power it, check these companion guides:</p>
+
+        <div class="cross-links">
+            <a href="/blog-efoil-battery-guide.html" class="cross-link">
+                <span class="emoji">🔋</span>
+                <span class="title">Battery Guide</span>
+                <span class="desc">Cell selection, BMS, waterproofing, and safety for your eFoil battery pack.</span>
+            </a>
+            <a href="/blog-efoil-motor-guide.html" class="cross-link">
+                <span class="emoji">⚡</span>
+                <span class="title">Motor & Propulsion Guide</span>
+                <span class="desc">Inrunner vs outrunner, ESC setup, propeller selection, and complete setups.</span>
+            </a>
+            <a href="/blog-diy-efoil-guide.html" class="cross-link">
+                <span class="emoji">🔧</span>
+                <span class="title">Complete Build Guide</span>
+                <span class="desc">The full overview: all components, costs, tools, and step-by-step instructions.</span>
+            </a>
+            <a href="/efoil-range-calculator.html" class="cross-link">
+                <span class="emoji">📊</span>
+                <span class="title">Range Calculator</span>
+                <span class="desc">Plan your battery, estimate ride time, range, and session cost.</span>
+            </a>
+            <a href="https://foil.zone" class="cross-link">
+                <span class="emoji">🌊</span>
+                <span class="title">FOIL.zone Community</span>
+                <span class="desc">5,300+ members, 135K+ posts. Get help, share your build, learn from thousands of builders.</span>
+            </a>
+            <a href="/blog-history-of-efoil.html" class="cross-link">
+                <span class="emoji">📖</span>
+                <span class="title">History of the eFoil</span>
+                <span class="desc">How we got here — from a 2008 university experiment to a worldwide movement.</span>
+            </a>
+        </div>
+    </article>
+
+    <footer>
+        <p>© 2016–2026 PacificMeister. Open source, always.</p>
+        <ul class="footer-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/blog.html">Blog</a></li>
+            <li><a href="https://github.com/pacificmeister" target="_blank">GitHub</a></li>
+            <li><a href="https://www.youtube.com/@PacificMeister" target="_blank">YouTube</a></li>
+            <li><a href="https://foil.zone" target="_blank">FOIL.zone</a></li>
+        </ul>
+    </footer>
+</body>
+</html>
