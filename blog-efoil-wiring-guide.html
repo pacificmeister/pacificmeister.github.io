@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIY eFoil Wiring & Electronics Guide: Safe Power, Signal, and Waterproofing (2026) — PacificMeister</title>
+    <meta name="description" content="How to wire a DIY eFoil safely: battery to ESC, motor phase wiring, anti-spark, fuses, signal setup, kill switches, waterproof connectors, cable routing, and real-world FOIL.zone best practices.">
+    <meta name="keywords" content="eFoil wiring guide, DIY eFoil wiring, efoil anti spark, XT90-S efoil, VESC wiring, efoil ESC wiring, efoil kill switch, waterproof efoil electronics, efoil connector guide, efoil wire gauge, PacificMeister">
+    <link rel="canonical" href="https://pacificmeister.github.io/blog-efoil-wiring-guide.html">
+
+    <meta property="og:title" content="DIY eFoil Wiring & Electronics Guide: Safe Power, Signal, and Waterproofing (2026)">
+    <meta property="og:description" content="The missing piece for DIY eFoil builders: exactly how to wire battery, ESC, motor, receiver, safety systems, and waterproof everything correctly.">
+    <meta property="og:url" content="https://pacificmeister.github.io/blog-efoil-wiring-guide.html">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://pacificmeister.github.io/og-image.png">
+    <meta property="og:site_name" content="PacificMeister">
+    <meta property="article:published_time" content="2026-03-19">
+    <meta property="article:author" content="PacificMeister">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="DIY eFoil Wiring & Electronics Guide (2026)">
+    <meta name="twitter:description" content="Battery, ESC, motor, anti-spark, kill switch, waterproofing, and clean cable routing — practical wiring guidance from the FOIL.zone community.">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "DIY eFoil Wiring & Electronics Guide: Safe Power, Signal, and Waterproofing (2026)",
+        "datePublished": "2026-03-19",
+        "dateModified": "2026-03-19",
+        "author": {
+            "@type": "Person",
+            "name": "PacificMeister",
+            "url": "https://pacificmeister.github.io"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "PacificMeister",
+            "url": "https://pacificmeister.github.io"
+        },
+        "description": "A complete DIY eFoil wiring and electronics guide covering power paths, signal paths, anti-spark protection, connector selection, fusing, waterproofing, cable routing, and tested setup options by budget.",
+        "mainEntityOfPage": "https://pacificmeister.github.io/blog-efoil-wiring-guide.html"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What wire gauge do I need for a DIY eFoil?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "For most DIY eFoils pulling 80–120A on 12S or 14S, use 8 AWG silicone wire for main battery-to-ESC runs. For moderate runs around 40–80A, 10 AWG is usually sufficient. Signal and low-power circuits like receiver leads, LED control, and sensor wiring should use 14–16 AWG or standard servo/JST leads. Keep high-current runs short to reduce voltage drop and heat."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do I need an anti-spark switch?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Without anti-spark protection, plugging in your battery can create a large inrush current into ESC capacitors, causing loud sparks, pitted connectors, and eventually welded plugs. At minimum, use an XT90-S anti-spark connector. For convenience and reliability, many builders use a marine-rated anti-spark switch rated for your full pack voltage and current."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do I waterproof eFoil electronics?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Use layers of protection: conformal coat exposed control electronics, pot or encapsulate vulnerable ESC sections where appropriate, seal all cable exits with IP68 cable glands, and use adhesive-lined marine heat shrink at every splice. Follow a dry-side/wet-side layout: keep batteries, receiver, and logic dry in sealed compartments, while any submerged wiring is treated as permanently wet and fully sealed."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What happens if I wire the motor phases wrong?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "On a 3-phase BLDC eFoil motor, phase order does not damage the motor by itself. If direction is wrong, swap any two phase wires and test again. Always verify prop direction at low throttle in a safe setup before water testing."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I use the same ESC for 12S and 14S batteries?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Only if the ESC voltage rating safely covers 14S maximum voltage (58.8V fully charged) with margin. Many VESC-based controllers support both 12S and 14S, but you must check absolute voltage specs, capacitor ratings, current capability, and cooling. Reconfigure battery cutoff and current limits in VESC Tool when changing pack voltage."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do I wire a kill switch for my eFoil?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "A common setup uses a magnetic reed or Hall sensor style leash switch wired to a digital input on the VESC or receiver-safe channel logic. When the leash magnet pulls away, the input changes state and the controller immediately cuts throttle (or applies configured failsafe). Test on the bench first, then at low power in water. Never rely on software failsafe alone without verifying behavior under real disconnect scenarios."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --ocean-deep: #0a1628;
+            --ocean-mid: #0f2847;
+            --ocean-light: #1a4a7a;
+            --foam: #e8f4f8;
+            --white: #ffffff;
+            --accent: #00d4aa;
+            --accent-glow: #00ffcc;
+            --text: #c8dae8;
+            --text-bright: #f0f6fc;
+            --warning: #ff6b35;
+            --success: #00d4aa;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: var(--ocean-deep);
+            color: var(--text);
+            line-height: 1.8;
+        }
+
+        .ocean-bg {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(180deg, #0a1628 0%, #0c1e3a 30%, #0f2847 50%, #0a1628 100%);
+            z-index: -2;
+        }
+
+        header {
+            padding: 2rem 2rem 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+        }
+        .logo span { color: var(--accent); }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--accent); }
+
+        article {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem 4rem;
+        }
+
+        .article-meta {
+            font-size: 0.85rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--white);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-intro {
+            font-size: 1.15rem;
+            color: var(--text);
+            line-height: 1.9;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        h2 {
+            font-size: 1.7rem;
+            color: var(--white);
+            font-weight: 700;
+            margin: 3rem 0 1.2rem;
+            padding-top: 1rem;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            color: var(--text-bright);
+            font-weight: 600;
+            margin: 2rem 0 0.8rem;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            color: var(--text);
+        }
+
+        strong { color: var(--text-bright); }
+
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .info-box {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(0, 212, 170, 0.08), rgba(0, 212, 170, 0.03));
+            border: 1px solid rgba(0, 212, 170, 0.2);
+            border-radius: 12px;
+            margin: 1.5rem 0;
+        }
+
+        .info-box h4 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .warning-box {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.08), rgba(255, 107, 53, 0.03));
+            border: 1px solid rgba(255, 107, 53, 0.25);
+            border-radius: 12px;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box h4 {
+            color: var(--warning);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.2rem;
+            margin: 1.5rem 0;
+        }
+
+        .option-card {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(15, 40, 71, 0.8), rgba(10, 22, 40, 0.9));
+            border: 1px solid rgba(0, 212, 170, 0.12);
+            border-radius: 12px;
+        }
+
+        .option-card h4 {
+            color: var(--white);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .option-card .price {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .option-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .option-card li {
+            padding: 0.25rem 0;
+            font-size: 0.9rem;
+            color: var(--text);
+        }
+
+        .option-card li::before {
+            content: '→ ';
+            color: var(--accent);
+        }
+
+        .sizing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        .sizing-table th {
+            background: rgba(0, 212, 170, 0.1);
+            color: var(--accent);
+            padding: 0.8rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .sizing-table td {
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            color: var(--text);
+        }
+
+        .sizing-table tr:hover td {
+            background: rgba(0, 212, 170, 0.03);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .badge-best { background: rgba(0, 212, 170, 0.2); color: var(--accent); }
+        .badge-budget { background: rgba(0, 140, 255, 0.2); color: #5cb8ff; }
+        .badge-advanced { background: rgba(255, 107, 53, 0.2); color: var(--warning); }
+
+        .step-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+            counter-reset: steps;
+        }
+
+        .step-list li {
+            counter-increment: steps;
+            padding: 1rem 1rem 1rem 3.5rem;
+            margin-bottom: 0.8rem;
+            background: rgba(15, 40, 71, 0.5);
+            border-radius: 10px;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .step-list li::before {
+            content: counter(steps);
+            position: absolute;
+            left: 1rem;
+            top: 1rem;
+            width: 1.8rem;
+            height: 1.8rem;
+            background: rgba(0, 212, 170, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 0.85rem;
+        }
+
+        .mistakes-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+
+        .mistakes-list li {
+            padding: 1rem 1rem 1rem 2.5rem;
+            margin-bottom: 0.8rem;
+            background: rgba(255, 107, 53, 0.04);
+            border: 1px solid rgba(255, 107, 53, 0.12);
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .mistakes-list li::before {
+            content: '⚠️';
+            position: absolute;
+            left: 0.8rem;
+            top: 1rem;
+        }
+
+        .cross-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .cross-link {
+            display: block;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, rgba(15, 40, 71, 0.8), rgba(10, 22, 40, 0.9));
+            border: 1px solid rgba(0, 212, 170, 0.12);
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .cross-link:hover {
+            border-color: rgba(0, 212, 170, 0.35);
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+
+        .cross-link .emoji { font-size: 1.5rem; margin-bottom: 0.4rem; display: block; }
+        .cross-link .title { color: var(--white); font-weight: 600; display: block; margin-bottom: 0.3rem; }
+        .cross-link .desc { color: var(--text); font-size: 0.85rem; }
+
+        footer {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        footer p { color: rgba(200, 218, 232, 0.5); font-size: 0.85rem; }
+        .footer-links { display: flex; gap: 1.5rem; list-style: none; }
+        .footer-links a { color: rgba(200, 218, 232, 0.5); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--accent); }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.4rem; }
+            .nav-links { display: none; }
+            .comparison-grid { grid-template-columns: 1fr; }
+            .sizing-table { font-size: 0.85rem; }
+            .sizing-table th, .sizing-table td { padding: 0.6rem 0.5rem; }
+            footer { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="ocean-bg"></div>
+
+    <header>
+        <nav>
+            <a href="/" class="logo">Pacific<span>Meister</span></a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/#tools">Tools</a></li>
+                <li><a href="/blog.html">Blog</a></li>
+                <li><a href="https://foil.zone" target="_blank">Community</a></li>
+                <li><a href="https://www.youtube.com/@PacificMeister" target="_blank">YouTube</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <article>
+        <div class="article-meta">March 2026 · 20 min read</div>
+
+        <h1>DIY eFoil Wiring & Electronics Guide: How to Wire Everything Together Safely</h1>
+
+        <div class="article-intro">
+            <p>Builders always ask the same question after reading the battery guide and motor guide: <strong>"Okay, but how do I wire all this together without blowing up an ESC or sinking a battery?"</strong></p>
+            <p>This is that missing guide. It connects the pieces into one complete system: battery, anti-spark, ESC/VESC, motor phases, receiver, kill switch, charge port, waterproofing, and cable routing. Everything here is based on what we have seen work across years of <a href="https://foil.zone">FOIL.zone</a> builds — from garage budget projects to polished high-end DIY boards.</p>
+            <p>The short version: <strong>eFoil wiring is not complicated, but it is unforgiving</strong>. Reversed polarity can destroy an ESC instantly. Bad anti-spark practice pits connectors fast. Weak waterproofing doesn't fail on day one — it fails slowly, then suddenly. Build clean once, test methodically, and your system will be reliable for years.</p>
+        </div>
+
+        <h2>Part 1: System Overview</h2>
+
+        <p>Before soldering anything, understand the two circuits in your eFoil:</p>
+        <p><strong>Power circuit:</strong> high current path that feeds propulsion.<br><strong>Signal circuit:</strong> low current path that controls propulsion.</p>
+
+        <div class="info-box">
+            <h4>🔌 Text-Based Wiring Diagram (Reference Layout)</h4>
+            <p><strong>Power Path</strong><br>
+            Battery (+/-) → 8 AWG main leads → Anti-Spark Switch or XT90-S → ESC/VESC input (+/-) → 3-Phase motor outputs (A/B/C) → Motor</p>
+            <p><strong>Signal Path</strong><br>
+            Hand Remote → Receiver → ESC signal input (PPM / UART / ADC)</p>
+            <p><strong>Optional Branches</strong><br>
+            Battery → Charge Port (XT60 via BMS or direct charging harness)<br>
+            Leash Kill Switch → Receiver or VESC digital input (failsafe cut)<br>
+            ESC/VESC AUX → LED status strip<br>
+            ESC cooling output / external relay → Water cooling pump</p>
+        </div>
+
+        <p>From FOIL.zone community troubleshooting, most failures come from one of three things: undersized wire, poor connector strategy, or weak waterproof pass-throughs. So start with current planning, not cosmetics.</p>
+
+        <h3>Wire Gauge Reference for DIY eFoils</h3>
+
+        <p>The right wire gauge depends on current, run length, and cooling. Our practical recommendation for most 12S/14S boards:</p>
+
+        <table class="sizing-table">
+            <thead>
+                <tr>
+                    <th>Wire Gauge</th>
+                    <th>Typical Current</th>
+                    <th>Use Case</th>
+                    <th>Typical Length</th>
+                    <th>Community Recommendation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>8 AWG silicone</td>
+                    <td>80–120A continuous</td>
+                    <td>Battery → anti-spark → ESC main power</td>
+                    <td>As short as possible (20–60 cm)</td>
+                    <td><span class="badge badge-best">Default main power choice</span></td>
+                </tr>
+                <tr>
+                    <td>10 AWG silicone</td>
+                    <td>40–80A</td>
+                    <td>Moderate power builds, auxiliary high-current branches</td>
+                    <td>30–80 cm</td>
+                    <td><span class="badge badge-budget">Okay for lighter setups</span></td>
+                </tr>
+                <tr>
+                    <td>12 AWG silicone</td>
+                    <td>20–45A</td>
+                    <td>Pump feeds, lower-current accessories</td>
+                    <td>Short auxiliary runs</td>
+                    <td>Use only outside propulsion main line</td>
+                </tr>
+                <tr>
+                    <td>14–16 AWG</td>
+                    <td>&lt;15A</td>
+                    <td>Signal, LED, sensor, kill switch, receiver power</td>
+                    <td>As required</td>
+                    <td><span class="badge badge-best">Best for control wiring</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="warning-box">
+            <h4>⚠️ Hard Rule on Main Wiring</h4>
+            <p>If your ESC can pull triple-digit amps, do not "save weight" by downsizing to 10 or 12 AWG on main battery lines. That's not optimization; it's heat generation. Thick, high-strand silicone wire is cheap compared with batteries, ESCs, and fire damage.</p>
+        </div>
+
+        <h2>Part 2: Connectors (Where Most Reliability Is Won or Lost)</h2>
+
+        <p>Connectors define maintenance speed, field serviceability, and long-term safety. You can have premium components and still build a headache if your connector plan is sloppy.</p>
+
+        <h3>Anti-Spark Connectors and Switches</h3>
+
+        <p><strong>XT90-S</strong> is still the most common anti-spark solution in DIY eFoils for one reason: it works, it's cheap, and it's everywhere. Typical price is $4–$10 per pair from quality suppliers (Amass preferred over no-name clones).</p>
+
+        <p>Why anti-spark matters: your ESC has input capacitors. At plug-in, those caps look like a short circuit for a split second, creating large inrush current. Without anti-spark, you get a crack, arc, and metal transfer at the connector. Repeat that over a season and your connector faces burn, resistance rises, and heat goes up.</p>
+
+        <p>For higher-end builds, sealed anti-spark switch assemblies (Flipsky, Trampa, Vedder-compatible designs, or marine-rated custom enclosures) are cleaner operationally and easier for non-technical riders to use than plugging XT90s every session.</p>
+
+        <h3>Motor Phase Connectors</h3>
+
+        <p>Most eFoil drives use 3-phase motor wiring with <strong>4 mm or 5.5 mm bullet connectors</strong>. For high-current inrunners (e.g., 65161/65162 class), 5.5 mm bullets are generally safer. 4 mm can work on moderate setups but often run warmer at sustained load.</p>
+
+        <p>FOIL.zone consensus: if the phase connection will stay sealed and untouched for long periods, a well-soldered bullet with adhesive-lined heat shrink is reliable. If you expect frequent teardown, crimped high-current terminals in a proper sealed connector body can reduce maintenance frustration. Bad solder beats bad crimp? No. <strong>Bad anything fails</strong>. Use the technique you can execute consistently and test.</p>
+
+        <h3>Waterproof Connector Strategy</h3>
+
+        <p>Most new builders over-focus on "waterproof connectors" and under-focus on <strong>system waterproof architecture</strong>. Cable glands, potted joints, and compartment design matter more than buying one expensive connector.</p>
+
+        <ul style="padding-left: 1.5rem; margin: 1rem 0 1.5rem;">
+            <li style="margin-bottom: 0.5rem;"><strong>IP68 cable glands:</strong> excellent value, robust strain relief, ideal at board and mast pass-through points.</li>
+            <li style="margin-bottom: 0.5rem;"><strong>Potted connections:</strong> best where disconnection is rare and absolute sealing matters.</li>
+            <li style="margin-bottom: 0.5rem;"><strong>SubConn / wet-mate style:</strong> premium, expensive, mission-grade, overkill for many hobby builds but excellent for frequent wet-side disconnects.</li>
+        </ul>
+
+        <h3>Signal Connectors and Charge Ports</h3>
+
+        <p>For signal wiring, <strong>JST-SM, JST-PH, or servo leads</strong> are standard. Keep these inside dry compartments whenever possible. If a signal connector must sit near wet zones, protect with secondary sealing and route drip loops so water does not travel directly into housings.</p>
+
+        <p>For charge ports, <strong>XT60</strong> remains a practical standard for many DIY packs. It is compact, affordable, and easily sourced. Just don't confuse charge and discharge ports visually — use clear labels, different mounting locations, or keyed housings to prevent mistakes in the field.</p>
+
+        <table class="sizing-table">
+            <thead>
+                <tr>
+                    <th>Connector Type</th>
+                    <th>Current Rating (Typical)</th>
+                    <th>Waterproof Rating</th>
+                    <th>Cost (USD)</th>
+                    <th>Recommendation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>XT90-S (anti-spark)</td>
+                    <td>90A continuous (higher burst)</td>
+                    <td>Not waterproof by itself</td>
+                    <td>$4–$10 pair</td>
+                    <td><span class="badge badge-best">Best default anti-spark</span></td>
+                </tr>
+                <tr>
+                    <td>Waterproof anti-spark switch</td>
+                    <td>Depends on model (often 100A+)</td>
+                    <td>IP65–IP68 (model-dependent)</td>
+                    <td>$50–$180</td>
+                    <td><span class="badge badge-advanced">Premium convenience + safety</span></td>
+                </tr>
+                <tr>
+                    <td>5.5mm bullet (phase)</td>
+                    <td>80–150A class (quality dependent)</td>
+                    <td>Sealed with heat shrink/potting</td>
+                    <td>$5–$20 set</td>
+                    <td>Preferred for high-current motor phases</td>
+                </tr>
+                <tr>
+                    <td>IP68 cable gland</td>
+                    <td>N/A (pass-through hardware)</td>
+                    <td>IP68</td>
+                    <td>$2–$8 each</td>
+                    <td><span class="badge badge-best">Mandatory at penetrations</span></td>
+                </tr>
+                <tr>
+                    <td>SubConn / wet-mate</td>
+                    <td>Varies, high reliability</td>
+                    <td>Wet-mate capable</td>
+                    <td>$80–$300+ per interface</td>
+                    <td>Excellent, expensive, pro-level</td>
+                </tr>
+                <tr>
+                    <td>JST / servo connectors</td>
+                    <td>Low current signal</td>
+                    <td>Indoor/dry side preferred</td>
+                    <td>$1–$5</td>
+                    <td>Use for receiver, LED, sensors</td>
+                </tr>
+                <tr>
+                    <td>XT60 (charge port)</td>
+                    <td>60A class</td>
+                    <td>Not waterproof by itself</td>
+                    <td>$2–$5 pair</td>
+                    <td><span class="badge badge-budget">Solid charge standard</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Part 3: The Power Circuit (Step-by-Step)</h2>
+
+        <p>This is the main propulsion path. Build this cleanly and verify each step with a multimeter before first power-up.</p>
+
+        <ol class="step-list">
+            <li><strong>Battery output to main power leads (8 AWG silicone).</strong> Use flexible, high-strand silicone wire rated for your voltage and current. Keep length minimal to reduce resistance and transient stress. Label positive and negative immediately — red/black plus heat-shrink labels, not one or the other.</li>
+            <li><strong>Route through anti-spark stage (switch or XT90-S).</strong> Place anti-spark where it's accessible but protected from accidental impact and splash. If using XT90-S manually, mount strain relief so connector force never pulls directly on solder joints.</li>
+            <li><strong>Connect to ESC power input and verify polarity.</strong> This is your no-mistake moment. Check battery polarity at connector, then check at ESC pads/leads, then continuity with disconnected battery. Reversed polarity can kill ESCs instantly, often with visible capacitor damage.</li>
+            <li><strong>Wire ESC to motor with three phase leads.</strong> A/B/C order does not matter for damage prevention. If rotation is wrong, swap any two wires. Use matched phase wire gauge and secure insulation at every connection point.</li>
+            <li><strong>Add a fuse (recommended: 100–150A ANL class for many builds).</strong> Put fuse close to the battery positive side. It won't protect against every failure mode, but it can limit catastrophic current in hard short conditions and prevent wire fires from escalating.</li>
+            <li><strong>Consider input capacitor support if needed.</strong> Many quality VESCs include adequate capacitor banks for short battery leads. If your battery-ESC leads are long, external low-ESR capacitor modules can reduce voltage spikes. Follow ESC vendor guidance and keep lead inductance low.</li>
+        </ol>
+
+        <div class="warning-box">
+            <h4>⚠️ Pre-Power Checklist (Do Not Skip)</h4>
+            <p>Before first full connection: confirm polarity three times, verify no continuity short between + and -, bench test with prop removed or mechanically safe, and set conservative current limits in VESC Tool. Most expensive mistakes happen in the first 10 minutes of impatience.</p>
+        </div>
+
+        <h3>Recommended Power Path Layout (Physical)</h3>
+
+        <p>A practical arrangement for reliability looks like this:</p>
+        <ul style="padding-left: 1.5rem; margin: 1rem 0 1.5rem;">
+            <li style="margin-bottom: 0.5rem;"><strong>Battery compartment:</strong> battery, main fuse, and anti-spark switch/connector.</li>
+            <li style="margin-bottom: 0.5rem;"><strong>ESC compartment or tail bay:</strong> ESC with cooling access and shortest feasible motor phase path.</li>
+            <li style="margin-bottom: 0.5rem;"><strong>Mast transition:</strong> sealed phase routing through conduit/glands, with service loop for maintenance.</li>
+        </ul>
+
+        <p>Keep battery leads short, phase leads tidy, and avoid giant loops. Big loops increase inductance and noise pickup while making service harder.</p>
+
+        <h2>Part 4: The Signal Circuit</h2>
+
+        <p>Power makes thrust. Signal makes thrust controllable. A clean signal chain is the difference between predictable riding and weird behavior you can't reproduce on the bench.</p>
+
+        <h3>Remote to Receiver to ESC: PPM vs UART vs ADC</h3>
+
+        <p>There are three common control interfaces in DIY eFoils:</p>
+
+        <div class="comparison-grid">
+            <div class="option-card">
+                <h4>PPM</h4>
+                <div class="price">Simple and common</div>
+                <ul>
+                    <li>One-wire throttle signal + ground</li>
+                    <li>Easy setup with hobby receivers</li>
+                    <li>Widely documented on FOIL.zone</li>
+                    <li>Good baseline for first builds</li>
+                    <li><span class="badge badge-best">Best beginner path</span></li>
+                </ul>
+            </div>
+            <div class="option-card">
+                <h4>UART</h4>
+                <div class="price">Digital comms</div>
+                <ul>
+                    <li>Cleaner data channel with smart remotes</li>
+                    <li>More telemetry options</li>
+                    <li>Requires compatible ESC firmware + receiver</li>
+                    <li>More setup complexity</li>
+                    <li><span class="badge badge-advanced">Great when integrated well</span></li>
+                </ul>
+            </div>
+            <div class="option-card">
+                <h4>ADC</h4>
+                <div class="price">Analog input method</div>
+                <ul>
+                    <li>Less common for modern eFoils</li>
+                    <li>Can be robust in specific custom setups</li>
+                    <li>Needs careful filtering and calibration</li>
+                    <li>Usually chosen by experienced builders</li>
+                    <li><span class="badge badge-budget">Niche but valid</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <p>For most builders: start with a proven PPM receiver + VESC combination, then upgrade only if you need specific UART telemetry features.</p>
+
+        <h3>VESC Tool Configuration Basics (First Safe Setup)</h3>
+
+        <ol class="step-list">
+            <li><strong>Run motor detection</strong> with prop in a safe condition (or removed where practical). Confirm direction and smooth startup.</li>
+            <li><strong>Set conservative motor current limits</strong> first. Don't start with forum brag settings. Increase gradually after thermal and ride validation.</li>
+            <li><strong>Set battery current limits</strong> based on real cell capability and BMS limits, not idealized spec-sheet numbers.</li>
+            <li><strong>Configure throttle curves</strong> for smooth low-end control. Abrupt initial response causes most beginner breaches and crashes.</li>
+            <li><strong>Program safe minimum and maximum ERPM</strong> according to motor/prop pairing and voltage.</li>
+            <li><strong>Set failsafe behavior</strong> for lost signal: immediate throttle cut and controlled ramp-down as appropriate.</li>
+        </ol>
+
+        <div class="info-box">
+            <h4>💡 FOIL.zone Tuning Reality</h4>
+            <p>Most riders who say a build feels "dangerous" are actually describing poor throttle shaping, not insufficient power. Smooth first 30% throttle mapping gives confidence and cleaner takeoff. Top speed can come later.</p>
+        </div>
+
+        <h3>Kill Switch Wiring (Leash Safety)</h3>
+
+        <p>A practical kill setup uses a <strong>magnetic reed or Hall-type leash switch</strong>. When the magnet stays in place, signal is valid. When rider separates and leash pulls magnet away, input state changes and throttle is cut.</p>
+
+        <p>Typical integration paths:</p>
+        <ul style="padding-left: 1.5rem; margin: 1rem 0 1.5rem;">
+            <li style="margin-bottom: 0.5rem;"><strong>Direct to VESC digital input:</strong> firmware handles cut logic.</li>
+            <li style="margin-bottom: 0.5rem;"><strong>Receiver-side failsafe channel:</strong> kill state mapped to no-throttle output.</li>
+        </ul>
+
+        <p>Whichever you choose, physically test under realistic movement. A kill switch that only works when held carefully in your workshop is not a safety system.</p>
+
+        <h3>LED Status Indicator Wiring</h3>
+
+        <p>LED indicators are not just bling. They help with pre-launch sanity checks. Popular use cases:</p>
+        <ul style="padding-left: 1.5rem; margin: 1rem 0 1.5rem;">
+            <li style="margin-bottom: 0.5rem;"><strong>Armed/disarmed state</strong> (green/red)</li>
+            <li style="margin-bottom: 0.5rem;"><strong>Battery status</strong> (simple voltage band indication)</li>
+            <li style="margin-bottom: 0.5rem;"><strong>Fault blink code</strong> for troubleshooting</li>
+        </ul>
+
+        <p>Drive LEDs through properly rated outputs or control modules. Don't pull accessory current from fragile logic lines directly.</p>
+
+        <h2>Part 5: Waterproofing Your Electronics</h2>
+
+        <p>Saltwater doesn't always kill electronics instantly. It starts corrosion, creepage, and connector oxidation that looks minor until it isn't. The best builders treat waterproofing as a layered system, not a single product.</p>
+
+        <h3>Potting Compounds: Silicone vs Epoxy</h3>
+
+        <p><strong>Silicone potting</strong> is flexible, easier to rework, and more forgiving under vibration and thermal cycles. <strong>Epoxy potting</strong> is rigid, highly protective, and harder to repair once applied. In practice, many DIY builders use selective potting: protect vulnerable ESC sections and exposed solder regions, but keep serviceable components accessible.</p>
+
+        <p>Community caution: full hard-epoxy encapsulation can trap heat if your thermal path is poor. Potting without thermal planning can solve water ingress and create overheating.</p>
+
+        <h3>Conformal Coating</h3>
+
+        <p>Conformal coating (acrylic, silicone, or urethane variants) adds a moisture barrier to electronics. It's especially useful on receiver boards, interface boards, and exposed control PCBs. Apply thin, even coats on clean, dry boards, and mask connectors or test points you still need to access.</p>
+
+        <h3>Cable Glands and Pass-Throughs</h3>
+
+        <p>Every wire leaving a dry compartment is a leak opportunity. Use quality <strong>IP68 glands</strong> with proper cable OD match. A too-large gland around undersized cable is fake waterproofing. Use reducer inserts or the correct gland size instead of over-tightening and hoping.</p>
+
+        <ol class="step-list">
+            <li>Drill clean pass-through holes with enough edge distance for structural strength.</li>
+            <li>Deburr and seal exposed core material around hole edges.</li>
+            <li>Install gland with marine sealant at mounting interface if required.</li>
+            <li>Route cable with strain relief before final compression tightening.</li>
+            <li>Pressure and dunk test before final ride assembly.</li>
+        </ol>
+
+        <h3>Adhesive-Lined Heat Shrink</h3>
+
+        <p>Use marine-grade adhesive-lined heat shrink over every splice in wet-exposed zones. Standard heat shrink is mechanical insulation only; it does not stop capillary water ingress at wire strands. Adhesive-lined tubing plus proper overlap is dramatically better long-term.</p>
+
+        <h3>The Dry Side / Wet Side Principle</h3>
+
+        <div class="info-box">
+            <h4>🌊 Design Philosophy That Saves Builds</h4>
+            <p><strong>Dry side:</strong> battery, receiver, logic electronics, charge management, and primary control connections. Keep this side in sealed compartments above the waterline where possible.</p>
+            <p><strong>Wet side:</strong> anything below board level or exposed to spray/submersion (mast runs, motor phases, submerged junctions). Assume constant moisture and design accordingly.</p>
+            <p>Trying to pretend the wet side is dry is where long-term reliability goes to die.</p>
+        </div>
+
+        <h2>Part 6: Cable Routing & Best Practices</h2>
+
+        <h3>Keep High-Current Wires Short</h3>
+
+        <p>Short battery leads reduce voltage spike stress on ESC capacitors and improve efficiency. If your layout forces long battery-to-ESC runs, re-evaluate compartment placement before solving it with more copper.</p>
+
+        <h3>Separate Power and Signal Wiring</h3>
+
+        <p>Route high-current conductors away from receiver and throttle lines whenever possible. If crossing is necessary, cross at 90° and keep shared parallel runs short. This simple practice reduces electromagnetic interference and random throttle anomalies.</p>
+
+        <h3>Strain Relief Everywhere</h3>
+
+        <p>Vibration kills weak joints slowly. Add strain relief at:</p>
+        <ul style="padding-left: 1.5rem; margin: 1rem 0 1.5rem;">
+            <li style="margin-bottom: 0.5rem;">battery terminals</li>
+            <li style="margin-bottom: 0.5rem;">anti-spark connector tails</li>
+            <li style="margin-bottom: 0.5rem;">ESC leads</li>
+            <li style="margin-bottom: 0.5rem;">mast entry/exit points</li>
+            <li style="margin-bottom: 0.5rem;">receiver and signal harness connectors</li>
+        </ul>
+
+        <p>Use clamps, tie mounts, foam support, and service loops deliberately. A perfect solder joint with no strain relief is still a future failure.</p>
+
+        <h3>Conduit Through the Mast</h3>
+
+        <p>Where practical, route phase and signal lines through internal conduit or protected channels in the mast assembly. This improves abrasion resistance and simplifies maintenance. If your mast design lacks internal channels, external routing must be armored and sealed thoroughly at every transition.</p>
+
+        <h3>Thermal Management: Water Cooling vs Passive</h3>
+
+        <div class="comparison-grid">
+            <div class="option-card">
+                <h4>Passive Cooling</h4>
+                <div class="price">Simple + low parts count</div>
+                <ul>
+                    <li>Works for moderate current builds</li>
+                    <li>Fewer failure points</li>
+                    <li>Depends on ESC mounting and airflow/water contact</li>
+                    <li>Can thermal-limit on aggressive riders</li>
+                    <li><span class="badge badge-budget">Great for clean builds</span></li>
+                </ul>
+            </div>
+            <div class="option-card">
+                <h4>Water-Cooled ESC</h4>
+                <div class="price">Higher sustained performance</div>
+                <ul>
+                    <li>Better thermal headroom at high loads</li>
+                    <li>Useful for heavy riders and long hard sessions</li>
+                    <li>Adds plumbing and leak points</li>
+                    <li>Needs careful hose routing and pump reliability</li>
+                    <li><span class="badge badge-advanced">Best for high-power setups</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <p>Practical opinion: if your build objective is first-ride reliability, start passive and monitor temps. Add water cooling when data says you need it, not because it looks pro in photos.</p>
+
+        <h2>Part 7: Complete Wiring Setups by Budget</h2>
+
+        <p>These ranges are realistic for wiring and electronics integration hardware only (not battery cells, motor, or board).</p>
+
+        <div class="comparison-grid">
+            <div class="option-card">
+                <h4>💰 Budget Wiring Kit</h4>
+                <div class="price">$80–$150</div>
+                <ul>
+                    <li>XT90-S anti-spark plug system</li>
+                    <li>8 AWG + 10 AWG silicone wire mix</li>
+                    <li>Basic 5.5mm phase bullets</li>
+                    <li>Standard glands, limited potting</li>
+                    <li>No-frills signal harness</li>
+                    <li>Works if assembled carefully</li>
+                </ul>
+            </div>
+            <div class="option-card">
+                <h4>⚙️ Standard Wiring Kit</h4>
+                <div class="price">$150–$300</div>
+                <ul>
+                    <li>Quality XT90-S or entry anti-spark switch</li>
+                    <li>Premium silicone wire + labels</li>
+                    <li>ANL fuse holder + 100–150A fuse</li>
+                    <li>Better IP68 glands + strain relief hardware</li>
+                    <li>Magnetic leash kill switch integrated</li>
+                    <li><span class="badge badge-best">Best value reliability tier</span></li>
+                </ul>
+            </div>
+            <div class="option-card">
+                <h4>🏆 Premium Wiring Kit</h4>
+                <div class="price">$300–$500</div>
+                <ul>
+                    <li>Waterproof anti-spark switch assembly</li>
+                    <li>SubConn/wet-mate critical interfaces</li>
+                    <li>Water-cooled ESC plumbing support</li>
+                    <li>Comprehensive potting + conformal workflow</li>
+                    <li>High-end harness finishing and serviceability</li>
+                    <li><span class="badge badge-advanced">For heavy-use / pro-feel builds</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <p>If you only upgrade one thing from budget to standard, make it this combination: <strong>fuse + better glands + leash kill switch</strong>. That trio prevents a disproportionate number of expensive incidents.</p>
+
+        <h2>8 Common Wiring Mistakes (That Keep Reappearing)</h2>
+
+        <ul class="mistakes-list">
+            <li><strong>Reversed polarity on ESC input.</strong> This can destroy the ESC instantly. Always check connector orientation, wire color, and measured voltage polarity before final connection.</li>
+            <li><strong>No anti-spark protection.</strong> Raw plug-in sparks erode contacts, raise resistance, and eventually weld connectors. XT90-S minimum. Switch preferred if budget allows.</li>
+            <li><strong>Wire too thin on high-current paths.</strong> Heat, voltage sag, softened insulation, and fire risk. 8 AWG main line is normal for 80–120A builds.</li>
+            <li><strong>Poor waterproofing discipline.</strong> Corrosion starts quietly in connectors and joints, then causes intermittent faults and sudden cutouts weeks later.</li>
+            <li><strong>No strain relief.</strong> Vibration and rider impacts fatigue solder joints until they crack internally. It looks fine outside until it fails under load.</li>
+            <li><strong>Signal wiring routed with power bundles.</strong> EMI can introduce jitter, false inputs, and frustrating behavior that disappears on the bench.</li>
+            <li><strong>No fuse near battery positive.</strong> In a hard short, fault current escalates immediately. A proper fuse can be the difference between repair and total loss.</li>
+            <li><strong>First test at full power.</strong> Always bench-test low current first, then controlled water test with conservative limits. You are validating wiring, not setting speed records.</li>
+        </ul>
+
+        <h2>Final Build Sequence (Practical Order)</h2>
+
+        <p>If you're building from scratch and want the least painful workflow, this order works best:</p>
+
+        <ol class="step-list">
+            <li>Finalize component locations (battery, ESC, receiver, switch, charge port).</li>
+            <li>Measure and cut all cable runs with service loops before terminating.</li>
+            <li>Build and verify power circuit with fuse and anti-spark first.</li>
+            <li>Build signal circuit and confirm receiver/ESC communication.</li>
+            <li>Add kill switch logic and validate failsafe behavior repeatedly.</li>
+            <li>Seal penetrations and complete waterproofing layers.</li>
+            <li>Run low-power bench tests and thermal checks.</li>
+            <li>Do first water test with reduced current and controlled environment.</li>
+        </ol>
+
+        <p>Community truth: clean, boring wiring wins. Pretty cable braiding with hidden polarity mistakes does not.</p>
+
+        <!-- FAQ SECTION -->
+        <h2>Frequently Asked Questions</h2>
+
+        <h3>What wire gauge do I need for a DIY eFoil?</h3>
+        <p>For most 12S or 14S builds pulling 80–120A of propulsion current, use <strong>8 AWG silicone wire</strong> on your main battery-to-ESC run. This is the non-negotiable baseline for full-power builds. If your setup is lighter — say a lower-power drive system staying below 60A — 10 AWG can work for shorter runs with good thermal monitoring. For signal wiring, LED power, and kill switch loops, 14–16 AWG or purpose-made servo/JST leads are appropriate. The key variable is heat: if a wire feels warm after a session, that is resistance telling you to upsize.</p>
+
+        <h3>Do I need an anti-spark switch or connector?</h3>
+        <p>Yes. Every time. An eFoil ESC has large input capacitors that look like a dead short during the first milliseconds of connection. Without anti-spark handling, you get arcing at the connector interface, metal transfer, and pitting that compounds over every session. The XT90-S handles this with a built-in resistor that pre-charges the caps through a limited path before full current flows. If you want push-button convenience on the water, a marine-rated anti-spark switch (Flipsky, Trampa, or similar) is worth the upgrade cost on any build you plan to use regularly. Do not skip this to save $8.</p>
+
+        <h3>How do I waterproof eFoil electronics properly?</h3>
+        <p>There is no single product that waterproofs a build. It is a system: sealed compartments with IP68 cable glands at every penetration, conformal coating on control boards, adhesive-lined heat shrink over all splices in wet zones, proper potting or encapsulation of ESC sections exposed to splash, and the discipline to test by submersion before first water ride. The most common failure mode is not a missing product — it is an assumed seal that nobody verified. Make a waterproofing checklist, dunk-test the board in a bathtub with the hatch closed, and look for bubbles or rising water inside before trusting saltwater with your electronics.</p>
+
+        <h3>What happens if I wire the motor phases wrong?</h3>
+        <p>Nothing catastrophic. A 3-phase brushless motor will simply spin in the wrong direction if the phase order is reversed. The motor is not damaged. Swap any two of the three phase wires and test again. What you want to verify is both rotation direction (correct prop spin against water) and that the VESC or ESC motor detection has run cleanly on the actual phase connections. Skipping motor detection and running at full power with wrong settings can cause cogging, efficiency loss, or motor faults — but wrong phase order by itself is an easy swap, not a crisis.</p>
+
+        <h3>Can I use the same ESC for 12S and 14S batteries?</h3>
+        <p>Only if the ESC is rated for it. A 14S pack fully charged reaches 58.8V. You need an ESC with a voltage rating that comfortably clears that — typically rated for 60V or higher with margin. Many VESC-based controllers (Flipsky 75100, Trampa VESC 6+, FSESC series) can handle both voltage ranges on hardware, but you must update VESC Tool settings every time you change pack voltage: battery cutoff thresholds, current limits, and ERPM limits may all need adjustment. Running a 14S pack on an ESC configured for 12S can cause premature battery cutoffs or allow over-discharge. Always reconfigure before switching voltages.</p>
+
+        <h3>How do I wire a kill switch for my eFoil?</h3>
+        <p>The most reliable approach in the FOIL.zone community is a <strong>magnetic reed or Hall-effect leash switch</strong>. The switch body mounts on the board; a matching magnet clips to your leash or wrist strap. When the magnet is present, the switch output holds a defined state (typically closed or high). When you fall and the leash pulls the magnet away, the output changes state and the VESC failsafe responds with an immediate throttle cut. Wire the switch to a VESC digital input pin, configure the input mode in VESC Tool under "App Configuration → General," and set the action to "Kill" or "Safe Brake" as appropriate. Test the behavior on the bench by physically separating the magnet and verifying throttle cuts immediately before any water testing. Some builders additionally map a failsafe channel on their receiver so signal loss also cuts power — belt-and-suspenders approach for maximum safety.</p>
+
+        <h2>Continue Your Build</h2>
+
+        <p>This wiring guide is the bridge between the component guides. Use these next if you are still choosing hardware:</p>
+
+        <div class="cross-links">
+            <a href="/blog-efoil-battery-guide.html" class="cross-link">
+                <span class="emoji">🔋</span>
+                <span class="title">Battery Guide</span>
+                <span class="desc">Cell chemistry, 12S vs 14S, BMS options, charge logic, and pack safety fundamentals.</span>
+            </a>
+            <a href="/blog-efoil-motor-guide.html" class="cross-link">
+                <span class="emoji">⚡</span>
+                <span class="title">Motor Guide</span>
+                <span class="desc">Inrunner/outunner tradeoffs, ESC sizing, prop pairing, and drivetrain efficiency.</span>
+            </a>
+            <a href="/blog-efoil-board-foil-guide.html" class="cross-link">
+                <span class="emoji">🏄</span>
+                <span class="title">Board & Foil Guide</span>
+                <span class="desc">Board volume, foil geometry, mounting systems, and setup choices by rider profile.</span>
+            </a>
+            <a href="/blog-diy-efoil-guide.html" class="cross-link">
+                <span class="emoji">🔧</span>
+                <span class="title">Complete Build Guide</span>
+                <span class="desc">The full DIY roadmap: parts, budget, tools, and step-by-step assembly from zero.</span>
+            </a>
+            <a href="/efoil-range-calculator.html" class="cross-link">
+                <span class="emoji">📊</span>
+                <span class="title">Range Calculator</span>
+                <span class="desc">Estimate runtime and range from battery size, rider weight, and riding style.</span>
+            </a>
+            <a href="https://foil.zone" class="cross-link">
+                <span class="emoji">🌊</span>
+                <span class="title">FOIL.zone</span>
+                <span class="desc">Join the builders. Thousands of real-world wiring solutions, fixes, and test reports.</span>
+            </a>
+        </div>
+    </article>
+
+    <footer>
+        <p>© 2016–2026 PacificMeister. Open source, always.</p>
+        <ul class="footer-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/blog.html">Blog</a></li>
+            <li><a href="https://github.com/pacificmeister" target="_blank">GitHub</a></li>
+            <li><a href="https://www.youtube.com/@PacificMeister" target="_blank">YouTube</a></li>
+            <li><a href="https://foil.zone" target="_blank">FOIL.zone</a></li>
+        </ul>
+    </footer>
+</body>
+</html>
