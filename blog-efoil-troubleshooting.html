@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIY eFoil Troubleshooting Guide: Fix Every Common Problem (2026) — PacificMeister</title>
+    <meta name="description" content="Fix your DIY eFoil: motor won't start, cutouts while riding, VESC faults, overheating, water ingress, throttle issues, and more. Diagnosis flowcharts and proven fixes from the FOIL.zone community.">
+    <meta name="keywords" content="efoil troubleshooting, efoil motor won't start, efoil cuts out, VESC fault codes, efoil overheating, efoil water damage, DIY efoil problems, efoil throttle issues, efoil not working, PacificMeister, FOIL.zone">
+    <link rel="canonical" href="https://pacificmeister.github.io/blog-efoil-troubleshooting.html">
+
+    <meta property="og:title" content="DIY eFoil Troubleshooting Guide: Fix Every Common Problem (2026)">
+    <meta property="og:description" content="Your eFoil stopped working. Here's how to fix it. Motor, battery, ESC, throttle, and waterproofing diagnosis from thousands of real-world FOIL.zone builds.">
+    <meta property="og:url" content="https://pacificmeister.github.io/blog-efoil-troubleshooting.html">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://pacificmeister.github.io/og-image.png">
+    <meta property="og:site_name" content="PacificMeister">
+    <meta property="article:published_time" content="2026-03-20">
+    <meta property="article:author" content="PacificMeister">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="DIY eFoil Troubleshooting Guide: Fix Every Common Problem (2026)">
+    <meta name="twitter:description" content="Motor won't spin? Random cutouts? VESC throwing faults? Systematic diagnosis and fixes from the world's largest DIY eFoil community.">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "DIY eFoil Troubleshooting Guide: Fix Every Common Problem (2026)",
+        "datePublished": "2026-03-20",
+        "dateModified": "2026-03-20",
+        "author": {
+            "@type": "Person",
+            "name": "PacificMeister",
+            "url": "https://pacificmeister.github.io"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "PacificMeister",
+            "url": "https://pacificmeister.github.io"
+        },
+        "description": "Comprehensive DIY eFoil troubleshooting guide covering motor failures, ESC faults, battery issues, throttle problems, water ingress, overheating, and performance degradation. Proven fixes from the FOIL.zone community.",
+        "mainEntityOfPage": "https://pacificmeister.github.io/blog-efoil-troubleshooting.html"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Why won't my DIY eFoil motor start?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The most common causes are: ESC not detecting motor (run motor detection in VESC Tool), loose or corroded phase wire connections, receiver not binding to transmitter, anti-spark switch not fully engaged, or battery voltage below ESC cutoff threshold. Start diagnosis at the battery and work forward: verify voltage at the ESC input terminals, then check receiver binding, then phase connections. If the ESC powers on but the motor doesn't spin, motor detection is the most likely fix."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why does my eFoil cut out while riding?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Mid-ride cutouts are usually caused by: battery voltage sag under load (weak cells or undersized pack), loose connections that vibrate apart, overheating ESC or motor triggering thermal protection, water ingress causing intermittent shorts, or BMS overcurrent protection tripping. Check VESC fault logs first — they record exactly what triggered the cutout. The most common culprit in community builds is a loose bullet connector on a phase wire that makes intermittent contact under vibration."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What do VESC fault codes mean on an eFoil?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Common VESC faults in eFoil use: FAULT_CODE_ABS_OVER_CURRENT means instantaneous current exceeded the absolute maximum (usually a short circuit or loose phase wire). FAULT_CODE_OVER_TEMP_FET means the ESC MOSFETs overheated (improve cooling or reduce current limits). FAULT_CODE_OVER_TEMP_MOTOR means the motor temperature sensor hit the limit. FAULT_CODE_DRV means a gate driver error, often from water ingress or a failing FET. Check the fault log in VESC Tool under Terminal with the command 'faults' to see the history."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do I fix water damage on eFoil electronics?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Immediately disconnect the battery. Rinse all electronics with fresh water (especially if saltwater). Dry thoroughly with compressed air, then place in a warm, dry area or use silica gel packets for 24-48 hours. Inspect all PCBs under magnification for corrosion, green deposits, or bridged traces. Clean with isopropyl alcohol (99%) and a soft brush. Reapply conformal coating after cleaning. If a component shows visible burn marks or corrosion on IC legs, replacement is safer than repair. Prevention is always cheaper: improve sealing before the next ride."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why is my eFoil slower than it used to be?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Gradual performance loss usually comes from: battery degradation (reduced capacity and higher internal resistance over charge cycles), propeller damage (nicks, chips, or bent blades reduce thrust efficiency significantly), fouling on the foil or prop (algae, barnacles), water ingress adding weight to the board, or motor bearing wear increasing drag. Check battery voltage under load compared to when it was new — significant sag indicates cell degradation. Inspect the prop carefully; even small chips cause measurable thrust loss."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "My eFoil battery won't charge — what's wrong?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Common causes: BMS has locked out due to a cell imbalance or undervoltage condition, charge port wiring issue, charger voltage mismatch, or one or more dead cells in the pack. First, measure the total pack voltage at the charge port — if it's significantly below nominal (e.g., below 36V on a 12S pack), a cell group may have gone to zero. Check individual cell group voltages through the BMS balance leads. If one group is drastically lower, that group has failed cells. A locked BMS can sometimes be reset by briefly applying the correct charge voltage, but a pack with dead cells needs cell-level repair or replacement."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --ocean-deep: #0a1628;
+            --ocean-mid: #0f2847;
+            --ocean-light: #1a4a7a;
+            --foam: #e8f4f8;
+            --white: #ffffff;
+            --accent: #00d4aa;
+            --accent-glow: #00ffcc;
+            --text: #c8dae8;
+            --text-bright: #f0f6fc;
+            --warning: #ff6b35;
+            --danger: #ff4444;
+            --success: #00d4aa;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: var(--ocean-deep);
+            color: var(--text);
+            line-height: 1.8;
+        }
+
+        .ocean-bg {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(180deg, #0a1628 0%, #0c1e3a 30%, #0f2847 50%, #0a1628 100%);
+            z-index: -2;
+        }
+
+        header {
+            padding: 2rem 2rem 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+        }
+        .logo span { color: var(--accent); }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--accent); }
+
+        article {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem 4rem;
+        }
+
+        .article-meta {
+            font-size: 0.85rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--white);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-intro {
+            font-size: 1.15rem;
+            color: var(--text);
+            line-height: 1.9;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        h2 {
+            font-size: 1.7rem;
+            color: var(--white);
+            font-weight: 700;
+            margin: 3rem 0 1.2rem;
+            padding-top: 1rem;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            color: var(--text-bright);
+            font-weight: 600;
+            margin: 2rem 0 0.8rem;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            color: var(--text);
+        }
+
+        strong { color: var(--text-bright); }
+
+        ul, ol {
+            margin: 0.8rem 0 1.5rem 1.4rem;
+            color: var(--text);
+        }
+        li { margin-bottom: 0.4rem; }
+
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .info-box {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(0, 212, 170, 0.08), rgba(0, 212, 170, 0.03));
+            border: 1px solid rgba(0, 212, 170, 0.2);
+            border-radius: 12px;
+            margin: 1.5rem 0;
+        }
+
+        .info-box h4 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .warning-box {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.08), rgba(255, 107, 53, 0.03));
+            border: 1px solid rgba(255, 107, 53, 0.25);
+            border-radius: 12px;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box h4 {
+            color: var(--warning);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .danger-box {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(255, 68, 68, 0.08), rgba(255, 68, 68, 0.03));
+            border: 1px solid rgba(255, 68, 68, 0.25);
+            border-radius: 12px;
+            margin: 1.5rem 0;
+        }
+
+        .danger-box h4 {
+            color: var(--danger);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Symptom cards for troubleshooting */
+        .symptom-card {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(15, 40, 71, 0.8), rgba(10, 22, 40, 0.9));
+            border: 1px solid rgba(0, 212, 170, 0.12);
+            border-radius: 12px;
+            margin: 1.5rem 0;
+        }
+
+        .symptom-card .symptom-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .symptom-card .symptom-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .symptom-card .symptom-title {
+            color: var(--white);
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .symptom-card .severity {
+            display: inline-block;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-left: 0.5rem;
+        }
+
+        .severity-high { background: rgba(255, 68, 68, 0.2); color: var(--danger); }
+        .severity-medium { background: rgba(255, 107, 53, 0.2); color: var(--warning); }
+        .severity-low { background: rgba(0, 212, 170, 0.2); color: var(--accent); }
+
+        .diagnosis-steps {
+            list-style: none;
+            padding: 0;
+            margin: 0.8rem 0;
+            counter-reset: diag;
+        }
+
+        .diagnosis-steps li {
+            counter-increment: diag;
+            padding: 0.6rem 0.8rem 0.6rem 2.8rem;
+            margin-bottom: 0.5rem;
+            background: rgba(0, 212, 170, 0.04);
+            border-radius: 8px;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .diagnosis-steps li::before {
+            content: counter(diag);
+            position: absolute;
+            left: 0.7rem;
+            top: 0.6rem;
+            width: 1.5rem;
+            height: 1.5rem;
+            background: rgba(0, 212, 170, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 0.75rem;
+        }
+
+        /* Quick-jump TOC */
+        .toc {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(15, 40, 71, 0.6), rgba(10, 22, 40, 0.7));
+            border: 1px solid rgba(0, 212, 170, 0.1);
+            border-radius: 12px;
+            margin: 1.5rem 0 2.5rem;
+        }
+
+        .toc h4 {
+            color: var(--accent);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.8rem;
+        }
+
+        .toc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.4rem 1.5rem;
+        }
+
+        .toc-grid a {
+            color: var(--text);
+            font-size: 0.9rem;
+            padding: 0.3rem 0;
+            display: block;
+        }
+        .toc-grid a:hover { color: var(--accent); text-decoration: none; }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.2rem;
+            margin: 1.5rem 0;
+        }
+
+        .option-card {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(15, 40, 71, 0.8), rgba(10, 22, 40, 0.9));
+            border: 1px solid rgba(0, 212, 170, 0.12);
+            border-radius: 12px;
+        }
+
+        .option-card h4 {
+            color: var(--white);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .option-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .option-card li {
+            padding: 0.25rem 0;
+            font-size: 0.9rem;
+            color: var(--text);
+            margin: 0;
+        }
+
+        .option-card li::before {
+            content: '→ ';
+            color: var(--accent);
+        }
+
+        .fault-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        .fault-table th {
+            background: rgba(0, 212, 170, 0.1);
+            color: var(--accent);
+            padding: 0.8rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .fault-table td {
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            color: var(--text);
+        }
+
+        .fault-table tr:hover td {
+            background: rgba(0, 212, 170, 0.03);
+        }
+
+        .fault-table code {
+            background: rgba(0, 212, 170, 0.1);
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.82rem;
+            color: var(--accent);
+        }
+
+        .cross-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .cross-link {
+            display: block;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, rgba(15, 40, 71, 0.8), rgba(10, 22, 40, 0.9));
+            border: 1px solid rgba(0, 212, 170, 0.12);
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .cross-link:hover {
+            border-color: rgba(0, 212, 170, 0.35);
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+
+        .cross-link .emoji { font-size: 1.5rem; margin-bottom: 0.4rem; display: block; }
+        .cross-link .title { color: var(--white); font-weight: 600; display: block; margin-bottom: 0.3rem; }
+        .cross-link .desc { color: var(--text); font-size: 0.85rem; }
+
+        footer {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        footer p { color: rgba(200, 218, 232, 0.5); font-size: 0.85rem; }
+        .footer-links { display: flex; gap: 1.5rem; list-style: none; }
+        .footer-links a { color: rgba(200, 218, 232, 0.5); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--accent); }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.4rem; }
+            article { padding: 2rem 1.2rem; }
+            .toc-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            footer { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="ocean-bg"></div>
+
+    <header>
+        <nav>
+            <a class="logo" href="/">Pacific<span>Meister</span></a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/blog.html">Blog</a></li>
+                <li><a href="https://foil.zone" target="_blank">FOIL.zone</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <article>
+        <div class="article-meta">Troubleshooting &amp; Repair · March 20, 2026</div>
+
+        <h1>DIY eFoil Troubleshooting Guide: Fix Every Common Problem</h1>
+
+        <div class="article-intro">
+            <p>Your eFoil worked yesterday. Now it doesn't. Or it works, but something is wrong — cutouts mid-ride, weird noises, throttle lag, declining range. This guide is distilled from thousands of troubleshooting threads on <a href="https://foil.zone" target="_blank">FOIL.zone</a> where builders have diagnosed and fixed every failure mode you're likely to encounter.</p>
+            <p>We've organized this by <strong>symptom</strong> — what you're experiencing — not by component. Because when your board stops working on the beach, you don't think "I have a MOSFET problem." You think "it won't turn on." Start with your symptom, follow the diagnosis steps, and work toward the fix.</p>
+        </div>
+
+        <!-- TABLE OF CONTENTS -->
+        <div class="toc">
+            <h4>🔍 Jump to Your Problem</h4>
+            <div class="toc-grid">
+                <a href="#wont-turn-on">Board won't power on</a>
+                <a href="#motor-wont-spin">Motor won't spin</a>
+                <a href="#cutouts">Random cutouts while riding</a>
+                <a href="#overheating">Overheating (ESC or motor)</a>
+                <a href="#throttle">Throttle problems</a>
+                <a href="#battery-issues">Battery won't charge / low range</a>
+                <a href="#water-ingress">Water ingress / corrosion</a>
+                <a href="#noise">Unusual sounds or vibration</a>
+                <a href="#slow">Slower than expected</a>
+                <a href="#vesc-faults">VESC fault code reference</a>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h4>Before You Start: The Universal First Check</h4>
+            <p>Before diving into specific symptoms, always do these three things: <strong>(1)</strong> Measure battery voltage at the ESC input terminals with a multimeter — this eliminates 40% of all problems immediately. <strong>(2)</strong> If you have a VESC, connect via USB and check the fault log (Terminal → type <code>faults</code>). <strong>(3)</strong> Visually inspect all connectors for corrosion, discoloration, or looseness. Most eFoil failures are connection failures.</p>
+        </div>
+
+        <!-- SYMPTOM 1: WON'T TURN ON -->
+        <h2 id="wont-turn-on">Board Won't Power On</h2>
+
+        <p>You press the switch and nothing happens. No lights on the ESC, no beep, no response. This is almost always a power delivery problem — something between the battery and the ESC is broken.</p>
+
+        <div class="symptom-card">
+            <div class="symptom-header">
+                <span class="symptom-icon">🔌</span>
+                <span class="symptom-title">No power at all — completely dead</span>
+                <span class="severity severity-medium">Common</span>
+            </div>
+            <ol class="diagnosis-steps">
+                <li><strong>Check the anti-spark switch.</strong> If you have a physical switch (Flipsky, Trampa), is it fully engaged? Some switches have a lock position. Try cycling it off and on. If it's an XT90-S connector, make sure it's fully seated — partial insertion only engages the pre-charge resistor.</li>
+                <li><strong>Measure battery voltage at the connector.</strong> Disconnect the ESC side and measure directly at the battery output. If you read 0V or significantly below nominal (e.g., below 36V on a 12S), the BMS has locked out or a cell group has died.</li>
+                <li><strong>Check the fuse.</strong> If your build has an inline fuse (it should), inspect or test it with a multimeter in continuity mode. Blown fuses are invisible from the outside on many automotive-style fuses.</li>
+                <li><strong>Inspect all connectors in the power path.</strong> Corrosion, melted plastic, blackened contacts, or green deposits on bullet connectors all indicate a failed connection that may have opened the circuit entirely.</li>
+                <li><strong>Bypass the switch temporarily.</strong> If you suspect the anti-spark switch has failed, carefully connect the battery directly to the ESC through an XT90-S (for anti-spark protection). If the ESC powers on, the switch is the problem.</li>
+            </ol>
+        </div>
+
+        <div class="symptom-card">
+            <div class="symptom-header">
+                <span class="symptom-icon">💡</span>
+                <span class="symptom-title">ESC lights up but shuts off after a few seconds</span>
+                <span class="severity severity-medium">Common</span>
+            </div>
+            <ol class="diagnosis-steps">
+                <li><strong>Battery voltage too low.</strong> The ESC powers on using residual capacitor charge, detects undervoltage on the actual battery, and shuts down. Measure pack voltage — if it's below the ESC's configured cutoff start voltage, you need to charge the battery first.</li>
+                <li><strong>BMS is tripping under load.</strong> Even the small load of the ESC powering on can trip a BMS that has a cell group near its low-voltage cutoff. Check individual cell group voltages through the balance connector.</li>
+                <li><strong>Loose connection causing voltage drop.</strong> A high-resistance connection can supply enough current for initial capacitor charge but sag below cutoff under sustained draw. Wiggle connectors while watching ESC status lights.</li>
+            </ol>
+        </div>
+
+        <!-- SYMPTOM 2: MOTOR WON'T SPIN -->
+        <h2 id="motor-wont-spin">Motor Won't Spin</h2>
+
+        <p>The ESC powers on — you see lights, maybe hear a startup tone — but the motor doesn't respond to throttle input. The power path is working; the problem is in the signal path or motor configuration.</p>
+
+        <div class="symptom-card">
+            <div class="symptom-header">
+                <span class="symptom-icon">⚙️</span>
+                <span class="symptom-title">ESC on, throttle does nothing</span>
+                <span class="severity severity-high">Very common</span>
+            </div>
+            <ol class="diagnosis-steps">
+                <li><strong>Check receiver binding.</strong> Is the receiver LED showing bound status (usually solid)? If it's flashing, the receiver has lost its pairing with the transmitter. Re-bind according to your specific receiver's procedure.</li>
+                <li><strong>Verify the transmitter is on and charged.</strong> Dead remote battery is embarrassing but accounts for a surprising number of "motor won't work" reports.</li>
+                <li><strong>Run motor detection (VESC).</strong> Connect via USB/Bluetooth, open VESC Tool, go to Motor Settings → FOC → Motor Detection. If detection fails, you likely have a phase wire issue (open connection, short between phases, or water damage to motor windings).</li>
+                <li><strong>Check PPM/UART signal.</strong> In VESC Tool, go to App Settings → PPM and watch the "Decoded" value while moving the throttle. If it doesn't change, the signal wire between receiver and ESC is the problem — check the cable, connector, and pin assignment.</li>
+                <li><strong>Verify app configuration.</strong> In VESC Tool, make sure the correct app is selected (PPM for most remotes, UART for some smart remotes) and that it's configured on the right port. A factory-reset VESC has no app configured — you must set this up.</li>
+            </ol>
+        </div>
+
+        <div class="symptom-card">
+            <div class="symptom-header">
+                <span class="symptom-icon">🔄</span>
+                <span class="symptom-title">Motor twitches or stutters but won't spin smoothly</span>
+                <span class="severity severity-medium">Common</span>
+            </div>
+            <ol class="diagnosis-steps">
+                <li><strong>Motor detection was not run or failed.</strong> The VESC needs accurate motor parameters (flux linkage, resistance, inductance) to drive the motor correctly. Re-run motor detection with the prop off and the motor free to spin.</li>
+                <li><strong>One phase wire is disconnected or has high resistance.</strong> With only two of three phases connected, the motor will cog and vibrate but not spin. Check all three phase wire connections at both the ESC and motor ends.</li>
+                <li><strong>Hall sensor issue (if applicable).</strong> If using sensored mode, a failed Hall sensor causes the motor to stutter at low speed. Switch to sensorless mode in VESC Tool as a test — if the motor runs smoothly at higher RPM, the Hall sensor or its wiring is the problem.</li>
+                <li><strong>Current limits set too low.</strong> If motor current is set below what's needed to overcome static friction and water resistance, the motor will try but fail to spin under load. Check VESC Tool motor current limits — most eFoil motors need at least 40-60A motor current to start reliably.</li>
+            </ol>
+        </div>
+
+        <!-- SYMPTOM 3: CUTOUTS -->
+        <h2 id="cutouts">Random Cutouts While Riding</h2>
+
+        <p>This is the single most reported problem in the DIY eFoil community. The board works, you're riding, and then — nothing. Power cuts for a moment or completely. You drop off the foil. It might come back seconds later, or you might have to swim in. The causes are varied, but the diagnosis is systematic.</p>
+
+        <div class="danger-box">
+            <h4>⚠️ Safety First</h4>
+            <p>Cutouts while foiling can cause sudden falls at speed. If you're experiencing cutouts, <strong>do not ride far from shore</strong> until the problem is resolved. Always wear a PFD, use a kill switch leash, and ride with a buddy when troubleshooting a flaky board.</p>
+        </div>
+
+        <div class="symptom-card">
+            <div class="symptom-header">
+                <span class="symptom-icon">⚡</span>
+                <span class="symptom-title">Complete power loss, comes back after a pause</span>
+                <span class="severity severity-high">Dangerous</span>
+            </div>
+            <ol class="diagnosis-steps">
+                <li><strong>Check VESC fault log.</strong> This is step one, every time. Connect VESC Tool, open Terminal, type <code>faults</code>. The fault code tells you exactly what happened. Skip this step and you're guessing.</li>
+                <li><strong>Loose phase wire connection.</strong> The #1 cause of intermittent cutouts. Vibration from riding loosens bullet connectors, especially if they weren't crimped tightly or if corrosion has started. With the board open, tug-test every phase connection firmly. If any connector moves at all, that's your problem.</li>
+                <li><strong>BMS overcurrent protection.</strong> Many BMS units have a continuous discharge limit lower than peak motor draw. Aggressive acceleration can trip the BMS, which disconnects the battery for a few seconds before resetting. Check your BMS discharge rating versus your actual peak current draw. If they're close, the BMS is the limiter.</li>
+                <li><strong>Battery voltage sag.</strong> Under heavy load, a battery with degraded cells or insufficient capacity sags below the ESC's cutoff voltage. The ESC cuts power to protect the cells, then voltage recovers when load is removed. Check voltage under load — not just resting voltage.</li>
+                <li><strong>Water in the ESC compartment.</strong> Even a few drops on the wrong place can cause a momentary short that triggers a fault. Open the board after a session and look for moisture, water trails, or condensation on electronics.</li>
+            </ol>
+        </div>
+
+        <div class="symptom-card">
+            <div class="symptom-header">
+                <span class="symptom-icon">📡</span>
+                <span class="symptom-title">Momentary throttle dropouts (motor hiccups)</span>
+                <span class="severity severity-medium">Common</span>
+            </div>
+            <ol class="diagnosis-steps">
+                <li><strong>Radio interference / signal loss.</strong> The receiver antenna position matters enormously. If the antenna is coiled up inside the board near the motor wires or ESC, EMI from the high-current switching can cause momentary signal dropouts. Route the antenna to a window in the board shell, away from power electronics.</li>
+                <li><strong>PPM signal noise.</strong> In VESC Tool, check PPM input with the app wizard — look for jittery or noisy decoded values. Add a ferrite bead on the signal wire near the ESC if noise is present. Some builders route signal wires on the opposite side of the board from power wires.</li>
+                <li><strong>Failsafe triggering.</strong> If the VESC's failsafe is configured to cut throttle on signal loss, even a momentary dropout triggers a brief power cut. Make sure failsafe is set to "current off" rather than "brake" to avoid sudden deceleration.</li>
+                <li><strong>Transmitter low battery.</strong> As the remote battery drops, transmit power decreases and signal integrity degrades. Charge the remote before every session.</li>
+            </ol>
+        </div>
+
+        <!-- SYMPTOM 4: OVERHEATING -->
+        <h2 id="overheating">Overheating (ESC or Motor)</h2>
+
+        <p>Thermal issues show up as reduced power (thermal throttling), fault codes (OVER_TEMP_FET, OVER_TEMP_MOTOR), or in severe cases, component failure. Water-cooled builds handle heat well. Air-cooled builds in sealed compartments need careful thermal planning.</p>
+
+        <div class="symptom-card">
+            <div class="symptom-header">
+                <span class="symptom-icon">🌡️</span>
+                <span class="symptom-title">ESC overheating / thermal throttling</span>
+                <span class="severity severity-medium">Common in sealed builds</span>
+            </div>
+            <ol class="diagnosis-steps">
+                <li><strong>Check if water cooling is flowing.</strong> If you have a water-cooled ESC, verify the water intake isn't blocked (debris, prop wash not reaching intake). Run on land briefly and check if the cooling loop has flow by feeling the output hose.</li>
+                <li><strong>Reduce motor current limits.</strong> If the ESC is air-cooled and overheating on long rides, reduce motor max current by 10-15% in VESC Tool. You'll lose some top speed and acceleration but the ESC will survive to ride again.</li>
+                <li><strong>Add thermal padding to the enclosure.</strong> Contact between the ESC heatsink and an aluminum plate (or the board shell itself if it's aluminum) provides passive heat sinking. Thermal pads from laptop repair kits work well.</li>
+                <li><strong>Check motor timing and detection values.</strong> Incorrect motor parameters make the ESC work harder to drive the motor, generating excess heat. Re-run motor detection and compare parameters to known-good values from other builders with the same motor on <a href="https://foil.zone" target="_blank">FOIL.zone</a>.</li>
+            </ol>
+        </div>
+
+        <div class="symptom-card">
+            <div class="symptom-header">
+                <span class="symptom-icon">🔥</span>
+                <span class="symptom-title">Motor running excessively hot</span>
+                <span class="severity severity-medium">Common</span>
+            </div>
+            <ol class="diagnosis-steps">
+                <li><strong>Check prop pitch and diameter.</strong> An oversized or steep-pitch prop loads the motor beyond its efficiency sweet spot, turning excess energy into heat. Compare your prop specs to what others use with the same motor on FOIL.zone.</li>
+                <li><strong>Water ingress into motor can.</strong> If water gets past the shaft seal and sits against the stator, it accelerates heating and corrosion. After a session, spin the motor by hand — grinding or resistance that wasn't there before suggests water or corrosion inside.</li>
+                <li><strong>Bearing failure.</strong> A seized or rough bearing adds constant drag. Spin the motor shaft by hand — it should spin freely with a slight magnetic cogging. If it feels gritty, tight, or rough, the bearings need replacement.</li>
+                <li><strong>Sustained high-current riding style.</strong> Continuous full-throttle riding generates the most heat. If thermal issues only appear during aggressive riding, consider a larger motor, better cooling, or adjusting riding style to include glide phases.</li>
+            </ol>
+        </div>
+
+        <!-- SYMPTOM 5: THROTTLE -->
+        <h2 id="throttle">Throttle Problems</h2>
+
+        <p>The motor spins, but the throttle response is wrong — delayed, jumpy, doesn't reach full power, or sticks at a certain level.</p>
+
+        <div class="symptom-card">
+            <div class="symptom-header">
+                <span class="symptom-icon">🎮</span>
+                <span class="symptom-title">Throttle lag or delayed response</span>
+                <span class="severity severity-low">Annoying</span>
+            </div>
+            <ol class="diagnosis-steps">
+                <li><strong>Check ramping settings in VESC Tool.</strong> Acceleration and deceleration ramp rates control how fast the motor responds to throttle changes. If ramp-up time is set too high (e.g., 5+ seconds), throttle feels sluggish. Reduce to 0.5-1.5 seconds for responsive riding, but don't go to zero — some ramping prevents jerky behavior.</li>
+                <li><strong>PPM median filter too aggressive.</strong> In VESC Tool PPM settings, a high median filter value smooths out noise but adds latency. Try reducing the filter or adding hardware filtering (ferrite bead) instead.</li>
+                <li><strong>Receiver to ESC communication delay.</strong> Some receivers add processing delay. If using UART-based remotes, check baud rate settings match between remote and VESC. PPM is simpler and lower latency for most setups.</li>
+            </ol>
+        </div>
+
+        <div class="symptom-card">
+            <div class="symptom-header">
+                <span class="symptom-icon">📊</span>
+                <span class="symptom-title">Throttle doesn't reach full power / limited range</span>
+                <span class="severity severity-low">Configuration</span>
+            </div>
+            <ol class="diagnosis-steps">
+                <li><strong>PPM calibration is off.</strong> Open VESC Tool → App Settings → PPM Mapping. With the transmitter at minimum, note the decoded value. At maximum, note the decoded value. Set these as your PPM start and end values. If the range is narrow, you're only using a portion of the available throttle throw.</li>
+                <li><strong>Current limits are the bottleneck.</strong> Check motor max current and battery max current in VESC Tool. If battery max current is set low (e.g., 30A on a setup that could deliver 80A), the motor will feel weak at full throttle. Increase in small steps, monitoring temperatures.</li>
+                <li><strong>Battery voltage sag at load.</strong> A weak battery that sags heavily under load triggers the ESC's voltage cutoff ramping, which progressively limits power before the hard cutoff. This feels like "the board won't go faster." Check voltage under load, not resting.</li>
+            </ol>
+        </div>
+
+        <!-- SYMPTOM 6: BATTERY -->
+        <h2 id="battery-issues">Battery Won't Charge / Low Range</h2>
+
+        <p>Battery problems are either acute (won't charge, BMS locked out) or gradual (range declining over weeks/months). The approach is different for each.</p>
+
+        <div class="warning-box">
+            <h4>Battery Safety</h4>
+            <p>Before working on battery packs: disconnect everything, use insulated tools, work on a non-conductive surface, and keep a fire extinguisher (Class D or sand/vermiculite) accessible. Never short-circuit cells, even accidentally. If a cell or pack is physically swollen, treat it as damaged — do not charge or use it.</p>
+        </div>
+
+        <div class="symptom-card">
+            <div class="symptom-header">
+                <span class="symptom-icon">🔋</span>
+                <span class="symptom-title">Battery won't charge</span>
+                <span class="severity severity-high">Needs immediate attention</span>
+            </div>
+            <ol class="diagnosis-steps">
+                <li><strong>Check charger LED status.</strong> Most eFoil chargers show red (charging) and green (full or error). If the charger shows green immediately on connection, it either thinks the pack is full (measure pack voltage) or it's not making connection (check charge port wiring).</li>
+                <li><strong>Measure pack voltage at the charge port.</strong> If it's near full voltage, the pack may actually be charged. If it's near zero or very low, the BMS may have locked out to protect a deeply discharged cell group.</li>
+                <li><strong>Check individual cell group voltages.</strong> Use the balance connector to measure each cell group. If one group is significantly lower than the others (e.g., 2.5V when others are 3.5V), that group has weak or dead cells. A BMS with hard undervoltage lockout won't allow charging until the problem cell is addressed.</li>
+                <li><strong>Verify charger voltage matches pack configuration.</strong> A 12S charger won't charge a 14S pack, and vice versa. The charger's output voltage must match your pack's full charge voltage (50.4V for 12S, 58.8V for 14S).</li>
+                <li><strong>Test with a different charger if available.</strong> Charger failure is less common than BMS issues but does happen, especially with budget chargers that see salt air exposure.</li>
+            </ol>
+        </div>
+
+        <div class="symptom-card">
+            <div class="symptom-header">
+                <span class="symptom-icon">📉</span>
+                <span class="symptom-title">Range declining over time</span>
+                <span class="severity severity-low">Gradual</span>
+            </div>
+            <ol class="diagnosis-steps">
+                <li><strong>Check cell balance.</strong> Over many cycles, cells drift out of balance. An unbalanced pack's usable capacity is limited by the weakest group. If your BMS has passive balancing, let the pack sit on the charger for several extra hours after reaching "full" — passive balancing is slow.</li>
+                <li><strong>Measure capacity with a cycle test.</strong> Charge fully, discharge at moderate current (not full riding power) while logging energy delivered. Compare to the pack's rated capacity. If you're below 80% of original, the cells are aging and the pack may need replacement or cell swaps.</li>
+                <li><strong>Check for parasitic draw.</strong> If the board loses charge sitting unused, something is drawing current when it shouldn't be. Disconnect the battery, measure voltage, reconnect after 48 hours and measure again. If voltage dropped, trace the draw to the ESC, BMS, or receiver staying powered.</li>
+                <li><strong>Consider environmental factors.</strong> Cold water significantly reduces lithium cell performance and capacity. If your range dropped when riding conditions changed (summer to winter, tropical to cold water), temperature is likely the primary factor.</li>
+            </ol>
+        </div>
+
+        <!-- SYMPTOM 7: WATER INGRESS -->
+        <h2 id="water-ingress">Water Ingress and Corrosion</h2>
+
+        <p>The ocean is trying to destroy your electronics. It's patient, it's persistent, and it always wins eventually if you let your guard down. Detecting water ingress early is the difference between a cleanup and a rebuild.</p>
+
+        <div class="symptom-card">
+            <div class="symptom-header">
+                <span class="symptom-icon">💧</span>
+                <span class="symptom-title">Signs of water ingress</span>
+                <span class="severity severity-high">Act immediately</span>
+            </div>
+            <p>You may not see water pooling inside the board. Look for these early indicators:</p>
+            <ul>
+                <li><strong>Intermittent electrical behavior</strong> that changes with board orientation (water pooling on different components as the board tilts)</li>
+                <li><strong>White or green crystalline deposits</strong> on connectors, solder joints, or PCB surfaces — this is salt corrosion</li>
+                <li><strong>Fog or condensation</strong> on the inside of the hatch lid or any transparent windows</li>
+                <li><strong>Weight gain</strong> — weigh your board dry. If it gains 100g+ over sessions without adding hardware, water is accumulating somewhere</li>
+                <li><strong>Faint electrical smell</strong> when opening the hatch — ozone or burning indicates arcing on wet surfaces</li>
+            </ul>
+        </div>
+
+        <div class="symptom-card">
+            <div class="symptom-header">
+                <span class="symptom-icon">🛠️</span>
+                <span class="symptom-title">Water damage recovery procedure</span>
+                <span class="severity severity-high">Time-critical</span>
+            </div>
+            <ol class="diagnosis-steps">
+                <li><strong>Disconnect battery immediately.</strong> Do not power on the board. Do not "check if it still works." Disconnect the main battery connector as the very first action.</li>
+                <li><strong>Rinse with fresh water.</strong> Counterintuitive, but fresh water displaces salt water. Gently rinse all affected electronics with distilled or clean fresh water. Salt crystals continue corroding as long as they're present.</li>
+                <li><strong>Dry with compressed air.</strong> Blow out connectors, between PCB components, and inside cable glands. Air-dry in a warm (not hot), dry space for 24-48 hours. Silica gel packets in the compartment accelerate drying.</li>
+                <li><strong>Inspect under magnification.</strong> Use a phone camera macro or loupe to inspect PCB traces, solder joints, and connector pins for corrosion, discoloration, or bridged connections. Pay special attention to fine-pitch IC legs.</li>
+                <li><strong>Clean with 99% isopropyl alcohol.</strong> Use a soft brush (old toothbrush works) to scrub away any corrosion or deposits. Isopropyl displaces water and evaporates clean.</li>
+                <li><strong>Reapply conformal coating</strong> on cleaned board areas after they're fully dry. This adds a moisture barrier for next time.</li>
+                <li><strong>Find and fix the entry point.</strong> Water got in somewhere. Check: hatch seal (worn, misaligned, debris on seal face), cable glands (not tightened, wrong cable diameter), mast base penetration, charge port seal, and any drilled holes.</li>
+            </ol>
+        </div>
+
+        <!-- SYMPTOM 8: NOISE -->
+        <h2 id="noise">Unusual Sounds or Vibration</h2>
+
+        <p>Sound is diagnostic. A healthy eFoil drive makes a consistent whine that varies with speed. New sounds — grinding, clicking, rattling, or changing pitch at constant speed — are telling you something is wrong.</p>
+
+        <div class="comparison-grid">
+            <div class="option-card">
+                <h4>Grinding / Scraping</h4>
+                <ul>
+                    <li>Motor bearing failure — needs replacement</li>
+                    <li>Debris caught between prop and duct/nozzle</li>
+                    <li>Prop rubbing against housing due to shaft play</li>
+                    <li>Sand or grit inside motor can from water ingress</li>
+                </ul>
+            </div>
+            <div class="option-card">
+                <h4>Clicking / Ticking</h4>
+                <ul>
+                    <li>Loose prop — check set screw and/or key</li>
+                    <li>Cracked or chipped prop blade hitting once per revolution</li>
+                    <li>Loose motor mount bolts</li>
+                    <li>Foreign object in the duct</li>
+                </ul>
+            </div>
+            <div class="option-card">
+                <h4>High-Pitched Whine (New)</h4>
+                <ul>
+                    <li>Motor timing offset after firmware update</li>
+                    <li>Changed switching frequency in VESC settings</li>
+                    <li>Prop cavitation at certain speeds (usually okay)</li>
+                    <li>Bearing starting to fail (pre-grinding stage)</li>
+                </ul>
+            </div>
+            <div class="option-card">
+                <h4>Vibration / Shudder</h4>
+                <ul>
+                    <li>Damaged or unbalanced prop (most common)</li>
+                    <li>Bent motor shaft</li>
+                    <li>Loose mast-to-motor connection</li>
+                    <li>Foil mounting bolts not torqued evenly</li>
+                </ul>
+            </div>
+        </div>
+
+        <p>The single most common sound issue: <strong>a damaged propeller</strong>. Even a small nick on one blade creates an imbalance that vibrates through the entire drivetrain. Inspect your prop after every session, especially if you rode in shallow water or near debris. A $30 prop replacement fixes vibration problems that people spend hours chasing through the electronics.</p>
+
+        <!-- SYMPTOM 9: SLOW -->
+        <h2 id="slow">Slower Than Expected</h2>
+
+        <p>Your build runs but doesn't hit the speeds others report with similar setups, or it used to be faster and isn't anymore.</p>
+
+        <div class="symptom-card">
+            <div class="symptom-header">
+                <span class="symptom-icon">🐌</span>
+                <span class="symptom-title">New build: never reached expected speed</span>
+                <span class="severity severity-low">Configuration</span>
+            </div>
+            <ol class="diagnosis-steps">
+                <li><strong>Check prop pitch and motor KV match.</strong> Low-KV motor + low-pitch prop = lots of torque but low top speed. High-KV motor + high-pitch prop = high speed but may not have enough torque to start. The motor/prop combination determines your speed ceiling. Compare to proven setups on <a href="https://foil.zone" target="_blank">FOIL.zone</a>.</li>
+                <li><strong>Verify ERPM limit in VESC Tool.</strong> If the ERPM limit is set too low, the VESC will cap the motor speed regardless of throttle input. Default is often 60,000 — check yours against your motor's pole count and desired RPM: ERPM = RPM × (pole pairs).</li>
+                <li><strong>Check battery current limit.</strong> If your battery max current in VESC Tool is set conservatively (e.g., 30A when your pack can deliver 60A), you're artificially limiting power. Increase carefully while monitoring battery temperature.</li>
+                <li><strong>Board and rider hydrodynamics.</strong> A heavy board, high-drag foil, or rider stance that creates extra drag will eat speed that electronics can't overcome. If all electrical parameters check out, the limitation is physical.</li>
+            </ol>
+        </div>
+
+        <div class="symptom-card">
+            <div class="symptom-header">
+                <span class="symptom-icon">📉</span>
+                <span class="symptom-title">Used to be fast, now it's not</span>
+                <span class="severity severity-medium">Degradation</span>
+            </div>
+            <ol class="diagnosis-steps">
+                <li><strong>Prop damage.</strong> A chipped, nicked, or slightly deformed prop loses thrust efficiency dramatically. Even damage you can barely feel with your finger can cost 10-15% of thrust. Replace or refinish the prop.</li>
+                <li><strong>Battery degradation.</strong> As cells age, internal resistance increases and the pack sags more under load. The ESC starts voltage-limiting earlier in the ride. Compare loaded voltage now vs. when the pack was new.</li>
+                <li><strong>Fouling.</strong> Algae, barnacles, or marine growth on the foil, fuselage, or prop add drag. Clean all hydrodynamic surfaces. Even a thin biofilm slime layer measurably increases drag.</li>
+                <li><strong>Motor bearing wear.</strong> Worn bearings add mechanical resistance. Compare the drag spinning the motor by hand to when it was new. If it feels noticeably harder to spin, bearings need replacement.</li>
+                <li><strong>Settings changed.</strong> Did you update firmware, change VESC parameters, or swap any components recently? Export your VESC config and compare to a backup (you did keep a backup, right?).</li>
+            </ol>
+        </div>
+
+        <!-- VESC FAULT REFERENCE -->
+        <h2 id="vesc-faults">VESC Fault Code Quick Reference</h2>
+
+        <p>When your VESC throws a fault, it logs the code with a timestamp. Connect via USB or Bluetooth, open the Terminal in VESC Tool, and type <code>faults</code> to see the history. Here's what the common ones mean in an eFoil context:</p>
+
+        <table class="fault-table">
+            <thead>
+                <tr>
+                    <th>Fault Code</th>
+                    <th>Meaning</th>
+                    <th>Common eFoil Cause</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>ABS_OVER_CURRENT</code></td>
+                    <td>Instantaneous current exceeded absolute maximum</td>
+                    <td>Loose phase wire, partial short, prop strike causing motor stall</td>
+                </tr>
+                <tr>
+                    <td><code>OVER_TEMP_FET</code></td>
+                    <td>MOSFET temperature exceeded limit</td>
+                    <td>Inadequate ESC cooling, sustained high current, water cooling failure</td>
+                </tr>
+                <tr>
+                    <td><code>OVER_TEMP_MOTOR</code></td>
+                    <td>Motor temperature sensor hit limit</td>
+                    <td>Oversized prop loading, sustained full throttle, motor in air (no water cooling)</td>
+                </tr>
+                <tr>
+                    <td><code>OVER_VOLTAGE</code></td>
+                    <td>Bus voltage exceeded maximum</td>
+                    <td>Regenerative braking on a full battery, wrong pack voltage for ESC rating</td>
+                </tr>
+                <tr>
+                    <td><code>UNDER_VOLTAGE</code></td>
+                    <td>Bus voltage dropped below minimum</td>
+                    <td>Battery sag under heavy load, dead cell group, loose battery connector</td>
+                </tr>
+                <tr>
+                    <td><code>DRV</code></td>
+                    <td>Gate driver chip error</td>
+                    <td>Water ingress on ESC, failing MOSFET, manufacturing defect — often fatal</td>
+                </tr>
+                <tr>
+                    <td><code>ENCODER</code></td>
+                    <td>Encoder/sensor signal error</td>
+                    <td>Hall sensor wire damaged by water or vibration, bad solder joint on sensor PCB</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="info-box">
+            <h4>Pro Tip: VESC Log Everything</h4>
+            <p>Set up VESC real-time logging before your session. Record voltage, current, temperature, and RPM. When something goes wrong, the log data often reveals the cause within seconds — you can see the voltage sag or current spike that preceded the fault. Some builders use a Bluetooth module to stream data to their phone in a waterproof case on the board.</p>
+        </div>
+
+        <!-- PREVENTIVE MAINTENANCE -->
+        <h2>Preventive Maintenance Schedule</h2>
+
+        <p>Most eFoil problems are preventable. Here's what to check and when, based on community experience:</p>
+
+        <div class="comparison-grid">
+            <div class="option-card">
+                <h4>Every Session</h4>
+                <ul>
+                    <li>Rinse board, foil, and prop with fresh water</li>
+                    <li>Inspect prop for nicks, chips, or damage</li>
+                    <li>Check hatch seal for debris or damage</li>
+                    <li>Verify no water inside when opening hatch</li>
+                    <li>Charge battery properly (don't store discharged)</li>
+                </ul>
+            </div>
+            <div class="option-card">
+                <h4>Every 10 Sessions</h4>
+                <ul>
+                    <li>Inspect all connectors for corrosion</li>
+                    <li>Check phase wire bullet connector tightness</li>
+                    <li>Verify cable gland seals are tight</li>
+                    <li>Check motor shaft play and bearing feel</li>
+                    <li>Run VESC diagnostics and check fault log</li>
+                </ul>
+            </div>
+            <div class="option-card">
+                <h4>Every 50 Sessions / Annually</h4>
+                <ul>
+                    <li>Full battery health check (cell balance, capacity test)</li>
+                    <li>Motor bearing inspection / replacement</li>
+                    <li>Reapply conformal coating on electronics</li>
+                    <li>Replace worn seals (hatch gasket, cable glands)</li>
+                    <li>Backup VESC configuration to file</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- WHEN TO ASK THE COMMUNITY -->
+        <h2>When to Ask the Community</h2>
+
+        <p>You've read through the diagnosis steps, tried the obvious fixes, and still can't figure it out. That's when <a href="https://foil.zone" target="_blank">FOIL.zone</a> earns its keep. The community has seen it all. But to get a useful answer fast, include:</p>
+
+        <ul>
+            <li><strong>Motor:</strong> make, model, KV (e.g., Flipsky 65161 120KV)</li>
+            <li><strong>ESC:</strong> make, model, firmware version (e.g., FSESC 75100 / FW 6.02)</li>
+            <li><strong>Battery:</strong> cell type, configuration, BMS model (e.g., Samsung 40T 12S8P, Daly 100A BMS)</li>
+            <li><strong>VESC fault log output</strong> — copy-paste the terminal output</li>
+            <li><strong>Photos</strong> of the inside of your board, connectors, and any visible damage</li>
+            <li><strong>What changed</strong> since it last worked correctly</li>
+        </ul>
+
+        <p>Good troubleshooting posts on FOIL.zone get answers within hours. Vague "it doesn't work" posts get asked for the above information, wasting a day. Come prepared.</p>
+
+        <!-- FAQ SECTION -->
+        <h2>Frequently Asked Questions</h2>
+
+        <h3>Why won't my DIY eFoil motor start?</h3>
+        <p>The most common causes are: ESC not detecting motor (run motor detection in VESC Tool), loose or corroded phase wire connections, receiver not binding to transmitter, anti-spark switch not fully engaged, or battery voltage below ESC cutoff threshold. Start diagnosis at the battery and work forward — verify voltage at the ESC input terminals, then check receiver binding, then phase connections. If the ESC powers on but the motor doesn't spin, motor detection is the most likely fix. A VESC that was factory-reset or flashed with new firmware needs motor detection re-run before it can drive any motor.</p>
+
+        <h3>Why does my eFoil cut out while riding?</h3>
+        <p>Mid-ride cutouts are the most commonly reported DIY eFoil problem. Causes include: battery voltage sag under load (weak cells or undersized pack), loose connections that vibrate apart, overheating ESC or motor triggering thermal protection, water ingress causing intermittent shorts, or BMS overcurrent protection tripping. Always check the VESC fault log first — it records exactly what triggered the cutout. The single most common cause in community builds is a loose bullet connector on a phase wire that makes intermittent contact under vibration. Pull-test every connection firmly before closing the board.</p>
+
+        <h3>What do VESC fault codes mean on an eFoil?</h3>
+        <p>The most actionable codes: <code>ABS_OVER_CURRENT</code> means instantaneous current exceeded the absolute maximum — usually a short circuit, loose phase wire, or prop strike stalling the motor. <code>OVER_TEMP_FET</code> means the ESC MOSFETs overheated — improve cooling or reduce current limits. <code>OVER_TEMP_MOTOR</code> is the motor temperature sensor hitting limit — check prop loading and water cooling. <code>DRV</code> is a gate driver error, often from water ingress or a failing FET — this one is frequently a death sentence for the ESC. Check the fault log in VESC Tool by opening Terminal and typing <code>faults</code>.</p>
+
+        <h3>How do I fix water damage on eFoil electronics?</h3>
+        <p>Speed matters. Disconnect the battery immediately — do not test if it "still works." Rinse all affected electronics with fresh water to displace salt. Dry with compressed air, then 24-48 hours in a warm dry environment with silica gel. Inspect under magnification for corrosion on PCB traces and IC legs. Clean with 99% isopropyl alcohol and a soft brush. Reapply conformal coating after cleaning. Then find and fix the entry point — water got in somewhere, and it'll happen again if you don't address the root cause: worn hatch seal, loose cable gland, cracked mast base penetration.</p>
+
+        <h3>Why is my eFoil slower than it used to be?</h3>
+        <p>Gradual performance loss usually comes from: battery degradation (capacity loss and increased internal resistance over charge cycles), propeller damage (even small nicks reduce thrust efficiency measurably), fouling on the foil or prop (algae, slime, barnacles), water ingress adding weight to the board, or motor bearing wear increasing drag. Check battery voltage under load compared to when it was new — significant sag indicates cell degradation. Inspect the prop carefully and compare motor free-spin feel to when it was new. Cleaning all hydrodynamic surfaces and replacing a damaged prop fixes most performance regression.</p>
+
+        <h3>My eFoil battery won't charge — what's wrong?</h3>
+        <p>Most common cause: the BMS has locked out due to a cell imbalance or undervoltage condition. Measure total pack voltage at the charge port — if it's near zero or well below nominal, a cell group may have discharged below the BMS's cutoff threshold. Check individual cell group voltages through the balance leads. If one group is drastically lower (like 2.5V when others are 3.5V), that group has weak or dead cells. Other causes: charger voltage mismatch (12S charger won't charge a 14S pack), broken charge port wiring, or a failed charger. Test with a multimeter at every stage of the charging path to isolate where voltage stops flowing.</p>
+
+        <h2>Related Guides</h2>
+
+        <div class="cross-links">
+            <a href="/blog-efoil-wiring-guide.html" class="cross-link">
+                <span class="emoji">🔌</span>
+                <span class="title">Wiring Guide</span>
+                <span class="desc">Power paths, anti-spark, connectors, cable routing — get it right from the start.</span>
+            </a>
+            <a href="/blog-efoil-battery-guide.html" class="cross-link">
+                <span class="emoji">🔋</span>
+                <span class="title">Battery Guide</span>
+                <span class="desc">Cell chemistry, 12S vs 14S, BMS options, charge logic, and pack safety.</span>
+            </a>
+            <a href="/blog-efoil-motor-guide.html" class="cross-link">
+                <span class="emoji">⚡</span>
+                <span class="title">Motor Guide</span>
+                <span class="desc">Inrunner vs outrunner, ESC sizing, prop pairing, and drivetrain setup.</span>
+            </a>
+            <a href="/blog-efoil-board-foil-guide.html" class="cross-link">
+                <span class="emoji">🏄</span>
+                <span class="title">Board & Foil Guide</span>
+                <span class="desc">Board sizing, construction, foil selection, and mounting systems.</span>
+            </a>
+            <a href="/blog-diy-efoil-guide.html" class="cross-link">
+                <span class="emoji">🔧</span>
+                <span class="title">Complete Build Guide</span>
+                <span class="desc">Full DIY roadmap: parts, budget, tools, and assembly from zero.</span>
+            </a>
+            <a href="https://foil.zone" class="cross-link">
+                <span class="emoji">🌊</span>
+                <span class="title">FOIL.zone Community</span>
+                <span class="desc">5,300+ builders who've seen every problem. Post your issue with details and get help fast.</span>
+            </a>
+        </div>
+    </article>
+
+    <footer>
+        <p>© 2016–2026 PacificMeister. Open source, always.</p>
+        <ul class="footer-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/blog.html">Blog</a></li>
+            <li><a href="https://github.com/pacificmeister" target="_blank">GitHub</a></li>
+            <li><a href="https://www.youtube.com/@PacificMeister" target="_blank">YouTube</a></li>
+            <li><a href="https://foil.zone" target="_blank">FOIL.zone</a></li>
+        </ul>
+    </footer>
+</body>
+</html>
