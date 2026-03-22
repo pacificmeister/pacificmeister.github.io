@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DIY eFoil Build Configurator (Free) — PacificMeister</title>
+  <meta name="description" content="Free DIY eFoil build configurator. Choose your motor, battery, ESC, board, and foil — get real-time cost estimates, weight totals, and a shopping list with buy links. Based on 1000+ community builds.">
+  <meta name="keywords" content="diy efoil configurator, efoil build planner, efoil parts list, efoil cost calculator, electric hydrofoil builder, efoil shopping list, diy efoil components, PacificMeister">
+  <link rel="canonical" href="https://pacificmeister.github.io/efoil-configurator.html">
+
+  <meta property="og:title" content="DIY eFoil Build Configurator (Free) — PacificMeister">
+  <meta property="og:description" content="Plan your DIY eFoil build: pick components, see costs in real time, get a shopping list. From the community that pioneered it.">
+  <meta property="og:url" content="https://pacificmeister.github.io/efoil-configurator.html">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://pacificmeister.github.io/og-image.png">
+  <meta property="og:site_name" content="PacificMeister">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DIY eFoil Build Configurator (Free)">
+  <meta name="twitter:description" content="Plan your DIY eFoil build with real components, real prices, and buy links.">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "DIY eFoil Build Configurator",
+    "applicationCategory": "DesignApplication",
+    "operatingSystem": "Web",
+    "url": "https://pacificmeister.github.io/efoil-configurator.html",
+    "description": "Free interactive tool for planning DIY eFoil builds. Choose motor, battery, ESC, board, and foil — get real-time cost estimates and a complete shopping list with buy links.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "PacificMeister",
+      "url": "https://pacificmeister.github.io"
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #0a1628;
+      --panel: #102742;
+      --panel-hover: #153558;
+      --text: #d3e2ef;
+      --muted: #8ea8bd;
+      --accent: #00d4aa;
+      --accent-glow: #00ffcc;
+      --line: rgba(0,212,170,.25);
+      --white: #fff;
+      --warn: #ff6b6b;
+      --gold: #ffd700;
+      --blue: #38bdf8;
+      --purple: #a78bfa;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: linear-gradient(180deg, #091426 0%, #0f2847 40%, #091426 100%);
+      color: var(--text);
+      line-height: 1.55;
+      min-height: 100vh;
+    }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 1.5rem 1.2rem 3rem; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: .5rem; }
+    .logo { color: var(--white); text-decoration: none; font-weight: 700; font-size: 1.3rem; }
+    .logo span { color: var(--accent); }
+    .links { display: flex; gap: .6rem; flex-wrap: wrap; }
+    .links a { color: var(--muted); text-decoration: none; font-size: .82rem; padding: .3rem .6rem; border: 1px solid rgba(255,255,255,.08); border-radius: 8px; transition: all .15s; }
+    .links a:hover { color: var(--accent); border-color: var(--line); background: rgba(0,212,170,.05); }
+
+    /* Header */
+    .hero { text-align: center; margin-bottom: 2rem; }
+    .hero h1 { color: var(--white); font-size: clamp(1.6rem, 4vw, 2.4rem); margin-bottom: .5rem; }
+    .hero .sub { color: var(--muted); max-width: 650px; margin: 0 auto .8rem; font-size: .95rem; }
+
+    /* Preset bar */
+    .presets { display: flex; gap: .5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .preset-btn {
+      padding: .5rem 1rem; border-radius: 10px; border: 1px solid rgba(255,255,255,.12);
+      background: rgba(16,39,66,.7); color: var(--text); cursor: pointer; font-size: .85rem;
+      transition: all .2s; font-weight: 500;
+    }
+    .preset-btn:hover { border-color: var(--line); color: var(--accent); background: rgba(0,212,170,.06); }
+    .preset-btn.active { border-color: var(--accent); color: var(--accent); background: rgba(0,212,170,.1); }
+    .preset-label { font-size: .75rem; color: var(--muted); margin-bottom: .3rem; text-align: center; }
+
+    /* Summary strip */
+    .summary-strip {
+      display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;
+      background: rgba(16,39,66,.8); border: 1px solid var(--line); border-radius: 14px;
+      padding: .8rem 1.5rem; margin-bottom: 2rem;
+      position: sticky; top: 0; z-index: 100; backdrop-filter: blur(12px);
+    }
+    .summary-item { text-align: center; }
+    .summary-label { font-size: .7rem; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; }
+    .summary-value { font-size: 1.4rem; font-weight: 700; color: var(--white); }
+    .summary-value.cost { color: var(--accent); }
+    .summary-value.savings { color: var(--gold); }
+
+    /* Category sections */
+    .category { margin-bottom: 1.8rem; }
+    .cat-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: .6rem; padding-bottom: .4rem;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .cat-title { color: var(--white); font-size: 1.1rem; font-weight: 700; }
+    .cat-title .emoji { margin-right: .3rem; }
+    .cat-cost { color: var(--accent); font-weight: 600; font-size: .95rem; }
+    .cat-guide { font-size: .78rem; color: var(--muted); }
+    .cat-guide a { color: var(--blue); text-decoration: none; }
+    .cat-guide a:hover { color: var(--accent); text-decoration: underline; }
+
+    /* Option cards */
+    .options { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: .6rem; }
+    .option {
+      background: linear-gradient(140deg, rgba(16,39,66,.85), rgba(8,22,40,.9));
+      border: 1.5px solid rgba(255,255,255,.08); border-radius: 12px;
+      padding: .8rem 1rem; cursor: pointer; transition: all .2s; position: relative;
+    }
+    .option:hover { border-color: rgba(0,212,170,.35); background: var(--panel-hover); }
+    .option.selected { border-color: var(--accent); background: rgba(0,212,170,.08); box-shadow: 0 0 20px rgba(0,212,170,.1); }
+    .option .name { color: var(--white); font-weight: 600; font-size: .9rem; margin-bottom: .3rem; }
+    .option .specs { color: var(--muted); font-size: .78rem; line-height: 1.4; }
+    .option .price-tag {
+      position: absolute; top: .6rem; right: .8rem;
+      color: var(--accent); font-weight: 700; font-size: .95rem;
+    }
+    .option .buy-link {
+      display: inline-block; margin-top: .4rem; font-size: .75rem;
+      color: var(--blue); text-decoration: none;
+    }
+    .option .buy-link:hover { text-decoration: underline; }
+    .option .badge {
+      display: inline-block; padding: .1rem .45rem; border-radius: 6px;
+      font-size: .65rem; font-weight: 600; margin-right: .3rem; margin-bottom: .2rem;
+    }
+    .badge.popular { background: rgba(0,212,170,.15); color: var(--accent); }
+    .badge.budget { background: rgba(56,189,248,.12); color: var(--blue); }
+    .badge.premium { background: rgba(255,215,0,.12); color: var(--gold); }
+    .badge.diy { background: rgba(167,139,250,.12); color: var(--purple); }
+
+    /* Shopping list */
+    .shopping-list {
+      background: linear-gradient(140deg, rgba(16,39,66,.9), rgba(8,22,40,.95));
+      border: 1px solid var(--line); border-radius: 14px; padding: 1.5rem;
+      margin-top: 2rem;
+    }
+    .shopping-list h2 { color: var(--white); font-size: 1.2rem; margin-bottom: 1rem; }
+    .shop-item {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: .5rem 0; border-bottom: 1px solid rgba(255,255,255,.05);
+    }
+    .shop-item:last-child { border-bottom: none; }
+    .shop-name { color: var(--text); font-size: .9rem; }
+    .shop-source { color: var(--muted); font-size: .78rem; }
+    .shop-price { color: var(--accent); font-weight: 600; font-size: .9rem; min-width: 60px; text-align: right; }
+    .shop-link { color: var(--blue); text-decoration: none; font-size: .78rem; margin-left: .5rem; }
+    .shop-link:hover { text-decoration: underline; }
+    .shop-total {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: .8rem; margin-top: .5rem; border-top: 2px solid var(--line);
+      font-weight: 700; font-size: 1.1rem;
+    }
+    .shop-total .label { color: var(--white); }
+    .shop-total .amount { color: var(--accent); font-size: 1.3rem; }
+
+    /* Action buttons */
+    .actions { display: flex; gap: .8rem; margin-top: 1rem; flex-wrap: wrap; justify-content: center; }
+    .btn {
+      padding: .6rem 1.3rem; border-radius: 10px; border: none; cursor: pointer;
+      font-weight: 600; font-size: .9rem; transition: all .2s;
+    }
+    .btn-primary { background: var(--accent); color: var(--bg); }
+    .btn-primary:hover { background: var(--accent-glow); transform: translateY(-1px); }
+    .btn-secondary { background: rgba(255,255,255,.08); color: var(--text); border: 1px solid rgba(255,255,255,.12); }
+    .btn-secondary:hover { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.2); }
+
+    /* Comparison bar */
+    .compare-bar {
+      background: rgba(16,39,66,.6); border: 1px solid rgba(255,255,255,.08);
+      border-radius: 12px; padding: 1rem 1.5rem; margin-top: 1.5rem;
+    }
+    .compare-bar h3 { color: var(--white); font-size: .95rem; margin-bottom: .6rem; }
+    .bar-track { height: 20px; background: rgba(255,255,255,.06); border-radius: 10px; position: relative; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 10px; transition: width .5s ease; }
+    .bar-labels { display: flex; justify-content: space-between; margin-top: .3rem; font-size: .75rem; color: var(--muted); }
+
+    /* Guide links */
+    .guide-links {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: .6rem; margin-top: 1.5rem;
+    }
+    .guide-card {
+      background: rgba(16,39,66,.5); border: 1px solid rgba(255,255,255,.06);
+      border-radius: 10px; padding: .8rem 1rem; text-decoration: none; transition: all .2s;
+    }
+    .guide-card:hover { border-color: var(--line); background: rgba(0,212,170,.04); }
+    .guide-card .gc-title { color: var(--white); font-size: .85rem; font-weight: 600; }
+    .guide-card .gc-desc { color: var(--muted); font-size: .75rem; margin-top: .2rem; }
+
+    /* Footer */
+    footer {
+      max-width: 1100px; margin: 2rem auto 0; padding: 1.5rem 1.2rem;
+      border-top: 1px solid rgba(255,255,255,.05);
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+    }
+    footer p { color: rgba(200,218,232,.4); font-size: .8rem; }
+    .footer-links { display: flex; gap: 1.2rem; list-style: none; }
+    .footer-links a { color: rgba(200,218,232,.4); text-decoration: none; font-size: .8rem; }
+    .footer-links a:hover { color: var(--accent); }
+
+    /* Toast */
+    .toast {
+      position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%);
+      background: var(--accent); color: var(--bg); padding: .6rem 1.5rem;
+      border-radius: 10px; font-weight: 600; font-size: .9rem;
+      opacity: 0; transition: opacity .3s; pointer-events: none; z-index: 200;
+    }
+    .toast.show { opacity: 1; }
+
+    @media (max-width: 700px) {
+      .options { grid-template-columns: 1fr; }
+      .summary-strip { gap: .8rem; padding: .6rem .8rem; }
+      .summary-value { font-size: 1.1rem; }
+      .links { display: none; }
+      .guide-links { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav>
+      <a href="/" class="logo">Pacific<span>Meister</span></a>
+      <div class="links">
+        <a href="/">Home</a>
+        <a href="/blog.html">Blog</a>
+        <a href="/efoil-range-calculator.html">⚡ Range Calc</a>
+        <a href="https://foil.zone" target="_blank">Community</a>
+        <a href="https://www.youtube.com/@PacificMeister" target="_blank">YouTube</a>
+      </div>
+    </nav>
+
+    <div class="hero">
+      <h1>⚡ DIY eFoil Build Configurator</h1>
+      <p class="sub">Pick your components, see real-time costs, get a complete shopping list. Based on 1,000+ community builds from <a href="https://foil.zone" style="color:var(--accent)">FOIL.zone</a> since 2016.</p>
+    </div>
+
+    <!-- Presets -->
+    <div class="preset-label">Quick Start Presets</div>
+    <div class="presets">
+      <button class="preset-btn" onclick="applyPreset('budget')">💰 Budget Build<br><span style="font-size:.75rem;color:var(--muted)">~$2,100</span></button>
+      <button class="preset-btn" onclick="applyPreset('popular')">⭐ Most Popular<br><span style="font-size:.75rem;color:var(--muted)">~$3,200</span></button>
+      <button class="preset-btn" onclick="applyPreset('performance')">🏆 Performance<br><span style="font-size:.75rem;color:var(--muted)">~$4,500</span></button>
+      <button class="preset-btn" onclick="applyPreset('ultralight')">🪶 Ultralight<br><span style="font-size:.75rem;color:var(--muted)">~$3,800</span></button>
+    </div>
+
+    <!-- Sticky summary -->
+    <div class="summary-strip" id="summary">
+      <div class="summary-item">
+        <div class="summary-label">Total Cost</div>
+        <div class="summary-value cost" id="sum-cost">$0</div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-label">Weight</div>
+        <div class="summary-value" id="sum-weight">0 kg</div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-label">Parts</div>
+        <div class="summary-value" id="sum-parts">0/8</div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-label">vs Commercial</div>
+        <div class="summary-value savings" id="sum-savings">—</div>
+      </div>
+    </div>
+
+    <!-- ═══════ MOTOR ═══════ -->
+    <div class="category">
+      <div class="cat-header">
+        <div>
+          <span class="cat-title"><span class="emoji">🔧</span> Motor</span>
+          <div class="cat-guide">📖 <a href="/blog-efoil-motor-guide.html">Read the full Motor Guide →</a></div>
+        </div>
+        <span class="cat-cost" id="cost-motor">—</span>
+      </div>
+      <div class="options" data-category="motor">
+        <div class="option" data-id="63100-outrunner" data-price="80" data-weight="0.9"
+             data-name="63100 Outrunner 130KV" data-source="AliExpress" data-url="https://www.aliexpress.com/w/wholesale-63100-outrunner-motor.html">
+          <div class="price-tag">$80</div>
+          <span class="badge budget">Budget</span>
+          <div class="name">63100 Outrunner 130KV</div>
+          <div class="specs">3kW · 0.9 kg · Needs DIY waterproofing<br>Best for: Foil-assist, light riders (&lt;75 kg)</div>
+        </div>
+        <div class="option" data-id="6384-outrunner" data-price="60" data-weight="0.8"
+             data-name="6384 Outrunner 120KV" data-source="AliExpress" data-url="https://www.aliexpress.com/w/wholesale-6384-bldc-motor.html">
+          <div class="price-tag">$60</div>
+          <span class="badge budget">Budget</span>
+          <div class="name">6384 Outrunner 120KV</div>
+          <div class="specs">2.5kW · 0.8 kg · Lightest option<br>Best for: Ultralight foil-assist builds</div>
+        </div>
+        <div class="option selected" data-id="65161-120kv" data-price="300" data-weight="2.2"
+             data-name="Flipsky 65161 120KV" data-source="flipsky.net" data-url="https://flipsky.net/products/motor-65161-6000w-waterproof-underwater-thruster-electric-boat-thruster">
+          <div class="price-tag">$300</div>
+          <span class="badge popular">Popular</span>
+          <div class="name">Flipsky 65161 120KV</div>
+          <div class="specs">6kW · 2.2 kg · Sealed inrunner<br>90%+ of community builds · Huge prop ecosystem</div>
+        </div>
+        <div class="option" data-id="65162-100kv" data-price="350" data-weight="2.3"
+             data-name="Maytech 65162 100KV" data-source="maytech.cn" data-url="https://maytech.cn/collections/efoil-motor">
+          <div class="price-tag">$350</div>
+          <span class="badge popular">Popular</span>
+          <div class="name">Maytech 65162 100KV</div>
+          <div class="specs">6kW · 2.3 kg · Threaded shaft (more secure)<br>Updated 65161 · More torque at 100KV</div>
+        </div>
+        <div class="option" data-id="70182" data-price="480" data-weight="3.5"
+             data-name="Maytech 70182 100KV" data-source="maytech.cn" data-url="https://maytech.cn/collections/efoil-motor">
+          <div class="price-tag">$480</div>
+          <span class="badge premium">Premium</span>
+          <div class="name">Maytech 70182 100KV</div>
+          <div class="specs">8-10kW · 3.5 kg · Maximum power<br>Best for: Heavy riders, speed builds (50+ km/h)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════ ESC ═══════ -->
+    <div class="category">
+      <div class="cat-header">
+        <div>
+          <span class="cat-title"><span class="emoji">⚡</span> ESC / Speed Controller</span>
+          <div class="cat-guide">📖 <a href="/blog-efoil-motor-guide.html#esc-selection">Read the ESC Guide →</a></div>
+        </div>
+        <span class="cat-cost" id="cost-esc">—</span>
+      </div>
+      <div class="options" data-category="esc">
+        <div class="option" data-id="fsesc-75100" data-price="140" data-weight="0.4"
+             data-name="Flipsky FSESC 75100" data-source="flipsky.net" data-url="https://flipsky.net/collections/efoil-products">
+          <div class="price-tag">$140</div>
+          <span class="badge budget">Budget</span>
+          <div class="name">Flipsky FSESC 75100</div>
+          <div class="specs">75V 100A · VESC-based · Aluminum case<br>Good for outrunner builds up to 3kW</div>
+        </div>
+        <div class="option selected" data-id="fsesc-75200" data-price="240" data-weight="0.6"
+             data-name="Flipsky FSESC 75200 Pro" data-source="flipsky.net" data-url="https://flipsky.net/collections/efoil-products">
+          <div class="price-tag">$240</div>
+          <span class="badge popular">Popular</span>
+          <div class="name">Flipsky FSESC 75200 Pro</div>
+          <div class="specs">75V 200A · Water cooling · VESC 6<br>Standard for 65161/65162 builds</div>
+        </div>
+        <div class="option" data-id="makerx-dv6" data-price="350" data-weight="0.5"
+             data-name="MakerX DV6 Pro" data-source="makerx-tech.com" data-url="https://makerx-tech.com">
+          <div class="price-tag">$350</div>
+          <span class="badge premium">Premium</span>
+          <div class="name">MakerX DV6 Pro</div>
+          <div class="specs">75V 200A · Compact · Premium VESC<br>Better thermals, more reliable than Flipsky</div>
+        </div>
+        <div class="option" data-id="vesc-75-300" data-price="550" data-weight="0.7"
+             data-name="Trampa VESC 75/300" data-source="trampaboards.com" data-url="https://trampaboards.com/vesc-based-controllers--c-702.html">
+          <div class="price-tag">$550</div>
+          <span class="badge premium">Premium</span>
+          <div class="name">Trampa VESC 75/300</div>
+          <div class="specs">75V 300A · Official VESC · Highest quality<br>Overkill for most builds — for perfectionists</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════ BATTERY ═══════ -->
+    <div class="category">
+      <div class="cat-header">
+        <div>
+          <span class="cat-title"><span class="emoji">🔋</span> Battery Pack</span>
+          <div class="cat-guide">📖 <a href="/blog-efoil-battery-guide.html">Read the full Battery Guide →</a></div>
+        </div>
+        <span class="cat-cost" id="cost-battery">—</span>
+      </div>
+      <div class="options" data-category="battery">
+        <div class="option" data-id="diy-12s6p-p42a" data-price="450" data-weight="5.8"
+             data-name="DIY 12S6P Molicel P42A (72 cells)" data-source="18650batterystore.com" data-url="https://www.18650batterystore.com/collections/molicel-batteries">
+          <div class="price-tag">$450</div>
+          <span class="badge diy">DIY</span><span class="badge budget">Budget</span>
+          <div class="name">DIY 12S6P Molicel P42A</div>
+          <div class="specs">50.4V · 25.2Ah · 1.27kWh · 72 cells<br>~35-45 min ride · Spot weld or solder</div>
+        </div>
+        <div class="option selected" data-id="diy-12s8p-p42a" data-price="580" data-weight="7.7"
+             data-name="DIY 12S8P Molicel P42A (96 cells)" data-source="18650batterystore.com" data-url="https://www.18650batterystore.com/collections/molicel-batteries">
+          <div class="price-tag">$580</div>
+          <span class="badge diy">DIY</span><span class="badge popular">Popular</span>
+          <div class="name">DIY 12S8P Molicel P42A</div>
+          <div class="specs">50.4V · 33.6Ah · 1.69kWh · 96 cells<br>~50-70 min ride · Community standard</div>
+        </div>
+        <div class="option" data-id="diy-14s8p-p42a" data-price="680" data-weight="9.0"
+             data-name="DIY 14S8P Molicel P42A (112 cells)" data-source="18650batterystore.com" data-url="https://www.18650batterystore.com/collections/molicel-batteries">
+          <div class="price-tag">$680</div>
+          <span class="badge diy">DIY</span>
+          <div class="name">DIY 14S8P Molicel P42A</div>
+          <div class="specs">58.8V · 33.6Ah · 1.97kWh · 112 cells<br>~60-80 min ride · More voltage = more speed</div>
+        </div>
+        <div class="option" data-id="flipsky-battery-12s" data-price="900" data-weight="8.5"
+             data-name="Flipsky Waterproof 12S Battery" data-source="flipsky.net" data-url="https://flipsky.net/collections/efoil-products">
+          <div class="price-tag">$900</div>
+          <span class="badge popular">Popular</span>
+          <div class="name">Flipsky Waterproof 12S Battery</div>
+          <div class="specs">50.4V · ~1.5kWh · Pre-built + sealed<br>No DIY needed · BMS included · Plug & play</div>
+        </div>
+        <div class="option" data-id="used-efoil-battery" data-price="300" data-weight="7.0"
+             data-name="Used eFoil Battery (12S)" data-source="FOIL.zone Classifieds" data-url="https://foil.zone/c/for-sale">
+          <div class="price-tag">$300</div>
+          <span class="badge budget">Budget</span>
+          <div class="name">Used eFoil Battery (12S)</div>
+          <div class="specs">50.4V · Varies · Check cell health!<br>Best deals on FOIL.zone classifieds</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════ BMS + Charger ═══════ -->
+    <div class="category">
+      <div class="cat-header">
+        <div>
+          <span class="cat-title"><span class="emoji">🔌</span> BMS & Charger</span>
+          <div class="cat-guide">📖 <a href="/blog-efoil-battery-guide.html">Included in Battery Guide →</a></div>
+        </div>
+        <span class="cat-cost" id="cost-bms">—</span>
+      </div>
+      <div class="options" data-category="bms">
+        <div class="option" data-id="smart-bms-5a" data-price="120" data-weight="0.6"
+             data-name="Smart BMS + 5A Charger" data-source="AliExpress + Amazon" data-url="https://www.aliexpress.com/w/wholesale-12s-100a-smart-bms.html">
+          <div class="price-tag">$120</div>
+          <span class="badge popular">Popular</span>
+          <div class="name">12S 100A Smart BMS + 5A Charger</div>
+          <div class="specs">Bluetooth monitoring · Cell balancing<br>50.4V 5A charger · ~2.5h full charge</div>
+        </div>
+        <div class="option selected" data-id="basic-bms-5a" data-price="75" data-weight="0.5"
+             data-name="Basic BMS + 5A Charger" data-source="AliExpress + Amazon" data-url="https://www.amazon.com/s?k=50.4v+5a+charger">
+          <div class="price-tag">$75</div>
+          <span class="badge budget">Budget</span>
+          <div class="name">12S 100A Basic BMS + 5A Charger</div>
+          <div class="specs">Standard cell protection · No Bluetooth<br>50.4V 5A charger · Gets the job done</div>
+        </div>
+        <div class="option" data-id="bms-included" data-price="0" data-weight="0"
+             data-name="BMS included in battery" data-source="—" data-url="">
+          <div class="price-tag">$0</div>
+          <div class="name">BMS Included (Pre-built Battery)</div>
+          <div class="specs">Select if using Flipsky battery or<br>other pre-built pack with BMS</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════ BOARD ═══════ -->
+    <div class="category">
+      <div class="cat-header">
+        <div>
+          <span class="cat-title"><span class="emoji">🏄</span> Board</span>
+          <div class="cat-guide">📖 <a href="/blog-efoil-board-foil-guide.html">Read the Board & Foil Guide →</a></div>
+        </div>
+        <span class="cat-cost" id="cost-board">—</span>
+      </div>
+      <div class="options" data-category="board">
+        <div class="option" data-id="used-surfboard" data-price="100" data-weight="4.0"
+             data-name="Used Surfboard (modified)" data-source="Craigslist / FB Marketplace" data-url="">
+          <div class="price-tag">$100</div>
+          <span class="badge budget">Budget</span>
+          <div class="name">Used Surfboard (Modified)</div>
+          <div class="specs">5'0"–5'6" · ~4 kg · Fiberglass<br>Route battery compartment · Cheapest option</div>
+        </div>
+        <div class="option selected" data-id="eps-blank-diy" data-price="250" data-weight="3.5"
+             data-name="EPS Foam Blank (DIY shaped)" data-source="Fiberglass Supply / foam supplier" data-url="https://www.fiberglasssupply.com">
+          <div class="price-tag">$250</div>
+          <span class="badge popular">Popular</span><span class="badge diy">DIY</span>
+          <div class="name">EPS Foam Blank + Fiberglass</div>
+          <div class="specs">Custom shape · 4'8"–5'4" · ~3.5 kg<br>Includes foam, glass, resin, foil box</div>
+        </div>
+        <div class="option" data-id="inflatable-board" data-price="350" data-weight="5.0"
+             data-name="Drop-Stitch Inflatable Board" data-source="AliExpress" data-url="https://www.aliexpress.com/w/wholesale-inflatable-foil-board.html">
+          <div class="price-tag">$350</div>
+          <div class="name">Inflatable Drop-Stitch Board</div>
+          <div class="specs">5'0"–5'6" · ~5 kg · Portable<br>Packs down small · Tougher than rigid</div>
+        </div>
+        <div class="option" data-id="commercial-efoil-board" data-price="800" data-weight="4.5"
+             data-name="Commercial eFoil Board (used)" data-source="FOIL.zone / eBay" data-url="https://foil.zone/c/for-sale">
+          <div class="price-tag">$800</div>
+          <span class="badge premium">Premium</span>
+          <div class="name">Commercial eFoil Board (Used)</div>
+          <div class="specs">Pre-made battery bay · Professional finish<br>Lift/Flite/Takuma boards on secondary market</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════ FOIL ═══════ -->
+    <div class="category">
+      <div class="cat-header">
+        <div>
+          <span class="cat-title"><span class="emoji">🦅</span> Hydrofoil</span>
+          <div class="cat-guide">📖 <a href="/blog-efoil-board-foil-guide.html#foil-selection">Read the Foil Guide →</a></div>
+        </div>
+        <span class="cat-cost" id="cost-foil">—</span>
+      </div>
+      <div class="options" data-category="foil">
+        <div class="option" data-id="china-foil" data-price="200" data-weight="3.0"
+             data-name="Chinese Aluminum Foil Set" data-source="AliExpress" data-url="https://www.aliexpress.com/w/wholesale-hydrofoil-set.html">
+          <div class="price-tag">$200</div>
+          <span class="badge budget">Budget</span>
+          <div class="name">Chinese Aluminum Foil Set</div>
+          <div class="specs">1500-2000cm² wing · 60-70cm mast · Aluminum<br>Complete set · Good for learning</div>
+        </div>
+        <div class="option selected" data-id="slingshot-hoverglide" data-price="500" data-weight="2.8"
+             data-name="Slingshot Hoverglide (used)" data-source="eBay / FB Marketplace" data-url="https://www.ebay.com/sch/i.html?_nkw=slingshot+hoverglide">
+          <div class="price-tag">$500</div>
+          <span class="badge popular">Popular</span>
+          <div class="name">Slingshot Hoverglide (Used)</div>
+          <div class="specs">1400-1800cm² · Aluminum mast · Modular<br>Great used market · Proven for eFoil</div>
+        </div>
+        <div class="option" data-id="gong-foil" data-price="400" data-weight="2.5"
+             data-name="Gong Allvator Foil Set" data-source="gongfoils.com" data-url="https://www.gongfoils.com">
+          <div class="price-tag">$400</div>
+          <div class="name">Gong Allvator Foil Set</div>
+          <div class="specs">1500-2000cm² · Aluminum · Budget premium<br>Good quality for the price · EU brand</div>
+        </div>
+        <div class="option" data-id="axis-foil" data-price="900" data-weight="2.2"
+             data-name="AXIS Foil (new/used)" data-source="axisfoils.com" data-url="https://axisfoils.com">
+          <div class="price-tag">$900</div>
+          <span class="badge premium">Premium</span>
+          <div class="name">AXIS / Premium Carbon Foil</div>
+          <div class="specs">Carbon construction · 1200-1800cm²<br>Best performance · Night-and-day difference</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════ REMOTE ═══════ -->
+    <div class="category">
+      <div class="cat-header">
+        <div>
+          <span class="cat-title"><span class="emoji">🎮</span> Remote Control</span>
+          <div class="cat-guide">📖 <a href="/blog-efoil-motor-guide.html#remote-control">Read about Remote Options →</a></div>
+        </div>
+        <span class="cat-cost" id="cost-remote">—</span>
+      </div>
+      <div class="options" data-category="remote">
+        <div class="option" data-id="vx3" data-price="80" data-weight="0.15"
+             data-name="Flipsky VX3 Remote" data-source="flipsky.net" data-url="https://flipsky.net/collections/efoil-products">
+          <div class="price-tag">$80</div>
+          <span class="badge budget">Budget</span>
+          <div class="name">Flipsky VX3 Remote</div>
+          <div class="specs">2.4GHz · OLED display · Water resistant<br>Basic but functional · Wide community use</div>
+        </div>
+        <div class="option selected" data-id="vx3-pro" data-price="130" data-weight="0.15"
+             data-name="Flipsky VX3 Pro Waterproof" data-source="flipsky.net" data-url="https://flipsky.net/products/waterproof-remote-vx3-pro-controller">
+          <div class="price-tag">$130</div>
+          <span class="badge popular">Popular</span>
+          <div class="name">Flipsky VX3 Pro (Waterproof)</div>
+          <div class="specs">IPX8 waterproof · OLED · Magnetic trigger<br>No more worrying about water damage</div>
+        </div>
+        <div class="option" data-id="maytech-remote" data-price="110" data-weight="0.12"
+             data-name="Maytech MTSKR2005WF" data-source="maytech.cn" data-url="https://maytech.cn">
+          <div class="price-tag">$110</div>
+          <div class="name">Maytech MTSKR2005WF</div>
+          <div class="specs">Waterproof · OLED display<br>Alternative to Flipsky · Good ergonomics</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════ ACCESSORIES ═══════ -->
+    <div class="category">
+      <div class="cat-header">
+        <div>
+          <span class="cat-title"><span class="emoji">🛠️</span> Wiring, Waterproofing & Safety</span>
+          <div class="cat-guide">📖 <a href="/blog-efoil-wiring-guide.html">Read the Wiring Guide →</a></div>
+        </div>
+        <span class="cat-cost" id="cost-accessories">—</span>
+      </div>
+      <div class="options" data-category="accessories">
+        <div class="option" data-id="acc-basic" data-price="100" data-weight="0.8"
+             data-name="Basic Kit" data-source="Amazon" data-url="https://www.amazon.com">
+          <div class="price-tag">$100</div>
+          <span class="badge budget">Budget</span>
+          <div class="name">Basic Wiring & Safety Kit</div>
+          <div class="specs">8AWG wire · XT90 connectors · conformal coat<br>Cable glands · basic kill switch · heat shrink</div>
+        </div>
+        <div class="option selected" data-id="acc-standard" data-price="180" data-weight="1.0"
+             data-name="Standard Kit" data-source="Amazon" data-url="https://www.amazon.com">
+          <div class="price-tag">$180</div>
+          <span class="badge popular">Popular</span>
+          <div class="name">Standard Wiring & Safety Kit</div>
+          <div class="specs">8AWG silicone · XT90-S anti-spark · Anderson connectors<br>Magnetic kill switch · fuse · SS316 hardware · conformal coat</div>
+        </div>
+        <div class="option" data-id="acc-premium" data-price="280" data-weight="1.2"
+             data-name="Premium Kit" data-source="Amazon + Specialty" data-url="https://www.amazon.com">
+          <div class="price-tag">$280</div>
+          <span class="badge premium">Premium</span>
+          <div class="name">Premium Wiring & Safety Kit</div>
+          <div class="specs">6AWG silicone · XT90-S + Anderson PP45<br>IRUD anti-spark · buoyancy foam · full potting kit</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════ PROPELLER ═══════ -->
+    <div class="category">
+      <div class="cat-header">
+        <div>
+          <span class="cat-title"><span class="emoji">🌀</span> Propeller & Guard</span>
+          <div class="cat-guide">📖 <a href="/blog-efoil-motor-guide.html#propellers">Read the Propeller Guide →</a></div>
+        </div>
+        <span class="cat-cost" id="cost-prop">—</span>
+      </div>
+      <div class="options" data-category="prop">
+        <div class="option" data-id="alu-prop" data-price="50" data-weight="0.3"
+             data-name="Aluminum Propeller + 3D Guard" data-source="flipsky.net + MakerWorld" data-url="https://flipsky.net/collections/efoil-products">
+          <div class="price-tag">$50</div>
+          <span class="badge budget">Budget</span>
+          <div class="name">Aluminum Prop + 3D Printed Guard</div>
+          <div class="specs">Flipsky alu prop · PETG/ASA guard<br>Buy 2 props (spares are cheap insurance)</div>
+        </div>
+        <div class="option selected" data-id="alu-prop-metal-guard" data-price="100" data-weight="0.5"
+             data-name="Aluminum Prop + Metal Guard" data-source="flipsky.net + custom" data-url="https://flipsky.net/collections/efoil-products">
+          <div class="price-tag">$100</div>
+          <span class="badge popular">Popular</span>
+          <div class="name">Aluminum Prop + Stainless Guard</div>
+          <div class="specs">Flipsky alu prop (×2) · SS prop guard<br>More durable guard · Standard setup</div>
+        </div>
+        <div class="option" data-id="cnc-prop" data-price="200" data-weight="0.4"
+             data-name="CNC Prop + Metal Guard" data-source="Custom order" data-url="">
+          <div class="price-tag">$200</div>
+          <span class="badge premium">Premium</span>
+          <div class="name">Custom CNC Prop + SS Guard</div>
+          <div class="specs">Custom pitch/diameter · Optimized efficiency<br>5-10% better range vs stock · For enthusiasts</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════ COMPARISON BAR ═══════ -->
+    <div class="compare-bar">
+      <h3>💰 Your Build vs. Commercial eFoils</h3>
+      <div style="margin-bottom:.5rem;">
+        <div style="display:flex;justify-content:space-between;font-size:.8rem;margin-bottom:.2rem;">
+          <span style="color:var(--accent);">Your DIY Build: <strong id="bar-diy">$0</strong></span>
+          <span style="color:var(--muted);">Savings: <strong id="bar-savings" style="color:var(--gold)">$0</strong></span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill" id="bar-fill" style="width:30%;background:linear-gradient(90deg,var(--accent),var(--accent-glow));"></div>
+        </div>
+        <div class="bar-labels">
+          <span>$0</span>
+          <span>Waydoo $5K</span>
+          <span>Lift $8K</span>
+          <span>Fliteboard $12K</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════ SHOPPING LIST ═══════ -->
+    <div class="shopping-list" id="shopping-list">
+      <h2>🛒 Your Shopping List</h2>
+      <div id="shop-items"></div>
+      <div class="shop-total">
+        <span class="label">Total Build Cost</span>
+        <span class="amount" id="shop-total">$0</span>
+      </div>
+      <div class="actions">
+        <button class="btn btn-primary" onclick="copyList()">📋 Copy Shopping List</button>
+        <button class="btn btn-secondary" onclick="shareBuild()">🔗 Share This Build</button>
+        <button class="btn btn-secondary" onclick="printBuild()">🖨️ Print Build Sheet</button>
+      </div>
+    </div>
+
+    <!-- ═══════ GUIDE LINKS ═══════ -->
+    <div style="margin-top:2rem;">
+      <h3 style="color:var(--white);font-size:1rem;margin-bottom:.8rem;">📚 Deep Dive Guides for Every Component</h3>
+      <div class="guide-links">
+        <a class="guide-card" href="/blog-efoil-motor-guide.html">
+          <div class="gc-title">🔧 Motor & Propulsion Guide</div>
+          <div class="gc-desc">Inrunner vs outrunner, ESC setup, propeller selection</div>
+        </a>
+        <a class="guide-card" href="/blog-efoil-battery-guide.html">
+          <div class="gc-title">🔋 Battery Guide</div>
+          <div class="gc-desc">Cell selection, BMS, waterproofing, build steps</div>
+        </a>
+        <a class="guide-card" href="/blog-efoil-wiring-guide.html">
+          <div class="gc-title">⚡ Wiring & Electronics Guide</div>
+          <div class="gc-desc">Anti-spark, connectors, cable routing, kill switches</div>
+        </a>
+        <a class="guide-card" href="/blog-efoil-board-foil-guide.html">
+          <div class="gc-title">🏄 Board & Foil Guide</div>
+          <div class="gc-desc">Board sizing, EPS construction, foil selection</div>
+        </a>
+        <a class="guide-card" href="/blog-diy-efoil-guide.html">
+          <div class="gc-title">📖 Complete Build Guide</div>
+          <div class="gc-desc">Step-by-step from components to first ride</div>
+        </a>
+        <a class="guide-card" href="/blog-efoil-troubleshooting.html">
+          <div class="gc-title">🔍 Troubleshooting Guide</div>
+          <div class="gc-desc">Diagnosis by symptom, VESC faults, maintenance</div>
+        </a>
+        <a class="guide-card" href="/blog-efoil-cost-guide.html">
+          <div class="gc-title">💰 eFoil Cost Guide</div>
+          <div class="gc-desc">DIY vs commercial pricing, hidden costs</div>
+        </a>
+        <a class="guide-card" href="/efoil-range-calculator.html">
+          <div class="gc-title">📊 Range Calculator</div>
+          <div class="gc-desc">Estimate runtime and range from your specs</div>
+        </a>
+        <a class="guide-card" href="/blog-how-to-ride-efoil.html">
+          <div class="gc-title">🏄‍♂️ How to Ride an eFoil</div>
+          <div class="gc-desc">5-step progression from beginner to flying</div>
+        </a>
+        <a class="guide-card" href="https://foil.zone" target="_blank">
+          <div class="gc-title">🌊 FOIL.zone Community</div>
+          <div class="gc-desc">5,300+ members, 135K+ posts — ask anything</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 PacificMeister · Open-Source Foiling Innovation</p>
+    <ul class="footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog.html">Blog</a></li>
+      <li><a href="https://foil.zone" target="_blank">FOIL.zone</a></li>
+      <li><a href="https://www.youtube.com/@PacificMeister" target="_blank">YouTube</a></li>
+      <li><a href="https://github.com/pacificmeister" target="_blank">GitHub</a></li>
+    </ul>
+  </footer>
+
+  <div class="toast" id="toast">Copied!</div>
+
+  <script>
+    // ─── State ───────────────────────────────────────────────────────
+    const state = {};
+    const COMMERCIAL_AVG = 8000; // Average commercial eFoil price
+
+    const CATEGORIES = ['motor', 'esc', 'battery', 'bms', 'board', 'foil', 'remote', 'accessories', 'prop'];
+
+    // ─── Init ────────────────────────────────────────────────────────
+    document.addEventListener('DOMContentLoaded', () => {
+      // Load from URL hash
+      loadFromHash();
+
+      // Bind click handlers
+      document.querySelectorAll('.options').forEach(group => {
+        const cat = group.dataset.category;
+        group.querySelectorAll('.option').forEach(btn => {
+          btn.addEventListener('click', () => selectOption(cat, btn, group));
+        });
+      });
+
+      // Initialize from pre-selected
+      document.querySelectorAll('.option.selected').forEach(btn => {
+        const group = btn.closest('.options');
+        const cat = group.dataset.category;
+        state[cat] = extractState(btn);
+      });
+
+      updateAll();
+    });
+
+    function extractState(btn) {
+      return {
+        id: btn.dataset.id,
+        price: parseFloat(btn.dataset.price) || 0,
+        weight: parseFloat(btn.dataset.weight) || 0,
+        name: btn.dataset.name || btn.querySelector('.name')?.textContent || '',
+        source: btn.dataset.source || '',
+        url: btn.dataset.url || '',
+      };
+    }
+
+    function selectOption(cat, btn, group) {
+      group.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+      btn.classList.add('selected');
+      state[cat] = extractState(btn);
+      // Clear preset highlight
+      document.querySelectorAll('.preset-btn').forEach(p => p.classList.remove('active'));
+      updateAll();
+    }
+
+    // ─── Calculations ────────────────────────────────────────────────
+    function getTotalPrice() {
+      return CATEGORIES.reduce((sum, cat) => sum + (state[cat]?.price || 0), 0);
+    }
+
+    function getTotalWeight() {
+      return CATEGORIES.reduce((sum, cat) => sum + (state[cat]?.weight || 0), 0);
+    }
+
+    function getPartsCount() {
+      return CATEGORIES.filter(cat => state[cat] && state[cat].price >= 0 && state[cat].id).length;
+    }
+
+    // ─── Update UI ───────────────────────────────────────────────────
+    function updateAll() {
+      const total = getTotalPrice();
+      const weight = getTotalWeight();
+      const parts = getPartsCount();
+      const savings = COMMERCIAL_AVG - total;
+
+      // Summary strip
+      document.getElementById('sum-cost').textContent = '$' + total.toLocaleString();
+      document.getElementById('sum-weight').textContent = weight.toFixed(1) + ' kg';
+      document.getElementById('sum-parts').textContent = parts + '/' + CATEGORIES.length;
+      document.getElementById('sum-savings').textContent = savings > 0 ? 'Save $' + savings.toLocaleString() : '—';
+
+      // Category costs
+      const catMap = {
+        motor: ['motor'], esc: ['esc'], battery: ['battery'], bms: ['bms'],
+        board: ['board'], foil: ['foil'], remote: ['remote'],
+        accessories: ['accessories'], prop: ['prop']
+      };
+      for (const [label, cats] of Object.entries(catMap)) {
+        const el = document.getElementById('cost-' + label);
+        if (el) {
+          const catTotal = cats.reduce((s, c) => s + (state[c]?.price || 0), 0);
+          el.textContent = catTotal > 0 ? '$' + catTotal : '—';
+        }
+      }
+
+      // Comparison bar
+      const pct = Math.min((total / 12000) * 100, 100);
+      document.getElementById('bar-fill').style.width = pct + '%';
+      document.getElementById('bar-diy').textContent = '$' + total.toLocaleString();
+      document.getElementById('bar-savings').textContent = savings > 0 ? '$' + savings.toLocaleString() : '$0';
+
+      // Shopping list
+      updateShoppingList(total);
+
+      // Update hash
+      saveToHash();
+    }
+
+    function updateShoppingList(total) {
+      const container = document.getElementById('shop-items');
+      container.innerHTML = '';
+      CATEGORIES.forEach(cat => {
+        const s = state[cat];
+        if (!s || !s.id) return;
+        const item = document.createElement('div');
+        item.className = 'shop-item';
+        const link = s.url ? `<a class="shop-link" href="${s.url}" target="_blank">Buy →</a>` : '';
+        item.innerHTML = `
+          <div>
+            <div class="shop-name">${s.name}</div>
+            <div class="shop-source">${s.source} ${link}</div>
+          </div>
+          <div class="shop-price">$${s.price}</div>
+        `;
+        container.appendChild(item);
+      });
+      document.getElementById('shop-total').textContent = '$' + total.toLocaleString();
+    }
+
+    // ─── Presets ──────────────────────────────────────────────────────
+    const PRESETS = {
+      budget: {
+        motor: '63100-outrunner', esc: 'fsesc-75100', battery: 'used-efoil-battery',
+        bms: 'bms-included', board: 'used-surfboard', foil: 'china-foil',
+        remote: 'vx3', accessories: 'acc-basic', prop: 'alu-prop'
+      },
+      popular: {
+        motor: '65161-120kv', esc: 'fsesc-75200', battery: 'diy-12s8p-p42a',
+        bms: 'basic-bms-5a', board: 'eps-blank-diy', foil: 'slingshot-hoverglide',
+        remote: 'vx3-pro', accessories: 'acc-standard', prop: 'alu-prop-metal-guard'
+      },
+      performance: {
+        motor: '70182', esc: 'makerx-dv6', battery: 'diy-14s8p-p42a',
+        bms: 'smart-bms-5a', board: 'eps-blank-diy', foil: 'axis-foil',
+        remote: 'vx3-pro', accessories: 'acc-premium', prop: 'cnc-prop'
+      },
+      ultralight: {
+        motor: '65162-100kv', esc: 'makerx-dv6', battery: 'diy-12s6p-p42a',
+        bms: 'smart-bms-5a', board: 'eps-blank-diy', foil: 'gong-foil',
+        remote: 'maytech-remote', accessories: 'acc-standard', prop: 'alu-prop-metal-guard'
+      }
+    };
+
+    function applyPreset(name) {
+      const preset = PRESETS[name];
+      if (!preset) return;
+      document.querySelectorAll('.preset-btn').forEach(p => p.classList.remove('active'));
+      event.target.closest('.preset-btn').classList.add('active');
+
+      for (const [cat, id] of Object.entries(preset)) {
+        const group = document.querySelector(`.options[data-category="${cat}"]`);
+        if (!group) continue;
+        const btn = group.querySelector(`[data-id="${id}"]`);
+        if (btn) {
+          group.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+          btn.classList.add('selected');
+          state[cat] = extractState(btn);
+        }
+      }
+      updateAll();
+    }
+
+    // ─── Share / Copy / Print ────────────────────────────────────────
+    function saveToHash() {
+      const parts = CATEGORIES.map(cat => state[cat]?.id || '').join(',');
+      history.replaceState(null, '', '#' + parts);
+    }
+
+    function loadFromHash() {
+      const hash = location.hash.slice(1);
+      if (!hash) return;
+      const ids = hash.split(',');
+      CATEGORIES.forEach((cat, i) => {
+        if (!ids[i]) return;
+        const group = document.querySelector(`.options[data-category="${cat}"]`);
+        if (!group) return;
+        const btn = group.querySelector(`[data-id="${ids[i]}"]`);
+        if (btn) {
+          group.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+          btn.classList.add('selected');
+          state[cat] = extractState(btn);
+        }
+      });
+    }
+
+    function copyList() {
+      let text = '🏄‍♂️ DIY eFoil Build — PacificMeister Configurator\n';
+      text += '═══════════════════════════════════════\n\n';
+      CATEGORIES.forEach(cat => {
+        const s = state[cat];
+        if (!s || !s.id) return;
+        text += `${s.name} — $${s.price}`;
+        if (s.url) text += `\n  ${s.url}`;
+        text += '\n';
+      });
+      text += `\n═══════════════════════════════════════\n`;
+      text += `TOTAL: $${getTotalPrice().toLocaleString()} (Save $${(COMMERCIAL_AVG - getTotalPrice()).toLocaleString()} vs commercial)\n`;
+      text += `Weight: ${getTotalWeight().toFixed(1)} kg\n\n`;
+      text += `Configure your own: ${location.href}\n`;
+      text += `Community: https://foil.zone\n`;
+
+      navigator.clipboard.writeText(text).then(() => showToast('Shopping list copied!'));
+    }
+
+    function shareBuild() {
+      const url = location.href;
+      navigator.clipboard.writeText(url).then(() => showToast('Build URL copied!'));
+    }
+
+    function printBuild() {
+      window.print();
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2000);
+    }
+  </script>
+</body>
+</html>
