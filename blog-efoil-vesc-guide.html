@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIY eFoil VESC Setup Guide: Complete Configuration From Zero to Riding (2026) — PacificMeister</title>
+    <meta name="description" content="The complete VESC setup guide for DIY eFoils. Motor detection, current limits, throttle curves, battery cutoffs, temperature protection, PPM setup, and proven settings for 65161, 65162, and 63100 motors. Step-by-step from fresh firmware to first ride.">
+    <meta name="keywords" content="VESC eFoil setup, VESC Tool eFoil, eFoil VESC settings, VESC motor detection eFoil, VESC current limits eFoil, Flipsky VESC eFoil, VESC 75100 eFoil, VESC 75200 eFoil, eFoil throttle curve, VESC PPM setup, VESC battery cutoff, 65161 VESC settings, 65162 VESC settings, DIY eFoil ESC, PacificMeister, FOIL.zone">
+    <link rel="canonical" href="https://pacificmeister.github.io/blog-efoil-vesc-guide.html">
+
+    <meta property="og:title" content="DIY eFoil VESC Setup Guide: Complete Configuration From Zero to Riding (2026)">
+    <meta property="og:description" content="Stop guessing at VESC settings. The definitive eFoil configuration guide — motor detection, current limits, throttle curves, and proven settings from thousands of FOIL.zone builds.">
+    <meta property="og:url" content="https://pacificmeister.github.io/blog-efoil-vesc-guide.html">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://pacificmeister.github.io/og-image.png">
+    <meta property="og:site_name" content="PacificMeister">
+    <meta property="article:published_time" content="2026-03-24">
+    <meta property="article:author" content="PacificMeister">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="DIY eFoil VESC Setup Guide: Complete Configuration (2026)">
+    <meta name="twitter:description" content="The definitive VESC eFoil settings guide. Motor detection, current limits, throttle curves — proven settings from the world's largest DIY eFoil community.">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "DIY eFoil VESC Setup Guide: Complete Configuration From Zero to Riding (2026)",
+        "datePublished": "2026-03-24",
+        "dateModified": "2026-03-24",
+        "author": {
+            "@type": "Person",
+            "name": "PacificMeister",
+            "url": "https://pacificmeister.github.io"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "PacificMeister",
+            "url": "https://pacificmeister.github.io"
+        },
+        "description": "The complete VESC setup guide for DIY eFoils. Step-by-step configuration covering firmware, motor detection, current limits, battery cutoffs, throttle curves, PPM setup, temperature protection, and proven settings for all popular eFoil motors.",
+        "mainEntityOfPage": "https://pacificmeister.github.io/blog-efoil-vesc-guide.html"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "How to Set Up a VESC for a DIY eFoil",
+        "description": "Step-by-step VESC configuration for DIY eFoil builds, from firmware installation to first ride tuning.",
+        "totalTime": "PT2H",
+        "tool": [
+            { "@type": "HowToTool", "name": "VESC Tool (desktop or mobile)" },
+            { "@type": "HowToTool", "name": "USB cable or Bluetooth module" },
+            { "@type": "HowToTool", "name": "Fully charged battery pack" }
+        ],
+        "step": [
+            {
+                "@type": "HowToStep",
+                "name": "Install Firmware",
+                "text": "Download VESC Tool, connect to your ESC via USB, and flash the correct firmware for your hardware version. Use the official firmware — never third-party forks for safety-critical water vehicles."
+            },
+            {
+                "@type": "HowToStep",
+                "name": "Run Motor Detection",
+                "text": "Use the FOC motor detection wizard in VESC Tool. This measures your motor's resistance, inductance, and flux linkage. The motor will beep and spin briefly. Run detection with the propeller removed."
+            },
+            {
+                "@type": "HowToStep",
+                "name": "Set Current Limits",
+                "text": "Configure motor current max (typically 60-80A for eFoils), motor current brake (-40 to -60A), battery current max (40-60A), and battery current regen (-15 to -20A). These protect your hardware and define performance."
+            },
+            {
+                "@type": "HowToStep",
+                "name": "Configure Battery Cutoffs",
+                "text": "Set voltage cutoff start and end based on your battery configuration. For 12S: start 39.6V, end 36V. For 14S: start 46.2V, end 42V. This prevents over-discharging your cells."
+            },
+            {
+                "@type": "HowToStep",
+                "name": "Set Up PPM (Throttle)",
+                "text": "Configure your wireless receiver as PPM input. Map the throttle range, set failsafe to zero throttle, enable ramping for smooth power delivery, and configure the throttle curve for comfortable riding."
+            },
+            {
+                "@type": "HowToStep",
+                "name": "Configure Temperature Protection",
+                "text": "Set MOSFET temperature start at 80°C and end at 100°C. Set motor temperature start at 80°C, end at 100°C (if your motor has a temperature sensor). Enable soft RPM limit for propeller protection."
+            },
+            {
+                "@type": "HowToStep",
+                "name": "Test and Tune",
+                "text": "Bench test with propeller in water bucket. Verify throttle direction, smooth ramp-up, clean shutdown. Then do a real water test at low power before gradually increasing limits. Fine-tune throttle curve for your riding style."
+            }
+        ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What VESC firmware version should I use for an eFoil?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Use the latest stable release from the official VESC Project (vesc-project.com). As of 2026, firmware 6.x is standard. Always match your firmware to your VESC Tool version — mismatched versions cause connection issues and can brick your ESC. For Flipsky hardware, use the official VESC firmware, not Flipsky's modified version, as the community consistently reports better motor detection and fewer faults with standard firmware."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What are the best VESC settings for a 65161 eFoil motor?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "For the Flipsky 65161 120KV inrunner on a 12S battery: Motor current max 80A, motor current brake -60A, battery current max 50A, battery current regen -15A, battery cutoff start 39.6V, end 36V. Run FOC motor detection (not BLDC) — the 65161 runs much smoother in FOC mode. Set PPM ramping to 0.15s positive and 0.1s negative for smooth but responsive throttle. These are starting points — tune based on your riding weight and conditions."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why does my VESC keep throwing faults on my eFoil?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The most common VESC faults in eFoil use are: ABS_OVER_CURRENT (usually a loose phase wire or short — check all bullet connectors), OVER_TEMP_FET (ESC overheating — improve cooling or reduce current limits), DRV (gate driver error — often water ingress or hardware failure), and UNDER_VOLTAGE (battery can't deliver enough current — check cell health and connections). Connect via VESC Tool and type 'faults' in the Terminal tab to see the fault log with timestamps. Most eFoil-specific faults trace back to water ingress, vibration-loosened connectors, or running motor detection with incorrect parameters."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Should I use FOC or BLDC mode for my eFoil VESC?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Always use FOC (Field Oriented Control) for eFoils. FOC provides smoother, quieter operation, better efficiency (5-15% more range), reduced motor heating, and more precise low-speed control — all critical for water use. BLDC mode produces audible motor whine, cogging at low speeds, and wastes energy. The only reason to use BLDC is if FOC motor detection repeatedly fails, which usually indicates a wiring problem, not a mode problem. Every serious eFoil builder on FOIL.zone uses FOC."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do I set up the throttle curve on my eFoil VESC?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The default linear throttle curve makes eFoils hard to ride — too much power at low throttle, not enough control in the critical foiling transition zone. Use a soft exponential curve: in VESC Tool under App Settings > PPM, set throttle curve to 'Exponential' with a value of -20 to -30. This gives you fine control at low speeds (where you're getting on foil) and full power still available at high throttle. Some builders also use 'Natural' mode with ramping set to 0.2s for the smoothest experience. Adjust based on your riding style — beginners prefer softer curves (-30), experienced riders prefer more linear (-10 to -15)."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I use a Flipsky VESC for an eFoil? Is it reliable?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Flipsky VESCs (75100, 75200) are the most commonly used ESCs in DIY eFoils and work well when set up correctly. The 75100 (single motor, 100A) handles most eFoil builds. The 75200 (dual or higher current) is overkill for most but provides headroom. Key tips: flash official VESC firmware instead of Flipsky's, apply conformal coating to the PCB before use, ensure the aluminum case is properly sealed, and don't exceed 80% of rated current for sustained water use. Thousands of reliable eFoil builds run on Flipsky hardware — most failures come from water ingress or incorrect settings, not the hardware itself."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --ocean-deep: #0a1628;
+            --ocean-mid: #0f2847;
+            --ocean-light: #1a4a7a;
+            --foam: #e8f4f8;
+            --white: #ffffff;
+            --accent: #00d4aa;
+            --accent-glow: #00ffcc;
+            --text: #c8dae8;
+            --text-bright: #f0f6fc;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: var(--ocean-deep);
+            color: var(--text);
+            line-height: 1.8;
+        }
+
+        .ocean-bg {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(180deg, #0a1628 0%, #0c1e3a 30%, #0f2847 50%, #0a1628 100%);
+            z-index: -2;
+        }
+
+        header {
+            padding: 2rem 2rem 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+        }
+        .logo span { color: var(--accent); }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--accent); }
+
+        article {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .article-meta {
+            color: var(--accent);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--white);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-intro {
+            font-size: 1.2rem;
+            color: var(--text-bright);
+            border-left: 3px solid var(--accent);
+            padding-left: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--white);
+            margin: 3rem 0 1.5rem;
+            padding-top: 1rem;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            color: var(--accent);
+            margin: 2rem 0 1rem;
+        }
+
+        h4 {
+            font-size: 1.1rem;
+            color: var(--text-bright);
+            margin: 1.5rem 0 0.75rem;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+        }
+
+        ul, ol {
+            margin: 1rem 0 1.5rem 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        strong {
+            color: var(--text-bright);
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .settings-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        .settings-table th {
+            background: rgba(0, 212, 170, 0.15);
+            color: var(--accent);
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid rgba(0, 212, 170, 0.3);
+        }
+
+        .settings-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .settings-table tr:hover {
+            background: rgba(0, 212, 170, 0.05);
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, rgba(0, 60, 80, 0.3), rgba(0, 40, 60, 0.3));
+            border: 1px solid rgba(0, 212, 170, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .info-box h4 {
+            color: var(--accent);
+            margin-top: 0;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, rgba(80, 40, 0, 0.3), rgba(60, 30, 0, 0.3));
+            border: 1px solid rgba(255, 165, 0, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .warning-box h4 {
+            color: #ffaa00;
+            margin-top: 0;
+        }
+
+        .danger-box {
+            background: linear-gradient(135deg, rgba(80, 0, 0, 0.3), rgba(60, 0, 0, 0.3));
+            border: 1px solid rgba(255, 60, 60, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .danger-box h4 {
+            color: #ff4444;
+            margin-top: 0;
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: var(--ocean-deep);
+            font-weight: 800;
+            border-radius: 50%;
+            margin-right: 0.75rem;
+            font-size: 1rem;
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            margin: 2.5rem 0 1rem;
+        }
+
+        .step-header h3 {
+            margin: 0;
+            color: var(--white);
+            font-size: 1.4rem;
+        }
+
+        code {
+            background: rgba(0, 212, 170, 0.1);
+            color: var(--accent);
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+        }
+
+        .code-block {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(0, 212, 170, 0.15);
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin: 1rem 0 1.5rem;
+            overflow-x: auto;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--text-bright);
+        }
+
+        .toc {
+            background: linear-gradient(135deg, rgba(15, 40, 71, 0.6), rgba(10, 22, 40, 0.8));
+            border: 1px solid rgba(0, 212, 170, 0.15);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0 3rem;
+        }
+
+        .toc h3 {
+            color: var(--white);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .toc ol {
+            margin: 0;
+            padding-left: 1.25rem;
+        }
+
+        .toc li {
+            margin-bottom: 0.4rem;
+        }
+
+        .toc a {
+            color: var(--text);
+            font-size: 0.95rem;
+        }
+        .toc a:hover {
+            color: var(--accent);
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, rgba(0, 80, 60, 0.3), rgba(0, 60, 50, 0.3));
+            border: 1px solid rgba(0, 212, 170, 0.3);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .cta-box h3 {
+            color: var(--white);
+            font-size: 1.4rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .cta-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .cta-link {
+            display: inline-block;
+            padding: 0.6rem 1.5rem;
+            background: rgba(0, 212, 170, 0.15);
+            border: 1px solid rgba(0, 212, 170, 0.3);
+            border-radius: 8px;
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .cta-link:hover {
+            background: rgba(0, 212, 170, 0.25);
+            text-decoration: none;
+            transform: translateY(-2px);
+        }
+
+        .related-articles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .related-card {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(15, 40, 71, 0.6), rgba(10, 22, 40, 0.8));
+            border: 1px solid rgba(0, 212, 170, 0.12);
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .related-card:hover {
+            border-color: rgba(0, 212, 170, 0.35);
+            transform: translateY(-3px);
+            text-decoration: none;
+        }
+
+        .related-card .icon { font-size: 2rem; margin-bottom: 0.75rem; }
+        .related-card h4 { color: var(--white); margin: 0 0 0.5rem; font-size: 1rem; }
+        .related-card p { color: var(--text); font-size: 0.85rem; margin: 0; }
+
+        footer {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        footer p { color: rgba(200, 218, 232, 0.5); font-size: 0.85rem; }
+        .footer-links { display: flex; gap: 1.5rem; list-style: none; }
+        .footer-links a { color: rgba(200, 218, 232, 0.5); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--accent); }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.4rem; }
+            .settings-table { font-size: 0.8rem; }
+            .settings-table th, .settings-table td { padding: 0.5rem; }
+            .related-articles { grid-template-columns: 1fr; }
+            footer { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="ocean-bg"></div>
+
+    <header>
+        <nav>
+            <a href="/" class="logo">Pacific<span>Meister</span></a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/#tools">Tools</a></li>
+                <li><a href="/blog.html">Blog</a></li>
+                <li><a href="https://foil.zone" target="_blank">Community</a></li>
+                <li><a href="https://www.youtube.com/@PacificMeister" target="_blank">YouTube</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <article>
+        <div class="article-meta">March 2026 · 25 min read · Deep Dive</div>
+        <h1>DIY eFoil VESC Setup Guide: Complete Configuration From Zero to Riding</h1>
+
+        <p class="article-intro">
+            The VESC is the brain of your eFoil. Get the settings right and you'll have a smooth, efficient, reliable ride. Get them wrong and you'll fry components, get random cutouts, or — worst case — have a dangerous failure on the water. This is every setting, explained, with proven values from thousands of FOIL.zone builds.
+        </p>
+
+        <div class="toc">
+            <h3>📋 What's In This Guide</h3>
+            <ol>
+                <li><a href="#what-is-vesc">What Is a VESC and Why eFoils Use It</a></li>
+                <li><a href="#hardware">Choosing Your VESC Hardware</a></li>
+                <li><a href="#firmware">Step 1: Firmware Installation</a></li>
+                <li><a href="#motor-detection">Step 2: Motor Detection (FOC)</a></li>
+                <li><a href="#current-limits">Step 3: Current Limits — The Most Important Settings</a></li>
+                <li><a href="#battery-cutoffs">Step 4: Battery Cutoff Voltages</a></li>
+                <li><a href="#throttle">Step 5: PPM / Throttle Setup</a></li>
+                <li><a href="#temperature">Step 6: Temperature Protection</a></li>
+                <li><a href="#advanced">Step 7: Advanced Settings & Fine-Tuning</a></li>
+                <li><a href="#motor-profiles">Proven Settings by Motor</a></li>
+                <li><a href="#testing">Bench Testing & First Ride</a></li>
+                <li><a href="#troubleshooting">VESC Troubleshooting Quick Reference</a></li>
+                <li><a href="#mistakes">10 VESC Mistakes That Kill eFoils</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ol>
+        </div>
+
+        <!-- Section 1: What Is VESC -->
+        <h2 id="what-is-vesc">What Is a VESC and Why eFoils Use It</h2>
+
+        <p>VESC stands for <strong>Vedder Electronic Speed Controller</strong>, created by Benjamin Vedder. It's an open-source motor controller that's become the standard for DIY eFoils because:</p>
+
+        <ul>
+            <li><strong>Fully configurable</strong> — every parameter adjustable, not a black box</li>
+            <li><strong>FOC support</strong> — silent, smooth, efficient motor control</li>
+            <li><strong>Data logging</strong> — real-time monitoring of current, voltage, temperature, RPM</li>
+            <li><strong>Fault protection</strong> — automatic shutdown on overcurrent, overtemp, undervoltage</li>
+            <li><strong>Community-proven</strong> — thousands of water builds, known failure modes, documented fixes</li>
+        </ul>
+
+        <p>Commercial eFoils (Lift, Fliteboard) use proprietary ESCs that can't be repaired or tuned. With a VESC, you control everything — and when something goes wrong, you can diagnose it instead of shipping the whole board back to the manufacturer.</p>
+
+        <div class="info-box">
+            <h4>💡 VESC vs. Proprietary ESC</h4>
+            <p>Standard RC ESCs (like those for drones or RC cars) lack the configurable safety features needed for water use. They can't limit battery regen current (which damages cells), don't have temperature-based derating, and their throttle curves aren't tunable for foiling. A VESC costs $100-250 — the same as a good RC ESC — but gives you 10x the control. For eFoils, it's the only sensible choice.</p>
+        </div>
+
+        <!-- Section 2: Hardware -->
+        <h2 id="hardware">Choosing Your VESC Hardware</h2>
+
+        <p>Not all VESCs are equal. For eFoils, you need hardware rated for the sustained current draw of a water propulsion system. Here's what the community actually uses:</p>
+
+        <table class="settings-table">
+            <thead>
+                <tr>
+                    <th>ESC</th>
+                    <th>Voltage</th>
+                    <th>Current (Cont.)</th>
+                    <th>Best For</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Flipsky 75100</strong></td>
+                    <td>14–75V</td>
+                    <td>100A</td>
+                    <td>Most builds (12S–14S)</td>
+                    <td>~$150</td>
+                </tr>
+                <tr>
+                    <td><strong>Flipsky 75200</strong></td>
+                    <td>14–75V</td>
+                    <td>200A</td>
+                    <td>High-power / dual motor</td>
+                    <td>~$250</td>
+                </tr>
+                <tr>
+                    <td><strong>VESC 75/300</strong> (Trampa)</td>
+                    <td>14–75V</td>
+                    <td>300A</td>
+                    <td>Premium / commercial</td>
+                    <td>~$400+</td>
+                </tr>
+                <tr>
+                    <td><strong>Flipsky 75100 Pro</strong></td>
+                    <td>14–75V</td>
+                    <td>100A</td>
+                    <td>Aluminum case, better cooling</td>
+                    <td>~$180</td>
+                </tr>
+                <tr>
+                    <td><strong>Makerbase VESC 75100</strong></td>
+                    <td>14–75V</td>
+                    <td>100A</td>
+                    <td>Budget alternative</td>
+                    <td>~$100</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>The Community Recommendation</h3>
+
+        <p>The <strong>Flipsky 75100</strong> is the workhorse of the DIY eFoil world. It handles 12S and 14S batteries, has enough current headroom for any single-motor eFoil build, and has years of community-proven reliability. If you're building your first eFoil, this is the one.</p>
+
+        <div class="warning-box">
+            <h4>⚠️ Don't Cheap Out on the ESC</h4>
+            <p>Avoid generic "VESC-compatible" ESCs from unknown brands on AliExpress. The MOSFET quality, PCB layout, and thermal management on cheap clones cause failures — especially in the sustained high-current, high-humidity environment of an eFoil. A failed ESC in water can mean a dead battery (shorted cells), a fire in your board, or being stranded far from shore. The Flipsky 75100 at ~$150 is the floor for eFoil builds.</p>
+        </div>
+
+        <h3>Before You Start: Waterproofing Your VESC</h3>
+
+        <p>Before you even plug in the USB cable, waterproof the electronics:</p>
+
+        <ol>
+            <li><strong>Conformal coating</strong> — Apply MG Chemicals 422B or similar to the entire PCB (both sides). Let cure 24 hours. This is your first line of defense against humidity and splash.</li>
+            <li><strong>Seal the enclosure</strong> — If using the aluminum Flipsky case, apply marine-grade silicone (3M 4000 UV or similar) on the case seam. Don't rely on the stock gasket alone.</li>
+            <li><strong>Pot critical connectors</strong> — Where phase wires and battery wires exit the enclosure, use hot glue or marine epoxy to seal the entry points.</li>
+            <li><strong>Desiccant packs</strong> — Toss a small silica gel packet inside the enclosure to absorb any trapped moisture.</li>
+        </ol>
+
+        <!-- Section 3: Firmware -->
+        <h2 id="firmware">Step 1: Firmware Installation</h2>
+
+        <div class="step-header">
+            <span class="step-number">1</span>
+            <h3>Download VESC Tool & Connect</h3>
+        </div>
+
+        <ol>
+            <li>Download <strong>VESC Tool</strong> from <a href="https://vesc-project.com/vesc_tool" target="_blank">vesc-project.com</a> (Windows, Mac, Linux, or mobile)</li>
+            <li>Connect your VESC to your computer via <strong>USB</strong> (most reliable for initial setup)</li>
+            <li>Power the VESC from your battery — USB alone doesn't provide enough power for motor detection</li>
+            <li>Open VESC Tool → click the <strong>connect</strong> icon (plug symbol, top-left)</li>
+        </ol>
+
+        <div class="step-header">
+            <span class="step-number">2</span>
+            <h3>Flash Firmware</h3>
+        </div>
+
+        <p>Go to <strong>Firmware → Included Files</strong> in VESC Tool:</p>
+
+        <ol>
+            <li>Select your hardware from the dropdown (e.g., "Flipsky 75100" or "VESC 75/100")</li>
+            <li>Choose the latest stable firmware version</li>
+            <li>Click <strong>Upload</strong> — the process takes 30-60 seconds</li>
+            <li>The VESC will reboot automatically</li>
+            <li>Reconnect in VESC Tool</li>
+        </ol>
+
+        <div class="danger-box">
+            <h4>🚨 Critical: Firmware Matching</h4>
+            <p>Your VESC Tool version and firmware version <strong>must match</strong>. If VESC Tool is v6.05, flash firmware v6.05. Mismatched versions cause motor detection failures, incorrect parameter interpretation, and in rare cases can brick the ESC. If you're updating VESC Tool, always re-flash firmware afterward.</p>
+        </div>
+
+        <div class="info-box">
+            <h4>💡 Flipsky Firmware vs. Official VESC Firmware</h4>
+            <p>Flipsky ships their hardware with custom firmware. The FOIL.zone community overwhelmingly recommends <strong>flashing official VESC firmware</strong> over keeping the Flipsky version. Reasons: better motor detection accuracy, fewer phantom faults, and community settings/guides are all based on official firmware behavior. The flash process is the same — just select the correct hardware in VESC Tool's firmware tab.</p>
+        </div>
+
+        <!-- Section 4: Motor Detection -->
+        <h2 id="motor-detection">Step 2: Motor Detection (FOC)</h2>
+
+        <p>Motor detection is where VESC Tool measures your specific motor's electrical characteristics — resistance, inductance, and flux linkage. These values are <strong>unique to your motor</strong> and cannot be copy-pasted from someone else's setup (even with the same motor model, manufacturing tolerances mean each one is slightly different).</p>
+
+        <div class="step-header">
+            <span class="step-number">3</span>
+            <h3>Run FOC Detection</h3>
+        </div>
+
+        <div class="danger-box">
+            <h4>🚨 Remove the Propeller First!</h4>
+            <p>During motor detection, the motor will spin. If the propeller is attached and hits something (or your hand), it will cause serious injury. <strong>Always detect with the propeller removed.</strong> If you can't remove the prop, submerge the motor unit in a bucket of water deep enough that the prop spins freely.</p>
+        </div>
+
+        <ol>
+            <li>Go to <strong>Motor Settings → FOC → General</strong></li>
+            <li>Set <strong>Motor Type: FOC</strong> (not BLDC — see FAQ)</li>
+            <li>Set initial current limit to <strong>40A</strong> for detection (you'll increase later)</li>
+            <li>Click <strong>Run Motor Detection</strong> (the RL + λ button)</li>
+            <li>The motor will make a series of beeps and short spins (10-20 seconds)</li>
+            <li>If successful, you'll see values for R (resistance), L (inductance), and λ (flux linkage)</li>
+            <li>Click <strong>Apply</strong> to save the detected values</li>
+        </ol>
+
+        <h3>Expected Detection Values</h3>
+
+        <table class="settings-table">
+            <thead>
+                <tr>
+                    <th>Motor</th>
+                    <th>R (mΩ)</th>
+                    <th>L (μH)</th>
+                    <th>λ (mWb)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>65161 120KV</strong> (inrunner)</td>
+                    <td>8–15</td>
+                    <td>8–18</td>
+                    <td>4–8</td>
+                </tr>
+                <tr>
+                    <td><strong>65162 120KV</strong> (inrunner)</td>
+                    <td>8–15</td>
+                    <td>8–18</td>
+                    <td>4–8</td>
+                </tr>
+                <tr>
+                    <td><strong>63100 130KV</strong> (outrunner)</td>
+                    <td>15–25</td>
+                    <td>15–30</td>
+                    <td>5–10</td>
+                </tr>
+                <tr>
+                    <td><strong>6384 120KV</strong> (outrunner)</td>
+                    <td>20–35</td>
+                    <td>20–40</td>
+                    <td>6–12</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>If your values are wildly outside these ranges, something is wrong — usually a bad phase wire connection or a motor winding issue.</p>
+
+        <h3>Motor Detection Failed? Here's Why</h3>
+
+        <ul>
+            <li><strong>Motor doesn't spin at all</strong> — Check phase wire connections. All three wires must be connected. Try swapping any two phase wires (direction doesn't matter for detection).</li>
+            <li><strong>"Detection failed" error</strong> — Increase the detection current to 50A or 60A. Some high-inductance motors need more current to detect properly.</li>
+            <li><strong>Inconsistent values</strong> — Run detection 3 times. If values vary by more than 20%, you have a loose connection or damaged motor winding.</li>
+            <li><strong>Motor spins but values are wrong</strong> — Make sure the motor is free to spin. Any mechanical resistance (prop, sand, corrosion) will skew the results.</li>
+            <li><strong>Timeout</strong> — Battery voltage too low. Charge your pack fully before detection.</li>
+        </ul>
+
+        <!-- Section 5: Current Limits -->
+        <h2 id="current-limits">Step 3: Current Limits — The Most Important Settings</h2>
+
+        <p>Current limits define everything about your eFoil's performance and safety. Set them too low and you won't get on foil. Set them too high and you'll damage your battery, overheat your ESC, or blow a MOSFET. These four settings are the ones you'll tune most.</p>
+
+        <h3>The Four Current Settings</h3>
+
+        <table class="settings-table">
+            <thead>
+                <tr>
+                    <th>Setting</th>
+                    <th>What It Does</th>
+                    <th>Typical Range</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Motor Current Max</strong></td>
+                    <td>Maximum current the VESC sends to the motor. Controls top-end power and acceleration.</td>
+                    <td>60–100A</td>
+                </tr>
+                <tr>
+                    <td><strong>Motor Current Brake</strong></td>
+                    <td>Regenerative braking current (negative value). How hard the motor brakes when you release the throttle.</td>
+                    <td>-40 to -80A</td>
+                </tr>
+                <tr>
+                    <td><strong>Battery Current Max</strong></td>
+                    <td>Maximum current drawn from the battery. <strong>This is the safety ceiling for your battery pack.</strong></td>
+                    <td>40–60A</td>
+                </tr>
+                <tr>
+                    <td><strong>Battery Current Regen</strong></td>
+                    <td>Maximum regen current pushed back into the battery (negative value). Prevents overcharging cells during braking.</td>
+                    <td>-10 to -20A</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Understanding the Relationship</h3>
+
+        <p>The VESC uses a DC-DC conversion between battery and motor. This means:</p>
+
+        <ul>
+            <li><strong>Motor current can exceed battery current</strong> — At low RPM, the VESC "converts" lower battery current into higher motor current (like a gear reduction). A 50A battery limit can still deliver 80A to the motor at low speeds.</li>
+            <li><strong>Battery current is the bottleneck</strong> — This is what your battery pack must sustain. Set this based on your battery's continuous discharge rating, not your motor's max rating.</li>
+            <li><strong>Motor current controls the feel</strong> — Higher motor current = stronger acceleration and better low-speed torque (getting on foil). But it also means more heat.</li>
+        </ul>
+
+        <div class="info-box">
+            <h4>💡 How to Calculate Your Battery Current Limit</h4>
+            <p>Take your battery's continuous discharge rating per cell, multiply by the number of parallel groups. Example: Samsung 40T cells (35A continuous) in a 12S4P pack = 4 × 35A = 140A theoretical max. But <strong>never run cells at 100% rated current</strong> — they'll degrade fast and get dangerously hot. Use 60-70% of the theoretical max for sustained water use. So 140A × 0.6 = <strong>84A safe battery current max</strong>. Most eFoil builds run 40-60A battery current and that's plenty.</p>
+        </div>
+
+        <h3>Starting Point Settings by Rider Weight</h3>
+
+        <table class="settings-table">
+            <thead>
+                <tr>
+                    <th>Rider Weight</th>
+                    <th>Motor Max</th>
+                    <th>Motor Brake</th>
+                    <th>Battery Max</th>
+                    <th>Battery Regen</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Under 70 kg / 155 lbs</td>
+                    <td>60A</td>
+                    <td>-40A</td>
+                    <td>40A</td>
+                    <td>-12A</td>
+                </tr>
+                <tr>
+                    <td>70–90 kg / 155–200 lbs</td>
+                    <td>80A</td>
+                    <td>-50A</td>
+                    <td>50A</td>
+                    <td>-15A</td>
+                </tr>
+                <tr>
+                    <td>Over 90 kg / 200 lbs</td>
+                    <td>100A</td>
+                    <td>-60A</td>
+                    <td>60A</td>
+                    <td>-18A</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>Start conservative. You can always increase current limits later — you can't un-fry a MOSFET.</p>
+
+        <div class="warning-box">
+            <h4>⚠️ Battery Regen Current: The Silent Battery Killer</h4>
+            <p>If your battery regen current is set too high, regenerative braking will push too much current back into your cells — especially dangerous when the pack is already near full charge. This can exceed the cell's charge rating, cause lithium plating, and permanently damage cells. Keep regen at <strong>-10 to -20A</strong> for most packs. If you're running a small pack (e.g., 12S2P), keep it at -8 to -10A. If you don't use regen braking, set it to -5A as a safety floor.</p>
+        </div>
+
+        <!-- Section 6: Battery Cutoffs -->
+        <h2 id="battery-cutoffs">Step 4: Battery Cutoff Voltages</h2>
+
+        <p>Battery cutoff voltages prevent the VESC from over-discharging your cells. When voltage drops to the "start" threshold, the VESC begins reducing power. At the "end" threshold, it shuts down completely.</p>
+
+        <h3>Cutoff Values by Battery Configuration</h3>
+
+        <table class="settings-table">
+            <thead>
+                <tr>
+                    <th>Battery</th>
+                    <th>Cutoff Start</th>
+                    <th>Cutoff End</th>
+                    <th>Full Charge</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>12S</strong> (42V nominal)</td>
+                    <td>39.6V (3.3V/cell)</td>
+                    <td>36.0V (3.0V/cell)</td>
+                    <td>50.4V</td>
+                </tr>
+                <tr>
+                    <td><strong>13S</strong> (46.8V nominal)</td>
+                    <td>42.9V (3.3V/cell)</td>
+                    <td>39.0V (3.0V/cell)</td>
+                    <td>54.6V</td>
+                </tr>
+                <tr>
+                    <td><strong>14S</strong> (50.4V nominal)</td>
+                    <td>46.2V (3.3V/cell)</td>
+                    <td>42.0V (3.0V/cell)</td>
+                    <td>58.8V</td>
+                </tr>
+                <tr>
+                    <td><strong>16S</strong> (57.6V nominal)</td>
+                    <td>52.8V (3.3V/cell)</td>
+                    <td>48.0V (3.0V/cell)</td>
+                    <td>67.2V</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Why 3.3V Start and 3.0V End?</h3>
+
+        <p>Lithium-ion cells deliver nearly flat voltage from 4.2V down to about 3.5V, then voltage drops steeply. By starting power reduction at 3.3V/cell, you give yourself a smooth warning before shutdown. The 3.0V/cell hard cutoff prevents cell damage — going below 2.5V can permanently damage lithium cells and create internal shorts (fire risk).</p>
+
+        <div class="info-box">
+            <h4>💡 Voltage Sag Under Load</h4>
+            <p>Battery voltage drops under load — a 12S pack showing 42V at rest might sag to 38V under full throttle. This is normal. The VESC measures <strong>live voltage</strong>, so during hard acceleration you might hit the cutoff start threshold temporarily even with 40% charge remaining. If you're getting premature cutoffs, the issue is usually <strong>weak cells or too few parallel groups</strong>, not wrong cutoff settings. More P-groups = less sag = more usable range.</p>
+        </div>
+
+        <!-- Section 7: Throttle -->
+        <h2 id="throttle">Step 5: PPM / Throttle Setup</h2>
+
+        <p>Most DIY eFoils use a wireless hand controller (like the Flipsky VX1 or Maytech MTSKR) that communicates with the VESC via PPM (Pulse Position Modulation) through a receiver. Getting the throttle right is critical for a rideable eFoil.</p>
+
+        <div class="step-header">
+            <span class="step-number">4</span>
+            <h3>Configure PPM Input</h3>
+        </div>
+
+        <ol>
+            <li>Go to <strong>App Settings → General → App to use</strong> → Select <strong>PPM</strong></li>
+            <li>Go to <strong>App Settings → PPM</strong></li>
+            <li>Set <strong>Control Type: Current No Reverse with Brake</strong> — This is the standard for eFoils. Full throttle forward, throttle release = coast, below center = brake.</li>
+            <li>Click <strong>Mapping → Start Detection</strong> with your remote on</li>
+            <li>Push the throttle to full, release, pull to full brake — VESC Tool records the range</li>
+            <li>Click <strong>Apply</strong></li>
+        </ol>
+
+        <h3>Throttle Curve: The Secret to a Rideable eFoil</h3>
+
+        <p>The default linear throttle curve makes eFoils almost unrideable for beginners. A tiny thumb movement at low throttle produces too much power change, and the critical "getting on foil" zone (around 30-50% throttle) is too compressed.</p>
+
+        <h4>Recommended Curve Settings</h4>
+
+        <ul>
+            <li><strong>Beginners:</strong> Exponential curve at <strong>-30</strong> — Very soft low-end, fine control in the foiling zone, full power still available at top. Forgiving of jerky thumb inputs.</li>
+            <li><strong>Intermediate:</strong> Exponential curve at <strong>-20</strong> — Good balance of control and responsiveness.</li>
+            <li><strong>Experienced:</strong> Exponential curve at <strong>-10 to -15</strong> — Nearly linear but with slightly softened low-end.</li>
+            <li><strong>Advanced (wave riding):</strong> Exponential curve at <strong>0 to -5</strong> — Near-linear response for instant power adjustments in surf conditions.</li>
+        </ul>
+
+        <h3>Throttle Ramping</h3>
+
+        <p>Ramping controls how quickly the VESC responds to throttle changes:</p>
+
+        <ul>
+            <li><strong>Positive Ramping (acceleration):</strong> 0.1–0.2 seconds — How fast power ramps up when you increase throttle. Higher values = smoother but slower response. For eFoils, 0.15s is a good balance.</li>
+            <li><strong>Negative Ramping (deceleration):</strong> 0.05–0.15 seconds — How fast power drops when you release. Keep this shorter than positive ramping for responsive braking. 0.1s works well.</li>
+        </ul>
+
+        <div class="warning-box">
+            <h4>⚠️ Critical: Failsafe Configuration</h4>
+            <p>If your remote loses connection (battery dies, out of range, water damage), the VESC must know to <strong>shut off the motor</strong>. In PPM settings, verify that <strong>Safe Start</strong> is enabled and <strong>PPM Timeout</strong> is set (500-1000ms). Also configure your receiver's failsafe to output zero throttle on signal loss. Test this by turning off your remote while the motor is spinning in a bucket — it should stop within 1 second. <strong>Never skip this test.</strong> A runaway motor on water is extremely dangerous.</p>
+        </div>
+
+        <h3>PPM Settings Reference</h3>
+
+        <table class="settings-table">
+            <thead>
+                <tr>
+                    <th>Setting</th>
+                    <th>Value</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Control Type</td>
+                    <td>Current No Reverse with Brake</td>
+                    <td>Standard for eFoils</td>
+                </tr>
+                <tr>
+                    <td>PID Max ERPM</td>
+                    <td>Leave at default</td>
+                    <td>Don't touch unless you know what you're doing</td>
+                </tr>
+                <tr>
+                    <td>Positive Ramping</td>
+                    <td>0.15s</td>
+                    <td>Smooth acceleration</td>
+                </tr>
+                <tr>
+                    <td>Negative Ramping</td>
+                    <td>0.10s</td>
+                    <td>Responsive deceleration</td>
+                </tr>
+                <tr>
+                    <td>Smart Reverse</td>
+                    <td>Off</td>
+                    <td>Not needed for eFoils</td>
+                </tr>
+                <tr>
+                    <td>Safe Start</td>
+                    <td>On</td>
+                    <td>Prevents motor start on power-up</td>
+                </tr>
+                <tr>
+                    <td>Throttle Exp</td>
+                    <td>-20</td>
+                    <td>Good starting point for most riders</td>
+                </tr>
+                <tr>
+                    <td>Throttle Exp Brake</td>
+                    <td>-15</td>
+                    <td>Slightly softer brake curve</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Section 8: Temperature -->
+        <h2 id="temperature">Step 6: Temperature Protection</h2>
+
+        <p>eFoils run their electronics in a sealed, non-ventilated enclosure surrounded by insulating foam. Heat management is critical — and the VESC has built-in thermal protection that you must configure correctly.</p>
+
+        <h3>MOSFET (FET) Temperature</h3>
+
+        <p>These are the power transistors on the VESC. They generate heat proportional to current squared.</p>
+
+        <table class="settings-table">
+            <thead>
+                <tr>
+                    <th>Setting</th>
+                    <th>Value</th>
+                    <th>What Happens</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>MOSFET Temp Start</td>
+                    <td>80°C</td>
+                    <td>VESC begins reducing current (derating)</td>
+                </tr>
+                <tr>
+                    <td>MOSFET Temp End</td>
+                    <td>100°C</td>
+                    <td>VESC shuts down motor completely</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Motor Temperature (if sensor equipped)</h3>
+
+        <p>Some motors have built-in NTC temperature sensors. If yours does, connect it and configure:</p>
+
+        <table class="settings-table">
+            <thead>
+                <tr>
+                    <th>Setting</th>
+                    <th>Value</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Motor Temp Start</td>
+                    <td>80°C</td>
+                    <td>Begin power reduction</td>
+                </tr>
+                <tr>
+                    <td>Motor Temp End</td>
+                    <td>100°C</td>
+                    <td>Full shutdown — motor is at risk above this</td>
+                </tr>
+                <tr>
+                    <td>Sensor Type</td>
+                    <td>NTC 10K (Beta 3950)</td>
+                    <td>Standard for most eFoil motors</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="info-box">
+            <h4>💡 Water Is Your Cooler</h4>
+            <p>Here's the good news: the motor runs submerged in water, which is an incredible heat sink. Motor overheating is rare in actual riding. The ESC, however, sits in a sealed box inside the board — it relies on thermal transfer through the aluminum case and whatever contact it has with the board structure. If you're getting ESC overtemp faults, consider: (1) thermal paste between the VESC and its case, (2) a heat sink on the outside of the enclosure, or (3) reducing current limits. During sustained high-power riding (heavy rider, strong headwind), ESC temps can climb to 70-80°C — that's normal.</p>
+        </div>
+
+        <!-- Section 9: Advanced -->
+        <h2 id="advanced">Step 7: Advanced Settings & Fine-Tuning</h2>
+
+        <h3>ERPM Limit</h3>
+
+        <p>ERPM (Electrical RPM) = mechanical RPM × motor pole pairs. Setting a max ERPM limits top speed and protects the propeller from cavitation at extreme RPM:</p>
+
+        <ul>
+            <li><strong>65161 (7 pole pairs):</strong> Max ERPM 50,000–60,000</li>
+            <li><strong>63100 (7 pole pairs):</strong> Max ERPM 45,000–55,000</li>
+            <li><strong>6384 (7 pole pairs):</strong> Max ERPM 40,000–50,000</li>
+        </ul>
+
+        <p>If you don't know your motor's pole pairs, count the magnets on the rotor and divide by 2.</p>
+
+        <h3>Minimum Duty Cycle</h3>
+
+        <p>Set to <strong>0.005 (0.5%)</strong>. This prevents the motor from being driven at extremely low duty cycles where FOC can become unstable and produce cogging. Default is usually fine.</p>
+
+        <h3>Observer Gain</h3>
+
+        <p>The FOC observer tracks rotor position. For inrunner motors (65161, 65162), the default observer gain usually works. If you experience stuttering at low RPM or position loss under load, try increasing observer gain by 20-30%. This is rarely needed if motor detection was successful.</p>
+
+        <h3>Switching Frequency</h3>
+
+        <p>Default is typically 20-30 kHz. Higher = smoother but more heat. For eFoils, leave at default unless you're chasing specific noise frequencies. Some builders lower to 20 kHz for reduced ESC heating.</p>
+
+        <h3>Current Controller Bandwidth</h3>
+
+        <p>Leave at default unless you know what you're doing. Increasing bandwidth makes the controller more responsive but can introduce instability with high-inductance motors. For eFoil use, the auto-calculated value from motor detection is correct.</p>
+
+        <!-- Section 10: Motor Profiles -->
+        <h2 id="motor-profiles">Proven Settings by Motor</h2>
+
+        <p>These are starting-point settings collected from successful FOIL.zone builds. <strong>Always run your own motor detection</strong> — don't copy R, L, and λ values. But current limits, cutoffs, and throttle settings can be used as-is and tuned from there.</p>
+
+        <h3>Flipsky 65161 120KV (Inrunner) — 12S</h3>
+
+        <div class="code-block">
+Motor Current Max:     80A
+Motor Current Brake:   -60A
+Battery Current Max:   50A
+Battery Current Regen: -15A
+Battery Cutoff Start:  39.6V (3.3V/cell)
+Battery Cutoff End:    36.0V (3.0V/cell)
+Max ERPM:              60,000
+PPM Control:           Current No Reverse with Brake
+Throttle Exp:          -20
+Positive Ramping:      0.15s
+Negative Ramping:      0.10s
+MOSFET Temp Start:     80°C
+MOSFET Temp End:       100°C
+Motor Temp Start:      80°C (if sensor)
+Motor Temp End:        100°C (if sensor)
+        </div>
+
+        <h3>Flipsky 65161 120KV (Inrunner) — 14S</h3>
+
+        <div class="code-block">
+Motor Current Max:     70A
+Motor Current Brake:   -50A
+Battery Current Max:   45A
+Battery Current Regen: -12A
+Battery Cutoff Start:  46.2V (3.3V/cell)
+Battery Cutoff End:    42.0V (3.0V/cell)
+Max ERPM:              60,000
+PPM Control:           Current No Reverse with Brake
+Throttle Exp:          -20
+Positive Ramping:      0.15s
+Negative Ramping:      0.10s
+MOSFET Temp Start:     80°C
+MOSFET Temp End:       100°C
+        </div>
+
+        <p><em>Note: 14S provides more voltage headroom, so you can often use lower current limits for the same performance. The motor spins faster at the same duty cycle, so power output is similar to 12S at higher currents.</em></p>
+
+        <h3>Flipsky 65162 120KV (Inrunner) — 12S</h3>
+
+        <div class="code-block">
+Motor Current Max:     80A
+Motor Current Brake:   -60A
+Battery Current Max:   50A
+Battery Current Regen: -15A
+Battery Cutoff Start:  39.6V
+Battery Cutoff End:    36.0V
+Max ERPM:              60,000
+PPM Control:           Current No Reverse with Brake
+Throttle Exp:          -20
+Positive Ramping:      0.15s
+Negative Ramping:      0.10s
+        </div>
+
+        <p><em>The 65162 is very similar to the 65161 but with a longer stator, providing more torque. Settings are nearly identical — the main difference appears in motor detection values (slightly lower resistance due to thicker windings).</em></p>
+
+        <h3>Maytech 63100 130KV (Outrunner) — 12S</h3>
+
+        <div class="code-block">
+Motor Current Max:     70A
+Motor Current Brake:   -50A
+Battery Current Max:   45A
+Battery Current Regen: -12A
+Battery Cutoff Start:  39.6V
+Battery Cutoff End:    36.0V
+Max ERPM:              55,000
+PPM Control:           Current No Reverse with Brake
+Throttle Exp:          -20
+Positive Ramping:      0.15s
+Negative Ramping:      0.10s
+        </div>
+
+        <p><em>Outrunner motors have more cogging at low RPM in FOC mode. If you experience this, slightly increase the minimum duty cycle or add a small amount of "Openloop ERPM" (200-500 ERPM).</em></p>
+
+        <h3>6384 120KV (Outrunner) — 12S</h3>
+
+        <div class="code-block">
+Motor Current Max:     60A
+Motor Current Brake:   -40A
+Battery Current Max:   40A
+Battery Current Regen: -10A
+Battery Cutoff Start:  39.6V
+Battery Cutoff End:    36.0V
+Max ERPM:              50,000
+PPM Control:           Current No Reverse with Brake
+Throttle Exp:          -25
+Positive Ramping:      0.18s
+Negative Ramping:      0.12s
+        </div>
+
+        <p><em>The 6384 is the smallest motor commonly used for eFoils. Suitable for lighter riders (&lt;75 kg) on efficient foils. Keep current limits conservative — this motor has less thermal mass.</em></p>
+
+        <!-- Section 11: Testing -->
+        <h2 id="testing">Bench Testing & First Ride</h2>
+
+        <div class="step-header">
+            <span class="step-number">5</span>
+            <h3>Bench Test Protocol</h3>
+        </div>
+
+        <p>Before you put your eFoil in the water, test everything on the bench:</p>
+
+        <ol>
+            <li><strong>Direction check</strong> — Attach the propeller. Apply minimal throttle. The prop should push water backward (thrust forward). If it spins the wrong way, swap any two phase wires.</li>
+            <li><strong>Throttle range</strong> — Verify smooth power from zero to full. No dead zones, no jumps. If the motor starts at 20% throttle instead of 5%, your PPM mapping needs adjustment.</li>
+            <li><strong>Failsafe test</strong> — With the motor spinning at low RPM (prop in water bucket), turn off your remote. Motor must stop within 1 second. <strong>If it doesn't, DO NOT ride.</strong></li>
+            <li><strong>Temperature check</strong> — Run the motor at 50% throttle for 60 seconds (in water bucket). Check ESC temperature in VESC Tool. Should be under 60°C. If it's climbing fast, improve thermal contact.</li>
+            <li><strong>Fault log check</strong> — After bench testing, go to Terminal tab in VESC Tool and type <code>faults</code>. Should show no faults. Any faults at this stage = something is wrong.</li>
+        </ol>
+
+        <div class="step-header">
+            <span class="step-number">6</span>
+            <h3>First Water Test</h3>
+        </div>
+
+        <ol>
+            <li>Start in <strong>flat, calm water</strong> — no waves, no wind, no current</li>
+            <li>Begin at <strong>50% of your current limits</strong> — you can always increase later</li>
+            <li>First ride: kneel on the board, gentle throttle, get a feel for the power delivery</li>
+            <li>Check for any unusual vibrations, sounds, or power interruptions</li>
+            <li>After 5-10 minutes, come back and check temperatures + fault log via Bluetooth or pull the USB</li>
+            <li>If everything is clean, gradually increase current limits toward your target settings over several sessions</li>
+        </ol>
+
+        <div class="info-box">
+            <h4>💡 The Bluetooth Module Advantage</h4>
+            <p>Adding a Bluetooth module to your VESC ($15-20) lets you monitor real-time data on your phone from shore. After each session, check temps, voltages, and faults without opening the board. Some riders mount their phone on their arm and monitor live data while riding — useful for tuning but not strictly necessary. The Flipsky Bluetooth module (or any HM-10 compatible) works with the VESC Tool mobile app.</p>
+        </div>
+
+        <!-- Section 12: Troubleshooting -->
+        <h2 id="troubleshooting">VESC Troubleshooting Quick Reference</h2>
+
+        <table class="settings-table">
+            <thead>
+                <tr>
+                    <th>Fault Code</th>
+                    <th>Meaning</th>
+                    <th>Common eFoil Cause</th>
+                    <th>Fix</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>ABS_OVER_CURRENT</code></td>
+                    <td>Instantaneous current spike exceeded absolute max</td>
+                    <td>Loose phase wire, short circuit, prop hit debris</td>
+                    <td>Check all bullet connectors. Tighten. Inspect phase wires for damage.</td>
+                </tr>
+                <tr>
+                    <td><code>OVER_TEMP_FET</code></td>
+                    <td>MOSFET temperature exceeded limit</td>
+                    <td>Sealed enclosure, poor thermal contact, sustained high power</td>
+                    <td>Add thermal paste, reduce current limits, improve case contact.</td>
+                </tr>
+                <tr>
+                    <td><code>OVER_TEMP_MOTOR</code></td>
+                    <td>Motor temperature exceeded limit</td>
+                    <td>Riding in shallow water (less cooling), high ambient temps</td>
+                    <td>Rare in water. Check sensor wiring if false alarm.</td>
+                </tr>
+                <tr>
+                    <td><code>UNDER_VOLTAGE</code></td>
+                    <td>Battery voltage dropped below cutoff</td>
+                    <td>Weak cells, undersized pack, high current + low charge</td>
+                    <td>Charge battery. Check cell balance. Consider more P-groups.</td>
+                </tr>
+                <tr>
+                    <td><code>OVER_VOLTAGE</code></td>
+                    <td>Voltage spike above max</td>
+                    <td>Regen into full battery, or battery disconnected during braking</td>
+                    <td>Reduce regen current. Never disconnect battery while riding.</td>
+                </tr>
+                <tr>
+                    <td><code>DRV</code></td>
+                    <td>Gate driver failure</td>
+                    <td>Water ingress on PCB, failing MOSFET, solder bridge</td>
+                    <td>Inspect PCB for moisture/corrosion. May need ESC replacement.</td>
+                </tr>
+                <tr>
+                    <td><code>ENCODER</code></td>
+                    <td>Encoder/sensor error</td>
+                    <td>Sensorless motors don't use this — indicates config error</td>
+                    <td>Disable motor sensor in settings if running sensorless.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>Always check faults after a session: VESC Tool → Terminal → type <code>faults</code>. This shows the full fault history with timestamps. Most "random cutout" problems can be diagnosed from the fault log.</p>
+
+        <!-- Section 13: Mistakes -->
+        <h2 id="mistakes">10 VESC Mistakes That Kill eFoils</h2>
+
+        <ol>
+            <li><strong>Skipping motor detection after firmware update.</strong> New firmware = new motor parameters needed. Always re-detect after flashing.</li>
+            <li><strong>Copy-pasting someone else's motor detection values.</strong> R, L, and λ are specific to YOUR motor. Different winding temperatures, manufacturing tolerances, and wire lengths mean every motor detects differently. Copy current limits and throttle settings — never detection values.</li>
+            <li><strong>Setting battery current too high for your pack.</strong> Your battery cells have a continuous discharge rating. Exceed it and cells overheat, degrade, and eventually vent or catch fire. Calculate your safe limit (see above).</li>
+            <li><strong>Forgetting to configure failsafe.</strong> If your remote dies, the motor must stop. Period. Test this on land before every first ride of the season.</li>
+            <li><strong>No conformal coating on the PCB.</strong> Salt air and humidity will corrode your VESC within weeks. Coat before first use. Re-coat annually.</li>
+            <li><strong>Running BLDC mode instead of FOC.</strong> BLDC is louder, less efficient, and produces cogging at low speeds. FOC is better in every way for eFoils. There's no reason to use BLDC.</li>
+            <li><strong>Ignoring battery regen limits.</strong> Set regen too high and braking pushes dangerous current back into cells — especially on a full battery. Keep it at -10 to -20A.</li>
+            <li><strong>Not bench testing before water.</strong> Water tests are expensive. If something is wrong, you discover it by getting stranded, possibly damaging components, and having a long swim back. 10 minutes with a water bucket saves hours of trouble.</li>
+            <li><strong>Loose bullet connectors.</strong> The #1 cause of intermittent cutouts on eFoils. Vibration works connectors loose over time. Solder phase connections when possible. If using bullet connectors, add heat-shrink and check them before every ride.</li>
+            <li><strong>Ignoring the fault log.</strong> The VESC records every fault with a timestamp. Most riders never check it. It's the first place to look when something goes wrong — and the faults often show up in the log before symptoms become obvious during riding.</li>
+        </ol>
+
+        <!-- Section 14: FAQ -->
+        <h2 id="faq">Frequently Asked Questions</h2>
+
+        <h3>What VESC firmware version should I use for an eFoil?</h3>
+        <p>Use the latest stable release from the official VESC Project (<a href="https://vesc-project.com" target="_blank">vesc-project.com</a>). As of 2026, firmware 6.x is standard. Always match your firmware to your VESC Tool version. For Flipsky hardware, flash the official firmware — the community consistently reports better motor detection and fewer faults than with Flipsky's modified version.</p>
+
+        <h3>What are the best VESC settings for a 65161?</h3>
+        <p>On 12S: Motor current max 80A, motor brake -60A, battery max 50A, battery regen -15A, cutoff start 39.6V, end 36V. Use FOC mode. Exponential throttle curve at -20. These are starting points for a 70-90 kg rider — see the <a href="#motor-profiles">full motor profiles section</a> for details and other weight classes.</p>
+
+        <h3>Should I use FOC or BLDC?</h3>
+        <p>Always FOC for eFoils. FOC is smoother, quieter, 5-15% more efficient, and has better low-speed control. The only reason to use BLDC is if FOC detection repeatedly fails, which usually indicates a wiring problem. See the <a href="#motor-detection">Motor Detection section</a>.</p>
+
+        <h3>Why does my VESC keep throwing faults?</h3>
+        <p>Connect via VESC Tool, go to Terminal, type <code>faults</code>. The fault code tells you exactly what happened. Most common: ABS_OVER_CURRENT (loose phase wire), OVER_TEMP_FET (ESC overheating), DRV (water ingress). See the <a href="#troubleshooting">troubleshooting table</a> for causes and fixes.</p>
+
+        <h3>How do I set up the throttle curve?</h3>
+        <p>In App Settings → PPM, set throttle curve to Exponential with a value of -20 (intermediate) to -30 (beginner). This gives fine control at low speeds where you're getting on foil. See the <a href="#throttle">Throttle Setup section</a> for details.</p>
+
+        <h3>Can I use a Flipsky VESC for an eFoil?</h3>
+        <p>Yes — the Flipsky 75100 is the most popular ESC in DIY eFoils. Flash official VESC firmware, apply conformal coating, seal the case, and don't exceed 80% of rated current. Thousands of reliable builds run on Flipsky. Most failures come from water ingress or incorrect settings. See <a href="#hardware">Choosing Your VESC Hardware</a>.</p>
+
+        <!-- CTA Section -->
+        <div class="cta-box">
+            <h3>🔧 Ready to Build?</h3>
+            <p>The VESC is one piece of the puzzle. Check out the complete DIY eFoil build system:</p>
+            <div class="cta-links">
+                <a href="/efoil-configurator.html" class="cta-link">⚡ Build Configurator</a>
+                <a href="/blog-efoil-motor-guide.html" class="cta-link">🔌 Motor Guide</a>
+                <a href="/blog-efoil-battery-guide.html" class="cta-link">🔋 Battery Guide</a>
+                <a href="/blog-efoil-wiring-guide.html" class="cta-link">🔌 Wiring Guide</a>
+                <a href="/blog-efoil-troubleshooting.html" class="cta-link">🔧 Troubleshooting</a>
+                <a href="/blog-diy-efoil-guide.html" class="cta-link">📘 Complete Build Guide</a>
+            </div>
+        </div>
+
+        <!-- Related Articles -->
+        <h2>Related Articles</h2>
+        <div class="related-articles">
+            <a href="/blog-efoil-motor-guide.html" class="related-card">
+                <div class="icon">⚡</div>
+                <h4>Motor & Propulsion Guide</h4>
+                <p>Inrunner vs outrunner, motor selection, propellers, and waterproofing.</p>
+            </a>
+            <a href="/blog-efoil-wiring-guide.html" class="related-card">
+                <div class="icon">🔌</div>
+                <h4>Wiring & Electronics Guide</h4>
+                <p>Anti-spark, connectors, cable routing, and tested wiring setups.</p>
+            </a>
+            <a href="/blog-efoil-troubleshooting.html" class="related-card">
+                <div class="icon">🔧</div>
+                <h4>Troubleshooting Guide</h4>
+                <p>Systematic diagnosis for every common eFoil problem.</p>
+            </a>
+            <a href="/blog-efoil-battery-guide.html" class="related-card">
+                <div class="icon">🔋</div>
+                <h4>Battery Guide</h4>
+                <p>Cell selection, BMS, waterproofing, and charging best practices.</p>
+            </a>
+        </div>
+    </article>
+
+    <footer>
+        <p>© 2016–2026 PacificMeister. Open source, always.</p>
+        <ul class="footer-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/blog.html">Blog</a></li>
+            <li><a href="https://github.com/pacificmeister" target="_blank">GitHub</a></li>
+            <li><a href="https://www.youtube.com/@PacificMeister" target="_blank">YouTube</a></li>
+            <li><a href="https://foil.zone" target="_blank">FOIL.zone</a></li>
+        </ul>
+    </footer>
+</body>
+</html>
