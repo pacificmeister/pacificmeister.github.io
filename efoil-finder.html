@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eFoil Finder Quiz — Which eFoil Is Right for You? | PacificMeister</title>
+    <meta name="description" content="Answer 6 quick questions and get a personalized eFoil recommendation from the pioneer who's been building electric hydrofoils since 2016. Commercial brands, DIY builds, and budget options.">
+    <meta name="keywords" content="which efoil should I buy, efoil recommendation, efoil quiz, best efoil for me, efoil finder, efoil buying guide, efoil comparison tool, beginner efoil, efoil budget">
+    <link rel="canonical" href="https://pacificmeister.github.io/efoil-finder.html">
+
+    <meta property="og:title" content="eFoil Finder Quiz — Which eFoil Is Right for You?">
+    <meta property="og:description" content="6 questions. 1 perfect recommendation. From the pioneer who open-sourced the DIY eFoil.">
+    <meta property="og:url" content="https://pacificmeister.github.io/efoil-finder.html">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://pacificmeister.github.io/og-image.png">
+    <meta property="og:site_name" content="PacificMeister">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="eFoil Finder Quiz — Which eFoil Is Right for You?">
+    <meta name="twitter:description" content="6 questions. 1 perfect recommendation. From the DIY eFoil pioneer.">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "eFoil Finder Quiz",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Web",
+        "url": "https://pacificmeister.github.io/efoil-finder.html",
+        "description": "Interactive quiz that recommends the right eFoil based on experience, budget, riding style, and priorities. Covers commercial brands and DIY options.",
+        "author": {
+            "@type": "Organization",
+            "name": "PacificMeister",
+            "url": "https://pacificmeister.github.io"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Which eFoil should I buy as a beginner?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "For beginners, the best eFoils are the Flite AIR ($6,995) for its forgiving inflatable design, or the Waydoo EVO Pro Plus ($6,300-$7,000) for its flight assist technology. Both help maintain stable flight while learning. Budget beginners should consider a DIY build ($2,000-$4,500) using proven FOIL.zone community designs."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How much should I spend on my first eFoil?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Budget eFoils start at $5,000-$6,500 (Waydoo, Takuma). Mid-range boards cost $7,000-$9,500 (Lift, Flite). Premium setups run $10,000-$16,000 (Lift5, Flite Ultra). DIY builds cost $2,000-$4,500 and deliver performance matching $8,000-$10,000 commercial boards. Avoid sub-$3,000 unknown brands — they typically have safety and reliability issues."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is a DIY eFoil worth building?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "If you're technically inclined and willing to invest 40-80 hours of build time, absolutely. DIY eFoils cost $2,000-$4,500 and match $8,000-$10,000 commercial performance. Key benefits: full repairability, cheap battery replacements ($400-$800 vs $1,500-$3,000), unlimited customization, and 5,300+ FOIL.zone community members for support."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What's the best eFoil for waves?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Wave riding requires a smaller board (under 5'), shorter mast (60-70cm), and a folding prop or jet drive. Best options: Flite Ultra L2 ($15,780) for dedicated wave riders, Awake Vinga 3 with jet drive for no-prop convenience, or a compact DIY build with folding prop for budget wave riding."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How long do eFoil batteries last?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Ride time varies by model: 45-120 minutes per charge depending on battery size, rider weight, and riding style. Battery lifespan is 300-800 charge cycles (2-5 years). Replacement costs $1,500-$3,000 for commercial boards, $400-$800 for DIY rebuilds. Proper charging habits significantly extend battery life."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --ocean-deep: #0a1628;
+            --ocean-mid: #0f2847;
+            --ocean-light: #1a4a7a;
+            --foam: #e8f4f8;
+            --white: #ffffff;
+            --accent: #00d4aa;
+            --accent-glow: #00ffcc;
+            --text: #c8dae8;
+            --text-bright: #f0f6fc;
+            --warning: #ff6b35;
+            --success: #00d4aa;
+            --gold: #ffd700;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--ocean-deep);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+
+        header {
+            background: linear-gradient(180deg, var(--ocean-mid) 0%, var(--ocean-deep) 100%);
+            border-bottom: 1px solid rgba(0, 212, 170, 0.2);
+            padding: 20px 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .logo:hover { color: var(--accent-glow); }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            margin-left: 24px;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover { color: var(--accent); }
+
+        .hero {
+            padding: 48px 0 32px;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(0, 212, 170, 0.15);
+            color: var(--accent);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 16px;
+            border: 1px solid rgba(0, 212, 170, 0.3);
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            color: var(--text-bright);
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            color: var(--text);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            background: rgba(15, 40, 71, 0.8);
+            border-radius: 12px;
+            padding: 16px 24px;
+            margin: 24px 0;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .progress-track {
+            flex: 1;
+            height: 8px;
+            background: rgba(26, 74, 122, 0.5);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), var(--accent-glow));
+            border-radius: 4px;
+            transition: width 0.4s ease;
+            width: 0%;
+        }
+
+        .progress-text {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        /* Quiz Container */
+        .quiz-container {
+            padding: 0 0 80px;
+        }
+
+        .question-card {
+            background: rgba(15, 40, 71, 0.5);
+            border: 1px solid rgba(26, 74, 122, 0.5);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 24px 0;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .question-card.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .question-number {
+            font-size: 0.8rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .question-text {
+            font-size: 1.4rem;
+            color: var(--text-bright);
+            font-weight: 700;
+            margin-bottom: 24px;
+            line-height: 1.3;
+        }
+
+        .options {
+            display: grid;
+            gap: 12px;
+        }
+
+        .option {
+            background: rgba(10, 22, 40, 0.6);
+            border: 2px solid rgba(26, 74, 122, 0.4);
+            border-radius: 12px;
+            padding: 16px 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .option:hover {
+            border-color: var(--accent);
+            background: rgba(0, 212, 170, 0.05);
+            transform: translateX(4px);
+        }
+
+        .option.selected {
+            border-color: var(--accent);
+            background: rgba(0, 212, 170, 0.1);
+        }
+
+        .option-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .option-content {
+            flex: 1;
+        }
+
+        .option-title {
+            color: var(--text-bright);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .option-desc {
+            color: var(--text);
+            font-size: 0.85rem;
+            margin-top: 2px;
+            opacity: 0.8;
+        }
+
+        /* Navigation */
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 24px;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .btn-back {
+            background: rgba(26, 74, 122, 0.3);
+            color: var(--text);
+            border: 1px solid rgba(26, 74, 122, 0.5);
+        }
+
+        .btn-back:hover {
+            background: rgba(26, 74, 122, 0.5);
+            color: var(--text-bright);
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, var(--accent), #00b894);
+            color: var(--ocean-deep);
+            margin-left: auto;
+        }
+
+        .btn-next:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 212, 170, 0.3);
+        }
+
+        .btn-next:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Results */
+        .results-container {
+            display: none;
+            padding: 0 0 80px;
+        }
+
+        .results-container.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, rgba(15, 40, 71, 0.8), rgba(0, 212, 170, 0.05));
+            border: 2px solid var(--accent);
+            border-radius: 20px;
+            padding: 36px;
+            margin: 24px 0;
+            text-align: center;
+        }
+
+        .result-badge {
+            display: inline-block;
+            background: rgba(0, 212, 170, 0.15);
+            color: var(--accent);
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            border: 1px solid rgba(0, 212, 170, 0.3);
+        }
+
+        .result-name {
+            font-size: 2rem;
+            color: var(--text-bright);
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .result-price {
+            font-size: 1.3rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .result-tagline {
+            font-size: 1.05rem;
+            color: var(--text);
+            max-width: 600px;
+            margin: 0 auto 24px;
+            line-height: 1.5;
+        }
+
+        .result-specs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+            text-align: center;
+        }
+
+        .spec-item {
+            background: rgba(10, 22, 40, 0.6);
+            border-radius: 12px;
+            padding: 16px;
+        }
+
+        .spec-value {
+            font-size: 1.2rem;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .spec-label {
+            font-size: 0.75rem;
+            color: var(--text);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 4px;
+        }
+
+        .match-reasons {
+            text-align: left;
+            margin: 24px 0;
+        }
+
+        .match-reasons h3 {
+            color: var(--text-bright);
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+
+        .reason {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin: 8px 0;
+            font-size: 0.95rem;
+        }
+
+        .reason-icon {
+            color: var(--accent);
+            font-size: 1rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* Alternatives */
+        .alternatives {
+            margin: 32px 0;
+        }
+
+        .alternatives h3 {
+            color: var(--text-bright);
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .alt-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+        }
+
+        .alt-card {
+            background: rgba(15, 40, 71, 0.5);
+            border: 1px solid rgba(26, 74, 122, 0.4);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .alt-name {
+            color: var(--text-bright);
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .alt-price {
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin: 4px 0;
+        }
+
+        .alt-reason {
+            color: var(--text);
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        /* CTA Links */
+        .result-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin: 28px 0 16px;
+        }
+
+        .result-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .result-link-primary {
+            background: linear-gradient(135deg, var(--accent), #00b894);
+            color: var(--ocean-deep);
+        }
+
+        .result-link-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 212, 170, 0.3);
+            color: var(--ocean-deep);
+        }
+
+        .result-link-secondary {
+            background: rgba(26, 74, 122, 0.3);
+            color: var(--text-bright);
+            border: 1px solid rgba(26, 74, 122, 0.5);
+        }
+
+        .result-link-secondary:hover {
+            background: rgba(26, 74, 122, 0.5);
+            color: var(--text-bright);
+        }
+
+        /* Share */
+        .share-section {
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(26, 74, 122, 0.3);
+            text-align: center;
+        }
+
+        .share-section p {
+            color: var(--text);
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        .btn-share {
+            background: rgba(26, 74, 122, 0.3);
+            color: var(--accent);
+            border: 1px solid rgba(0, 212, 170, 0.3);
+            padding: 10px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .btn-share:hover {
+            background: rgba(0, 212, 170, 0.1);
+        }
+
+        .btn-restart {
+            background: none;
+            color: var(--text);
+            border: 1px solid rgba(26, 74, 122, 0.4);
+            padding: 10px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-left: 12px;
+            transition: all 0.2s;
+        }
+
+        .btn-restart:hover {
+            border-color: var(--text);
+            color: var(--text-bright);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--ocean-mid);
+            border-top: 1px solid rgba(26, 74, 122, 0.3);
+            padding: 32px 0;
+            text-align: center;
+        }
+
+        footer p {
+            color: var(--text);
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+            margin: 0 8px;
+        }
+
+        footer a:hover { color: var(--accent-glow); }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            h1 { font-size: 1.7rem; }
+            .question-text { font-size: 1.2rem; }
+            .question-card { padding: 24px 20px; }
+            .result-card { padding: 24px 20px; }
+            .result-name { font-size: 1.6rem; }
+            .result-specs { grid-template-columns: repeat(2, 1fr); }
+            nav a { margin-left: 16px; font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">🌊 PacificMeister</a>
+                <nav>
+                    <a href="blog.html">Blog</a>
+                    <a href="efoil-configurator.html">Configurator</a>
+                    <a href="efoil-range-calculator.html">Calculator</a>
+                    <a href="https://foil.zone" target="_blank">Forum</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="hero">
+            <div class="hero-badge">🎯 Interactive Tool — Takes 60 seconds</div>
+            <h1>Which eFoil Is Right for You?</h1>
+            <p>Answer 6 quick questions and get a personalized recommendation from someone who's been building eFoils since 2016.</p>
+        </div>
+
+        <div class="progress-bar" id="progressBar">
+            <div class="progress-track">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-text" id="progressText">0 / 6</div>
+        </div>
+
+        <!-- Quiz -->
+        <div class="quiz-container" id="quizContainer">
+
+            <!-- Q1: Experience -->
+            <div class="question-card active" data-q="0">
+                <div class="question-number">Question 1 of 6</div>
+                <div class="question-text">What's your board sports experience?</div>
+                <div class="options">
+                    <div class="option" data-value="none" onclick="selectOption(this)">
+                        <div class="option-icon">🌱</div>
+                        <div class="option-content">
+                            <div class="option-title">Total beginner</div>
+                            <div class="option-desc">Never surfed, wakeboarded, or foiled before</div>
+                        </div>
+                    </div>
+                    <div class="option" data-value="some" onclick="selectOption(this)">
+                        <div class="option-icon">🏄</div>
+                        <div class="option-content">
+                            <div class="option-title">Some board sports</div>
+                            <div class="option-desc">Surfed, wakeboarded, snowboarded, or SUP'd</div>
+                        </div>
+                    </div>
+                    <div class="option" data-value="foil" onclick="selectOption(this)">
+                        <div class="option-icon">⚡</div>
+                        <div class="option-content">
+                            <div class="option-title">Foiling experience</div>
+                            <div class="option-desc">Wing foiled, kite foiled, SUP foiled, or eFoiled before</div>
+                        </div>
+                    </div>
+                    <div class="option" data-value="expert" onclick="selectOption(this)">
+                        <div class="option-icon">🏆</div>
+                        <div class="option-content">
+                            <div class="option-title">Expert rider</div>
+                            <div class="option-desc">Confident foiler looking to upgrade or add an eFoil</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-buttons">
+                    <div></div>
+                    <button class="btn btn-next" disabled onclick="nextQuestion()">Next →</button>
+                </div>
+            </div>
+
+            <!-- Q2: Budget -->
+            <div class="question-card" data-q="1">
+                <div class="question-number">Question 2 of 6</div>
+                <div class="question-text">What's your budget?</div>
+                <div class="options">
+                    <div class="option" data-value="diy" onclick="selectOption(this)">
+                        <div class="option-icon">🔧</div>
+                        <div class="option-content">
+                            <div class="option-title">$2,000 – $4,500 (DIY build)</div>
+                            <div class="option-desc">Willing to build it yourself — max performance per dollar</div>
+                        </div>
+                    </div>
+                    <div class="option" data-value="budget" onclick="selectOption(this)">
+                        <div class="option-icon">💰</div>
+                        <div class="option-content">
+                            <div class="option-title">$5,000 – $7,000</div>
+                            <div class="option-desc">Entry-level commercial eFoils</div>
+                        </div>
+                    </div>
+                    <div class="option" data-value="mid" onclick="selectOption(this)">
+                        <div class="option-icon">💎</div>
+                        <div class="option-content">
+                            <div class="option-title">$7,000 – $10,000</div>
+                            <div class="option-desc">Mid-range with better build quality and features</div>
+                        </div>
+                    </div>
+                    <div class="option" data-value="premium" onclick="selectOption(this)">
+                        <div class="option-icon">👑</div>
+                        <div class="option-content">
+                            <div class="option-title">$10,000+</div>
+                            <div class="option-desc">Best of the best — no compromises</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-buttons">
+                    <button class="btn btn-back" onclick="prevQuestion()">← Back</button>
+                    <button class="btn btn-next" disabled onclick="nextQuestion()">Next →</button>
+                </div>
+            </div>
+
+            <!-- Q3: Primary Use -->
+            <div class="question-card" data-q="2">
+                <div class="question-number">Question 3 of 6</div>
+                <div class="question-text">What will you mainly use it for?</div>
+                <div class="options">
+                    <div class="option" data-value="cruise" onclick="selectOption(this)">
+                        <div class="option-icon">🌅</div>
+                        <div class="option-content">
+                            <div class="option-title">Cruising & exploring</div>
+                            <div class="option-desc">Relaxed rides, scenic coastlines, sunset sessions</div>
+                        </div>
+                    </div>
+                    <div class="option" data-value="tricks" onclick="selectOption(this)">
+                        <div class="option-icon">🔥</div>
+                        <div class="option-content">
+                            <div class="option-title">Speed & carving</div>
+                            <div class="option-desc">Performance riding, tight turns, pushing limits</div>
+                        </div>
+                    </div>
+                    <div class="option" data-value="waves" onclick="selectOption(this)">
+                        <div class="option-icon">🌊</div>
+                        <div class="option-content">
+                            <div class="option-title">Wave riding</div>
+                            <div class="option-desc">Catching swells, wave-powered glides, surf-style</div>
+                        </div>
+                    </div>
+                    <div class="option" data-value="family" onclick="selectOption(this)">
+                        <div class="option-icon">👨‍👩‍👧</div>
+                        <div class="option-content">
+                            <div class="option-title">Family & friends</div>
+                            <div class="option-desc">Sharing with different riders, easy for everyone</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-buttons">
+                    <button class="btn btn-back" onclick="prevQuestion()">← Back</button>
+                    <button class="btn btn-next" disabled onclick="nextQuestion()">Next →</button>
+                </div>
+            </div>
+
+            <!-- Q4: Rider Weight -->
+            <div class="question-card" data-q="3">
+                <div class="question-number">Question 4 of 6</div>
+                <div class="question-text">What's your weight range?</div>
+                <div class="options">
+                    <div class="option" data-value="light" onclick="selectOption(this)">
+                        <div class="option-icon">🪶</div>
+                        <div class="option-content">
+                            <div class="option-title">Under 150 lbs (68 kg)</div>
+                            <div class="option-desc">Lighter riders — most boards will work well</div>
+                        </div>
+                    </div>
+                    <div class="option" data-value="medium" onclick="selectOption(this)">
+                        <div class="option-icon">⚖️</div>
+                        <div class="option-content">
+                            <div class="option-title">150–200 lbs (68–90 kg)</div>
+                            <div class="option-desc">Average range — widest board selection</div>
+                        </div>
+                    </div>
+                    <div class="option" data-value="heavy" onclick="selectOption(this)">
+                        <div class="option-icon">💪</div>
+                        <div class="option-content">
+                            <div class="option-title">200–250 lbs (90–113 kg)</div>
+                            <div class="option-desc">Need more power and larger wing area</div>
+                        </div>
+                    </div>
+                    <div class="option" data-value="xl" onclick="selectOption(this)">
+                        <div class="option-icon">🏋️</div>
+                        <div class="option-content">
+                            <div class="option-title">250+ lbs (113+ kg)</div>
+                            <div class="option-desc">Larger boards and high-lift foils essential</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-buttons">
+                    <button class="btn btn-back" onclick="prevQuestion()">← Back</button>
+                    <button class="btn btn-next" disabled onclick="nextQuestion()">Next →</button>
+                </div>
+            </div>
+
+            <!-- Q5: Priority -->
+            <div class="question-card" data-q="4">
+                <div class="question-number">Question 5 of 6</div>
+                <div class="question-text">What matters most to you?</div>
+                <div class="options">
+                    <div class="option" data-value="easy" onclick="selectOption(this)">
+                        <div class="option-icon">✨</div>
+                        <div class="option-content">
+                            <div class="option-title">Ease of learning</div>
+                            <div class="option-desc">Stability, forgiveness, flight assist — get flying ASAP</div>
+                        </div>
+                    </div>
+                    <div class="option" data-value="battery" onclick="selectOption(this)">
+                        <div class="option-icon">🔋</div>
+                        <div class="option-content">
+                            <div class="option-title">Battery life & range</div>
+                            <div class="option-desc">Long sessions, exploring, no range anxiety</div>
+                        </div>
+                    </div>
+                    <div class="option" data-value="portable" onclick="selectOption(this)">
+                        <div class="option-icon">✈️</div>
+                        <div class="option-content">
+                            <div class="option-title">Portability & travel</div>
+                            <div class="option-desc">Light, compact, easy to transport or fly with</div>
+                        </div>
+                    </div>
+                    <div class="option" data-value="value" onclick="selectOption(this)">
+                        <div class="option-icon">📊</div>
+                        <div class="option-content">
+                            <div class="option-title">Best value for money</div>
+                            <div class="option-desc">Maximum performance per dollar, low ownership cost</div>
+                        </div>
+                    </div>
+                    <div class="option" data-value="performance" onclick="selectOption(this)">
+                        <div class="option-icon">🚀</div>
+                        <div class="option-content">
+                            <div class="option-title">Raw performance</div>
+                            <div class="option-desc">Speed, power, maneuverability — the fastest ride</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-buttons">
+                    <button class="btn btn-back" onclick="prevQuestion()">← Back</button>
+                    <button class="btn btn-next" disabled onclick="nextQuestion()">Next →</button>
+                </div>
+            </div>
+
+            <!-- Q6: DIY Willingness -->
+            <div class="question-card" data-q="5">
+                <div class="question-number">Question 6 of 6</div>
+                <div class="question-text">How do you feel about building/tinkering?</div>
+                <div class="options">
+                    <div class="option" data-value="no" onclick="selectOption(this)">
+                        <div class="option-icon">📦</div>
+                        <div class="option-content">
+                            <div class="option-title">Just want to ride</div>
+                            <div class="option-desc">Unbox it, charge it, go — no assembly required</div>
+                        </div>
+                    </div>
+                    <div class="option" data-value="minor" onclick="selectOption(this)">
+                        <div class="option-icon">🔩</div>
+                        <div class="option-content">
+                            <div class="option-title">Minor setup is fine</div>
+                            <div class="option-desc">Basic assembly, changing props, simple maintenance</div>
+                        </div>
+                    </div>
+                    <div class="option" data-value="yes" onclick="selectOption(this)">
+                        <div class="option-icon">🛠️</div>
+                        <div class="option-content">
+                            <div class="option-title">Love building things</div>
+                            <div class="option-desc">Comfortable with soldering, wiring, 3D printing, and battery work</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-buttons">
+                    <button class="btn btn-back" onclick="prevQuestion()">← Back</button>
+                    <button class="btn btn-next" disabled onclick="getResults()">See My Recommendation →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results -->
+        <div class="results-container" id="resultsContainer">
+            <div class="result-card" id="resultCard">
+                <!-- Filled by JS -->
+            </div>
+
+            <div class="alternatives" id="alternatives">
+                <!-- Filled by JS -->
+            </div>
+
+            <!-- Deep-dive links -->
+            <div style="margin: 32px 0; padding: 24px; background: rgba(15, 40, 71, 0.5); border-radius: 12px; border: 1px solid rgba(26, 74, 122, 0.3);">
+                <h3 style="color: var(--text-bright); font-size: 1rem; margin-bottom: 16px; text-align: center;">📚 Go Deeper</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
+                    <a href="blog-best-efoils-2026.html" style="color: var(--accent); text-decoration: none; padding: 10px 14px; background: rgba(10, 22, 40, 0.5); border-radius: 8px; font-size: 0.9rem;">🏆 Best eFoils 2026 — Full Rankings</a>
+                    <a href="blog-efoil-cost-guide.html" style="color: var(--accent); text-decoration: none; padding: 10px 14px; background: rgba(10, 22, 40, 0.5); border-radius: 8px; font-size: 0.9rem;">💰 Complete Pricing Guide</a>
+                    <a href="blog-how-to-ride-efoil.html" style="color: var(--accent); text-decoration: none; padding: 10px 14px; background: rgba(10, 22, 40, 0.5); border-radius: 8px; font-size: 0.9rem;">🏄 How to Ride an eFoil</a>
+                    <a href="efoil-configurator.html" style="color: var(--accent); text-decoration: none; padding: 10px 14px; background: rgba(10, 22, 40, 0.5); border-radius: 8px; font-size: 0.9rem;">⚡ DIY Build Configurator</a>
+                    <a href="blog-diy-efoil-guide.html" style="color: var(--accent); text-decoration: none; padding: 10px 14px; background: rgba(10, 22, 40, 0.5); border-radius: 8px; font-size: 0.9rem;">🔧 DIY Build Guide</a>
+                    <a href="efoil-range-calculator.html" style="color: var(--accent); text-decoration: none; padding: 10px 14px; background: rgba(10, 22, 40, 0.5); border-radius: 8px; font-size: 0.9rem;">📊 Range Calculator</a>
+                </div>
+            </div>
+
+            <div class="share-section">
+                <p>Share your result or take it again with different answers.</p>
+                <button class="btn-share" onclick="shareResult()">📋 Copy Share Link</button>
+                <button class="btn-restart" onclick="restartQuiz()">🔄 Retake Quiz</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p><strong>PacificMeister</strong> — Open-sourcing eFoil knowledge since 2016</p>
+            <p style="margin-top: 8px;">
+                <a href="index.html">Home</a> · 
+                <a href="blog.html">Blog</a> · 
+                <a href="efoil-configurator.html">Build Configurator</a> · 
+                <a href="efoil-range-calculator.html">Range Calculator</a> · 
+                <a href="https://foil.zone" target="_blank">FOIL.zone Forum</a>
+            </p>
+            <p style="margin-top: 16px; font-size: 0.8rem; color: rgba(200,218,232,0.5);">
+                © 2026 PacificMeister. Built by the community, for the community.<br>
+                Last updated: March 2026
+            </p>
+        </div>
+    </footer>
+
+    <script>
+    // eFoil Database
+    const efoils = {
+        lift5: {
+            name: "Lift5",
+            brand: "Lift Foils",
+            price: "$12,000 – $14,000",
+            tagline: "The gold standard. LCS quick-connect, 120-min battery, cross-compatible foil wings, and bulletproof reliability. The eFoil equivalent of buying a Tesla.",
+            battery: "90–120 min",
+            topSpeed: "30 mph",
+            weight: "55 lbs",
+            motor: "Prop",
+            learning: "Moderate",
+            strengths: ["120-min battery life (best in class)", "LCS quick-connect — tool-free assembly in 60 seconds", "Cross-compatible foil wings for different conditions", "Proven reliability, strong dealer network, active community"],
+            link: "https://liftfoils.com",
+            linkLabel: "Visit Lift Foils"
+        },
+        fliteAir: {
+            name: "Flite AIR",
+            brand: "Fliteboard",
+            price: "$6,995 – $8,500",
+            tagline: "The best beginner-friendly eFoil. Inflatable design means it's forgiving during falls and won't ding boats, bodies, or itself. Packs into a bag for travel.",
+            battery: "60–90 min",
+            topSpeed: "25 mph",
+            weight: "42 lbs",
+            motor: "Jet",
+            learning: "Easy",
+            strengths: ["Inflatable = forgiving falls and zero damage risk", "Packs into a travel bag — airline friendly", "Jet drive = safe around swimmers, no exposed prop", "Fliteboard app with ride tracking and speed modes"],
+            link: "https://fliteboard.com",
+            linkLabel: "Visit Fliteboard"
+        },
+        fliteUltra: {
+            name: "Flite Ultra L2",
+            brand: "Fliteboard",
+            price: "$13,000 – $15,780",
+            tagline: "The performance benchmark. Carbon fiber, jet drive, and designed for expert riders who want the absolute best riding experience. The Porsche of eFoils.",
+            battery: "60–90 min",
+            topSpeed: "35 mph",
+            weight: "48 lbs",
+            motor: "Jet",
+            learning: "Advanced",
+            strengths: ["Carbon fiber construction — lightweight and responsive", "Jet drive with zero prop drag for wave riding", "35 mph top speed — fastest production eFoil", "Premium app with data logging and ride analysis"],
+            link: "https://fliteboard.com",
+            linkLabel: "Visit Fliteboard"
+        },
+        waydoo: {
+            name: "Waydoo EVO Pro Plus",
+            brand: "Waydoo",
+            price: "$6,300 – $7,000",
+            tagline: "Best value commercial eFoil. Flight assist technology actively helps beginners maintain stable flight. Hard to beat for the price.",
+            battery: "60–75 min",
+            topSpeed: "28 mph",
+            weight: "55 lbs",
+            motor: "Prop",
+            learning: "Easy",
+            strengths: ["Flight assist — actively helps maintain stable flight", "Best price-to-feature ratio in commercial eFoils", "Swappable batteries for back-to-back sessions", "Growing dealer network and parts availability"],
+            link: "https://waydoo.com",
+            linkLabel: "Visit Waydoo"
+        },
+        awake: {
+            name: "Awake Vinga 3",
+            brand: "Awake",
+            price: "$9,000 – $12,000",
+            tagline: "Swedish engineering meets jet power. Clean design, no exposed prop, and built for riders who want performance without compromise. Great for waves.",
+            battery: "60–75 min",
+            topSpeed: "30 mph",
+            weight: "50 lbs",
+            motor: "Jet",
+            learning: "Moderate",
+            strengths: ["Jet drive = no prop, safe around swimmers and kelp", "Clean Scandinavian design and build quality", "Excellent for wave riding — no prop drag when gliding", "Growing European dealer network"],
+            link: "https://awakeboards.com",
+            linkLabel: "Visit Awake"
+        },
+        aerofoils: {
+            name: "Aerofoils Audi e-tron Foil",
+            brand: "Aerofoils / Audi",
+            price: "$10,000 – $15,000",
+            tagline: "Audi-backed engineering and premium build quality. Direct drive motor, minimal maintenance, and the kind of fit-and-finish you'd expect from a German automaker.",
+            battery: "60–90 min",
+            topSpeed: "30 mph",
+            weight: "52 lbs",
+            motor: "Direct",
+            learning: "Moderate",
+            strengths: ["Audi-backed engineering and QC standards", "Direct drive — no belt, no gear, minimal maintenance", "Premium materials and fit-and-finish", "European dealer and service network"],
+            link: "https://aerofoils.com",
+            linkLabel: "Visit Aerofoils"
+        },
+        sifly: {
+            name: "SiFly F2X",
+            brand: "SiFly",
+            price: "$6,500 – $8,000",
+            tagline: "The dark horse. French engineering, competitive pricing, and solid performance. Growing quickly and worth watching.",
+            battery: "60–75 min",
+            topSpeed: "28 mph",
+            weight: "50 lbs",
+            motor: "Prop",
+            learning: "Moderate",
+            strengths: ["Competitive pricing for the build quality", "French engineering with attention to detail", "Modular design for upgrades", "Growing community and dealer network"],
+            link: "https://sifly.com",
+            linkLabel: "Visit SiFly"
+        },
+        diy: {
+            name: "DIY Build",
+            brand: "FOIL.zone Community",
+            price: "$2,000 – $4,500",
+            tagline: "Maximum value. Build it yourself with proven community designs, save 50-75% vs commercial, and learn exactly how everything works. You'll never pay $3,000 for a replacement battery.",
+            battery: "60–120 min",
+            topSpeed: "25–35 mph",
+            weight: "45–60 lbs",
+            motor: "Prop",
+            learning: "Varies",
+            strengths: ["50–75% cost savings vs commercial eFoils", "Full repairability — you built it, you can fix it", "$400–$800 battery replacements vs $1,500–$3,000", "Unlimited customization — build exactly what you want", "5,300+ community members for support on FOIL.zone"],
+            link: "efoil-configurator.html",
+            linkLabel: "Open Build Configurator"
+        }
+    };
+
+    // Quiz State
+    let currentQ = 0;
+    const totalQ = 6;
+    let answers = new Array(totalQ).fill(null);
+
+    function selectOption(el) {
+        const card = el.closest('.question-card');
+        card.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+        el.classList.add('selected');
+        answers[currentQ] = el.dataset.value;
+        card.querySelector('.btn-next').disabled = false;
+    }
+
+    function nextQuestion() {
+        if (currentQ >= totalQ - 1) return;
+        document.querySelector(`.question-card[data-q="${currentQ}"]`).classList.remove('active');
+        currentQ++;
+        document.querySelector(`.question-card[data-q="${currentQ}"]`).classList.add('active');
+        updateProgress();
+        // Restore selection if going back then forward
+        const card = document.querySelector(`.question-card[data-q="${currentQ}"]`);
+        if (answers[currentQ]) {
+            const opt = card.querySelector(`.option[data-value="${answers[currentQ]}"]`);
+            if (opt) {
+                opt.classList.add('selected');
+                card.querySelector('.btn-next').disabled = false;
+            }
+        }
+    }
+
+    function prevQuestion() {
+        if (currentQ <= 0) return;
+        document.querySelector(`.question-card[data-q="${currentQ}"]`).classList.remove('active');
+        currentQ--;
+        document.querySelector(`.question-card[data-q="${currentQ}"]`).classList.add('active');
+        updateProgress();
+    }
+
+    function updateProgress() {
+        const answered = answers.filter(a => a !== null).length;
+        document.getElementById('progressFill').style.width = `${(answered / totalQ) * 100}%`;
+        document.getElementById('progressText').textContent = `${answered} / ${totalQ}`;
+    }
+
+    function getResults() {
+        const [experience, budget, use, weight, priority, diyWilling] = answers;
+
+        // Scoring system — each eFoil gets weighted points
+        const scores = {};
+        Object.keys(efoils).forEach(k => scores[k] = 0);
+
+        // Budget filtering (strong weight)
+        if (budget === 'diy') {
+            scores.diy += 50;
+            scores.waydoo += 5;
+        } else if (budget === 'budget') {
+            scores.waydoo += 40;
+            scores.fliteAir += 35;
+            scores.sifly += 30;
+            scores.diy += (diyWilling === 'yes') ? 30 : 10;
+        } else if (budget === 'mid') {
+            scores.waydoo += 20;
+            scores.fliteAir += 25;
+            scores.awake += 35;
+            scores.sifly += 25;
+            scores.aerofoils += 20;
+        } else if (budget === 'premium') {
+            scores.lift5 += 40;
+            scores.fliteUltra += 40;
+            scores.aerofoils += 30;
+            scores.awake += 25;
+        }
+
+        // Experience
+        if (experience === 'none') {
+            scores.fliteAir += 30;
+            scores.waydoo += 25;
+            scores.lift5 += 10;
+        } else if (experience === 'some') {
+            scores.waydoo += 15;
+            scores.fliteAir += 15;
+            scores.lift5 += 15;
+            scores.sifly += 10;
+        } else if (experience === 'foil') {
+            scores.lift5 += 15;
+            scores.awake += 15;
+            scores.fliteUltra += 15;
+            scores.diy += 10;
+        } else if (experience === 'expert') {
+            scores.fliteUltra += 25;
+            scores.awake += 15;
+            scores.lift5 += 10;
+            scores.diy += 15;
+        }
+
+        // Use case
+        if (use === 'cruise') {
+            scores.lift5 += 20;
+            scores.waydoo += 10;
+            scores.fliteAir += 10;
+        } else if (use === 'tricks') {
+            scores.fliteUltra += 25;
+            scores.awake += 15;
+            scores.lift5 += 10;
+        } else if (use === 'waves') {
+            scores.fliteUltra += 30;
+            scores.awake += 25;
+            scores.diy += 10;
+        } else if (use === 'family') {
+            scores.lift5 += 20;
+            scores.waydoo += 15;
+            scores.fliteAir += 20;
+        }
+
+        // Weight considerations
+        if (weight === 'heavy' || weight === 'xl') {
+            scores.lift5 += 15;
+            scores.diy += 10; // can customize
+            scores.fliteAir -= 10;
+        }
+
+        // Priority
+        if (priority === 'easy') {
+            scores.fliteAir += 20;
+            scores.waydoo += 20;
+        } else if (priority === 'battery') {
+            scores.lift5 += 30;
+            scores.diy += 15;
+        } else if (priority === 'portable') {
+            scores.fliteAir += 30;
+            scores.sifly += 10;
+        } else if (priority === 'value') {
+            scores.diy += 30;
+            scores.waydoo += 20;
+            scores.sifly += 10;
+        } else if (priority === 'performance') {
+            scores.fliteUltra += 25;
+            scores.lift5 += 15;
+            scores.awake += 15;
+        }
+
+        // DIY willingness
+        if (diyWilling === 'yes') {
+            scores.diy += 25;
+        } else if (diyWilling === 'no') {
+            scores.diy -= 30;
+        } else {
+            scores.diy -= 10;
+        }
+
+        // Rank results
+        const ranked = Object.entries(scores)
+            .sort((a, b) => b[1] - a[1])
+            .map(([key, score]) => ({ key, score, ...efoils[key] }));
+
+        const winner = ranked[0];
+        const alts = ranked.slice(1, 4);
+
+        // Build match reasons based on answers
+        const reasons = [];
+        if (budget === 'diy' && winner.key === 'diy') reasons.push("Fits your DIY budget perfectly — max performance per dollar");
+        if (budget === 'budget' && (winner.price || '').includes('6')) reasons.push("Best performance in your $5K–$7K budget range");
+        if (budget === 'premium') reasons.push("Premium build quality with no compromises");
+        if (experience === 'none' && winner.learning === 'Easy') reasons.push("Beginner-friendly design — you'll be flying in your first session");
+        if (experience === 'expert' && winner.learning === 'Advanced') reasons.push("Designed for experienced riders who demand top performance");
+        if (use === 'waves' && winner.motor === 'Jet') reasons.push("Jet drive eliminates prop drag for clean wave riding");
+        if (use === 'cruise' && winner.battery && winner.battery.includes('120')) reasons.push("Industry-leading battery life for long exploration sessions");
+        if (use === 'family') reasons.push("Versatile enough for different riders and skill levels");
+        if (priority === 'portable' && winner.key === 'fliteAir') reasons.push("Inflatable — packs into a bag for travel and storage");
+        if (priority === 'battery' && winner.key === 'lift5') reasons.push("120-minute battery — longest in the industry");
+        if (priority === 'value' && winner.key === 'diy') reasons.push("50–75% less than commercial alternatives");
+        if (priority === 'value' && winner.key === 'waydoo') reasons.push("Best feature-to-price ratio in commercial eFoils");
+        // Add generic strengths if we don't have enough
+        while (reasons.length < 3 && winner.strengths.length > reasons.length) {
+            const s = winner.strengths[reasons.length];
+            if (!reasons.includes(s)) reasons.push(s);
+        }
+
+        // Render result
+        const isDIY = winner.key === 'diy';
+        document.getElementById('resultCard').innerHTML = `
+            <div class="result-badge">🎯 Your Perfect Match</div>
+            <div class="result-name">${winner.name}</div>
+            <div class="result-price">${winner.price}</div>
+            <div class="result-tagline">${winner.tagline}</div>
+            <div class="result-specs">
+                <div class="spec-item">
+                    <div class="spec-value">${winner.battery}</div>
+                    <div class="spec-label">Battery Life</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-value">${winner.topSpeed}</div>
+                    <div class="spec-label">Top Speed</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-value">${winner.weight}</div>
+                    <div class="spec-label">Weight</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-value">${winner.motor}</div>
+                    <div class="spec-label">Drive Type</div>
+                </div>
+            </div>
+            <div class="match-reasons">
+                <h3>Why it's right for you:</h3>
+                ${reasons.map(r => `<div class="reason"><span class="reason-icon">✓</span><span>${r}</span></div>`).join('')}
+            </div>
+            <div class="result-links">
+                <a href="${winner.link}" class="result-link result-link-primary" ${isDIY ? '' : 'target="_blank"'}>${isDIY ? '⚡ Open Build Configurator' : '🔗 ' + winner.linkLabel}</a>
+                <a href="blog-best-efoils-2026.html" class="result-link result-link-secondary">📖 Read Full Review</a>
+                ${isDIY ? '<a href="blog-diy-efoil-guide.html" class="result-link result-link-secondary">🔧 DIY Build Guide</a>' : '<a href="blog-efoil-cost-guide.html" class="result-link result-link-secondary">💰 Pricing Deep Dive</a>'}
+            </div>
+        `;
+
+        // Render alternatives
+        document.getElementById('alternatives').innerHTML = `
+            <h3>Also Worth Considering</h3>
+            <div class="alt-grid">
+                ${alts.map(a => `
+                    <div class="alt-card">
+                        <div class="alt-name">${a.name}</div>
+                        <div class="alt-price">${a.price}</div>
+                        <div class="alt-reason">${a.strengths[0]}</div>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+
+        // Show results
+        document.getElementById('quizContainer').style.display = 'none';
+        document.getElementById('progressBar').style.display = 'none';
+        document.getElementById('resultsContainer').classList.add('active');
+
+        // Update URL for sharing
+        const hash = answers.join('-');
+        history.replaceState(null, '', `#${hash}`);
+
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function shareResult() {
+        const url = window.location.href;
+        navigator.clipboard.writeText(url).then(() => {
+            const btn = document.querySelector('.btn-share');
+            btn.textContent = '✅ Link Copied!';
+            setTimeout(() => btn.textContent = '📋 Copy Share Link', 2000);
+        }).catch(() => {
+            // Fallback
+            const input = document.createElement('input');
+            input.value = url;
+            document.body.appendChild(input);
+            input.select();
+            document.execCommand('copy');
+            document.body.removeChild(input);
+            const btn = document.querySelector('.btn-share');
+            btn.textContent = '✅ Link Copied!';
+            setTimeout(() => btn.textContent = '📋 Copy Share Link', 2000);
+        });
+    }
+
+    function restartQuiz() {
+        answers = new Array(totalQ).fill(null);
+        currentQ = 0;
+        document.querySelectorAll('.question-card').forEach((card, i) => {
+            card.classList.toggle('active', i === 0);
+            card.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+            card.querySelector('.btn-next').disabled = true;
+        });
+        document.getElementById('quizContainer').style.display = 'block';
+        document.getElementById('progressBar').style.display = 'flex';
+        document.getElementById('resultsContainer').classList.remove('active');
+        updateProgress();
+        history.replaceState(null, '', window.location.pathname);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Load from URL hash (for shared links)
+    function loadFromHash() {
+        const hash = window.location.hash.slice(1);
+        if (!hash) return;
+        const parts = hash.split('-');
+        if (parts.length !== totalQ || parts.some(p => p === 'null')) return;
+        answers = parts;
+        // Simulate selections
+        answers.forEach((val, i) => {
+            const card = document.querySelector(`.question-card[data-q="${i}"]`);
+            if (!card) return;
+            const opt = card.querySelector(`.option[data-value="${val}"]`);
+            if (opt) {
+                opt.classList.add('selected');
+                card.querySelector('.btn-next').disabled = false;
+            }
+        });
+        currentQ = totalQ - 1;
+        getResults();
+    }
+
+    // Init
+    loadFromHash();
+    </script>
+</body>
+</html>
