@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIY eFoil Waterproofing Guide: Sealing Electronics, Batteries & Enclosures (2026) — PacificMeister</title>
+    <meta name="description" content="The complete waterproofing guide for DIY eFoils. Enclosure sealing, cable glands, conformal coating, gaskets, battery compartments, and saltwater protection — proven methods from 9 years of FOIL.zone builds.">
+    <meta name="keywords" content="eFoil waterproofing, DIY eFoil seal, waterproof battery enclosure, eFoil cable gland, conformal coating eFoil, marine electronics waterproof, eFoil gasket, IP67 eFoil, waterproof VESC, saltwater electronics, PacificMeister, FOIL.zone, efoil water ingress">
+    <link rel="canonical" href="https://pacificmeister.github.io/blog-efoil-waterproofing-guide.html">
+
+    <meta property="og:title" content="DIY eFoil Waterproofing Guide: Sealing Electronics, Batteries & Enclosures (2026)">
+    <meta property="og:description" content="Water kills eFoils. The definitive guide to waterproofing your DIY build — enclosures, cable glands, coatings, and saltwater protection from the world's largest DIY eFoil community.">
+    <meta property="og:url" content="https://pacificmeister.github.io/blog-efoil-waterproofing-guide.html">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://pacificmeister.github.io/og-image.png">
+    <meta property="og:site_name" content="PacificMeister">
+    <meta property="article:published_time" content="2026-03-26">
+    <meta property="article:author" content="PacificMeister">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="DIY eFoil Waterproofing Guide: Complete Sealing & Protection (2026)">
+    <meta name="twitter:description" content="Water is the #1 killer of DIY eFoils. Proven waterproofing methods from 9 years of FOIL.zone builds — enclosures, coatings, connectors, and more.">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "DIY eFoil Waterproofing Guide: Sealing Electronics, Batteries & Enclosures (2026)",
+        "datePublished": "2026-03-26",
+        "dateModified": "2026-03-26",
+        "author": {
+            "@type": "Person",
+            "name": "PacificMeister",
+            "url": "https://pacificmeister.github.io"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "PacificMeister",
+            "url": "https://pacificmeister.github.io"
+        },
+        "description": "The definitive guide to waterproofing DIY eFoil electronics, batteries, and enclosures. Proven methods from the FOIL.zone community.",
+        "mainEntityOfPage": "https://pacificmeister.github.io/blog-efoil-waterproofing-guide.html"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What IP rating does a DIY eFoil need?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Your eFoil enclosure should target IP67 or higher — that means fully dust-tight and waterproof to 1 meter submersion for 30 minutes. In practice, your board will get submerged during crashes and wipeouts. IP65 (water jets) is the absolute minimum, but IP67 with tested seals is the community standard for reliable builds."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Should I use silicone or polyurethane sealant for my eFoil?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "For most eFoil sealing applications, marine-grade silicone sealant (like 3M 4000UV or Sikaflex 291) is the go-to choice. It stays flexible, handles vibration well, and bonds to fiberglass, aluminum, and plastics. Polyurethane sealants bond stronger but are harder to remove for maintenance. Use silicone for gaskets and removable seals; polyurethane for permanent bonds like mast box installations."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do I waterproof my VESC for an eFoil?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The best approach is to keep your VESC inside a sealed enclosure rather than coating the board itself. If you want extra protection, apply silicone conformal coating (MG Chemicals 422B or similar) to the PCB — but avoid coating the heat sink, MOSFETs, and thermal pads since they need to dissipate heat. The enclosure seal is your primary defense; conformal coating is a backup layer."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What cable glands should I use for eFoil wire penetrations?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Use IP68-rated nylon cable glands — PG7 for signal wires (3-6.5mm), PG9 for phase wires (4-8mm), and PG11 for thicker power cables (5-10mm). Always use cable glands with rubber compression seals, not just pass-through holes with silicone. Brass cable glands are more durable but heavier. For the motor phase wire pass-through, many builders use a single PG13.5 with all three wires fed through together."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do I test if my eFoil enclosure is waterproof?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Before installing any electronics, seal the enclosure and submerge it in a bathtub or pool for 30 minutes with weights holding it under. Place dry paper towels or moisture-indicator strips inside. After 30 minutes, open and check — any moisture means you have a leak. You can also do a pressure test: seal the box with a valve fitting, pump in a few PSI of air, apply soapy water to all seals, and watch for bubbles."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What's the biggest waterproofing mistake in DIY eFoil builds?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Relying on a single seal point. The most common failure is a single O-ring or gasket with no backup — when it fails (and eventually it will), water goes straight to your electronics. Always use defense in depth: a sealed enclosure plus conformal coating on electronics plus waterproof connectors. The second biggest mistake is not testing before putting electronics inside."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "How to Waterproof a DIY eFoil",
+        "description": "Step-by-step guide to sealing and waterproofing your DIY electric hydrofoil for reliable saltwater operation.",
+        "totalTime": "PT8H",
+        "estimatedCost": {
+            "@type": "MonetaryAmount",
+            "currency": "USD",
+            "value": "50-200"
+        },
+        "step": [
+            {
+                "@type": "HowToStep",
+                "name": "Choose and Prepare Your Enclosure",
+                "text": "Select a Pelican case, custom fiberglass box, or purpose-built enclosure. Ensure it fits inside your board cavity with room for cable glands."
+            },
+            {
+                "@type": "HowToStep",
+                "name": "Install Cable Glands and Connectors",
+                "text": "Drill holes for PG cable glands, install with lock nuts and silicone sealant on threads. Route all power and signal wires through properly-sized glands."
+            },
+            {
+                "@type": "HowToStep",
+                "name": "Apply Conformal Coating to Electronics",
+                "text": "Coat VESC PCB and BMS boards with silicone conformal coating, avoiding heat sinks, MOSFETs, and thermal interfaces. Allow 24 hours to cure."
+            },
+            {
+                "@type": "HowToStep",
+                "name": "Seal the Enclosure",
+                "text": "Install gaskets or apply marine silicone sealant to the lid perimeter. Ensure even compression around the entire seal when closed."
+            },
+            {
+                "@type": "HowToStep",
+                "name": "Test Before Installing Electronics",
+                "text": "Submersion test for 30 minutes in a pool or bathtub. Check for any moisture ingress with paper towels or indicator strips inside."
+            },
+            {
+                "@type": "HowToStep",
+                "name": "Install and Final Seal",
+                "text": "Mount electronics inside the tested enclosure, make final wire connections through cable glands, and do a second submersion test with everything installed."
+            }
+        ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --ocean-deep: #0a1628;
+            --ocean-mid: #0f2847;
+            --ocean-light: #1a4a7a;
+            --foam: #e8f4f8;
+            --white: #ffffff;
+            --accent: #00d4aa;
+            --accent-glow: #00ffcc;
+            --text: #c8dae8;
+            --text-bright: #f0f6fc;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: var(--ocean-deep);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .ocean-bg {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(180deg, #0a1628 0%, #0c1e3a 30%, #0f2847 50%, #0a1628 100%);
+            z-index: -2;
+        }
+
+        header {
+            padding: 2rem 2rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span { color: var(--accent); }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--accent); }
+
+        .article-header {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .article-date {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .article-tag {
+            display: inline-block;
+            padding: 0.2rem 0.7rem;
+            background: rgba(0, 212, 170, 0.1);
+            border: 1px solid rgba(0, 212, 170, 0.2);
+            border-radius: 100px;
+            font-size: 0.75rem;
+            color: var(--accent);
+        }
+
+        .article-header h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: var(--white);
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .article-intro {
+            font-size: 1.2rem;
+            color: var(--text);
+            line-height: 1.8;
+            border-left: 3px solid var(--accent);
+            padding-left: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .article-body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+
+        .article-body h2 {
+            font-size: 1.8rem;
+            color: var(--white);
+            margin: 3rem 0 1rem;
+            font-weight: 700;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .article-body h2:first-child {
+            border-top: none;
+            margin-top: 0;
+        }
+
+        .article-body h3 {
+            font-size: 1.3rem;
+            color: var(--text-bright);
+            margin: 2rem 0 0.75rem;
+            font-weight: 600;
+        }
+
+        .article-body p {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .article-body ul, .article-body ol {
+            margin: 1rem 0 1.5rem 1.5rem;
+        }
+
+        .article-body li {
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .article-body strong {
+            color: var(--text-bright);
+        }
+
+        .article-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        .article-body a:hover {
+            color: var(--accent-glow);
+        }
+
+        /* Info boxes */
+        .info-box {
+            background: rgba(0, 212, 170, 0.08);
+            border: 1px solid rgba(0, 212, 170, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-box.warning {
+            background: rgba(255, 107, 107, 0.08);
+            border-color: rgba(255, 107, 107, 0.3);
+        }
+
+        .info-box.tip {
+            background: rgba(255, 215, 0, 0.08);
+            border-color: rgba(255, 215, 0, 0.25);
+        }
+
+        .info-box-title {
+            font-weight: 700;
+            color: var(--text-bright);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .info-box p {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .info-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Comparison table */
+        .cost-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        .cost-table th {
+            text-align: left;
+            padding: 0.75rem 1rem;
+            background: rgba(0, 212, 170, 0.1);
+            color: var(--accent);
+            font-weight: 600;
+            border-bottom: 2px solid rgba(0, 212, 170, 0.2);
+        }
+
+        .cost-table td {
+            padding: 0.6rem 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            color: var(--text);
+        }
+
+        .cost-table tr:hover td {
+            background: rgba(0, 212, 170, 0.03);
+        }
+
+        .cost-table .highlight td {
+            background: rgba(0, 212, 170, 0.06);
+            color: var(--text-bright);
+        }
+
+        /* Component cards */
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .component-card {
+            background: rgba(15, 40, 71, 0.6);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .component-card h4 {
+            color: var(--white);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .component-card .price {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .component-card p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Build steps */
+        .build-step {
+            display: flex;
+            gap: 1.5rem;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: rgba(15, 40, 71, 0.4);
+            border-radius: 12px;
+            border-left: 3px solid var(--accent);
+        }
+
+        .step-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent);
+            min-width: 50px;
+            text-align: center;
+            line-height: 1;
+            padding-top: 0.25rem;
+        }
+
+        .step-content h4 {
+            color: var(--white);
+            font-size: 1.15rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-content p {
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-content ul {
+            margin: 0.5rem 0 0 1.2rem;
+        }
+
+        .step-content li {
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+        }
+
+        /* Checklist */
+        .checklist {
+            list-style: none;
+            margin: 1rem 0 1.5rem 0;
+            padding: 0;
+        }
+
+        .checklist li {
+            padding: 0.6rem 0 0.6rem 2rem;
+            position: relative;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+        }
+
+        .checklist li::before {
+            content: "☐";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+
+        /* CTA */
+        .article-cta {
+            background: linear-gradient(135deg, rgba(0, 212, 170, 0.1), rgba(0, 180, 150, 0.05));
+            border: 1px solid rgba(0, 212, 170, 0.3);
+            border-radius: 16px;
+            padding: 2.5rem;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .article-cta h3 {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .article-cta p {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.8rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+
+        .cta-btn.primary {
+            background: linear-gradient(135deg, var(--accent), #00b894);
+            color: var(--ocean-deep);
+        }
+
+        .cta-btn.secondary {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(0, 212, 170, 0.3);
+            color: var(--accent);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 212, 170, 0.3);
+        }
+
+        /* Back link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            transition: gap 0.2s;
+        }
+
+        .back-link:hover { gap: 0.75rem; }
+
+        /* Related */
+        .related {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+
+        .related h3 {
+            color: var(--white);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .related-card {
+            background: rgba(15, 40, 71, 0.6);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .related-card:hover {
+            border-color: rgba(0, 212, 170, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .related-card h4 {
+            color: var(--white);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .related-card p {
+            color: var(--text);
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        footer {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text);
+            opacity: 0.6;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover { color: var(--accent); }
+
+        @media (max-width: 640px) {
+            .nav-links { gap: 1rem; }
+            .build-step { flex-direction: column; gap: 0.75rem; }
+            .step-number { min-width: auto; text-align: left; }
+            footer { flex-direction: column; gap: 1rem; text-align: center; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ocean-bg"></div>
+
+    <header>
+        <nav>
+            <a href="/" class="logo">Pacific<span>Meister</span></a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/blog.html">Blog</a></li>
+                <li><a href="/efoil-configurator.html">Build Planner</a></li>
+                <li><a href="https://foil.zone" target="_blank">Forum</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="article-header">
+        <a href="/blog.html" class="back-link">← Back to Blog</a>
+        <div class="article-meta">
+            <span class="article-date">March 26, 2026</span>
+            <span class="article-tag">Build Guide</span>
+            <span class="article-tag">Safety</span>
+        </div>
+        <h1>DIY eFoil Waterproofing Guide: Sealing Electronics, Batteries & Enclosures</h1>
+        <p class="article-intro">
+            Water is the #1 killer of DIY eFoils. Not motor failure, not bad batteries, not VESC settings — <strong>water ingress</strong>. After 9 years and thousands of builds on FOIL.zone, we've seen every waterproofing failure imaginable. This guide covers everything we've learned about keeping saltwater out and your electronics alive.
+        </p>
+    </div>
+
+    <main class="article-body">
+
+        <h2>Why Waterproofing Is Your Most Important Build Step</h2>
+
+        <p>
+            Here's a number that should scare you: <strong>roughly 40% of first-time DIY eFoil failures are water-related</strong>. Corroded VESC boards, shorted battery packs, rusted connectors — all from water that found a way in. And saltwater is exponentially worse than fresh — it's conductive, corrosive, and relentless.
+        </p>
+
+        <p>
+            The cruel irony is that waterproofing is one of the cheapest parts of the build. A good enclosure setup costs $50–150 in materials, but protects a $1,500–3,000 electronics package. Every dollar you spend here saves potentially hundreds in fried components.
+        </p>
+
+        <div class="info-box warning">
+            <div class="info-box-title">⚠️ The Real Enemy: Thermal Breathing</div>
+            <p>
+                Even a perfectly sealed box will "breathe." When your VESC and battery generate heat during a ride, air inside the enclosure expands. When you stop and the box cools down (especially submerged in cold water), the air contracts and creates negative pressure — literally sucking water in through any tiny gap. This is the #1 way "waterproof" enclosures fail. The fix: use a Gore-Tex vent or equalize the pressure intentionally.
+            </p>
+        </div>
+
+        <h2>The Defense-in-Depth Strategy</h2>
+
+        <p>
+            Never rely on a single seal. The community standard is <strong>three layers of protection</strong>, because each one will eventually fail — and that's okay, as long as they don't all fail at once.
+        </p>
+
+        <h3>Layer 1: The Enclosure (Primary Barrier)</h3>
+        <p>
+            Your sealed box — whether it's a Pelican case, a custom fiberglass enclosure, or an aluminum box with gaskets. This stops 99% of water. All cable penetrations must use proper cable glands, not holes with silicone squeezed around them.
+        </p>
+
+        <h3>Layer 2: Conformal Coating (Secondary Protection)</h3>
+        <p>
+            A thin protective coating on your PCBs (VESC, BMS, receiver boards). If water gets past Layer 1, the coating buys you time — maybe enough time to notice a small leak and fix it before components die.
+        </p>
+
+        <h3>Layer 3: Component-Level Sealing (Last Resort)</h3>
+        <p>
+            Waterproof connectors, potted sensors, sealed switches. Even if your box floods and your coating fails, individual component sealing might save some hardware. Heatshrink over solder joints, marine-grade connectors, dielectric grease on exposed contacts.
+        </p>
+
+        <div class="info-box tip">
+            <div class="info-box-title">💡 FOIL.zone Pro Tip</div>
+            <p>
+                Think of it like a submarine: the hull is your primary defense, waterproof compartments contain flooding, and sealed electronics survive even compartment breaches. Over-engineer the sealing and under-estimate the ocean.
+            </p>
+        </div>
+
+        <h2>Enclosure Options: Choosing Your Box</h2>
+
+        <p>
+            Your enclosure choice depends on your board design, budget, and how permanent you want the installation. Here are the community-proven options:
+        </p>
+
+        <table class="cost-table">
+            <thead>
+                <tr>
+                    <th>Enclosure Type</th>
+                    <th>Cost</th>
+                    <th>IP Rating</th>
+                    <th>Pros</th>
+                    <th>Cons</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="highlight">
+                    <td><strong>Pelican / Nanuk Case</strong></td>
+                    <td>$30–80</td>
+                    <td>IP67</td>
+                    <td>Pre-sealed, proven, easy</td>
+                    <td>Bulky, may not fit board cavity</td>
+                </tr>
+                <tr>
+                    <td><strong>Custom Fiberglass</strong></td>
+                    <td>$40–100</td>
+                    <td>IP67+</td>
+                    <td>Perfect fit, lightweight</td>
+                    <td>Requires fabrication skills</td>
+                </tr>
+                <tr>
+                    <td><strong>Aluminum CNC Box</strong></td>
+                    <td>$80–200</td>
+                    <td>IP67</td>
+                    <td>Heat sink, very durable</td>
+                    <td>Heavy, expensive, corrosion risk</td>
+                </tr>
+                <tr>
+                    <td><strong>3D-Printed + Epoxy</strong></td>
+                    <td>$10–30</td>
+                    <td>IP54–65</td>
+                    <td>Custom shapes, cheap</td>
+                    <td>Layer lines leak, needs post-processing</td>
+                </tr>
+                <tr>
+                    <td><strong>Vacuum-Sealed Bag</strong></td>
+                    <td>$5–15</td>
+                    <td>Varies</td>
+                    <td>Dirt cheap, flexible</td>
+                    <td>Temporary, hard to access, no heat dissipation</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="info-box">
+            <div class="info-box-title">🏆 Community Favorite: Modified Pelican Case</div>
+            <p>
+                The <strong>Pelican 1040</strong> (Micro Case) or <strong>Pelican 1050</strong> are the most-used enclosures on FOIL.zone for good reason: IP67 out of the box, replacement gaskets available, polycarbonate body that doesn't corrode, and they're cheap enough to replace if you damage one. Drill holes for cable glands, add a Gore-Tex vent, and you're 80% done.
+            </p>
+        </div>
+
+        <h3>Custom Fiberglass Enclosures</h3>
+        <p>
+            For integrated builds where the electronics sit inside the board cavity, a custom fiberglass layup is the professional approach. The process:
+        </p>
+        <ol>
+            <li>Carve or CNC the board cavity to exact dimensions</li>
+            <li>Apply release agent to the cavity</li>
+            <li>Lay up 2–3 layers of fiberglass cloth with epoxy resin</li>
+            <li>Create a matching lid with a gasket channel</li>
+            <li>Install a silicone gasket or O-ring in the channel</li>
+            <li>Mount cable glands in the lid or walls</li>
+            <li>Bolt the lid with stainless fasteners and nyloc nuts</li>
+        </ol>
+        <p>
+            The key is the <strong>gasket channel</strong>. A flat silicone smear between two surfaces will eventually fail. A proper channel with a compressed O-ring creates a mechanical seal that works reliably for years.
+        </p>
+
+        <h3>3D-Printed Enclosures: Making Them Work</h3>
+        <p>
+            FDM prints have layer lines that wick water like a sponge. If you're going this route, you <strong>must</strong> post-process:
+        </p>
+        <ul>
+            <li><strong>PETG over PLA</strong> — PLA degrades in humid environments. PETG handles heat and moisture much better</li>
+            <li><strong>100% infill on walls</strong> — any internal voids become water channels</li>
+            <li><strong>Epoxy coat inside and out</strong> — 2-part marine epoxy (West System 105/205) seals layer lines</li>
+            <li><strong>XTC-3D</strong> — brush-on epoxy specifically designed for smoothing 3D prints</li>
+            <li><strong>O-ring groove in the lid</strong> — don't rely on a gasket, design a proper groove</li>
+        </ul>
+        <p>
+            Resin (SLA) prints are naturally watertight since they don't have layer lines, but they're brittle under impact — not ideal for a board that crashes regularly.
+        </p>
+
+        <h2>Cable Glands: The Most Critical Detail</h2>
+
+        <p>
+            Cable glands are where most enclosures fail. A beautifully sealed box with a hole drilled through it and some silicone squirted around the wires is <strong>not waterproof</strong>. Full stop.
+        </p>
+
+        <h3>Cable Gland Sizing</h3>
+        <table class="cost-table">
+            <thead>
+                <tr>
+                    <th>Wire Type</th>
+                    <th>Typical Diameter</th>
+                    <th>Cable Gland Size</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>PPM signal / receiver</td>
+                    <td>2–4mm</td>
+                    <td>PG7 (3–6.5mm)</td>
+                    <td>Use with rubber insert</td>
+                </tr>
+                <tr>
+                    <td>Temperature sensor</td>
+                    <td>2–3mm</td>
+                    <td>PG7 (3–6.5mm)</td>
+                    <td>Silicone fill if wire is undersized</td>
+                </tr>
+                <tr class="highlight">
+                    <td><strong>Motor phase wires (×3)</strong></td>
+                    <td>5–8mm each</td>
+                    <td>PG13.5 (6–12mm)</td>
+                    <td>All 3 through one gland, or individual PG9s</td>
+                </tr>
+                <tr>
+                    <td>Battery power leads</td>
+                    <td>8–12mm</td>
+                    <td>PG11 (5–10mm) or PG13.5</td>
+                    <td>Must handle 8–12 AWG wire</td>
+                </tr>
+                <tr>
+                    <td>Hall sensor cable</td>
+                    <td>4–6mm</td>
+                    <td>PG9 (4–8mm)</td>
+                    <td>5 or 6 wire bundle</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Installation Best Practices</h3>
+        <ul>
+            <li><strong>Thread sealant on every gland</strong> — apply marine silicone or Teflon tape to the threads before tightening into the enclosure wall</li>
+            <li><strong>Nylon glands for saltwater</strong> — brass glands look pro but corrode in saltwater. Nylon IP68 glands are the community standard</li>
+            <li><strong>Lock nut on inside</strong> — always use the lock nut. Vibration will loosen glands without them</li>
+            <li><strong>Don't over-tighten</strong> — you want firm compression on the rubber seal around the wire, not cracked plastic</li>
+            <li><strong>Correct wire diameter is critical</strong> — a PG9 gland on a 3mm wire won't seal. The rubber insert must compress around the actual wire</li>
+            <li><strong>Use multi-hole inserts</strong> — if routing multiple thin wires, use a single larger gland with a multi-hole rubber insert instead of drilling five separate holes</li>
+        </ul>
+
+        <div class="info-box warning">
+            <div class="info-box-title">⚠️ The Most Common Mistake</div>
+            <p>
+                Drilling a hole in the enclosure, threading wires through, then filling the hole with silicone sealant. This fails within weeks — silicone doesn't bond well to wire insulation, and thermal cycling breaks the seal. <strong>Always use a proper cable gland with a compression rubber seal.</strong> They cost $1–2 each. There's no excuse.
+            </p>
+        </div>
+
+        <h2>Conformal Coating: Protecting Your PCBs</h2>
+
+        <p>
+            Conformal coating is a thin protective layer sprayed or brushed onto circuit boards. It doesn't make your electronics waterproof — it makes them water-<em>resistant</em> as a backup if your enclosure seal fails.
+        </p>
+
+        <h3>Types of Conformal Coating</h3>
+        <table class="cost-table">
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Product</th>
+                    <th>Cure Time</th>
+                    <th>Best For</th>
+                    <th>Drawback</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="highlight">
+                    <td><strong>Silicone</strong></td>
+                    <td>MG Chemicals 422B</td>
+                    <td>24 hrs</td>
+                    <td>General PCB protection</td>
+                    <td>Soft, can peel off edges</td>
+                </tr>
+                <tr>
+                    <td>Acrylic</td>
+                    <td>MG 419D</td>
+                    <td>30 min</td>
+                    <td>Quick protection, reworkable</td>
+                    <td>Less moisture resistance</td>
+                </tr>
+                <tr>
+                    <td>Polyurethane</td>
+                    <td>HumiSeal 1A33</td>
+                    <td>2–8 hrs</td>
+                    <td>Harsh environments</td>
+                    <td>Hard to remove for repairs</td>
+                </tr>
+                <tr>
+                    <td>Epoxy</td>
+                    <td>—</td>
+                    <td>8–24 hrs</td>
+                    <td>Permanent protection</td>
+                    <td>No rework possible, brittle</td>
+                </tr>
+                <tr>
+                    <td>Spray lacquer</td>
+                    <td>Plastik 70</td>
+                    <td>15 min</td>
+                    <td>Quick & cheap</td>
+                    <td>Thin layer, minimal protection</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>
+            <strong>Community recommendation:</strong> Silicone conformal coating (MG Chemicals 422B) is the sweet spot. It's flexible enough to handle thermal expansion, moisture-resistant enough for the marine environment, and removable enough for repairs. Apply 2–3 thin coats with 4 hours between coats.
+        </p>
+
+        <h3>What to Coat — and What NOT to Coat</h3>
+
+        <div class="component-grid">
+            <div class="component-card">
+                <h4>✅ Coat These</h4>
+                <ul style="font-size: 0.9rem; line-height: 1.7; margin-top: 0.5rem;">
+                    <li>All exposed PCB traces and solder joints</li>
+                    <li>Resistors, capacitors, small ICs</li>
+                    <li>BMS balance leads and connections</li>
+                    <li>Receiver/remote board</li>
+                    <li>Connectors on the PCB (around the base)</li>
+                    <li>LED indicators (coat over them, they'll still shine through)</li>
+                </ul>
+            </div>
+            <div class="component-card">
+                <h4>❌ Do NOT Coat These</h4>
+                <ul style="font-size: 0.9rem; line-height: 1.7; margin-top: 0.5rem;">
+                    <li><strong>MOSFETs / power transistors</strong> — need thermal contact</li>
+                    <li><strong>Heat sinks</strong> — coating insulates them</li>
+                    <li><strong>Thermal pads/paste</strong> — disrupts heat transfer</li>
+                    <li><strong>Connectors you'll need to plug/unplug</strong></li>
+                    <li><strong>DIP switches, buttons, potentiometers</strong></li>
+                    <li><strong>USB/programming ports</strong> — mask with tape before coating</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="info-box tip">
+            <div class="info-box-title">💡 Masking Tip</div>
+            <p>
+                Before coating, mask off heat-critical areas and connectors with <strong>Kapton tape</strong> (polyimide tape). It peels off cleanly after coating. Regular masking tape works too, but Kapton handles the cure temperatures better and doesn't leave residue.
+            </p>
+        </div>
+
+        <h2>Connectors & Wiring: The Saltwater-Proof Setup</h2>
+
+        <p>
+            Every connection point is a potential failure point. Saltwater is incredibly corrosive — it will find and destroy any exposed copper, tin, or steel contact in weeks. Here's how to fight it:
+        </p>
+
+        <h3>Recommended Connectors</h3>
+
+        <div class="component-grid">
+            <div class="component-card">
+                <h4>🔌 Power Connections</h4>
+                <div class="price">XT90 with silicone boots — $3–5/pair</div>
+                <p>The eFoil standard. Gold-plated contacts resist corrosion. Add heatshrink with adhesive lining over the junction. Apply dielectric grease to the contact surfaces before mating.</p>
+            </div>
+            <div class="component-card">
+                <h4>🔌 Phase Wires</h4>
+                <div class="price">4mm/5.5mm bullet connectors — $1–2/set</div>
+                <p>Solder, heatshrink each connection individually, then heatshrink the entire bundle. Or use the increasingly popular direct-solder approach (no connectors, more reliable but harder to service).</p>
+            </div>
+            <div class="component-card">
+                <h4>🔌 Signal/Sensor Wires</h4>
+                <div class="price">JST or Deutsch DT connectors — $2–8/set</div>
+                <p>For Hall sensor and PPM connections. Deutsch DT series is overkill but truly marine-rated. JST with heatshrink and dielectric grease works fine inside a sealed enclosure.</p>
+            </div>
+            <div class="component-card">
+                <h4>🔌 Charge Port</h4>
+                <div class="price">Aviation/GX16 connector — $3–8</div>
+                <p>Panel-mount with rubber cap. The cap is critical — this is the connector most exposed to water. Apply dielectric grease inside the cap. Some builders use magnetic pogo-pin connectors for a flush, sealed charge port.</p>
+            </div>
+        </div>
+
+        <h3>Wiring Protection Hierarchy</h3>
+        <ol>
+            <li><strong>Tinned copper wire</strong> — always use tinned marine wire, not bare copper. Tinned wire resists saltwater corrosion far longer</li>
+            <li><strong>Silicone-insulated wire</strong> — stays flexible in cold water, doesn't crack like PVC insulation</li>
+            <li><strong>Adhesive-lined heatshrink</strong> — regular heatshrink doesn't seal. Adhesive-lined (marine-grade) creates a watertight bond to the wire insulation</li>
+            <li><strong>Dielectric grease</strong> — apply to any connector contact surface. It displaces water and prevents galvanic corrosion between dissimilar metals</li>
+            <li><strong>Liquid electrical tape</strong> — brush-on for complex shapes that heatshrink can't cover</li>
+        </ol>
+
+        <h2>The Gore-Tex Vent: Solving Thermal Breathing</h2>
+
+        <p>
+            Remember the thermal breathing problem? Your enclosure heats up during riding, cools down after. Without pressure equalization, cooling creates a vacuum that sucks water past your seals. A <strong>Gore-Tex vent</strong> solves this elegantly.
+        </p>
+
+        <p>
+            Gore-Tex vents (also called "breather vents" or "pressure equalization vents") use a membrane that allows air molecules to pass through but blocks water. They're the same technology in waterproof jackets and shoes — just in a threaded housing you can screw into your enclosure.
+        </p>
+
+        <h3>Recommended Vents</h3>
+        <ul>
+            <li><strong>Amphenol Sine Systems</strong> — M12 threaded, IP68, commonly available. ~$5–10</li>
+            <li><strong>GORE Protective Vents</strong> — the original. Various thread sizes. ~$8–15</li>
+            <li><strong>PolyVent by Donaldson</strong> — M8/M12 threaded options. ~$3–8</li>
+            <li><strong>AliExpress M12 breather vents</strong> — work fine for the price. ~$1–3. Test before trusting</li>
+        </ul>
+
+        <div class="info-box">
+            <div class="info-box-title">📍 Where to Mount the Vent</div>
+            <p>
+                Mount the vent at the <strong>highest point of the enclosure</strong> (when installed in the board). If the board flips and the vent is submerged, water pressure should push against the membrane, not seep through. The vent only needs to equalize atmospheric pressure differences — it's not designed to work under sustained submersion pressure.
+            </p>
+        </div>
+
+        <h2>Motor & Mast Tube Waterproofing</h2>
+
+        <p>
+            The motor is inherently wet — it's submerged and often runs unsealed (most eFoil motors are designed to run filled with water). But the wire path from the motor through the mast tube to the enclosure is a critical weak point.
+        </p>
+
+        <h3>Mast Tube Wire Routing</h3>
+        <p>
+            Wires running through the mast tube (motor phase wires, Hall sensor cable, temperature sensor) need protection from water that enters the tube. The tube is <em>not</em> waterproof — water will run through it every time you ride. Your strategy:
+        </p>
+        <ul>
+            <li><strong>Seal at the enclosure end</strong> — cable glands where wires enter the box. This is the critical seal point</li>
+            <li><strong>Protect the wires themselves</strong> — silicone-insulated, inside a protective conduit if possible</li>
+            <li><strong>Drip loop</strong> — route wires so they dip down before rising to the cable gland. Water runs down the loop and drips off instead of following the wire into the gland</li>
+            <li><strong>Marine wire loom</strong> — split corrugated conduit protects wires from chafe against aluminum mast tube edges</li>
+        </ul>
+
+        <h3>Motor Seal / Lip Seal</h3>
+        <p>
+            If you're using a canned motor design (sealed motor chamber), you'll need a mechanical shaft seal. Options:
+        </p>
+        <ul>
+            <li><strong>Lip seal (most common)</strong> — spring-loaded rubber seal on the shaft. Cheap, replaceable, but wear over time. Replace annually in saltwater</li>
+            <li><strong>Face seal / mechanical seal</strong> — ceramic-to-carbon face. More reliable, more expensive. Used in higher-end commercial eFoils</li>
+            <li><strong>Magnetic coupling</strong> — no shaft penetration at all. Zero leak risk, but adds complexity and ~5% power loss through the wall</li>
+        </ul>
+
+        <div class="info-box tip">
+            <div class="info-box-title">💡 The Flipsky 65161 Approach</div>
+            <p>
+                The most common eFoil motor (Flipsky 65161) runs <strong>wet</strong> — seawater flows through the motor housing and the stator is potted in epoxy. No shaft seal needed. This is actually more reliable than sealed designs because there's nothing to fail. Just make sure the water can drain out when you store the board — trapped saltwater in a motor housing accelerates corrosion.
+            </p>
+        </div>
+
+        <h2>Saltwater-Specific Considerations</h2>
+
+        <p>
+            If you're riding in saltwater (and most of you are), you need to take extra precautions beyond freshwater waterproofing:
+        </p>
+
+        <h3>The Salt Problem</h3>
+        <p>
+            Saltwater is <strong>40x more conductive</strong> than freshwater. A tiny leak that would be harmless in a lake can short out electronics in the ocean. Salt also crystallizes when it dries — those crystals are hygroscopic (they attract moisture from air), so even dried salt creates a permanent corrosion problem.
+        </p>
+
+        <h3>Saltwater Protection Protocol</h3>
+        <ol>
+            <li><strong>Freshwater rinse after every session</strong> — run the board under a hose for 2–3 minutes, paying attention to the motor, mast connections, and any visible hardware. This is non-negotiable for saltwater riders</li>
+            <li><strong>Flush the motor</strong> — if your motor runs wet, flush it with fresh water. Some builders install a garden hose fitting for easy flushing</li>
+            <li><strong>Dry before storage</strong> — store the board with the mast down or motor down so water drains out. Don't seal the board in a bag while wet</li>
+            <li><strong>Anti-corrosion spray</strong> — spray exposed hardware (screws, mast bolts, connectors) with Boeshield T-9 or CRC Marine. Re-apply every few sessions</li>
+            <li><strong>Sacrificial anode</strong> — if you have aluminum components near stainless steel or carbon, galvanic corrosion is a real risk. A small zinc anode on the mast or motor housing can extend the life of aluminum parts significantly</li>
+        </ol>
+
+        <h3>Hardware Material Guide</h3>
+        <table class="cost-table">
+            <thead>
+                <tr>
+                    <th>Material</th>
+                    <th>Saltwater Rating</th>
+                    <th>Use For</th>
+                    <th>Avoid For</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="highlight">
+                    <td><strong>316 Stainless Steel</strong></td>
+                    <td>⭐⭐⭐⭐⭐</td>
+                    <td>All fasteners, bolts, nuts</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>304 Stainless Steel</td>
+                    <td>⭐⭐⭐</td>
+                    <td>Budget fasteners (freshwater)</td>
+                    <td>Saltwater long-term</td>
+                </tr>
+                <tr>
+                    <td>Titanium</td>
+                    <td>⭐⭐⭐⭐⭐</td>
+                    <td>Critical bolts (mast, foil)</td>
+                    <td>Budget builds (expensive)</td>
+                </tr>
+                <tr>
+                    <td>6061 Aluminum</td>
+                    <td>⭐⭐⭐</td>
+                    <td>Mast tubes (anodized)</td>
+                    <td>Direct contact with carbon or SS</td>
+                </tr>
+                <tr>
+                    <td>Brass</td>
+                    <td>⭐⭐</td>
+                    <td>Cable glands (freshwater only)</td>
+                    <td>Saltwater (dezincification)</td>
+                </tr>
+                <tr>
+                    <td>Carbon Steel</td>
+                    <td>⭐</td>
+                    <td>Nothing</td>
+                    <td>Everything marine</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="info-box warning">
+            <div class="info-box-title">⚠️ Galvanic Corrosion Alert</div>
+            <p>
+                When two different metals are in contact in saltwater, the less noble one corrodes rapidly. The worst combo: <strong>aluminum mast + stainless steel bolts</strong> — common in DIY builds. Isolate them with nylon washers, use anti-seize compound, or use the same metal for both parts. Carbon fiber acts like a noble metal in this context, so carbon + aluminum also needs isolation.
+            </p>
+        </div>
+
+        <h2>Step-by-Step: Waterproofing Your eFoil Build</h2>
+
+        <div class="build-step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <h4>Prepare the Enclosure</h4>
+                <p>Mark cable gland positions. Drill holes with a step drill bit — clean, burr-free holes are essential for proper gland sealing. Deburr both sides. If using a Pelican case, drill through the wall (not the lid) so the lid gasket isn't disturbed.</p>
+                <ul>
+                    <li>Plan wire routing before drilling — you can't un-drill a hole</li>
+                    <li>Group wires by function: power cables on one side, signal on the other</li>
+                    <li>Leave room for the Gore-Tex vent at the highest point</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="build-step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <h4>Install Cable Glands</h4>
+                <p>Apply marine silicone to the gland threads. Insert through the hole, hand-tighten the lock nut from inside. Don't route wires yet — install glands empty first so you can test the seal.</p>
+                <ul>
+                    <li>Thread sealant goes on the threads, not the hole</li>
+                    <li>Finger-tight plus 1/4 turn with pliers — don't crack the plastic</li>
+                    <li>Let silicone cure 24 hours before testing</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="build-step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <h4>Submersion Test #1 (Empty Box)</h4>
+                <p>Put dry paper towels or moisture indicator strips inside. Close the lid, submerge in a bathtub or pool for 30 minutes with weights on top. Check for any moisture.</p>
+                <ul>
+                    <li>If you see water, identify the leak source (gland, lid gasket, or wall hole)</li>
+                    <li>Fix and re-test. Don't skip this step — it's far cheaper to find leaks now</li>
+                    <li>Bonus: pressure test with a bicycle pump adapter (3–5 PSI, soapy water on all seals)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="build-step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+                <h4>Apply Conformal Coating to PCBs</h4>
+                <p>While your enclosure seal cures, coat your VESC, BMS, and receiver boards. Mask heat-critical areas and connectors with Kapton tape. Apply 2–3 thin coats of silicone conformal coating (MG 422B), allowing 4 hours between coats.</p>
+                <ul>
+                    <li>Clean PCBs with isopropyl alcohol first — conformal coating won't adhere to flux residue</li>
+                    <li>Work in a ventilated area — the solvent fumes are strong</li>
+                    <li>Let final coat cure 24 hours before handling</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="build-step">
+            <div class="step-number">5</div>
+            <div class="step-content">
+                <h4>Route Wires and Seal</h4>
+                <p>Thread wires through cable glands. Tighten each gland's compression nut to clamp the rubber seal around the wire. Verify the wire can't be pulled through with moderate force. Apply dielectric grease to any connectors.</p>
+                <ul>
+                    <li>Leave service loops inside the box — enough slack to open the lid and work on components</li>
+                    <li>Route motor phase wires together (they generate EMI that can interfere with signal wires)</li>
+                    <li>Heatshrink all solder joints with adhesive-lined heatshrink</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="build-step">
+            <div class="step-number">6</div>
+            <div class="step-content">
+                <h4>Install Gore-Tex Vent</h4>
+                <p>Drill the vent hole at the highest point of the enclosure. Install with thread sealant. The vent should face up when the board is on the water — never point it downward where it could be submerged during normal riding.</p>
+            </div>
+        </div>
+
+        <div class="build-step">
+            <div class="step-number">7</div>
+            <div class="step-content">
+                <h4>Submersion Test #2 (Full Assembly)</h4>
+                <p>With everything installed (but electronics powered off), repeat the submersion test. This verifies that wire routing didn't compromise any seals. Check moisture indicators after 30 minutes.</p>
+                <ul>
+                    <li>If this test passes, you're ready for water</li>
+                    <li>After your first 3 rides, open the enclosure and inspect for any moisture</li>
+                    <li>Check quarterly after that — seals degrade over time</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>Waterproofing Checklist</h2>
+
+        <p>Print this, tape it to your workbench, and check every box before your first ride:</p>
+
+        <ul class="checklist">
+            <li>Enclosure type selected and test-fitted in board cavity</li>
+            <li>All cable gland holes drilled, deburred, glands installed with thread sealant</li>
+            <li>Gore-Tex vent installed at highest point</li>
+            <li>Submersion test #1 passed (empty enclosure, 30 min)</li>
+            <li>VESC/ESC board conformal-coated (heat areas masked)</li>
+            <li>BMS board conformal-coated</li>
+            <li>Receiver/remote board conformal-coated</li>
+            <li>All wires routed through cable glands, compression nuts tightened</li>
+            <li>Drip loops formed on external wires</li>
+            <li>All solder joints covered with adhesive-lined heatshrink</li>
+            <li>Dielectric grease applied to all connector contacts</li>
+            <li>Charge port sealed with cap/rubber boot</li>
+            <li>Battery pack wrapped in Kapton tape</li>
+            <li>All fasteners are 316 stainless or titanium (saltwater builds)</li>
+            <li>Nylon washers isolating dissimilar metals</li>
+            <li>Submersion test #2 passed (full assembly, 30 min)</li>
+            <li>Anti-corrosion spray applied to exposed hardware</li>
+        </ul>
+
+        <h2>Waterproofing Shopping List</h2>
+
+        <p>Everything you need, roughly ordered by importance:</p>
+
+        <div class="component-grid">
+            <div class="component-card">
+                <h4>🔧 Essentials ($30–60)</h4>
+                <ul style="font-size: 0.9rem; line-height: 1.7; margin-top: 0.5rem;">
+                    <li>Cable glands (PG7/PG9/PG13.5 assortment) — $8–15</li>
+                    <li>Marine silicone sealant (3M 4000UV or Sikaflex) — $10–15</li>
+                    <li>Adhesive-lined heatshrink assortment — $8–12</li>
+                    <li>Dielectric grease (small tube) — $5–8</li>
+                    <li>Kapton tape (for masking) — $5–8</li>
+                </ul>
+            </div>
+            <div class="component-card">
+                <h4>🛡️ Recommended ($40–80)</h4>
+                <ul style="font-size: 0.9rem; line-height: 1.7; margin-top: 0.5rem;">
+                    <li>Conformal coating (MG 422B silicone) — $12–18</li>
+                    <li>Gore-Tex / breather vent (M12) — $5–15</li>
+                    <li>Nylon washer assortment (for isolation) — $5–8</li>
+                    <li>Anti-corrosion spray (Boeshield T-9) — $12–15</li>
+                    <li>316 SS fastener assortment — $10–20</li>
+                </ul>
+            </div>
+            <div class="component-card">
+                <h4>⭐ Nice to Have ($20–50)</h4>
+                <ul style="font-size: 0.9rem; line-height: 1.7; margin-top: 0.5rem;">
+                    <li>Moisture indicator strips — $5–10</li>
+                    <li>Liquid electrical tape — $8–12</li>
+                    <li>Tinned marine wire (various gauges) — $10–20</li>
+                    <li>Step drill bit set — $15–25</li>
+                    <li>Wire loom / conduit — $5–8</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>Troubleshooting Water Ingress</h2>
+
+        <p>
+            Even the best-sealed builds can develop leaks over time. Here's how to diagnose and fix them:
+        </p>
+
+        <h3>Signs of Water Ingress</h3>
+        <ul>
+            <li><strong>Intermittent cutouts</strong> — water on the VESC causing brief shorts, especially during hard turns when water sloshes</li>
+            <li><strong>Reduced throttle response</strong> — water on the receiver or PPM signal line</li>
+            <li><strong>White/green crusty deposits</strong> — salt crystal formation on PCBs or connectors</li>
+            <li><strong>Musty smell</strong> — water trapped in the enclosure, especially if stored without opening</li>
+            <li><strong>BMS fault lights</strong> — water bridging balance leads</li>
+            <li><strong>Resistance readings changing</strong> — water changing the impedance of insulation</li>
+        </ul>
+
+        <h3>If Water Gets In</h3>
+        <ol>
+            <li><strong>Kill power immediately</strong> — disconnect the battery. Water + voltage = dead components</li>
+            <li><strong>Open the enclosure</strong> — don't wait. Time is corrosion</li>
+            <li><strong>Remove all electronics</strong> — take them out of the box</li>
+            <li><strong>Rinse with distilled water</strong> — if it was saltwater, flush with distilled water to remove salt. Yes, rinse wet electronics with water — distilled water is non-conductive and it's the <em>salt</em> that does the damage</li>
+            <li><strong>Dry with compressed air</strong> — blow water off PCBs, out of connectors</li>
+            <li><strong>Isopropyl alcohol bath</strong> — for PCBs, submerge in 99% IPA. It displaces water and evaporates cleanly</li>
+            <li><strong>Wait 48 hours</strong> — let everything dry completely before reconnecting power</li>
+            <li><strong>Find and fix the leak source</strong> — before reassembling, identify where water entered and fix it</li>
+        </ol>
+
+        <div class="info-box tip">
+            <div class="info-box-title">💡 The Distilled Water Trick</div>
+            <p>
+                Sounds crazy, but it works: if your electronics were dunked in saltwater, immediately submerge them in <strong>distilled water</strong> (not tap water — it contains minerals). Distilled water dilutes and flushes the conductive salt. Then follow up with an isopropyl alcohol bath to displace the water. This has saved many VESCs on FOIL.zone. The key is speed — do it before salt crystals form.
+            </p>
+        </div>
+
+        <h2>Common Waterproofing Mistakes (From 9 Years of FOIL.zone Builds)</h2>
+
+        <ol>
+            <li><strong>Silicone-only seals</strong> — Silicone fills gaps but isn't a gasket. It peels, shrinks, and fails at joints. Use it as a supplement, not a primary seal</li>
+            <li><strong>No submersion test</strong> — "It looks sealed" isn't good enough. Test it. Every time</li>
+            <li><strong>Ignoring thermal breathing</strong> — Your perfectly sealed box becomes a vacuum pump without a vent</li>
+            <li><strong>Brass hardware in saltwater</strong> — Brass looks marine but corrodes badly in salt. Use 316 stainless or nylon</li>
+            <li><strong>Conformal coating as primary defense</strong> — It's a backup layer, not waterproofing. It can't stop water flowing across a PCB</li>
+            <li><strong>Drilling holes in gasket areas</strong> — If you drill through where the lid gasket sits, you've destroyed the seal. Drill through the walls instead</li>
+            <li><strong>Forgetting the charge port</strong> — The most exposed connector on the board. Always cap it when riding</li>
+            <li><strong>Over-tightening cable glands</strong> — Cracks the plastic body, destroying the seal. Firm, not forced</li>
+            <li><strong>Storing the board sealed and wet</strong> — Trapped moisture creates a humidity chamber that corrodes everything slowly. Crack the lid to ventilate during storage</li>
+            <li><strong>Using bare copper wire</strong> — Untinned copper corrodes in months in a marine environment. Always use tinned marine wire</li>
+        </ol>
+
+        <!-- CTA -->
+        <div class="article-cta">
+            <h3>Build Your Waterproof eFoil</h3>
+            <p>Plan every component, estimate costs, and get a shopping list with our interactive build planner.</p>
+            <div class="cta-buttons">
+                <a href="/efoil-configurator.html" class="cta-btn primary">⚡ eFoil Build Planner</a>
+                <a href="/blog-diy-efoil-guide.html" class="cta-btn secondary">📖 Complete Build Guide</a>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <h2>Frequently Asked Questions</h2>
+
+        <h3>What IP rating does a DIY eFoil need?</h3>
+        <p>
+            Target <strong>IP67</strong> for your electronics enclosure — fully dust-tight and waterproof to 1 meter submersion for 30 minutes. Your board <em>will</em> get submerged during crashes and wipeouts. IP65 is the absolute minimum, but IP67 with tested seals is the community standard.
+        </p>
+
+        <h3>Should I use silicone or polyurethane sealant?</h3>
+        <p>
+            For most applications, <strong>marine-grade silicone</strong> (3M 4000UV, Sikaflex 291). It stays flexible, handles vibration, and bonds to fiberglass, aluminum, and plastic. Polyurethane bonds stronger but is harder to remove for maintenance. Use silicone for gaskets and removable seals; polyurethane for permanent bonds like mast box installations.
+        </p>
+
+        <h3>How do I waterproof my VESC?</h3>
+        <p>
+            Keep your VESC inside a sealed enclosure — that's your primary defense. For extra protection, apply silicone conformal coating (MG Chemicals 422B) to the PCB, <strong>avoiding</strong> heat sinks, MOSFETs, and thermal pads. The enclosure seal protects; conformal coating is your insurance policy.
+        </p>
+
+        <h3>How do I test my enclosure?</h3>
+        <p>
+            Before installing electronics: seal the enclosure, put dry paper towels inside, submerge in a bathtub for 30 minutes. Any moisture means you have a leak. For more precision: install a valve fitting, pump in 3–5 PSI of air, apply soapy water to all seals, and watch for bubbles.
+        </p>
+
+        <h3>What's the biggest waterproofing mistake?</h3>
+        <p>
+            Relying on a single seal. A single O-ring or gasket will eventually fail — and when it does, water goes straight to your electronics. Use <strong>defense in depth</strong>: sealed enclosure + conformal coating + waterproof connectors. The second biggest mistake: not testing before installing electronics.
+        </p>
+
+        <h3>Can I save electronics that got wet?</h3>
+        <p>
+            Often yes, if you act fast. Kill power immediately, open the enclosure, remove everything, and rinse with distilled water (if saltwater). Then bathe PCBs in 99% isopropyl alcohol to displace water. Let everything dry 48 hours before powering on. Speed matters — the longer salt sits on a PCB, the more damage it does.
+        </p>
+    </main>
+
+    <div class="related">
+        <h3>Related Articles & Tools</h3>
+        <div class="related-grid">
+            <a href="/blog-efoil-battery-guide.html" class="related-card">
+                <h4>🔋 Battery Build Guide</h4>
+                <p>Cell selection, BMS setup, spot welding — the battery is your most water-sensitive component.</p>
+            </a>
+            <a href="/blog-efoil-wiring-guide.html" class="related-card">
+                <h4>⚡ Wiring & Electronics Guide</h4>
+                <p>Power paths, anti-spark, connectors, cable routing — every wire is a potential leak point.</p>
+            </a>
+            <a href="/blog-efoil-troubleshooting.html" class="related-card">
+                <h4>🔧 Troubleshooting Guide</h4>
+                <p>Intermittent cutouts? Corroded contacts? Diagnosing water-related failures.</p>
+            </a>
+            <a href="/blog-diy-efoil-guide.html" class="related-card">
+                <h4>📖 Complete DIY Build Guide</h4>
+                <p>The full build process from first component to first ride.</p>
+            </a>
+            <a href="/efoil-configurator.html" class="related-card">
+                <h4>⚡ eFoil Build Planner</h4>
+                <p>Plan every component, estimate total costs, get a shopping list with buy links.</p>
+            </a>
+            <a href="/blog-efoil-board-foil-guide.html" class="related-card">
+                <h4>🏄 Board & Hydrofoil Guide</h4>
+                <p>Board construction, battery compartments, and mast box waterproofing.</p>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2016–2026 PacificMeister. Open source, always.</p>
+        <ul class="footer-links">
+            <li><a href="https://github.com/pacificmeister" target="_blank">GitHub</a></li>
+            <li><a href="https://www.youtube.com/@PacificMeister" target="_blank">YouTube</a></li>
+            <li><a href="https://foil.zone" target="_blank">FOIL.zone</a></li>
+            <li><a href="https://axis-advisor.vercel.app" target="_blank">AXIS Advisor</a></li>
+        </ul>
+    </footer>
+</body>
+</html>
