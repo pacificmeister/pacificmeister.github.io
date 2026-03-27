@@ -282,6 +282,13 @@
 
         .tool-card:hover::before { opacity: 1; }
 
+        .tool-card.featured {
+            border-color: rgba(0, 212, 170, 0.35);
+            background: linear-gradient(135deg, rgba(0, 212, 170, 0.08), rgba(10, 22, 40, 0.9));
+        }
+
+        .tool-card.featured::before { opacity: 0.5; }
+
         .tool-icon {
             font-size: 2.5rem;
             margin-bottom: 1rem;
@@ -327,6 +334,64 @@
 
         .tool-card:hover .tool-cta svg {
             transform: translateX(4px);
+        }
+
+        /* Knowledge Base */
+        .kb-category {
+            margin-bottom: 2rem;
+        }
+
+        .kb-category-title {
+            font-size: 1.1rem;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(0, 212, 170, 0.15);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .kb-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .kb-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.25rem;
+            background: rgba(15, 40, 71, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .kb-card:hover {
+            border-color: rgba(0, 212, 170, 0.3);
+            background: rgba(15, 40, 71, 0.8);
+            transform: translateX(4px);
+        }
+
+        .kb-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .kb-card-text h4 {
+            font-size: 0.95rem;
+            color: var(--text-bright);
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .kb-card-text span {
+            font-size: 0.8rem;
+            color: var(--text);
+            opacity: 0.7;
         }
 
         /* Story section */
@@ -408,6 +473,47 @@
             margin-bottom: 1rem;
         }
 
+        /* Latest Updates (compact) */
+        .latest-list {
+            display: grid;
+            gap: 0.75rem;
+            max-width: 800px;
+        }
+
+        .latest-item {
+            display: flex;
+            gap: 1.25rem;
+            align-items: flex-start;
+            padding: 1rem 1.25rem;
+            background: rgba(15, 40, 71, 0.5);
+            border-radius: 12px;
+            border-left: 3px solid var(--accent);
+        }
+
+        .latest-date {
+            min-width: 70px;
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-weight: 600;
+            padding-top: 2px;
+        }
+
+        .latest-title {
+            color: var(--text-bright);
+            font-weight: 600;
+            margin-bottom: 0.15rem;
+        }
+
+        .latest-title a {
+            color: var(--text-bright);
+            text-decoration: underline;
+        }
+
+        .latest-desc {
+            font-size: 0.9rem;
+            color: var(--text);
+        }
+
         /* Community */
         .community {
             text-align: center;
@@ -456,6 +562,21 @@
             box-shadow: 0 8px 30px rgba(0, 212, 170, 0.5);
         }
 
+        /* View All link */
+        .view-all {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            transition: gap 0.2s;
+        }
+
+        .view-all:hover { gap: 0.75rem; }
+
         /* Footer */
         footer {
             max-width: 1200px;
@@ -495,6 +616,7 @@
             .hero { padding: 4rem 1.5rem 3rem; }
             .hero-stats { gap: 2rem; }
             .tools-grid { grid-template-columns: 1fr; }
+            .kb-grid { grid-template-columns: 1fr; }
             .story-grid { grid-template-columns: 1fr; gap: 2rem; }
             footer { flex-direction: column; text-align: center; }
         }
@@ -509,6 +631,7 @@
             <a href="/" class="logo">Pacific<span>Meister</span></a>
             <ul class="nav-links">
                 <li><a href="#tools">Tools</a></li>
+                <li><a href="#guides">Guides</a></li>
                 <li><a href="#story">Story</a></li>
                 <li><a href="/blog.html">Blog</a></li>
                 <li><a href="https://foil.zone" target="_blank">Community</a></li>
@@ -546,16 +669,59 @@
             </div>
         </section>
 
+        <!-- ===== INTERACTIVE TOOLS ===== -->
         <section id="tools">
             <div class="section-label">Free & Open Source</div>
-            <h2 class="section-title">Tools for Builders</h2>
-            <p class="section-desc">Everything you need to research, plan, and build — no account required, no paywalls.</p>
+            <h2 class="section-title">Interactive Tools</h2>
+            <p class="section-desc">Plan builds, compare gear, and calculate performance — no account required, no paywalls.</p>
 
             <div class="tools-grid">
-                <a href="https://pacificmeister.github.io/towboogie-build/" class="tool-card" target="_blank">
+                <a href="/efoil-finder.html" class="tool-card featured">
+                    <div class="tool-icon">🔍</div>
+                    <h3>eFoil Finder Quiz</h3>
+                    <p>Answer 6 quick questions about your experience, budget, and riding style — get a personalized eFoil recommendation. Works for commercial brands and DIY builds.</p>
+                    <div>
+                        <span class="tool-tag">Interactive Quiz</span>
+                        <span class="tool-tag">Personalized</span>
+                        <span class="tool-tag">All Brands + DIY</span>
+                    </div>
+                    <div class="tool-cta">
+                        Find your eFoil <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </div>
+                </a>
+
+                <a href="/efoil-configurator.html" class="tool-card">
+                    <div class="tool-icon">⚡</div>
+                    <h3>DIY eFoil Build Configurator</h3>
+                    <p>Plan your complete DIY eFoil: pick motor, battery, ESC, board, foil, and accessories — see costs in real time. 4 presets from $2.1K to $4.5K.</p>
+                    <div>
+                        <span class="tool-tag">9 Categories</span>
+                        <span class="tool-tag">Shopping List</span>
+                        <span class="tool-tag">Shareable</span>
+                    </div>
+                    <div class="tool-cta">
+                        Plan your build <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </div>
+                </a>
+
+                <a href="/efoil-range-calculator.html" class="tool-card">
+                    <div class="tool-icon">📈</div>
+                    <h3>eFoil Range Calculator</h3>
+                    <p>Estimate runtime, distance, and ride cost from your battery size, rider weight, and riding style. Validate pack choices before buying cells.</p>
+                    <div>
+                        <span class="tool-tag">Battery Planning</span>
+                        <span class="tool-tag">Runtime Estimate</span>
+                        <span class="tool-tag">Cost/Session</span>
+                    </div>
+                    <div class="tool-cta">
+                        Calculate range <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </div>
+                </a>
+
+                <a href="https://pacificmeister.github.io/towboogie-build/" class="tool-card">
                     <div class="tool-icon">🚀</div>
                     <h3>Tow Boogie Build Configurator</h3>
-                    <p>Pick your motor, battery, ESC, and hull — see real-time costs and get a complete shopping list with buy links. Share your build with anyone.</p>
+                    <p>Pick your motor, battery, ESC, and hull — see real-time costs and get a complete shopping list with buy links. Share your build.</p>
                     <div>
                         <span class="tool-tag">Interactive</span>
                         <span class="tool-tag">Cost Calculator</span>
@@ -566,115 +732,17 @@
                     </div>
                 </a>
 
-                <a href="https://pacificmeister.github.io/towboogie-build/guide.html" class="tool-card" target="_blank">
-                    <div class="tool-icon">🔧</div>
-                    <h3>DIY Build Guide</h3>
-                    <p>Step-by-step 4-day build sequence from community-tested designs. Shopping lists, assembly tips, and lessons from dozens of real builds.</p>
-                    <div>
-                        <span class="tool-tag">4-Day Build</span>
-                        <span class="tool-tag">Community Tested</span>
-                        <span class="tool-tag">$750–$1,200</span>
-                    </div>
-                    <div class="tool-cta">
-                        Read the guide <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                    </div>
-                </a>
-
-                <a href="https://pacificmeister.github.io/towboogie-build/calculator.html" class="tool-card" target="_blank">
+                <a href="https://pacificmeister.github.io/towboogie-build/calculator.html" class="tool-card">
                     <div class="tool-icon">⚡</div>
-                    <h3>Performance Calculator</h3>
-                    <p>Physics-based speed, range, and runtime predictions for any tow boogie setup. Compare against commercial options and calculate your breakeven point.</p>
+                    <h3>Tow Boogie Performance Calculator</h3>
+                    <p>Physics-based speed, range, and runtime predictions. Compare against commercial options and calculate your breakeven point.</p>
                     <div>
                         <span class="tool-tag">Physics Engine</span>
                         <span class="tool-tag">5 Ride Profiles</span>
-                        <span class="tool-tag">Breakeven Analysis</span>
+                        <span class="tool-tag">Breakeven</span>
                     </div>
                     <div class="tool-cta">
                         Calculate performance <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                    </div>
-                </a>
-
-                <a href="https://pacificmeister.github.io/towboogie-build/compare.html" class="tool-card" target="_blank">
-                    <div class="tool-icon">🏆</div>
-                    <h3>Buyer's Guide & Comparison</h3>
-                    <p>Honest reviews of every tow boogie on the market: Zero Tow V3, Foil Fusion, Wave Escort, and DIY. Price maps, feature matrices, and use-case recommendations.</p>
-                    <div>
-                        <span class="tool-tag">4 Products Reviewed</span>
-                        <span class="tool-tag">Price Comparison</span>
-                        <span class="tool-tag">Use Cases</span>
-                    </div>
-                    <div class="tool-cta">
-                        Compare options <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                    </div>
-                </a>
-
-                <a href="https://pacificmeister.github.io/towboogie-build/what-is-a-tow-boogie.html" class="tool-card" target="_blank">
-                    <div class="tool-icon">📚</div>
-                    <h3>What is a Tow Boogie?</h3>
-                    <p>The complete guide to electric tow-in foiling. How tow boogies work, what they cost, DIY vs commercial, and how to get started. Everything you need to know.</p>
-                    <div>
-                        <span class="tool-tag">Complete Guide</span>
-                        <span class="tool-tag">FAQ</span>
-                        <span class="tool-tag">Cost Breakdown</span>
-                    </div>
-                    <div class="tool-cta">
-                        Read the guide <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                    </div>
-                </a>
-
-                <a href="https://pacificmeister.github.io/towboogie-build/riding-guide.html" class="tool-card" target="_blank">
-                    <div class="tool-icon">🏄</div>
-                    <h3>Riding Technique Guide</h3>
-                    <p>Master tow-in foiling from your first beach launch to advanced wave catching and downwind runs. 5-stage progression path, technique breakdowns, and conditions guide.</p>
-                    <div>
-                        <span class="tool-tag">5-Stage Progression</span>
-                        <span class="tool-tag">Wave Catching</span>
-                        <span class="tool-tag">Downwind Runs</span>
-                    </div>
-                    <div class="tool-cta">
-                        Learn to ride <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                    </div>
-                </a>
-
-                <a href="https://pacificmeister.github.io/towboogie-build/safety-guide.html" class="tool-card" target="_blank">
-                    <div class="tool-icon">🛡️</div>
-                    <h3>Safety & Maintenance</h3>
-                    <p>Essential battery safety, waterproofing best practices, pre-ride checklists, emergency procedures, and maintenance schedules. Build safe, ride safe.</p>
-                    <div>
-                        <span class="tool-tag">Battery Safety</span>
-                        <span class="tool-tag">Pre-Ride Checklist</span>
-                        <span class="tool-tag">Maintenance</span>
-                    </div>
-                    <div class="tool-cta">
-                        Stay safe <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                    </div>
-                </a>
-
-                <a href="https://pacificmeister.github.io/efoil-configurator.html" class="tool-card" target="_blank">
-                    <div class="tool-icon">⚡</div>
-                    <h3>DIY eFoil Build Configurator</h3>
-                    <p>Plan your complete DIY eFoil build: pick motor, battery, ESC, board, foil, and accessories — see costs in real time and get a shopping list with buy links. 4 presets from $2.1K to $4.5K.</p>
-                    <div>
-                        <span class="tool-tag">Interactive</span>
-                        <span class="tool-tag">9 Categories</span>
-                        <span class="tool-tag">Shopping List</span>
-                    </div>
-                    <div class="tool-cta">
-                        Plan your build <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                    </div>
-                </a>
-
-                <a href="https://pacificmeister.github.io/efoil-range-calculator.html" class="tool-card" target="_blank">
-                    <div class="tool-icon">📈</div>
-                    <h3>DIY eFoil Range Calculator</h3>
-                    <p>Estimate runtime, distance, and ride cost from your battery size, rider weight, and riding style. Fast way to validate pack choices before you buy cells or hit the water.</p>
-                    <div>
-                        <span class="tool-tag">Battery Planning</span>
-                        <span class="tool-tag">Runtime Estimate</span>
-                        <span class="tool-tag">Free Tool</span>
-                    </div>
-                    <div class="tool-cta">
-                        Run calculations <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
                     </div>
                 </a>
 
@@ -691,7 +759,253 @@
                         Find your setup <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
                     </div>
                 </a>
+            </div>
+        </section>
 
+        <!-- ===== KNOWLEDGE BASE ===== -->
+        <section id="guides">
+            <div class="section-label">The Complete Library</div>
+            <h2 class="section-title">DIY eFoil Knowledge Base</h2>
+            <p class="section-desc">17 in-depth guides covering every aspect of building and riding an eFoil — from your first research to advanced troubleshooting.</p>
+
+            <!-- Getting Started -->
+            <div class="kb-category">
+                <div class="kb-category-title">🏁 Getting Started</div>
+                <div class="kb-grid">
+                    <a href="/blog-electric-surfboard-guide.html" class="kb-card">
+                        <div class="kb-icon">🏄</div>
+                        <div class="kb-card-text">
+                            <h4>Electric Surfboard Guide 2026</h4>
+                            <span>Every type compared — eFoil, jetboard, & more</span>
+                        </div>
+                    </a>
+                    <a href="/blog-best-efoils-2026.html" class="kb-card">
+                        <div class="kb-icon">🏆</div>
+                        <div class="kb-card-text">
+                            <h4>Best eFoils 2026 — Honest Rankings</h4>
+                            <span>Every major brand rated by a 9-year builder</span>
+                        </div>
+                    </a>
+                    <a href="/blog-efoil-cost-guide.html" class="kb-card">
+                        <div class="kb-icon">💰</div>
+                        <div class="kb-card-text">
+                            <h4>How Much Does an eFoil Cost?</h4>
+                            <span>$2K DIY to $12K premium — real prices</span>
+                        </div>
+                    </a>
+                    <a href="/blog-used-efoil-guide.html" class="kb-card">
+                        <div class="kb-icon">🛒</div>
+                        <div class="kb-card-text">
+                            <h4>Used eFoil Buying Guide</h4>
+                            <span>15-point inspection, fair prices, scam protection</span>
+                        </div>
+                    </a>
+                    <a href="/blog-how-to-ride-efoil.html" class="kb-card">
+                        <div class="kb-icon">🌊</div>
+                        <div class="kb-card-text">
+                            <h4>How to Ride an eFoil</h4>
+                            <span>5-step progression from kneeling to flying</span>
+                        </div>
+                    </a>
+                    <a href="/blog-efoil-laws-regulations.html" class="kb-card">
+                        <div class="kb-icon">⚖️</div>
+                        <div class="kb-card-text">
+                            <h4>eFoil Laws & Regulations</h4>
+                            <span>Registration, licensing & where you can ride</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Build Guides -->
+            <div class="kb-category">
+                <div class="kb-category-title">🔧 DIY Build Guides</div>
+                <div class="kb-grid">
+                    <a href="/blog-diy-efoil-guide.html" class="kb-card">
+                        <div class="kb-icon">📖</div>
+                        <div class="kb-card-text">
+                            <h4>Complete DIY eFoil Guide</h4>
+                            <span>Components, costs, 7-step build process</span>
+                        </div>
+                    </a>
+                    <a href="/blog-efoil-motor-guide.html" class="kb-card">
+                        <div class="kb-icon">⚡</div>
+                        <div class="kb-card-text">
+                            <h4>Motor & Propulsion Guide</h4>
+                            <span>Inrunner vs outrunner, ESC, propellers</span>
+                        </div>
+                    </a>
+                    <a href="/blog-efoil-battery-guide.html" class="kb-card">
+                        <div class="kb-icon">🔋</div>
+                        <div class="kb-card-text">
+                            <h4>Battery Guide — Cells, BMS & Safety</h4>
+                            <span>P42A vs 40T, 12S vs 14S, waterproofing</span>
+                        </div>
+                    </a>
+                    <a href="/blog-efoil-board-foil-guide.html" class="kb-card">
+                        <div class="kb-icon">🏄</div>
+                        <div class="kb-card-text">
+                            <h4>Board & Hydrofoil Guide</h4>
+                            <span>Sizing, construction, foil selection, mounting</span>
+                        </div>
+                    </a>
+                    <a href="/blog-efoil-wiring-guide.html" class="kb-card">
+                        <div class="kb-icon">🔌</div>
+                        <div class="kb-card-text">
+                            <h4>Wiring & Electronics Guide</h4>
+                            <span>Anti-spark, connectors, kill switches, cable routing</span>
+                        </div>
+                    </a>
+                    <a href="/blog-efoil-remote-guide.html" class="kb-card">
+                        <div class="kb-icon">🎮</div>
+                        <div class="kb-card-text">
+                            <h4>Remote Control Guide</h4>
+                            <span>Best remotes, VESC PPM setup, failsafe</span>
+                        </div>
+                    </a>
+                    <a href="/blog-efoil-vesc-guide.html" class="kb-card">
+                        <div class="kb-icon">🧠</div>
+                        <div class="kb-card-text">
+                            <h4>VESC Setup Guide</h4>
+                            <span>Complete config from zero to riding</span>
+                        </div>
+                    </a>
+                    <a href="/blog-efoil-waterproofing-guide.html" class="kb-card">
+                        <div class="kb-icon">💧</div>
+                        <div class="kb-card-text">
+                            <h4>Waterproofing Guide</h4>
+                            <span>Sealing electronics, enclosures & saltwater protection</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Ownership & Maintenance -->
+            <div class="kb-category">
+                <div class="kb-category-title">🛡️ Ownership & Maintenance</div>
+                <div class="kb-grid">
+                    <a href="/blog-efoil-troubleshooting.html" class="kb-card">
+                        <div class="kb-icon">🔧</div>
+                        <div class="kb-card-text">
+                            <h4>Troubleshooting Guide</h4>
+                            <span>Fix every common problem by symptom</span>
+                        </div>
+                    </a>
+                    <a href="/blog-history-of-efoil.html" class="kb-card">
+                        <div class="kb-icon">📜</div>
+                        <div class="kb-card-text">
+                            <h4>The Complete History of the eFoil</h4>
+                            <span>2008 invention to global movement — insider account</span>
+                        </div>
+                    </a>
+                    <a href="/blog-tow-boogie-vs-efoil.html" class="kb-card">
+                        <div class="kb-icon">⚔️</div>
+                        <div class="kb-card-text">
+                            <h4>Tow Boogie vs eFoil</h4>
+                            <span>Honest comparison — cost, performance, experience</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Tow Boogie -->
+            <div class="kb-category">
+                <div class="kb-category-title">🚀 Tow Boogie Suite</div>
+                <div class="kb-grid">
+                    <a href="https://pacificmeister.github.io/towboogie-build/what-is-a-tow-boogie.html" class="kb-card">
+                        <div class="kb-icon">📚</div>
+                        <div class="kb-card-text">
+                            <h4>What is a Tow Boogie?</h4>
+                            <span>Complete guide to electric tow-in foiling</span>
+                        </div>
+                    </a>
+                    <a href="https://pacificmeister.github.io/towboogie-build/guide.html" class="kb-card">
+                        <div class="kb-icon">🔧</div>
+                        <div class="kb-card-text">
+                            <h4>DIY Build Guide</h4>
+                            <span>4-day build, $750–$1,200, community tested</span>
+                        </div>
+                    </a>
+                    <a href="https://pacificmeister.github.io/towboogie-build/compare.html" class="kb-card">
+                        <div class="kb-icon">🏆</div>
+                        <div class="kb-card-text">
+                            <h4>Buyer's Guide & Comparison</h4>
+                            <span>Zero Tow, Foil Fusion, Wave Escort & DIY</span>
+                        </div>
+                    </a>
+                    <a href="https://pacificmeister.github.io/towboogie-build/riding-guide.html" class="kb-card">
+                        <div class="kb-icon">🏄</div>
+                        <div class="kb-card-text">
+                            <h4>Riding Technique Guide</h4>
+                            <span>Beach launch to advanced wave catching</span>
+                        </div>
+                    </a>
+                    <a href="https://pacificmeister.github.io/towboogie-build/safety-guide.html" class="kb-card">
+                        <div class="kb-icon">🛡️</div>
+                        <div class="kb-card-text">
+                            <h4>Safety & Maintenance</h4>
+                            <span>Battery safety, pre-ride checklists, emergencies</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <a href="/blog.html" class="view-all">
+                View all articles on the blog →
+            </a>
+        </section>
+
+        <!-- ===== LATEST UPDATES (compact, 5 items) ===== -->
+        <section id="updates">
+            <div class="section-label">What's New</div>
+            <h2 class="section-title">Latest Updates</h2>
+
+            <div class="latest-list">
+                <div class="latest-item">
+                    <div class="latest-date">Mar 27</div>
+                    <div>
+                        <div class="latest-title">🎮 <a href="/blog-efoil-remote-guide.html">Remote Control Guide</a> — Best remotes, VESC PPM setup & safety</div>
+                        <div class="latest-desc">VX3, VX3 Pro, Maytech, Trampa Wand, DIY NRF compared. Complete PPM setup, failsafe, waterproofing, dead man's switch.</div>
+                    </div>
+                </div>
+                <div class="latest-item">
+                    <div class="latest-date">Mar 26</div>
+                    <div>
+                        <div class="latest-title">💧 <a href="/blog-efoil-waterproofing-guide.html">Waterproofing Guide</a> — Sealing electronics & enclosures</div>
+                        <div class="latest-desc">The #1 cause of DIY failure solved. Enclosures, cable glands, conformal coating, Gore-Tex vents, defense-in-depth strategy.</div>
+                    </div>
+                </div>
+                <div class="latest-item">
+                    <div class="latest-date">Mar 25</div>
+                    <div>
+                        <div class="latest-title">🏄 <a href="/blog-electric-surfboard-guide.html">Electric Surfboard Guide 2026</a> — Every type explained</div>
+                        <div class="latest-desc">eFoils, jetboards, electric bodyboards, tow boggies — compared with prices, performance, and honest recommendations.</div>
+                    </div>
+                </div>
+                <div class="latest-item">
+                    <div class="latest-date">Mar 25</div>
+                    <div>
+                        <div class="latest-title">⚖️ <a href="/blog-efoil-laws-regulations.html">eFoil Laws & Regulations</a> — Country-by-country breakdown</div>
+                        <div class="latest-desc">USCG classification, US state registration, international rules (12 countries), safety equipment, licensing.</div>
+                    </div>
+                </div>
+                <div class="latest-item">
+                    <div class="latest-date">Mar 24</div>
+                    <div>
+                        <div class="latest-title">🧠 <a href="/blog-efoil-vesc-guide.html">VESC Setup Guide</a> — Complete configuration from zero to riding</div>
+                        <div class="latest-desc">Motor detection, current limits, throttle curves, battery cutoffs, temperature protection. Proven settings for all popular motors.</div>
+                    </div>
+                </div>
+            </div>
+
+            <a href="/blog.html" class="view-all">
+                See all updates on the blog →
+            </a>
+        </section>
+
+        <!-- ===== COMMUNITY ===== -->
+        <section>
+            <div class="tools-grid" style="grid-template-columns: 1fr 1fr;">
                 <a href="https://foil.zone" class="tool-card" target="_blank">
                     <div class="tool-icon">🛠️</div>
                     <h3>FOIL.zone Forum</h3>
@@ -705,9 +1019,23 @@
                         Join the forum <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
                     </div>
                 </a>
+                <a href="https://www.youtube.com/@PacificMeister" class="tool-card" target="_blank">
+                    <div class="tool-icon">📺</div>
+                    <h3>YouTube Channel</h3>
+                    <p>Original DIY eFoil build videos that started the movement. Build logs, test rides, motor comparisons, and community collaborations since 2016.</p>
+                    <div>
+                        <span class="tool-tag">Build Videos</span>
+                        <span class="tool-tag">Test Rides</span>
+                        <span class="tool-tag">Open Source</span>
+                    </div>
+                    <div class="tool-cta">
+                        Watch builds <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </div>
+                </a>
             </div>
         </section>
 
+        <!-- ===== ORIGIN STORY ===== -->
         <section class="story" id="story">
             <div class="story-grid">
                 <div class="story-text">
@@ -749,185 +1077,8 @@
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-year">2025–2026</div>
-                        <div class="timeline-text">New chapter: Tow Boogie</div>
-                        <div class="timeline-detail">Free build tools, configurators, and guides for the next wave of DIY foiling innovation</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="updates" style="max-width: 1200px; margin: 0 auto; padding: 4rem 2rem;">
-            <div class="section-label">What's New</div>
-            <h2 class="section-title">Latest Updates</h2>
-            <p class="section-desc">Recent launches, improvements, and milestones from the PacificMeister ecosystem.</p>
-
-            <div style="display: grid; gap: 1.2rem; max-width: 800px;">
-                <div style="display: flex; gap: 1.5rem; align-items: flex-start; padding: 1.2rem 1.5rem; background: rgba(15, 40, 71, 0.5); border-radius: 12px; border-left: 3px solid var(--accent);">
-                    <div style="min-width: 80px; font-size: 0.8rem; color: var(--accent); font-weight: 600; padding-top: 2px;">Mar 2026</div>
-                    <div>
-                        <div style="color: var(--text-bright); font-weight: 600; margin-bottom: 0.25rem;">🔍 <a href="/efoil-finder.html" style="color: var(--text-bright); text-decoration: underline;">New: eFoil Finder Quiz — Which eFoil Is Right for You?</a></div>
-                        <div style="font-size: 0.9rem; color: var(--text);">Answer 5 quick questions about your experience, budget, and riding style — get a personalized eFoil recommendation. Works for both commercial and DIY builds.</div>
-                    </div>
-                </div>
-                <div style="display: flex; gap: 1.5rem; align-items: flex-start; padding: 1.2rem 1.5rem; background: rgba(15, 40, 71, 0.5); border-radius: 12px; border-left: 3px solid var(--accent);">
-                    <div style="min-width: 80px; font-size: 0.8rem; color: var(--accent); font-weight: 600; padding-top: 2px;">Mar 2026</div>
-                    <div>
-                        <div style="color: var(--text-bright); font-weight: 600; margin-bottom: 0.25rem;">🛒 <a href="/blog-used-efoil-guide.html" style="color: var(--text-bright); text-decoration: underline;">New: Used eFoil Buying Guide</a></div>
-                        <div style="font-size: 0.9rem; color: var(--text);">How to buy a used eFoil without getting burned — inspection checklist, fair pricing, red flags, battery health testing, and where to find the best deals.</div>
-                    </div>
-                </div>
-                <div style="display: flex; gap: 1.5rem; align-items: flex-start; padding: 1.2rem 1.5rem; background: rgba(15, 40, 71, 0.5); border-radius: 12px; border-left: 3px solid var(--accent);">
-                    <div style="min-width: 80px; font-size: 0.8rem; color: var(--accent); font-weight: 600; padding-top: 2px;">Mar 2026</div>
-                    <div>
-                        <div style="color: var(--text-bright); font-weight: 600; margin-bottom: 0.25rem;">⚖️ <a href="/blog-efoil-laws-regulations.html" style="color: var(--text-bright); text-decoration: underline;">New: eFoil Laws and Regulations Guide</a></div>
-                        <div style="font-size: 0.9rem; color: var(--text);">State-by-state and country-by-country breakdown of eFoil regulations — registration, licensing, age requirements, speed limits, and where you can legally ride.</div>
-                    </div>
-                </div>
-                <div style="display: flex; gap: 1.5rem; align-items: flex-start; padding: 1.2rem 1.5rem; background: rgba(15, 40, 71, 0.5); border-radius: 12px; border-left: 3px solid var(--accent);">
-                    <div style="min-width: 80px; font-size: 0.8rem; color: var(--accent); font-weight: 600; padding-top: 2px;">Mar 2026</div>
-                    <div>
-                        <div style="color: var(--text-bright); font-weight: 600; margin-bottom: 0.25rem;">🏄 <a href="/blog-electric-surfboard-guide.html" style="color: var(--text-bright); text-decoration: underline;">New: Electric Surfboard Guide 2026</a></div>
-                        <div style="font-size: 0.9rem; color: var(--text);">Every type of electric surfboard compared — eFoils, jetboards, electric SUPs, and more. Prices, pros/cons, and which type fits your riding style.</div>
-                    </div>
-                </div>
-                <div style="display: flex; gap: 1.5rem; align-items: flex-start; padding: 1.2rem 1.5rem; background: rgba(15, 40, 71, 0.5); border-radius: 12px; border-left: 3px solid var(--accent);">
-                    <div style="min-width: 80px; font-size: 0.8rem; color: var(--accent); font-weight: 600; padding-top: 2px;">Mar 2026</div>
-                    <div>
-                        <div style="color: var(--text-bright); font-weight: 600; margin-bottom: 0.25rem;">🎮 <a href="/blog-efoil-remote-guide.html" style="color: var(--text-bright); text-decoration: underline;">New: Remote Control Guide — Best Remotes, PPM Setup & Safety</a></div>
-                        <div style="font-size: 0.9rem; color: var(--text);">Complete guide to eFoil wireless remotes. Compare Flipsky VX3, VX3 Pro, Maytech, Trampa Wand, and DIY NRF options. VESC PPM setup, failsafe configuration, waterproofing, and dead man's switch safety.</div>
-                    </div>
-                </div>
-                <div style="display: flex; gap: 1.5rem; align-items: flex-start; padding: 1.2rem 1.5rem; background: rgba(15, 40, 71, 0.5); border-radius: 12px; border-left: 3px solid var(--accent);">
-                    <div style="min-width: 80px; font-size: 0.8rem; color: var(--accent); font-weight: 600; padding-top: 2px;">Mar 2026</div>
-                    <div>
-                        <div style="color: var(--text-bright); font-weight: 600; margin-bottom: 0.25rem;">💧 <a href="/blog-efoil-waterproofing-guide.html" style="color: var(--text-bright); text-decoration: underline;">New: Waterproofing Guide — Sealing Electronics & Enclosures</a></div>
-                        <div style="font-size: 0.9rem; color: var(--text);">The #1 cause of DIY eFoil failure is water ingress. Complete waterproofing guide: enclosure selection, cable glands, conformal coating, Gore-Tex vents, saltwater protection, and a defense-in-depth strategy from 9 years of FOIL.zone builds.</div>
-                    </div>
-                </div>
-                <div style="display: flex; gap: 1.5rem; align-items: flex-start; padding: 1.2rem 1.5rem; background: rgba(15, 40, 71, 0.5); border-radius: 12px; border-left: 3px solid var(--accent);">
-                    <div style="min-width: 80px; font-size: 0.8rem; color: var(--accent); font-weight: 600; padding-top: 2px;">Mar 2026</div>
-                    <div>
-                        <div style="color: var(--text-bright); font-weight: 600; margin-bottom: 0.25rem;">🧠 <a href="/blog-efoil-vesc-guide.html" style="color: var(--text-bright); text-decoration: underline;">New: VESC Setup Guide — Complete Configuration</a></div>
-                        <div style="font-size: 0.9rem; color: var(--text);">The definitive VESC configuration guide for DIY eFoils. Motor detection, current limits, throttle curves, battery cutoffs, temperature protection, and proven settings for every popular motor. From firmware to first ride.</div>
-                    </div>
-                </div>
-                <div style="display: flex; gap: 1.5rem; align-items: flex-start; padding: 1.2rem 1.5rem; background: rgba(15, 40, 71, 0.5); border-radius: 12px; border-left: 3px solid var(--accent);">
-                    <div style="min-width: 80px; font-size: 0.8rem; color: var(--accent); font-weight: 600; padding-top: 2px;">Mar 2026</div>
-                    <div>
-                        <div style="color: var(--text-bright); font-weight: 600; margin-bottom: 0.25rem;">🏆 <a href="/blog-best-efoils-2026.html" style="color: var(--text-bright); text-decoration: underline;">New: Best eFoils 2026 — Honest Rankings</a></div>
-                        <div style="font-size: 0.9rem; color: var(--text);">Every major eFoil ranked by someone who's been building them since 2016. Lift5, Fliteboard, Waydoo, Awake, Aerofoils, SiFly — real specs, honest opinions, and when DIY beats them all.</div>
-                    </div>
-                </div>
-                <div style="display: flex; gap: 1.5rem; align-items: flex-start; padding: 1.2rem 1.5rem; background: rgba(15, 40, 71, 0.5); border-radius: 12px; border-left: 3px solid var(--accent);">
-                    <div style="min-width: 80px; font-size: 0.8rem; color: var(--accent); font-weight: 600; padding-top: 2px;">Mar 2026</div>
-                    <div>
-                        <div style="color: var(--text-bright); font-weight: 600; margin-bottom: 0.25rem;">⚡ <a href="/efoil-configurator.html" style="color: var(--text-bright); text-decoration: underline;">New: DIY eFoil Build Configurator</a></div>
-                        <div style="font-size: 0.9rem; color: var(--text);">Interactive build planner — pick motor, battery, ESC, board, foil & accessories. Real-time costs, weight totals, 4 presets ($2.1K–$4.5K), shopping list with buy links, shareable builds. The eFoil equivalent of the tow boogie configurator.</div>
-                    </div>
-                </div>
-                <div style="display: flex; gap: 1.5rem; align-items: flex-start; padding: 1.2rem 1.5rem; background: rgba(15, 40, 71, 0.5); border-radius: 12px; border-left: 3px solid var(--accent);">
-                    <div style="min-width: 80px; font-size: 0.8rem; color: var(--accent); font-weight: 600; padding-top: 2px;">Mar 2026</div>
-                    <div>
-                        <div style="color: var(--text-bright); font-weight: 600; margin-bottom: 0.25rem;">🏄 <a href="/blog-how-to-ride-efoil.html" style="color: var(--text-bright); text-decoration: underline;">New: How to Ride an eFoil — Complete Beginner's Guide</a></div>
-                        <div style="font-size: 0.9rem; color: var(--text);">From kneeling to flying. 5-step progression, 10 beginner mistakes, realistic learning timeline, gear essentials, conditions guide, and what nobody tells you about balance.</div>
-                    </div>
-                </div>
-                <div style="display: flex; gap: 1.5rem; align-items: flex-start; padding: 1.2rem 1.5rem; background: rgba(15, 40, 71, 0.5); border-radius: 12px; border-left: 3px solid var(--accent);">
-                    <div style="min-width: 80px; font-size: 0.8rem; color: var(--accent); font-weight: 600; padding-top: 2px;">Mar 2026</div>
-                    <div>
-                        <div style="color: var(--text-bright); font-weight: 600; margin-bottom: 0.25rem;">💰 <a href="/blog-efoil-cost-guide.html" style="color: var(--text-bright); text-decoration: underline;">New: How Much Does an eFoil Cost? (2026)</a></div>
-                        <div style="font-size: 0.9rem; color: var(--text);">Real prices from $2K DIY to $12K premium. Brand-by-brand comparison, hidden ownership costs, cost-per-session math, used market guide, and budget traps to avoid.</div>
-                    </div>
-                </div>
-                <div style="display: flex; gap: 1.5rem; align-items: flex-start; padding: 1.2rem 1.5rem; background: rgba(15, 40, 71, 0.5); border-radius: 12px; border-left: 3px solid var(--accent);">
-                    <div style="min-width: 80px; font-size: 0.8rem; color: var(--accent); font-weight: 600; padding-top: 2px;">Mar 2026</div>
-                    <div>
-                        <div style="color: var(--text-bright); font-weight: 600; margin-bottom: 0.25rem;">🔧 <a href="/blog-efoil-troubleshooting.html" style="color: var(--text-bright); text-decoration: underline;">New: DIY eFoil Troubleshooting Guide</a></div>
-                        <div style="font-size: 0.9rem; color: var(--text);">Your eFoil stopped working? Systematic diagnosis by symptom — motor won't start, cutouts, VESC faults, overheating, water damage recovery, and preventive maintenance. From thousands of FOIL.zone troubleshooting threads.</div>
-                    </div>
-                </div>
-                <div style="display: flex; gap: 1.5rem; align-items: flex-start; padding: 1.2rem 1.5rem; background: rgba(15, 40, 71, 0.5); border-radius: 12px; border-left: 3px solid var(--accent);">
-                    <div style="min-width: 80px; font-size: 0.8rem; color: var(--accent); font-weight: 600; padding-top: 2px;">Mar 2026</div>
-                    <div>
-                        <div style="color: var(--text-bright); font-weight: 600; margin-bottom: 0.25rem;">🔌 <a href="/blog-efoil-wiring-guide.html" style="color: var(--text-bright); text-decoration: underline;">New: DIY eFoil Wiring & Electronics Guide</a></div>
-                        <div style="font-size: 0.9rem; color: var(--text);">The missing piece: battery to ESC, motor phase wiring, anti-spark, fuses, signal setup, kill switches, waterproof connectors, cable routing, and tested setups by budget.</div>
-                    </div>
-                </div>
-                <div style="display: flex; gap: 1.5rem; align-items: flex-start; padding: 1.2rem 1.5rem; background: rgba(15, 40, 71, 0.5); border-radius: 12px; border-left: 3px solid var(--accent);">
-                    <div style="min-width: 80px; font-size: 0.8rem; color: var(--accent); font-weight: 600; padding-top: 2px;">Mar 2026</div>
-                    <div>
-                        <div style="color: var(--text-bright); font-weight: 600; margin-bottom: 0.25rem;">🏄 <a href="/blog-efoil-board-foil-guide.html" style="color: var(--text-bright); text-decoration: underline;">New: DIY eFoil Board & Hydrofoil Guide</a></div>
-                        <div style="font-size: 0.9rem; color: var(--text);">Board sizing, build vs. buy, battery compartment design, foil wing area, mast length, materials, and mounting systems — the complete physical platform guide.</div>
-                    </div>
-                </div>
-                <div style="display: flex; gap: 1.5rem; align-items: flex-start; padding: 1.2rem 1.5rem; background: rgba(15, 40, 71, 0.5); border-radius: 12px; border-left: 3px solid var(--accent);">
-                    <div style="min-width: 80px; font-size: 0.8rem; color: var(--accent); font-weight: 600; padding-top: 2px;">Mar 2026</div>
-                    <div>
-                        <div style="color: var(--text-bright); font-weight: 600; margin-bottom: 0.25rem;">⚡ <a href="/blog-efoil-motor-guide.html" style="color: var(--text-bright); text-decoration: underline;">New: DIY eFoil Motor & Propulsion Guide</a></div>
-                        <div style="font-size: 0.9rem; color: var(--text);">Inrunner vs outrunner, 65161 vs 65162, ESC selection, VESC configuration, propeller sizing, waterproofing — the complete motor deep dive from thousands of community builds.</div>
-                    </div>
-                </div>
-                <div style="display: flex; gap: 1.5rem; align-items: flex-start; padding: 1.2rem 1.5rem; background: rgba(15, 40, 71, 0.5); border-radius: 12px; border-left: 3px solid var(--accent);">
-                    <div style="min-width: 80px; font-size: 0.8rem; color: var(--accent); font-weight: 600; padding-top: 2px;">Mar 2026</div>
-                    <div>
-                        <div style="color: var(--text-bright); font-weight: 600; margin-bottom: 0.25rem;">🔋 <a href="/blog-efoil-battery-guide.html" style="color: var(--text-bright); text-decoration: underline;">New: DIY eFoil Battery Guide</a></div>
-                        <div style="font-size: 0.9rem; color: var(--text);">The definitive battery deep dive — cell selection (P42A vs 40T vs 50S), 12S vs 14S, BMS setup, spot welding, waterproofing, charging safety, and every common mistake to avoid.</div>
-                    </div>
-                </div>
-                <div style="display: flex; gap: 1.5rem; align-items: flex-start; padding: 1.2rem 1.5rem; background: rgba(15, 40, 71, 0.5); border-radius: 12px; border-left: 3px solid var(--accent);">
-                    <div style="min-width: 80px; font-size: 0.8rem; color: var(--accent); font-weight: 600; padding-top: 2px;">Mar 2026</div>
-                    <div>
-                        <div style="color: var(--text-bright); font-weight: 600; margin-bottom: 0.25rem;">📈 <a href="/efoil-range-calculator.html" style="color: var(--text-bright); text-decoration: underline;">New: DIY eFoil Range Calculator</a></div>
-                        <div style="font-size: 0.9rem; color: var(--text);">Free planning tool for battery sizing: estimate runtime, ride range, and energy cost per session based on rider weight and riding style.</div>
-                    </div>
-                </div>
-                <div style="display: flex; gap: 1.5rem; align-items: flex-start; padding: 1.2rem 1.5rem; background: rgba(15, 40, 71, 0.5); border-radius: 12px; border-left: 3px solid var(--accent);">
-                    <div style="min-width: 80px; font-size: 0.8rem; color: var(--accent); font-weight: 600; padding-top: 2px;">Mar 2026</div>
-                    <div>
-                        <div style="color: var(--text-bright); font-weight: 600; margin-bottom: 0.25rem;">🔧 <a href="/blog-diy-efoil-guide.html" style="color: var(--text-bright); text-decoration: underline;">New: How to Build a DIY eFoil</a></div>
-                        <div style="font-size: 0.9rem; color: var(--text);">The complete beginner's guide — components, costs, 7-step build process, common mistakes, and hard-won lessons from thousands of community builds.</div>
-                    </div>
-                </div>
-                <div style="display: flex; gap: 1.5rem; align-items: flex-start; padding: 1.2rem 1.5rem; background: rgba(15, 40, 71, 0.5); border-radius: 12px; border-left: 3px solid var(--accent);">
-                    <div style="min-width: 80px; font-size: 0.8rem; color: var(--accent); font-weight: 600; padding-top: 2px;">Mar 2026</div>
-                    <div>
-                        <div style="color: var(--text-bright); font-weight: 600; margin-bottom: 0.25rem;">📝 <a href="/blog.html" style="color: var(--text-bright); text-decoration: underline;">Blog launched</a> — Two new articles</div>
-                        <div style="font-size: 0.9rem; color: var(--text);"><a href="/blog-history-of-efoil.html" style="color: var(--accent);">The Complete History of the eFoil</a> — the definitive insider account from 2008 invention to global movement. Plus <a href="/blog-tow-boogie-vs-efoil.html" style="color: var(--accent);">Tow Boogie vs eFoil</a> — an honest comparison of cost, performance, and riding experience.</div>
-                    </div>
-                </div>
-                <div style="display: flex; gap: 1.5rem; align-items: flex-start; padding: 1.2rem 1.5rem; background: rgba(15, 40, 71, 0.5); border-radius: 12px; border-left: 3px solid var(--accent);">
-                    <div style="min-width: 80px; font-size: 0.8rem; color: var(--accent); font-weight: 600; padding-top: 2px;">Mar 2026</div>
-                    <div>
-                        <div style="color: var(--text-bright); font-weight: 600; margin-bottom: 0.25rem;">🛡️ Safety & Maintenance Guide launched</div>
-                        <div style="font-size: 0.9rem; color: var(--text);">3,500-word comprehensive guide: battery safety protocols, waterproofing best practices, emergency procedures, and seasonal maintenance schedules.</div>
-                    </div>
-                </div>
-                <div style="display: flex; gap: 1.5rem; align-items: flex-start; padding: 1.2rem 1.5rem; background: rgba(15, 40, 71, 0.5); border-radius: 12px; border-left: 3px solid var(--accent);">
-                    <div style="min-width: 80px; font-size: 0.8rem; color: var(--accent); font-weight: 600; padding-top: 2px;">Mar 2026</div>
-                    <div>
-                        <div style="color: var(--text-bright); font-weight: 600; margin-bottom: 0.25rem;">🏄 Riding Technique Guide launched</div>
-                        <div style="font-size: 0.9rem; color: var(--text);">Complete progression from beach launch to advanced wave catching and downwind runs. 6 technique cards, conditions guide, and common mistakes section.</div>
-                    </div>
-                </div>
-                <div style="display: flex; gap: 1.5rem; align-items: flex-start; padding: 1.2rem 1.5rem; background: rgba(15, 40, 71, 0.5); border-radius: 12px; border-left: 3px solid var(--accent);">
-                    <div style="min-width: 80px; font-size: 0.8rem; color: var(--accent); font-weight: 600; padding-top: 2px;">Mar 2026</div>
-                    <div>
-                        <div style="color: var(--text-bright); font-weight: 600; margin-bottom: 0.25rem;">🔴 AXIS Anti-Counterfeit Center v2</div>
-                        <div style="font-size: 0.9rem; color: var(--text);">25-point authenticity checklist with component-specific checks for wings, masts, and full setups. 7 mast-specific inspections from expert field intel.</div>
-                    </div>
-                </div>
-                <div style="display: flex; gap: 1.5rem; align-items: flex-start; padding: 1.2rem 1.5rem; background: rgba(15, 40, 71, 0.5); border-radius: 12px; border-left: 3px solid var(--accent);">
-                    <div style="min-width: 80px; font-size: 0.8rem; color: var(--accent); font-weight: 600; padding-top: 2px;">Mar 2026</div>
-                    <div>
-                        <div style="color: var(--text-bright); font-weight: 600; margin-bottom: 0.25rem;">🌊 PacificMeister Hub goes live</div>
-                        <div style="font-size: 0.9rem; color: var(--text);">Central landing page launched at pacificmeister.github.io — connecting all tools, guides, and community resources under one roof.</div>
-                    </div>
-                </div>
-                <div style="display: flex; gap: 1.5rem; align-items: flex-start; padding: 1.2rem 1.5rem; background: rgba(15, 40, 71, 0.5); border-radius: 12px; border-left: 3px solid var(--accent);">
-                    <div style="min-width: 80px; font-size: 0.8rem; color: var(--accent); font-weight: 600; padding-top: 2px;">Mar 2026</div>
-                    <div>
-                        <div style="color: var(--text-bright); font-weight: 600; margin-bottom: 0.25rem;">🏆 Buyer's Guide & Comparison deployed</div>
-                        <div style="font-size: 0.9rem; color: var(--text);">Honest reviews of every tow boogie on the market. Quick-compare grid, deep dives, feature matrix, and 6 use-case recommendations.</div>
+                        <div class="timeline-text">New chapter</div>
+                        <div class="timeline-detail">23 free tools & guides. Tow boogie builds. AXIS Advisor. The DIY eFoil knowledge base goes online</div>
                     </div>
                 </div>
             </div>
