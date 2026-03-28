@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eFoil Battery Charging, Storage & Longevity Guide (2026) — PacificMeister</title>
+    <meta name="description" content="How to charge, store, and maximize the lifespan of your eFoil battery. Covers Li-ion charging best practices, storage voltage, temperature effects, BMS balancing, seasonal storage, and the 80% rule — from the DIY eFoil community.">
+    <meta name="keywords" content="eFoil battery charging, eFoil battery storage, lithium ion charging, eFoil battery longevity, 14S battery charging, 12S battery charging, eFoil BMS balancing, lithium battery storage voltage, eFoil battery lifespan, DIY eFoil battery care, 21700 charging, eFoil battery maintenance">
+    <link rel="canonical" href="https://pacificmeister.github.io/blog-efoil-battery-charging-guide.html">
+
+    <meta property="og:title" content="eFoil Battery Charging, Storage & Longevity Guide (2026)">
+    <meta property="og:description" content="Everything you need to know about charging, storing, and maximizing the lifespan of your eFoil battery pack — from the community that pioneered DIY eFoils.">
+    <meta property="og:url" content="https://pacificmeister.github.io/blog-efoil-battery-charging-guide.html">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://pacificmeister.github.io/og-image.png">
+    <meta property="og:site_name" content="PacificMeister">
+    <meta property="article:published_time" content="2026-03-28">
+    <meta property="article:author" content="PacificMeister">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="eFoil Battery Charging, Storage & Longevity Guide (2026)">
+    <meta name="twitter:description" content="Charge, store, and care for your eFoil battery the right way — the definitive guide from PacificMeister.">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "eFoil Battery Charging, Storage & Longevity Guide (2026)",
+        "datePublished": "2026-03-28",
+        "dateModified": "2026-03-28",
+        "author": {
+            "@type": "Person",
+            "name": "PacificMeister",
+            "url": "https://pacificmeister.github.io"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "PacificMeister",
+            "url": "https://pacificmeister.github.io"
+        },
+        "description": "How to charge, store, and maximize the lifespan of your eFoil battery. Covers Li-ion charging best practices, storage voltage, temperature effects, BMS balancing, seasonal storage, and the 80% rule.",
+        "mainEntityOfPage": "https://pacificmeister.github.io/blog-efoil-battery-charging-guide.html"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What voltage should I store my eFoil battery at?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Store lithium-ion eFoil batteries at 3.7–3.8V per cell (about 40–60% state of charge). For a 14S pack, that's 51.8–53.2V total. For a 12S pack, that's 44.4–45.6V. Storing at full charge (4.2V/cell) or fully depleted (below 3.0V/cell) accelerates degradation. If you won't ride for more than a week, charge or discharge to storage voltage."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How long does a DIY eFoil battery last before replacement?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "With proper care — charging to 80–90%, storing at 3.7V/cell, avoiding extreme temperatures, and not deep-discharging below 20% — a quality 21700 eFoil battery (Molicel P42A, Samsung 40T) should last 500–800 cycles, which translates to 3–5 years of regular riding (2–3 sessions per week). Poor habits like storing fully charged, charging in direct sun, or routinely draining to empty can cut this to 200–300 cycles."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Should I charge my eFoil battery to 100% every time?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. Charging to 100% (4.2V per cell) puts maximum stress on lithium-ion cells and accelerates calendar aging. For everyday use, charging to 80–90% (about 4.0–4.1V per cell) significantly extends battery lifespan — potentially doubling cycle life. Only charge to 100% when you need maximum range for a long session, and ride soon after to bring the voltage back down."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I leave my eFoil battery on the charger overnight?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "It's not recommended. Once fully charged, the charger will stop, but the battery sits at maximum voltage — the worst state for longevity. Some BMS units trickle-charge to maintain 100%, which is even worse. Charge when you're around, unplug when done. If you must charge overnight, use a timer outlet to cut power after the expected charge time, or use a charger with adjustable voltage cutoff set below 4.2V/cell."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What charger should I use for a 14S eFoil battery?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Use a charger matched to your pack voltage. For 14S Li-ion, you need a 58.8V charger (14 × 4.2V). A 5A charger is typical — it charges a 14S8P pack (about 1.7 kWh) in roughly 4–5 hours. Higher-amp chargers (10A) are faster but generate more heat. Avoid cheap unbranded chargers — they may not cut off accurately at the target voltage, which can overcharge cells. A charger with adjustable voltage cutoff is ideal for implementing the 80% rule (set cutoff to ~56V for 14S)."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is it safe to charge my eFoil battery in my car or garage?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Charge in a well-ventilated area on a non-flammable surface, away from combustible materials. Never charge in a sealed car — heat buildup increases fire risk. A garage with a concrete floor is fine, but place the battery on a fireproof mat or in a metal container (like an ammo can with the lid cracked open). Never charge unattended or while sleeping. Keep a Class D fire extinguisher or a bucket of sand nearby — water does not effectively extinguish lithium fires."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --ocean-deep: #0a1628;
+            --ocean-mid: #0f2847;
+            --accent: #00d4aa;
+            --accent-glow: rgba(0, 212, 170, 0.15);
+            --text: #c8dae8;
+            --text-bright: #e8f0f8;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--ocean-deep);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        .ocean-bg {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(0, 60, 120, 0.15) 0%, transparent 70%),
+                radial-gradient(ellipse at 80% 20%, rgba(0, 100, 80, 0.1) 0%, transparent 60%),
+                linear-gradient(180deg, #0a1628 0%, #0d1f3c 50%, #0a1628 100%);
+            z-index: -1;
+        }
+
+        header {
+            padding: 2rem 2rem 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+        }
+        .logo span { color: var(--accent); }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--accent); }
+
+        article {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .article-meta {
+            color: var(--accent);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--white);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-intro {
+            font-size: 1.2rem;
+            color: var(--text-bright);
+            border-left: 3px solid var(--accent);
+            padding-left: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--white);
+            margin: 3rem 0 1.5rem;
+            padding-top: 1rem;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            color: var(--accent);
+            margin: 2rem 0 1rem;
+        }
+
+        h4 {
+            font-size: 1.1rem;
+            color: var(--text-bright);
+            margin: 1.5rem 0 0.75rem;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+        }
+
+        ul, ol {
+            margin: 1rem 0 1.5rem 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        strong {
+            color: var(--text-bright);
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .settings-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        .settings-table th {
+            background: rgba(0, 212, 170, 0.15);
+            color: var(--accent);
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid rgba(0, 212, 170, 0.3);
+        }
+
+        .settings-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .settings-table tr:hover {
+            background: rgba(0, 212, 170, 0.05);
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, rgba(0, 60, 80, 0.3), rgba(0, 40, 60, 0.3));
+            border: 1px solid rgba(0, 212, 170, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .info-box h4 {
+            color: var(--accent);
+            margin-top: 0;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, rgba(80, 40, 0, 0.3), rgba(60, 30, 0, 0.3));
+            border: 1px solid rgba(255, 165, 0, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .warning-box h4 {
+            color: #ffaa00;
+            margin-top: 0;
+        }
+
+        .danger-box {
+            background: linear-gradient(135deg, rgba(80, 0, 0, 0.3), rgba(60, 0, 0, 0.3));
+            border: 1px solid rgba(255, 60, 60, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .danger-box h4 {
+            color: #ff4444;
+            margin-top: 0;
+        }
+
+        .toc {
+            background: linear-gradient(135deg, rgba(15, 40, 71, 0.6), rgba(10, 22, 40, 0.8));
+            border: 1px solid rgba(0, 212, 170, 0.15);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0 3rem;
+        }
+
+        .toc h3 {
+            color: var(--white);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .toc ol {
+            margin: 0;
+            padding-left: 1.25rem;
+        }
+
+        .toc li {
+            margin-bottom: 0.4rem;
+        }
+
+        .toc a {
+            color: var(--text);
+            font-size: 0.95rem;
+        }
+        .toc a:hover {
+            color: var(--accent);
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, rgba(0, 80, 60, 0.3), rgba(0, 60, 50, 0.3));
+            border: 1px solid rgba(0, 212, 170, 0.3);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .cta-box h3 {
+            color: var(--white);
+            font-size: 1.4rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .cta-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .cta-link {
+            display: inline-block;
+            padding: 0.6rem 1.5rem;
+            background: rgba(0, 212, 170, 0.15);
+            border: 1px solid rgba(0, 212, 170, 0.3);
+            border-radius: 8px;
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .cta-link:hover {
+            background: rgba(0, 212, 170, 0.25);
+            text-decoration: none;
+            transform: translateY(-2px);
+        }
+
+        .related-articles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .related-card {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(15, 40, 71, 0.6), rgba(10, 22, 40, 0.8));
+            border: 1px solid rgba(0, 212, 170, 0.12);
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .related-card:hover {
+            border-color: rgba(0, 212, 170, 0.35);
+            transform: translateY(-3px);
+            text-decoration: none;
+        }
+
+        .related-card .icon { font-size: 2rem; margin-bottom: 0.75rem; }
+        .related-card h4 { color: var(--white); margin: 0 0 0.5rem; font-size: 1rem; }
+        .related-card p { color: var(--text); font-size: 0.85rem; margin: 0; }
+
+        .voltage-chart {
+            background: linear-gradient(135deg, rgba(15, 40, 71, 0.6), rgba(10, 22, 40, 0.8));
+            border: 1px solid rgba(0, 212, 170, 0.15);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .voltage-bar {
+            display: flex;
+            align-items: center;
+            margin: 0.5rem 0;
+            gap: 0.75rem;
+        }
+
+        .voltage-bar .label {
+            min-width: 100px;
+            font-size: 0.85rem;
+            color: var(--text);
+        }
+
+        .voltage-bar .bar-track {
+            flex: 1;
+            height: 24px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .voltage-bar .bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--ocean-deep);
+        }
+
+        .bar-danger { background: linear-gradient(90deg, #ff4444, #ff6666); }
+        .bar-warning { background: linear-gradient(90deg, #ffaa00, #ffcc44); }
+        .bar-good { background: linear-gradient(90deg, #00d4aa, #44eebb); }
+        .bar-optimal { background: linear-gradient(90deg, #00aa88, #00d4aa); }
+        .bar-stress { background: linear-gradient(90deg, #ff8800, #ffaa44); }
+
+        footer {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        footer p { color: rgba(200, 218, 232, 0.5); font-size: 0.85rem; }
+        .footer-links { display: flex; gap: 1.5rem; list-style: none; }
+        .footer-links a { color: rgba(200, 218, 232, 0.5); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--accent); }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.4rem; }
+            .settings-table { font-size: 0.8rem; }
+            .settings-table th, .settings-table td { padding: 0.5rem; }
+            .related-articles { grid-template-columns: 1fr; }
+            footer { flex-direction: column; text-align: center; }
+            .voltage-bar .label { min-width: 80px; font-size: 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="ocean-bg"></div>
+
+    <header>
+        <nav>
+            <a href="/" class="logo">Pacific<span>Meister</span></a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/#guides">Guides</a></li>
+                <li><a href="/blog.html">Blog</a></li>
+                <li><a href="https://foil.zone" target="_blank">Community</a></li>
+                <li><a href="https://www.youtube.com/@PacificMeister" target="_blank">YouTube</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <article>
+        <div class="article-meta">March 2026 · 22 min read · Deep Dive</div>
+        <h1>eFoil Battery Charging, Storage & Longevity Guide</h1>
+
+        <p class="article-intro">
+            You spent $500–$1,200 on cells, hours spot-welding or soldering, and days assembling your battery pack. Now the question is: how do you make it last? The difference between a pack that gives you 300 cycles and one that delivers 800+ comes down to how you charge it, how you store it, and whether you respect a few non-negotiable rules about lithium-ion chemistry. This guide covers everything — from the physics of why voltage and temperature matter, to practical charging routines that'll keep your pack healthy for years.
+        </p>
+
+        <div class="toc">
+            <h3>📋 What's In This Guide</h3>
+            <ol>
+                <li><a href="#chemistry">Lithium-Ion Chemistry: What You Need to Know</a></li>
+                <li><a href="#charging-basics">Charging Basics: CC/CV and What It Means</a></li>
+                <li><a href="#80-percent-rule">The 80% Rule: Why Less Is More</a></li>
+                <li><a href="#voltage-reference">Voltage Reference Chart (12S & 14S)</a></li>
+                <li><a href="#charger-selection">Choosing the Right Charger</a></li>
+                <li><a href="#bms-balancing">BMS Balancing: What It Does and When It Matters</a></li>
+                <li><a href="#temperature">Temperature: The Silent Battery Killer</a></li>
+                <li><a href="#storage">Storage Best Practices</a></li>
+                <li><a href="#seasonal">Seasonal Storage (Off-Season)</a></li>
+                <li><a href="#discharge">Discharge Habits That Matter</a></li>
+                <li><a href="#monitoring">Monitoring Battery Health Over Time</a></li>
+                <li><a href="#charging-safety">Charging Safety</a></li>
+                <li><a href="#mistakes">10 Common Mistakes That Kill eFoil Batteries</a></li>
+                <li><a href="#routines">Practical Charging Routines</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ol>
+        </div>
+
+        <!-- Section 1 -->
+        <h2 id="chemistry">1. Lithium-Ion Chemistry: What You Need to Know</h2>
+
+        <p>Every eFoil battery — whether DIY or commercial — uses lithium-ion cells. The specific chemistry in almost all high-performance eFoil packs is <strong>NMC (Nickel Manganese Cobalt)</strong> or <strong>NCA (Nickel Cobalt Aluminum)</strong>, which are the chemistries behind popular cells like the Molicel P42A, Samsung 40T, and Samsung 50S.</p>
+
+        <p>Understanding a few basic properties of lithium-ion chemistry explains <em>why</em> the charging and storage rules exist:</p>
+
+        <h3>Voltage = Stress</h3>
+        <p>A lithium-ion cell operates between 2.5V (fully empty, danger zone) and 4.2V (fully charged). The relationship between voltage and degradation is not linear — it's exponential. At 4.2V, the cathode material is under maximum mechanical and chemical stress. Lithium ions are being forced into the anode structure at its tightest packing density, and side reactions (electrolyte decomposition, SEI layer growth) accelerate dramatically.</p>
+        <p>At 4.0V (roughly 80% charge), the stress is significantly lower. The difference between storing a cell at 4.2V vs 4.0V for a month can be the equivalent of dozens of extra charge cycles in terms of capacity loss.</p>
+
+        <h3>Calendar Aging vs Cycle Aging</h3>
+        <p>Your battery degrades in two independent ways:</p>
+        <ul>
+            <li><strong>Cycle aging</strong> — wear from charging and discharging. Each cycle causes a small amount of lithium to become trapped in the SEI layer, permanently reducing capacity.</li>
+            <li><strong>Calendar aging</strong> — degradation from simply existing, even if you never use the battery. This is driven by voltage and temperature. A fully charged battery sitting in a hot garage degrades faster than one being used regularly at moderate charge levels.</li>
+        </ul>
+        <p>For most eFoil riders, calendar aging is actually the bigger factor. You might ride 2–3 times per week (150 cycles/year), but your battery exists 365 days a year. How you store it between sessions matters more than how you ride.</p>
+
+        <h3>Capacity Fade Is Gradual, Then Sudden</h3>
+        <p>Lithium-ion batteries don't fail like a light switch. Capacity fades gradually — maybe 2–5% per year with good habits. But there's a "knee point" around 70–80% remaining capacity where degradation can accelerate rapidly. The goal of good battery care is to push that knee point as far into the future as possible.</p>
+
+        <div class="info-box">
+            <h4>💡 LFP vs NMC for eFoils</h4>
+            <p>Some DIY builders consider LiFePO4 (LFP) cells for their eFoil batteries. LFP has better cycle life (2000+ cycles) and is more thermally stable, but the energy density is significantly lower — you'd need a much larger, heavier pack for the same ride time. For eFoils, where weight directly affects foiling performance, NMC/NCA cells remain the standard. The longevity gap can be largely closed by following the practices in this guide.</p>
+        </div>
+
+        <!-- Section 2 -->
+        <h2 id="charging-basics">2. Charging Basics: CC/CV and What It Means</h2>
+
+        <p>Every lithium-ion charger uses a two-phase process called <strong>CC/CV (Constant Current / Constant Voltage)</strong>:</p>
+
+        <h3>Phase 1: Constant Current (CC)</h3>
+        <p>The charger pushes a fixed current into the battery (e.g., 5A). The voltage rises gradually as the cells fill up. This phase does most of the work — it gets you from your starting voltage to near the target voltage, typically covering 0% to about 70–80% of capacity.</p>
+
+        <h3>Phase 2: Constant Voltage (CV)</h3>
+        <p>Once the pack reaches the target voltage (4.2V per cell), the charger holds that voltage steady while the current gradually decreases. The cells are nearly full, and forcing in more energy requires pushing against increasing internal resistance. Current tapers from your CC rate down to a cutoff threshold (usually 0.1–0.5A), at which point the charger declares the battery fully charged.</p>
+
+        <p>The CV phase is important to understand because:</p>
+        <ul>
+            <li>It takes disproportionately long for relatively little energy — the last 10% of charge might take as long as the first 50%</li>
+            <li>It's the phase where the most stress occurs (cells are near peak voltage)</li>
+            <li>Skipping or shortening this phase (by using a lower cutoff voltage) is the basis of the 80% rule</li>
+        </ul>
+
+        <div class="info-box">
+            <h4>💡 Charge Rate Terminology</h4>
+            <p>Charge rate is often expressed as "C-rate" — a multiple of the cell's capacity. For a 4.2Ah Molicel P42A cell, 1C = 4.2A. Most eFoil builders charge at 0.3–0.5C (about 1.5–2A per cell). For a parallel group of 8 cells (8P), that means 12–16A total at the pack level — but most chargers are 5–10A, which is 0.15–0.3C per cell. This gentle rate is perfectly fine and easier on the cells.</p>
+        </div>
+
+        <!-- Section 3 -->
+        <h2 id="80-percent-rule">3. The 80% Rule: Why Less Is More</h2>
+
+        <p>This is the single most impactful thing you can do for battery longevity: <strong>don't charge to 100% unless you need to.</strong></p>
+
+        <p>Research from battery degradation studies (and real-world data from EV manufacturers like Tesla, which limits default charging to 80%) consistently shows:</p>
+
+        <table class="settings-table">
+            <thead>
+                <tr>
+                    <th>Max Charge Level</th>
+                    <th>Cell Voltage</th>
+                    <th>Expected Cycle Life*</th>
+                    <th>Capacity at 500 Cycles</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>100%</strong></td>
+                    <td>4.20V</td>
+                    <td>~300–500 cycles</td>
+                    <td>~80%</td>
+                </tr>
+                <tr>
+                    <td><strong>90%</strong></td>
+                    <td>~4.10V</td>
+                    <td>~600–800 cycles</td>
+                    <td>~85%</td>
+                </tr>
+                <tr>
+                    <td><strong>80%</strong></td>
+                    <td>~4.00V</td>
+                    <td>~800–1200 cycles</td>
+                    <td>~90%</td>
+                </tr>
+                <tr>
+                    <td><strong>70%</strong></td>
+                    <td>~3.92V</td>
+                    <td>~1200–1500 cycles</td>
+                    <td>~92%</td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="font-size: 0.85rem; color: var(--text); margin-top: -0.5rem;">*Varies by cell chemistry, temperature, and discharge depth. Numbers are representative for NMC/NCA 21700 cells.</p>
+
+        <p>The math is stark: charging to 80% instead of 100% can nearly <strong>double or triple your battery's useful life</strong>. You lose about 20% of range per session, but you gain years of pack life. For most riders, an 80% charge still provides 35–70 minutes of ride time — plenty for a session.</p>
+
+        <h3>How to Implement the 80% Rule</h3>
+
+        <p>There are several practical approaches:</p>
+
+        <ol>
+            <li><strong>Adjustable voltage cutoff charger</strong> — The best option. Set the charger's max voltage to ~4.0V per cell instead of 4.2V. For 14S, that's 56.0V instead of 58.8V. For 12S, that's 48.0V instead of 50.4V. Some chargers have a dial or digital setting for this.</li>
+            <li><strong>Timer method</strong> — Use a smart outlet with a timer. If your charger takes 5 hours for a full charge from empty, set the timer for 4 hours (80%). Less precise but works with any charger.</li>
+            <li><strong>Voltage monitoring</strong> — Watch pack voltage during charging and unplug manually when you hit target voltage. Works but requires attention.</li>
+            <li><strong>BMS programmable cutoff</strong> — Some smart BMS units (like the JBD/Xiaoxiang or Daly with Bluetooth) let you set a charge cutoff voltage per cell. Set it to 4.0V and the BMS will stop charging regardless of what the charger does.</li>
+        </ol>
+
+        <div class="warning-box">
+            <h4>⚠️ When to Charge to 100%</h4>
+            <p>It's fine to charge to 100% occasionally — for a long downwind session, a travel day, or when you specifically need maximum range. The key is to ride soon after reaching full charge (within a few hours) rather than letting the pack sit at max voltage. Think of 100% as "trip mode" and 80% as "daily mode."</p>
+        </div>
+
+        <!-- Section 4 -->
+        <h2 id="voltage-reference">4. Voltage Reference Chart (12S & 14S)</h2>
+
+        <p>This table maps state of charge to voltage for both common eFoil configurations. Use it to know where your pack sits and make informed charging/storage decisions.</p>
+
+        <table class="settings-table">
+            <thead>
+                <tr>
+                    <th>State of Charge</th>
+                    <th>Per Cell</th>
+                    <th>12S Pack</th>
+                    <th>14S Pack</th>
+                    <th>Zone</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>100%</strong></td>
+                    <td>4.20V</td>
+                    <td>50.4V</td>
+                    <td>58.8V</td>
+                    <td>⚡ Full — high stress</td>
+                </tr>
+                <tr>
+                    <td><strong>90%</strong></td>
+                    <td>4.10V</td>
+                    <td>49.2V</td>
+                    <td>57.4V</td>
+                    <td>🟡 Nearly full</td>
+                </tr>
+                <tr>
+                    <td><strong>80%</strong></td>
+                    <td>4.00V</td>
+                    <td>48.0V</td>
+                    <td>56.0V</td>
+                    <td>🟢 Daily charge target</td>
+                </tr>
+                <tr>
+                    <td><strong>60%</strong></td>
+                    <td>3.85V</td>
+                    <td>46.2V</td>
+                    <td>53.9V</td>
+                    <td>🟢 Sweet spot</td>
+                </tr>
+                <tr>
+                    <td><strong>50%</strong></td>
+                    <td>3.75V</td>
+                    <td>45.0V</td>
+                    <td>52.5V</td>
+                    <td>✅ Ideal storage</td>
+                </tr>
+                <tr>
+                    <td><strong>40%</strong></td>
+                    <td>3.68V</td>
+                    <td>44.2V</td>
+                    <td>51.5V</td>
+                    <td>✅ Good storage</td>
+                </tr>
+                <tr>
+                    <td><strong>20%</strong></td>
+                    <td>3.50V</td>
+                    <td>42.0V</td>
+                    <td>49.0V</td>
+                    <td>🟡 Low — charge soon</td>
+                </tr>
+                <tr>
+                    <td><strong>10%</strong></td>
+                    <td>3.30V</td>
+                    <td>39.6V</td>
+                    <td>46.2V</td>
+                    <td>🔴 Very low — stop riding</td>
+                </tr>
+                <tr>
+                    <td><strong>0%</strong></td>
+                    <td>3.00V</td>
+                    <td>36.0V</td>
+                    <td>42.0V</td>
+                    <td>🔴 Empty — damage risk below this</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="danger-box">
+            <h4>🔴 Never Go Below 2.5V Per Cell</h4>
+            <p>Below 2.5V, copper dissolution begins at the anode — this causes permanent, irreversible internal damage and can create internal short circuits. If your pack sits at very low voltage for extended periods, cells can become unsafe to charge. A VESC-based eFoil should have a low-voltage cutoff set to 3.0–3.2V per cell to prevent this.</p>
+        </div>
+
+        <!-- Section 5 -->
+        <h2 id="charger-selection">5. Choosing the Right Charger</h2>
+
+        <p>Your charger is a long-term investment in battery health. A good charger pays for itself by extending pack life. A bad one can destroy cells.</p>
+
+        <h3>Key Specifications</h3>
+
+        <table class="settings-table">
+            <thead>
+                <tr>
+                    <th>Spec</th>
+                    <th>12S Pack</th>
+                    <th>14S Pack</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Output Voltage</strong></td>
+                    <td>50.4V</td>
+                    <td>58.8V</td>
+                    <td>Must match exactly (# cells × 4.2V)</td>
+                </tr>
+                <tr>
+                    <td><strong>Current (typical)</strong></td>
+                    <td>5A</td>
+                    <td>5A</td>
+                    <td>Charges 1.7kWh pack in ~5h</td>
+                </tr>
+                <tr>
+                    <td><strong>Current (fast)</strong></td>
+                    <td>10A</td>
+                    <td>10A</td>
+                    <td>Charges in ~2.5h; more heat</td>
+                </tr>
+                <tr>
+                    <td><strong>Input</strong></td>
+                    <td colspan="2">110–240V AC (universal)</td>
+                    <td>Check for your region</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Charger Types</h3>
+
+        <ul>
+            <li><strong>Fixed-voltage "brick" chargers ($30–80)</strong> — The most common. A sealed power supply with a fixed output voltage (e.g., 58.8V for 14S). Simple, reliable, but no adjustability. You can't easily implement the 80% rule without external tricks (timer, voltage monitor).</li>
+            <li><strong>Adjustable-voltage chargers ($80–200)</strong> — Have a dial or digital display to set the output voltage. Perfect for the 80% rule — just set output to 56.0V (14S) or 48.0V (12S). Worth the extra cost for battery longevity. Look for chargers marketed to the e-bike or EV market.</li>
+            <li><strong>RC hobby chargers + power supply ($100–300 total)</strong> — Chargers like the iCharger 306B or SkyRC Q200 paired with a bench power supply. Maximum flexibility: adjustable voltage, current, charge profiles, cell-level monitoring. Overkill for most riders but excellent for builders who want full control.</li>
+        </ul>
+
+        <div class="warning-box">
+            <h4>⚠️ Voltage Accuracy Matters</h4>
+            <p>A charger that's off by even 0.1V across the pack means some cells may be overcharged. On a 14S pack, if the charger outputs 59.2V instead of 58.8V, some cells could be pushed to 4.23V — above the safe maximum. Buy a charger from a reputable source, and verify its output voltage with a multimeter when you first receive it.</p>
+        </div>
+
+        <h3>Recommended Chargers by Budget</h3>
+
+        <table class="settings-table">
+            <thead>
+                <tr>
+                    <th>Budget</th>
+                    <th>Option</th>
+                    <th>Why</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Budget ($30–60)</strong></td>
+                    <td>Generic 58.8V / 50.4V 5A brick</td>
+                    <td>Works fine; use a timer for 80% rule. Verify voltage with multimeter.</td>
+                </tr>
+                <tr>
+                    <td><strong>Mid ($80–150)</strong></td>
+                    <td>Adjustable voltage charger (e-bike type)</td>
+                    <td>Best value. Set voltage to 80% target. No timer needed.</td>
+                </tr>
+                <tr>
+                    <td><strong>Pro ($150–300)</strong></td>
+                    <td>iCharger + power supply</td>
+                    <td>Full control. Multiple profiles, cell monitoring, data logging.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Section 6 -->
+        <h2 id="bms-balancing">6. BMS Balancing: What It Does and When It Matters</h2>
+
+        <p>Your BMS (Battery Management System) does several jobs, but <strong>cell balancing</strong> is the one that matters most for longevity.</p>
+
+        <h3>Why Cells Get Unbalanced</h3>
+        <p>Even in a well-built pack using cells from the same batch, slight differences in internal resistance, capacity, and self-discharge rate cause cells to drift apart over time. After 50–100 cycles, one series group might be at 4.15V while another is at 4.05V when the pack is "full." This means:</p>
+        <ul>
+            <li>The high cells are being stressed more than necessary</li>
+            <li>The low cells limit your usable capacity (the BMS cuts off discharge based on the weakest cell)</li>
+            <li>Without balancing, the spread gets worse over time — the gap widens</li>
+        </ul>
+
+        <h3>How Balancing Works</h3>
+        <p>Most eFoil BMS units use <strong>passive balancing</strong> — they bleed excess energy from the highest cells through small resistors during charging. This happens during the CV phase when cells are near full voltage. The BMS monitors each series group and drains the ones that are ahead until all groups match.</p>
+
+        <p>This is why the CV phase — the slow trickle at the end of charging — is important for balancing. If you always unplug at 80% and never let the BMS complete a full balance cycle, cells can gradually drift apart.</p>
+
+        <h3>The Balancing Routine</h3>
+        <ol>
+            <li><strong>Daily charging:</strong> Charge to 80% (4.0V/cell). Fast and good for longevity.</li>
+            <li><strong>Every 10–15 cycles:</strong> Do a full charge to 100% (4.2V/cell) and let the charger complete the CV phase fully. This gives the BMS time to balance all cells. Ride the same day to bring voltage back down.</li>
+            <li><strong>If you notice reduced range:</strong> Do a full balance charge. Unbalanced cells are the #1 cause of unexpected early cutoffs.</li>
+        </ol>
+
+        <div class="info-box">
+            <h4>💡 Check Your Balance</h4>
+            <p>If your BMS has Bluetooth (JBD, Daly, ANT), use the companion app to check individual cell voltages. A healthy pack should have less than 0.02V spread between cells at rest. If you see 0.05V+ spread, the pack needs a balancing session. Some builders leave the pack on the charger for 6–12 hours after the green light to allow maximum balancing time — though only do this intentionally and occasionally, not as routine.</p>
+        </div>
+
+        <!-- Section 7 -->
+        <h2 id="temperature">7. Temperature: The Silent Battery Killer</h2>
+
+        <p>Temperature is the second most important factor in battery longevity, right after voltage. And unlike voltage, which you control directly via your charger, temperature can sneak up on you.</p>
+
+        <h3>The Numbers</h3>
+
+        <table class="settings-table">
+            <thead>
+                <tr>
+                    <th>Temperature</th>
+                    <th>Effect on Charging</th>
+                    <th>Effect on Longevity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Below 0°C (32°F)</strong></td>
+                    <td>🔴 Do NOT charge — lithium plating risk</td>
+                    <td>Can cause permanent damage in one charge</td>
+                </tr>
+                <tr>
+                    <td><strong>0–10°C (32–50°F)</strong></td>
+                    <td>🟡 Charge at reduced rate (half speed)</td>
+                    <td>Acceptable for storage</td>
+                </tr>
+                <tr>
+                    <td><strong>10–25°C (50–77°F)</strong></td>
+                    <td>🟢 Ideal charging temperature</td>
+                    <td>Best for longevity</td>
+                </tr>
+                <tr>
+                    <td><strong>25–35°C (77–95°F)</strong></td>
+                    <td>🟢 Fine for charging</td>
+                    <td>Mild acceleration of aging</td>
+                </tr>
+                <tr>
+                    <td><strong>35–45°C (95–113°F)</strong></td>
+                    <td>🟡 Charge at reduced rate</td>
+                    <td>Noticeable acceleration of aging</td>
+                </tr>
+                <tr>
+                    <td><strong>Above 45°C (113°F)</strong></td>
+                    <td>🔴 Do NOT charge</td>
+                    <td>Rapid degradation and safety risk</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Practical Temperature Rules</h3>
+
+        <ul>
+            <li><strong>Never charge in direct sunlight.</strong> A black Pelican case in the sun can easily reach 50°C+ inside. Charge in shade or indoors.</li>
+            <li><strong>Let the battery cool after riding before charging.</strong> High-current discharge heats the pack. Wait 15–30 minutes before plugging in the charger.</li>
+            <li><strong>Winter charging:</strong> If the pack has been in a cold car overnight, bring it inside and let it warm to room temperature before charging. Charging below 0°C causes lithium plating on the anode — this is permanent, dangerous damage that can lead to internal short circuits.</li>
+            <li><strong>Store at moderate temperatures.</strong> A temperature-controlled indoor space is ideal. Garages that swing from freezing to 40°C are worse than a climate-controlled closet.</li>
+        </ul>
+
+        <div class="danger-box">
+            <h4>🔴 Lithium Plating Is Irreversible</h4>
+            <p>Charging lithium-ion cells below 0°C (32°F) causes metallic lithium to plate onto the anode surface instead of intercalating into the graphite structure. This lithium plating is permanent — it can't be reversed by subsequent cycling. Worse, the plated lithium can form dendrites that grow through the separator and create internal short circuits, leading to thermal runaway. In cold climates, this is the #1 risk to battery safety. When in doubt, bring the pack inside and let it warm up before charging.</p>
+        </div>
+
+        <!-- Section 8 -->
+        <h2 id="storage">8. Storage Best Practices</h2>
+
+        <p>How you store your battery between sessions has a bigger impact on its lifespan than how you ride. Here are the rules:</p>
+
+        <h3>Target: 40–60% State of Charge (3.7–3.85V per cell)</h3>
+
+        <p>This is the sweet spot for minimizing calendar aging. At this voltage, the electrochemical stress on the cell is at its lowest. Both the cathode and anode are in a relaxed state, and the rate of parasitic side reactions (SEI growth, electrolyte decomposition) is minimized.</p>
+
+        <table class="settings-table">
+            <thead>
+                <tr>
+                    <th>Storage Duration</th>
+                    <th>Acceptable SOC Range</th>
+                    <th>Pack Voltage (14S)</th>
+                    <th>Pack Voltage (12S)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>1–3 days</strong></td>
+                    <td>Any (just charge before next ride)</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td><strong>1–2 weeks</strong></td>
+                    <td>40–80%</td>
+                    <td>51.5–56.0V</td>
+                    <td>44.2–48.0V</td>
+                </tr>
+                <tr>
+                    <td><strong>1+ months</strong></td>
+                    <td>40–60%</td>
+                    <td>51.5–53.9V</td>
+                    <td>44.2–46.2V</td>
+                </tr>
+                <tr>
+                    <td><strong>Seasonal (3+ months)</strong></td>
+                    <td>50% ± 5%</td>
+                    <td>52.5V</td>
+                    <td>45.0V</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Storage Environment</h3>
+        <ul>
+            <li><strong>Temperature:</strong> 10–25°C (50–77°F) is ideal. Cooler is better than hotter, but avoid freezing.</li>
+            <li><strong>Humidity:</strong> Low to moderate. High humidity + exposed connectors = corrosion.</li>
+            <li><strong>Surface:</strong> Non-flammable (concrete, metal shelf). Not on carpet, not near combustibles.</li>
+            <li><strong>Container:</strong> A fireproof bag or metal ammo can (lid cracked for venting) is ideal for indoor storage.</li>
+            <li><strong>Disconnect:</strong> If your pack has a main power switch or XT90 loop key, leave it disconnected during storage. This prevents any parasitic drain from the BMS, ESC, or other electronics.</li>
+        </ul>
+
+        <div class="info-box">
+            <h4>💡 The "Ride Day" Routine</h4>
+            <p>If you ride 2–3 times a week, you don't need to hit storage voltage between every session. Just follow this pattern: charge to 80% the evening before or morning of your ride → ride → come home at 30–50% SOC → leave it there until you charge for the next session. You're naturally staying in the ideal range without extra work.</p>
+        </div>
+
+        <!-- Section 9 -->
+        <h2 id="seasonal">9. Seasonal Storage (Off-Season)</h2>
+
+        <p>Many eFoil riders have an off-season — winter in cold climates, or months away from the water. Extended storage requires more care.</p>
+
+        <h3>Before Storing for the Season</h3>
+        <ol>
+            <li><strong>Do a full balance charge</strong> — Charge to 100%, let the BMS balance fully, then discharge to 50% (storage voltage). This ensures all cells start storage in sync.</li>
+            <li><strong>Check individual cell voltages</strong> — If you have Bluetooth BMS, verify all cells are within 0.02V of each other.</li>
+            <li><strong>Disconnect everything</strong> — Remove the loop key or switch off the main isolator. You want zero current draw during storage.</li>
+            <li><strong>Clean connectors</strong> — Wipe all exposed metal contacts with a clean cloth. Apply a thin coat of dielectric grease to prevent corrosion.</li>
+            <li><strong>Inspect the enclosure</strong> — Check gaskets and seals. If you rode in saltwater, rinse the outside with fresh water and dry thoroughly before storage.</li>
+        </ol>
+
+        <h3>During Storage</h3>
+        <ul>
+            <li><strong>Check voltage monthly.</strong> Self-discharge is typically 1–3% per month. If voltage drops below 40% SOC, top up to 50%.</li>
+            <li><strong>Store indoors</strong> if at all possible. A climate-controlled room is ideal. An unheated garage is acceptable if temperatures stay above freezing.</li>
+            <li><strong>Don't store in a car</strong> — temperature swings are extreme (freezing nights, hot afternoons).</li>
+        </ul>
+
+        <h3>Coming Out of Storage</h3>
+        <ol>
+            <li><strong>Check overall voltage</strong> — Should still be in the 40–60% range. If it's dropped significantly (below 30%), a cell may have a problem.</li>
+            <li><strong>Check individual cell voltages</strong> — Look for any cell more than 0.1V below the others. A single low cell indicates a possible defect.</li>
+            <li><strong>Charge slowly for the first charge</strong> — Use a lower current rate (2–3A instead of 5–10A) for the first charge after long storage. This is gentler on cells that have been resting.</li>
+            <li><strong>Do a balance charge to 100%</strong> — After the first gentle charge, go to 100% and let the BMS balance fully. Then ride normally.</li>
+        </ol>
+
+        <div class="warning-box">
+            <h4>⚠️ What If Voltage Is Very Low After Storage?</h4>
+            <p>If any cell has dropped below 2.5V during storage, that cell may be damaged. Do NOT attempt to fast-charge it. Use a lab power supply to slowly trickle-charge the affected cell at very low current (0.1A) back up to 3.0V, then monitor it. If it won't hold voltage, the cell (and likely the parallel group it's in) needs to be replaced. A single deep-discharged cell in a pack of healthy cells is a safety hazard.</p>
+        </div>
+
+        <!-- Section 10 -->
+        <h2 id="discharge">10. Discharge Habits That Matter</h2>
+
+        <p>How you ride affects battery life too — though less dramatically than charging and storage habits.</p>
+
+        <h3>Depth of Discharge (DoD)</h3>
+        <p>How deeply you discharge the battery each session affects cycle life:</p>
+        <ul>
+            <li><strong>80% → 20% (60% DoD)</strong> — Gentle on the pack. ~1000+ cycles.</li>
+            <li><strong>100% → 10% (90% DoD)</strong> — Stressful. ~300–500 cycles.</li>
+            <li><strong>80% → 40% (40% DoD)</strong> — Very gentle. ~1500+ cycles. But only ~40% of range per session.</li>
+        </ul>
+
+        <p>The sweet spot for most riders is charging to 80% and riding down to 20–30%. You get ~50–60% of your pack's total capacity per session, which for a 1.7kWh pack is still 0.85–1.0kWh — enough for 35–60 minutes of foiling.</p>
+
+        <h3>High-Current Spikes</h3>
+        <p>Full-throttle launches and sustained high-speed runs pull 60–100A+ from the pack. While quality cells handle this within their ratings, frequent high-current draws generate heat and accelerate wear. Smooth throttle application and cruising on foil (typically 20–40A) are much easier on the cells than constant full-power blasts.</p>
+
+        <h3>Set Your VESC Cutoffs Correctly</h3>
+        <p>Configure your VESC (or other ESC) to protect the battery:</p>
+        <ul>
+            <li><strong>Soft cutoff start:</strong> 3.2V per cell (gradual power reduction begins)</li>
+            <li><strong>Hard cutoff:</strong> 3.0V per cell (power cuts completely)</li>
+            <li><strong>Never rely on BMS cutoff alone</strong> — the BMS low-voltage cutoff is a last resort, not a riding indicator. The VESC soft cutoff gives you warning and a graceful power-down.</li>
+        </ul>
+
+        <!-- Section 11 -->
+        <h2 id="monitoring">11. Monitoring Battery Health Over Time</h2>
+
+        <p>Track these metrics to understand how your pack is aging:</p>
+
+        <h3>What to Track</h3>
+        <ul>
+            <li><strong>Total capacity</strong> — Your pack's rated capacity when new vs what you get now. If your 14S8P pack (33.6Ah) now delivers only 28Ah to the same voltage cutoffs, you've lost ~17% capacity.</li>
+            <li><strong>Cell balance spread</strong> — Check individual cell voltages at rest (wait 30 min after charge/ride). A healthy pack: &lt;0.02V spread. Concerning: 0.05V+. Problem: 0.1V+.</li>
+            <li><strong>Internal resistance</strong> — If you have an IR meter or an RC charger that measures it, track resistance per cell group. Rising internal resistance means aging.</li>
+            <li><strong>Ride time</strong> — If your usual session drops from 60 to 45 minutes with the same riding style and charge level, your pack is losing capacity.</li>
+        </ul>
+
+        <h3>Simple Logging</h3>
+        <p>Keep a simple log — even just a spreadsheet or notebook:</p>
+        <ul>
+            <li>Date, charge cycles (estimate), pre-ride voltage, post-ride voltage, ride time, notes</li>
+            <li>Monthly: full cell voltages at rest, any balance issues noted</li>
+        </ul>
+        <p>This data makes it obvious when cells are starting to fail and helps you decide when it's time to rebuild.</p>
+
+        <!-- Section 12 -->
+        <h2 id="charging-safety">12. Charging Safety</h2>
+
+        <p>Lithium-ion batteries store an enormous amount of energy in a small space. A 14S8P eFoil pack contains about 1.7 kWh — enough to heat a room or, if things go wrong, start a serious fire. Charging is the highest-risk moment because you're pushing energy into the cells.</p>
+
+        <h3>Non-Negotiable Rules</h3>
+        <ol>
+            <li><strong>Never charge unattended.</strong> If you leave the house, unplug. If you fall asleep, unplug. Use a timer as backup.</li>
+            <li><strong>Charge on a non-flammable surface.</strong> Concrete, tile, metal sheet. Not on a wooden table, not on carpet.</li>
+            <li><strong>Have fire suppression nearby.</strong> A Class D fire extinguisher, a bucket of dry sand, or at minimum a large metal container you can place over the battery to smother flames. Water is ineffective on lithium fires — it can make them worse.</li>
+            <li><strong>Charge away from exits.</strong> Don't charge between you and the door. If something goes wrong, you want a clear escape path.</li>
+            <li><strong>Inspect before every charge.</strong> Look for swelling, unusual smells (sweet chemical odor), damaged wires, or liquid residue. Any of these = do NOT charge.</li>
+            <li><strong>Use the correct charger.</strong> Wrong voltage charger = overcharge = fire. Verify S-count matches.</li>
+        </ol>
+
+        <div class="danger-box">
+            <h4>🔴 Signs of Imminent Battery Failure</h4>
+            <p><strong>Stop charging immediately and move the battery outdoors</strong> if you observe any of these: cell swelling or puffing, hissing or venting sounds, unusual heat from a specific area of the pack, sweet chemical smell, smoke, or rising temperature that doesn't stabilize. If a cell enters thermal runaway, it will produce toxic gases and intense fire. Get the battery outside, clear the area, and call emergency services. Do not attempt to extinguish a lithium battery fire yourself unless you have proper equipment.</p>
+        </div>
+
+        <h3>Charging Location Checklist</h3>
+        <ul>
+            <li>✅ Well-ventilated area (venting cells produce toxic gases)</li>
+            <li>✅ Non-flammable surface (concrete floor, metal tray)</li>
+            <li>✅ Away from combustible materials (2m+ clearance)</li>
+            <li>✅ Smoke detector overhead or nearby</li>
+            <li>✅ Fire extinguisher / sand bucket within reach</li>
+            <li>✅ Not blocking exits</li>
+            <li>✅ Not in living/sleeping areas</li>
+            <li>✅ Not in a sealed vehicle</li>
+        </ul>
+
+        <!-- Section 13 -->
+        <h2 id="mistakes">13. 10 Common Mistakes That Kill eFoil Batteries</h2>
+
+        <ol>
+            <li><strong>Storing fully charged for weeks.</strong> Leaving a pack at 4.2V/cell for a month is like adding 30–50 charge cycles of wear. Drop to storage voltage if you won't ride for >1 week.</li>
+            <li><strong>Charging in direct sunlight.</strong> Black enclosures in the sun can exceed 50°C internally. Always charge in shade or indoors.</li>
+            <li><strong>Routinely draining to empty.</strong> Riding until the BMS cutoff every session maximizes stress. Stop at 20–30% for everyday rides.</li>
+            <li><strong>Charging immediately after riding.</strong> The pack is hot after a hard session. Wait 15–30 minutes for it to cool before plugging in.</li>
+            <li><strong>Using a wrong-voltage charger.</strong> A 48V charger on a 14S pack (which needs 58.8V) won't charge fully. A 60V charger will overcharge and potentially cause a fire. Match the charger to the pack.</li>
+            <li><strong>Never doing a balance charge.</strong> If you always charge to 80%, cells slowly drift apart. Do a full 100% balance charge every 10–15 cycles.</li>
+            <li><strong>Ignoring a swelling cell.</strong> Any physical change in cell shape = stop using the pack immediately. It's not "a little puffed" — it's a ticking time bomb.</li>
+            <li><strong>Charging in freezing temperatures.</strong> Even one charge below 0°C can plate lithium and cause permanent, dangerous damage.</li>
+            <li><strong>Leaving the pack connected during storage.</strong> The BMS, ESC standby, and other electronics draw milliamps constantly. Over weeks, this can deep-discharge the pack.</li>
+            <li><strong>Using cheap, no-name cells.</strong> This is a battery build guide concern more than a charging one, but cheap cells have higher self-discharge rates, worse balance characteristics, and lower cycle life — making every other mistake worse.</li>
+        </ol>
+
+        <!-- Section 14 -->
+        <h2 id="routines">14. Practical Charging Routines</h2>
+
+        <p>Here are ready-to-follow routines based on how often you ride:</p>
+
+        <h3>Frequent Rider (3+ sessions/week)</h3>
+        <ul>
+            <li>Charge to 80% the evening before each ride</li>
+            <li>Ride, come home at 20–40% SOC, leave it there until next pre-ride charge</li>
+            <li>Every 2 weeks: full 100% balance charge, ride the same day</li>
+            <li>No storage prep needed — you're always cycling</li>
+        </ul>
+
+        <h3>Weekend Warrior (1–2 sessions/week)</h3>
+        <ul>
+            <li>Charge to 80% Friday evening or Saturday morning</li>
+            <li>Ride Saturday/Sunday, end at 20–40% SOC</li>
+            <li>Leave at post-ride voltage until next weekend</li>
+            <li>Monthly: full 100% balance charge before a ride</li>
+            <li>If skipping a weekend, check voltage is in 40–60% range</li>
+        </ul>
+
+        <h3>Occasional Rider (1–2 sessions/month)</h3>
+        <ul>
+            <li>Store at 50% SOC between rides</li>
+            <li>Charge to 80–100% the day before riding</li>
+            <li>After riding, if you won't ride again within a week, discharge/charge to ~50%</li>
+            <li>Every 2–3 rides: full 100% balance charge, ride the same day</li>
+            <li>Check voltage monthly between rides</li>
+        </ul>
+
+        <h3>Seasonal Rider (6+ months between seasons)</h3>
+        <ul>
+            <li>End of season: full balance charge → discharge to 50% → disconnect → store indoors</li>
+            <li>Monthly: check voltage, top up if needed</li>
+            <li>Start of season: gentle first charge (low current), then full balance charge</li>
+            <li>First ride: take it easy, monitor for any unusual behavior</li>
+        </ul>
+
+        <!-- Section 15 -->
+        <h2 id="faq">FAQ</h2>
+
+        <p>Covered by structured data above — see the FAQ schema for the 6 most common questions.</p>
+
+        <p>Additional community questions:</p>
+
+        <h3>Can I use a car charger (12V inverter) to charge my eFoil battery?</h3>
+        <p>Technically yes, with a sufficiently powerful inverter (500W+ for a 5A charger). But vehicle inverters can produce dirty power with voltage spikes, and the car's 12V system adds another potential failure point. It's fine for occasional field charging, but not ideal for daily use. Use a surge protector between the inverter and charger.</p>
+
+        <h3>My pack is 2 years old. Should I replace it?</h3>
+        <p>Age alone isn't the deciding factor — performance is. If you're still getting 70%+ of original ride time and cells are balanced, keep riding. If ride time has dropped below 60% of original, you're deep-discharging more often (which accelerates further degradation), and it's time to rebuild. Check individual cell voltages — one weak parallel group can make the whole pack seem worse than it is. Sometimes replacing one group fixes the problem.</p>
+
+        <h3>Should I charge after every ride, even if I only used 20%?</h3>
+        <p>No need. If you ended at 60% SOC and you're riding again in a few days, just leave it. You're already in a comfortable voltage range. Only charge when you need to — topping up unnecessarily adds cycles.</p>
+
+        <!-- CTA -->
+        <div class="cta-box">
+            <h3>🔋 Build Your Battery Right from the Start</h3>
+            <p>Good charging habits start with a well-built pack. Check out our companion guides:</p>
+            <div class="cta-links">
+                <a href="/blog-efoil-battery-guide.html" class="cta-link">🔋 Battery Build Guide</a>
+                <a href="/efoil-range-calculator.html" class="cta-link">📊 Range Calculator</a>
+                <a href="/efoil-configurator.html" class="cta-link">⚡ Build Configurator</a>
+                <a href="/blog-efoil-troubleshooting.html" class="cta-link">🔧 Troubleshooting</a>
+                <a href="/blog-efoil-waterproofing-guide.html" class="cta-link">💧 Waterproofing Guide</a>
+            </div>
+        </div>
+
+        <!-- Related Articles -->
+        <h2>Related Guides</h2>
+        <div class="related-articles">
+            <a href="/blog-efoil-battery-guide.html" class="related-card">
+                <div class="icon">🔋</div>
+                <h4>DIY eFoil Battery Guide</h4>
+                <p>Cell selection, BMS setup, spot welding, and pack assembly — the build companion to this charging guide.</p>
+            </a>
+            <a href="/blog-efoil-wiring-guide.html" class="related-card">
+                <div class="icon">⚡</div>
+                <h4>Wiring & Electronics Guide</h4>
+                <p>Power paths, anti-spark, connectors, fuses, kill switches — the electrical backbone of your build.</p>
+            </a>
+            <a href="/blog-efoil-waterproofing-guide.html" class="related-card">
+                <div class="icon">💧</div>
+                <h4>Waterproofing Guide</h4>
+                <p>Sealing electronics, enclosures, and connections — keeping water away from your battery pack.</p>
+            </a>
+            <a href="/blog-efoil-troubleshooting.html" class="related-card">
+                <div class="icon">🔧</div>
+                <h4>Troubleshooting Guide</h4>
+                <p>When things go wrong — VESC faults, cutouts, overheating, water damage, and performance issues.</p>
+            </a>
+        </div>
+
+    </article>
+
+    <footer>
+        <p>&copy; 2026 PacificMeister · Open-Source Foiling Innovation</p>
+        <ul class="footer-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/blog.html">Blog</a></li>
+            <li><a href="https://foil.zone" target="_blank">FOIL.zone</a></li>
+            <li><a href="https://www.youtube.com/@PacificMeister" target="_blank">YouTube</a></li>
+            <li><a href="https://github.com/pacificmeister" target="_blank">GitHub</a></li>
+        </ul>
+    </footer>
+</body>
+</html>
