@@ -1,0 +1,32 @@
+name: IndexNow Submit
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  submit-indexnow:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Submit changed URLs to IndexNow
+        run: |
+          python tools/indexnow_submit.py \
+            --site-dir . \
+            --host pacificmeister.github.io \
+            --key 9f8bc65fff8e2e7528fe6786a86fa406 \
+            --key-location https://pacificmeister.github.io/9f8bc65fff8e2e7528fe6786a86fa406.txt \
+            --base-ref "${{ github.event.before }}" \
+            --head-ref "${{ github.sha }}"
