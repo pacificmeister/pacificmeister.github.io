@@ -1,0 +1,43 @@
+name: SEO Opportunities Report
+
+on:
+  schedule:
+    - cron: '20 21 * * 2'
+  workflow_dispatch:
+
+jobs:
+  generate-report:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Generate SEO opportunities report
+        run: |
+          python tools/seo_audit.py \
+            --site-dir . \
+            --min-inbound 5 \
+            --reinforce-count 8 \
+            --suggestion-count 5 \
+            --write-report reports/seo-link-opportunities.md
+
+      - name: Commit updated report
+        run: |
+          if git diff --quiet -- reports/seo-link-opportunities.md; then
+            echo "No report changes"
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports/seo-link-opportunities.md
+          git commit -m "Update SEO opportunities report"
+          git push
