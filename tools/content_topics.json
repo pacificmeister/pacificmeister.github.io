@@ -1,0 +1,212 @@
+[
+  {
+    "topic": "Best eFoil Accessories",
+    "primaryKeyword": "best efoil accessories",
+    "keywords": ["efoil accessories", "helmet", "impact vest", "radio", "gear"],
+    "intent": 4,
+    "value": 3,
+    "angle": "High-conversion accessory stack by budget and rider profile.",
+    "outline": [
+      "Quick picks by rider type",
+      "Safety essentials vs nice-to-have gear",
+      "Budget, mid, premium gear bundles",
+      "Affiliate-ready buying checklist"
+    ]
+  },
+  {
+    "topic": "eFoil Insurance Guide",
+    "primaryKeyword": "efoil insurance",
+    "keywords": ["efoil insurance", "liability", "coverage", "policy", "claim"],
+    "intent": 5,
+    "value": 4,
+    "angle": "Practical insurance path for owners with region-specific caveats.",
+    "outline": [
+      "What insurers classify eFoils as",
+      "Coverage types that matter",
+      "How to avoid denied claims",
+      "Provider comparison checklist"
+    ]
+  },
+  {
+    "topic": "eFoil Repair Cost Guide",
+    "primaryKeyword": "efoil repair cost",
+    "keywords": ["efoil repair", "repair cost", "replacement", "parts cost", "service"],
+    "intent": 5,
+    "value": 5,
+    "angle": "Real-world failure modes and expected repair bills before buying.",
+    "outline": [
+      "Most common failures and cost ranges",
+      "DIY vs authorized service economics",
+      "Battery replacement math",
+      "Preventive maintenance to cut cost"
+    ]
+  },
+  {
+    "topic": "eFoil Safety Gear Checklist",
+    "primaryKeyword": "efoil safety gear",
+    "keywords": ["efoil safety gear", "helmet", "impact vest", "leash", "safety"],
+    "intent": 4,
+    "value": 3,
+    "angle": "Simple, no-BS checklist for safe sessions and local compliance.",
+    "outline": [
+      "Must-have gear vs optional upgrades",
+      "Warm water vs cold water setup",
+      "Beginner mistakes with safety kit",
+      "Printable pre-ride checklist"
+    ]
+  },
+  {
+    "topic": "Best eFoil Spots in California",
+    "primaryKeyword": "best efoil spots california",
+    "keywords": ["efoil spots", "california", "launch", "local rules", "conditions"],
+    "intent": 3,
+    "value": 3,
+    "angle": "Location guide with launch logistics, conditions, and legal notes.",
+    "outline": [
+      "Top beginner-friendly locations",
+      "Wind/chop and traffic considerations",
+      "Local legal and etiquette notes",
+      "Trip-planning checklist"
+    ]
+  },
+  {
+    "topic": "eFoil Lessons vs Self Learning",
+    "primaryKeyword": "efoil lessons",
+    "keywords": ["efoil lessons", "learn efoil", "coach", "self learning", "progression"],
+    "intent": 4,
+    "value": 4,
+    "angle": "Decision framework for paying for instruction versus DIY progression.",
+    "outline": [
+      "When lessons save time and money",
+      "How to evaluate schools/coaches",
+      "Self-learning path with risk controls",
+      "30-day progression plan"
+    ]
+  },
+  {
+    "topic": "Tow Boogie vs Foil Drive",
+    "primaryKeyword": "tow boogie vs foil drive",
+    "keywords": ["tow boogie", "foil drive", "foil assist", "comparison", "range"],
+    "intent": 5,
+    "value": 5,
+    "angle": "Head-to-head for riders deciding between tow systems and foil assist.",
+    "outline": [
+      "Use-case matrix: waves, downwind, training",
+      "Cost of ownership comparison",
+      "Setup complexity and portability",
+      "Who should buy what"
+    ]
+  },
+  {
+    "topic": "Tow Boogie DIY Battery Guide",
+    "primaryKeyword": "tow boogie battery",
+    "keywords": ["tow boogie battery", "runtime", "voltage", "waterproof", "lithium"],
+    "intent": 5,
+    "value": 5,
+    "angle": "Battery sizing, chemistry, and safety for real sessions in chop and swell.",
+    "outline": [
+      "Battery architecture options",
+      "Runtime by riding style",
+      "Enclosure and waterproofing strategy",
+      "Charging and storage safety"
+    ]
+  },
+  {
+    "topic": "How to Transport an eFoil",
+    "primaryKeyword": "how to transport an efoil",
+    "keywords": ["transport efoil", "car", "travel case", "battery transport", "airline"],
+    "intent": 4,
+    "value": 4,
+    "angle": "Practical transport playbook for cars, boats, and flights.",
+    "outline": [
+      "Board/foil breakdown and packing",
+      "Battery transport constraints",
+      "Vehicle setup examples",
+      "Damage prevention checklist"
+    ]
+  },
+  {
+    "topic": "eFoil Buyer Decision Quiz Guide",
+    "primaryKeyword": "which efoil should i buy",
+    "keywords": ["which efoil", "buy efoil", "decision", "rider profile", "comparison"],
+    "intent": 5,
+    "value": 4,
+    "angle": "Commercial-intent article feeding directly into the existing finder quiz.",
+    "outline": [
+      "4 key buying variables",
+      "Fast recommendations by profile",
+      "Common buying mistakes",
+      "Use the interactive finder next"
+    ]
+  },
+  {
+    "topic": "eFoil Motor Maintenance Schedule",
+    "primaryKeyword": "efoil motor maintenance",
+    "keywords": ["motor maintenance", "bearing", "corrosion", "service interval", "efoil motor"],
+    "intent": 4,
+    "value": 4,
+    "angle": "Component-specific maintenance cadence with failure prevention focus.",
+    "outline": [
+      "Daily, weekly, monthly tasks",
+      "Saltwater corrosion controls",
+      "Bearing and prop inspection",
+      "When to replace versus repair"
+    ]
+  },
+  {
+    "topic": "eFoil for Heavy Riders",
+    "primaryKeyword": "best efoil for heavy riders",
+    "keywords": ["heavy riders", "weight limit", "board volume", "foil area", "stability"],
+    "intent": 4,
+    "value": 4,
+    "angle": "Dedicated setup recommendations for 100kg+ riders.",
+    "outline": [
+      "Board and foil sizing by weight",
+      "Power and battery implications",
+      "Brand models that work well",
+      "Progression tips for bigger riders"
+    ]
+  },
+  {
+    "topic": "eFoil Winter Storage Guide",
+    "primaryKeyword": "efoil winter storage",
+    "keywords": ["winter storage", "off season", "battery storage", "humidity", "preserve"],
+    "intent": 3,
+    "value": 3,
+    "angle": "Off-season preservation checklist to prevent expensive spring failures.",
+    "outline": [
+      "Battery state-of-charge targets",
+      "Humidity and corrosion controls",
+      "Storage prep by component",
+      "Pre-season recommission checklist"
+    ]
+  },
+  {
+    "topic": "Tow Boogie Hull Design Basics",
+    "primaryKeyword": "tow boogie hull design",
+    "keywords": ["tow boogie hull", "drag", "stability", "planing", "design"],
+    "intent": 4,
+    "value": 5,
+    "angle": "Engineering-oriented primer that supports future product differentiation.",
+    "outline": [
+      "Hydrodynamic goals for tow boogies",
+      "Hull shape tradeoffs",
+      "Pitch and tow-point effects",
+      "DIY prototype testing protocol"
+    ]
+  },
+  {
+    "topic": "eFoil Waterproof Connectors Guide",
+    "primaryKeyword": "efoil waterproof connectors",
+    "keywords": ["waterproof connectors", "ip68", "connector", "dielectric grease", "corrosion"],
+    "intent": 4,
+    "value": 4,
+    "angle": "Parts-level connector selection and sealing best practices.",
+    "outline": [
+      "Connector families and use cases",
+      "Current ratings and heat limits",
+      "Sealant and strain relief methods",
+      "Inspection and replacement intervals"
+    ]
+  }
+]
