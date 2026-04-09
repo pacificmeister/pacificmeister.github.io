@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tow Boogie Hull Design Basics: Fast, Stable, Buildable | PacificMeister</title>
+    <meta name="description" content="Tow boogie hull design basics for DIY builders: rocker, rails, tow-point geometry, pitch control, drag reduction, and a practical test protocol.">
+    <meta name="keywords" content="tow boogie hull design, diy tow boogie, electric tow boogie, foil towing, hull rocker, tow point setup">
+    <link rel="canonical" href="https://pacificmeister.github.io/blog-tow-boogie-hull-design.html">
+    <link rel="stylesheet" href="style.css">
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://pacificmeister.github.io/blog-tow-boogie-hull-design.html">
+    <meta property="og:title" content="Tow Boogie Hull Design Basics: Fast, Stable, Buildable | PacificMeister">
+    <meta property="og:description" content="Engineering-first tow boogie hull design: what matters, what doesn't, and how to test prototypes fast.">
+    <meta property="og:image" content="https://pacificmeister.github.io/og-image.png">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://pacificmeister.github.io/blog-tow-boogie-hull-design.html">
+    <meta property="twitter:title" content="Tow Boogie Hull Design Basics: Fast, Stable, Buildable | PacificMeister">
+    <meta property="twitter:description" content="Engineering-first tow boogie hull design for DIY and small-batch development.">
+    <meta property="twitter:image" content="https://pacificmeister.github.io/og-image.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Tow Boogie Hull Design Basics: Fast, Stable, Buildable",
+      "datePublished": "2026-04-08T14:00:00-07:00",
+      "dateModified": "2026-04-08T14:00:00-07:00",
+      "author": {"@type": "Person", "name": "PacificMeister"},
+      "publisher": {
+        "@type": "Organization",
+        "name": "PacificMeister",
+        "logo": {"@type": "ImageObject", "url": "https://pacificmeister.github.io/og-image.png"}
+      },
+      "mainEntityOfPage": {"@type": "WebPage", "@id": "https://pacificmeister.github.io/blog-tow-boogie-hull-design.html"},
+      "description": "Tow boogie hull design basics for DIY builders and product teams: hydrodynamics, geometry, and test workflow.",
+      "articleSection": "Tow Boogie Guides"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does tow boogie hull shape really matter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Hull geometry changes drag, tracking, launch behavior, and line tension stability. For most setups, a predictable and low-drag hull matters more than chasing top speed gains."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the most important geometry for beginner-friendly prototypes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Start with moderate rocker, soft entry rails, stable tow-point height, and neutral pitch balance. Keep geometry conservative first, then tune in small steps."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How should I test hull changes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Change one variable at a time, run repeatable test loops in similar conditions, and log acceleration feel, tracking, spray, battery draw, and rider feedback."
+          }
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="index.html">PacificMeister</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html#guides">Guides</a></li>
+                    <li><a href="index.html#tools">Tools</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="foilzone.html">FOIL.zone</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <article class="container blog-post">
+            <header>
+                <h2>Tow Boogie Hull Design Basics: Fast, Stable, Buildable</h2>
+                <p class="post-meta">Published on <time datetime="2026-04-08">April 8, 2026</time> by PacificMeister | Category: Tow Boogie Guides</p>
+                <img src="og-image.png" alt="Tow boogie hull design planning for wave towing" class="hero-image">
+            </header>
+
+            <section class="post-content">
+                <p>If you are building a tow boogie, hull design is where performance becomes predictable instead of lucky. Most DIY builds focus on motor and battery first, but the hull controls how cleanly that power turns into usable pull. This guide gives you a practical baseline: what to prioritize, what to ignore early, and how to test improvements quickly.</p>
+
+                <p>For context, this article complements the broader comparison in <a href="blog-tow-boogie-vs-efoil.html">Tow Boogie vs eFoil</a>, and the build workflow in the <a href="https://pacificmeister.github.io/towboogie-build/guide.html">Tow Boogie Build Guide</a>.</p>
+
+                <h2>1) Hydrodynamic goals for a tow boogie</h2>
+                <p>A good tow boogie hull should do four things well:</p>
+                <ul>
+                    <li><strong>Track straight</strong> so the rider gets clean, confidence-inspiring pull.</li>
+                    <li><strong>Minimize drag at towing speed</strong> to preserve battery and motor temperature.</li>
+                    <li><strong>Stay predictable in chop</strong> instead of porpoising or side-slapping.</li>
+                    <li><strong>Recover cleanly after throttle changes</strong> without violent pitch swings.</li>
+                </ul>
+                <p>Top speed is not the main KPI in early prototypes. Repeatability is. If it pulls the same every run, you can actually tune it.</p>
+
+                <h2>2) Hull shape trade-offs that matter most</h2>
+                <h3>Rocker (nose-to-tail curve)</h3>
+                <p>Too flat and the hull can pearl in chop. Too much rocker and you add unnecessary drag. For first prototypes, a moderate rocker is usually best. It protects the nose while keeping wetted area reasonable.</p>
+
+                <h3>Entry shape and rails</h3>
+                <p>A softer entry helps the hull settle when it meets texture and boat wake. Sharp rails can feel fast in calm water but become twitchy in mixed conditions. Slightly softened forward rails, then cleaner release aft, is a useful baseline.</p>
+
+                <h3>Planing surface width</h3>
+                <p>Wider planing surfaces increase stability but add drag. Narrower surfaces reduce drag but can feel nervous. For tow applications, a little extra stability is usually worth it, especially when riders are learning timing and line management.</p>
+
+                <h3>Bottom contours</h3>
+                <p>Keep V1 simple. A clean, mostly flat-to-slight-vee bottom is easier to tune than complex channels. Fancy contours can work, but they also hide mistakes and make debugging harder.</p>
+
+                <h2>3) Pitch and tow-point geometry</h2>
+                <p>Many towing problems are geometry problems, not power problems. If the tow point sits too high or too far from your center balance, you induce pitch oscillation and unstable line tension.</p>
+
+                <ul>
+                    <li><strong>Tow point too high:</strong> increases nose-up moment, can trigger porpoising.</li>
+                    <li><strong>Tow point too low:</strong> can feel dead and bury the nose in transition.</li>
+                    <li><strong>Tow point too far aft:</strong> less directional authority, delayed response.</li>
+                    <li><strong>Tow point too far forward:</strong> over-corrective feel in chop.</li>
+                </ul>
+
+                <p>Start conservative, then move in small increments. A few millimeters can be very noticeable once speed and line load rise.</p>
+
+                <h2>4) Powertrain placement and trim</h2>
+                <p>Battery and motor mass define your static trim. If the hull sits tail-heavy, it may feel punchy at launch but inefficient at sustained pull. If nose-heavy, it can plow and spray excessively.</p>
+                <p>Target neutral trim at your typical towing speed, not only at rest. In practice, that means moving components until throttle transitions feel calm and line tension remains steady.</p>
+
+                <h2>5) A practical V1 → V2 testing protocol</h2>
+                <p>Use a repeatable loop and change one variable at a time.</p>
+                <ol>
+                    <li>Run a fixed route in comparable conditions.</li>
+                    <li>Log battery %, ambient conditions, rider weight, and setup notes.</li>
+                    <li>Rate launch stability, tracking, spray, and rider line feel (1-10).</li>
+                    <li>Capture short video from side and rear for pitch/roll review.</li>
+                    <li>Adjust one variable only (tow point, rocker shim, trim weight, or rail edge).</li>
+                </ol>
+
+                <p>This process beats random iteration and creates a real knowledge base you can reuse for future builds or production decisions.</p>
+
+                <h2>6) Common mistakes to avoid</h2>
+                <ul>
+                    <li><strong>Chasing speed before stability:</strong> unstable pull kills rider confidence.</li>
+                    <li><strong>Changing too many variables together:</strong> impossible to identify cause.</li>
+                    <li><strong>Ignoring rider feedback:</strong> instrument data is useful, but line feel matters most.</li>
+                    <li><strong>Over-designing early hulls:</strong> simple geometry accelerates learning.</li>
+                </ul>
+
+                <h2>7) Recommended baseline for builders</h2>
+                <p>If you want one practical starting point:</p>
+                <ul>
+                    <li>Moderate rocker with forgiving nose entry.</li>
+                    <li>Soft-to-clean rail transition (soft forward, cleaner aft).</li>
+                    <li>Neutral trim at towing speed with adjustable battery position.</li>
+                    <li>Tow-point mount with quick micro-adjustment steps.</li>
+                </ul>
+
+                <p>From there, iterate with discipline. Reliable pull and rider control will beat theoretical speed every time.</p>
+
+                <h2>Where to go next</h2>
+                <ul>
+                    <li><a href="blog-tow-boogie-vs-efoil.html">Tow Boogie vs eFoil</a> for use-case decisions.</li>
+                    <li><a href="https://pacificmeister.github.io/towboogie-build/calculator.html">Tow Boogie Performance Calculator</a> for runtime and range planning.</li>
+                    <li><a href="https://pacificmeister.github.io/towboogie-build/guide.html">Tow Boogie Build Guide</a> for full component workflow.</li>
+                    <li><a href="blog.html">PacificMeister Blog</a> for future tow boogie R&D updates.</li>
+                </ul>
+            </section>
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 PacificMeister. Open source foiling knowledge.</p>
+        </div>
+    </footer>
+</body>
+</html>
