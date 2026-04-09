@@ -1,30 +1,14 @@
 # PacificMeister Content Gap Briefs
 
-- Generated: 2026-04-09 06:03 UTC
-- Existing HTML pages scanned: 34
+- Generated: 2026-04-09 21:03 UTC
+- Existing HTML pages scanned: 35
 - Topics in library: 15
-- Covered topics: 8
-- Uncovered opportunities: 7
+- Covered topics: 9
+- Uncovered opportunities: 6
 
 ## Top Uncovered Opportunities
 
-### 1) eFoil Insurance Guide
-- Priority score: 20 (intent 5 × value 4)
-- Primary keyword: efoil insurance
-- Proposed URL: `blog-efoil-insurance.html`
-- Angle: Practical insurance path for owners with region-specific caveats.
-- Suggested internal links to include:
-  - `blog-best-efoils-2026.html`
-  - `blog-diy-efoil-guide.html`
-  - `blog-efoil-cost-guide.html`
-  - `blog-how-to-ride-efoil.html`
-- Suggested outline:
-  - What insurers classify eFoils as
-  - Coverage types that matter
-  - How to avoid denied claims
-  - Provider comparison checklist
-
-### 2) How to Transport an eFoil
+### 1) How to Transport an eFoil
 - Priority score: 16 (intent 4 × value 4)
 - Primary keyword: how to transport an efoil
 - Proposed URL: `blog-how-to-transport-an-efoil.html`
@@ -40,7 +24,7 @@
   - Vehicle setup examples
   - Damage prevention checklist
 
-### 3) eFoil Lessons vs Self Learning
+### 2) eFoil Lessons vs Self Learning
 - Priority score: 16 (intent 4 × value 4)
 - Primary keyword: efoil lessons
 - Proposed URL: `blog-efoil-lessons.html`
@@ -56,7 +40,7 @@
   - Self-learning path with risk controls
   - 30-day progression plan
 
-### 4) eFoil Waterproof Connectors Guide
+### 3) eFoil Waterproof Connectors Guide
 - Priority score: 16 (intent 4 × value 4)
 - Primary keyword: efoil waterproof connectors
 - Proposed URL: `blog-efoil-waterproof-connectors.html`
@@ -72,7 +56,7 @@
   - Sealant and strain relief methods
   - Inspection and replacement intervals
 
-### 5) eFoil for Heavy Riders
+### 4) eFoil for Heavy Riders
 - Priority score: 16 (intent 4 × value 4)
 - Primary keyword: best efoil for heavy riders
 - Proposed URL: `blog-best-efoil-for-heavy-riders.html`
@@ -88,7 +72,7 @@
   - Brand models that work well
   - Progression tips for bigger riders
 
-### 6) Best eFoil Spots in California
+### 5) Best eFoil Spots in California
 - Priority score: 9 (intent 3 × value 3)
 - Primary keyword: best efoil spots california
 - Proposed URL: `blog-best-efoil-spots-california.html`
@@ -104,7 +88,7 @@
   - Local legal and etiquette notes
   - Trip-planning checklist
 
-### 7) eFoil Winter Storage Guide
+### 6) eFoil Winter Storage Guide
 - Priority score: 9 (intent 3 × value 3)
 - Primary keyword: efoil winter storage
 - Proposed URL: `blog-efoil-winter-storage.html`
@@ -130,4 +114,5 @@
 - eFoil Repair Cost Guide (coverage score 2)
 - eFoil Safety Gear Checklist (coverage score 2)
 - Tow Boogie DIY Battery Guide (coverage score 1)
+- eFoil Insurance Guide (coverage score 1)
 
