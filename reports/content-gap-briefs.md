@@ -1,30 +1,14 @@
 # PacificMeister Content Gap Briefs
 
-- Generated: 2026-04-11 06:04 UTC
-- Existing HTML pages scanned: 38
+- Generated: 2026-04-11 21:03 UTC
+- Existing HTML pages scanned: 39
 - Topics in library: 15
-- Covered topics: 12
-- Uncovered opportunities: 3
+- Covered topics: 13
+- Uncovered opportunities: 2
 
 ## Top Uncovered Opportunities
 
-### 1) eFoil Lessons vs Self Learning
-- Priority score: 16 (intent 4 × value 4)
-- Primary keyword: efoil lessons
-- Proposed URL: `blog-efoil-lessons.html`
-- Angle: Decision framework for paying for instruction versus DIY progression.
-- Suggested internal links to include:
-  - `blog-best-efoils-2026.html`
-  - `blog-diy-efoil-guide.html`
-  - `blog-efoil-cost-guide.html`
-  - `blog-how-to-ride-efoil.html`
-- Suggested outline:
-  - When lessons save time and money
-  - How to evaluate schools/coaches
-  - Self-learning path with risk controls
-  - 30-day progression plan
-
-### 2) Best eFoil Spots in California
+### 1) Best eFoil Spots in California
 - Priority score: 9 (intent 3 × value 3)
 - Primary keyword: best efoil spots california
 - Proposed URL: `blog-best-efoil-spots-california.html`
@@ -40,7 +24,7 @@
   - Local legal and etiquette notes
   - Trip-planning checklist
 
-### 3) eFoil Winter Storage Guide
+### 2) eFoil Winter Storage Guide
 - Priority score: 9 (intent 3 × value 3)
 - Primary keyword: efoil winter storage
 - Proposed URL: `blog-efoil-winter-storage.html`
@@ -68,6 +52,7 @@
 - eFoil Repair Cost Guide (coverage score 2)
 - eFoil Safety Gear Checklist (coverage score 2)
 - eFoil Insurance Guide (coverage score 1)
+- eFoil Lessons vs Self Learning (coverage score 1)
 - eFoil Waterproof Connectors Guide (coverage score 1)
 - eFoil for Heavy Riders (coverage score 1)
 
