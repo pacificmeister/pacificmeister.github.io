@@ -1,10 +1,10 @@
 # PacificMeister Content Gap Briefs
 
-- Generated: 2026-04-10 21:03 UTC
-- Existing HTML pages scanned: 37
+- Generated: 2026-04-11 06:04 UTC
+- Existing HTML pages scanned: 38
 - Topics in library: 15
-- Covered topics: 11
-- Uncovered opportunities: 4
+- Covered topics: 12
+- Uncovered opportunities: 3
 
 ## Top Uncovered Opportunities
 
@@ -24,23 +24,7 @@
   - Self-learning path with risk controls
   - 30-day progression plan
 
-### 2) eFoil Waterproof Connectors Guide
-- Priority score: 16 (intent 4 × value 4)
-- Primary keyword: efoil waterproof connectors
-- Proposed URL: `blog-efoil-waterproof-connectors.html`
-- Angle: Parts-level connector selection and sealing best practices.
-- Suggested internal links to include:
-  - `blog-best-efoils-2026.html`
-  - `blog-diy-efoil-guide.html`
-  - `blog-efoil-cost-guide.html`
-  - `blog-how-to-ride-efoil.html`
-- Suggested outline:
-  - Connector families and use cases
-  - Current ratings and heat limits
-  - Sealant and strain relief methods
-  - Inspection and replacement intervals
-
-### 3) Best eFoil Spots in California
+### 2) Best eFoil Spots in California
 - Priority score: 9 (intent 3 × value 3)
 - Primary keyword: best efoil spots california
 - Proposed URL: `blog-best-efoil-spots-california.html`
@@ -56,7 +40,7 @@
   - Local legal and etiquette notes
   - Trip-planning checklist
 
-### 4) eFoil Winter Storage Guide
+### 3) eFoil Winter Storage Guide
 - Priority score: 9 (intent 3 × value 3)
 - Primary keyword: efoil winter storage
 - Proposed URL: `blog-efoil-winter-storage.html`
@@ -76,13 +60,14 @@
 
 - How to Transport an eFoil (coverage score 3)
 - Best eFoil Accessories (coverage score 2)
+- Tow Boogie DIY Battery Guide (coverage score 2)
 - Tow Boogie Hull Design Basics (coverage score 2)
 - Tow Boogie vs Foil Drive (coverage score 2)
 - eFoil Buyer Decision Quiz Guide (coverage score 2)
 - eFoil Motor Maintenance Schedule (coverage score 2)
 - eFoil Repair Cost Guide (coverage score 2)
 - eFoil Safety Gear Checklist (coverage score 2)
-- Tow Boogie DIY Battery Guide (coverage score 1)
 - eFoil Insurance Guide (coverage score 1)
+- eFoil Waterproof Connectors Guide (coverage score 1)
 - eFoil for Heavy Riders (coverage score 1)
 
