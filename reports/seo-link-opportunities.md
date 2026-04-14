@@ -1,7 +1,7 @@
 # PacificMeister SEO Audit Report
 
-- Generated: 2026-04-07 21:33 UTC
-- Blog pages scanned: 26
+- Generated: 2026-04-14 21:37 UTC
+- Blog pages scanned: 36
 - Inbound warning threshold: 5
 
 ## Critical Checks
@@ -11,16 +11,61 @@
 
 ## Weakly Linked Pages
 
-All blog pages meet inbound threshold.
-
-## Reinforcement Opportunities
-
-### blog-efoil-battery-charging-guide.html (5 inbound)
+### blog-tow-boogie-hull-design.html (3 inbound)
 - Add link from `blog-best-efoils-2026.html` (hub page with strong authority)
 - Add link from `blog-diy-efoil-guide.html` (hub page with strong authority)
 - Add link from `blog-efoil-cost-guide.html` (hub page with strong authority)
 - Add link from `blog-how-to-ride-efoil.html` (hub page with strong authority)
 - Add link from `efoil-configurator.html` (hub page with strong authority)
+
+### blog-best-efoil-spots-california.html (4 inbound)
+- Add link from `blog-best-efoils-2026.html` (keyword overlap: best)
+- Add link from `blog-best-efoil-for-heavy-riders.html` (keyword overlap: best)
+- Add link from `blog-diy-efoil-guide.html` (hub page with strong authority)
+- Add link from `efoil-configurator.html` (hub page with strong authority)
+- Add link from `efoil-finder.html` (hub page with strong authority)
+
+### blog-diy-efoil-build-logs.html (4 inbound)
+- Add link from `blog-best-efoils-2026.html` (hub page with strong authority)
+- Add link from `blog-efoil-cost-guide.html` (hub page with strong authority)
+- Add link from `blog-how-to-ride-efoil.html` (hub page with strong authority)
+- Add link from `efoil-configurator.html` (hub page with strong authority)
+- Add link from `efoil-finder.html` (hub page with strong authority)
+
+### blog-efoil-winter-storage.html (4 inbound)
+- Add link from `blog-best-efoils-2026.html` (hub page with strong authority)
+- Add link from `blog-diy-efoil-guide.html` (hub page with strong authority)
+- Add link from `efoil-configurator.html` (hub page with strong authority)
+- Add link from `efoil-finder.html` (hub page with strong authority)
+
+## Reinforcement Opportunities
+
+### blog-tow-boogie-hull-design.html (3 inbound)
+- Add link from `blog-best-efoils-2026.html` (hub page with strong authority)
+- Add link from `blog-diy-efoil-guide.html` (hub page with strong authority)
+- Add link from `blog-efoil-cost-guide.html` (hub page with strong authority)
+- Add link from `blog-how-to-ride-efoil.html` (hub page with strong authority)
+- Add link from `efoil-configurator.html` (hub page with strong authority)
+
+### blog-best-efoil-spots-california.html (4 inbound)
+- Add link from `blog-best-efoils-2026.html` (keyword overlap: best)
+- Add link from `blog-best-efoil-for-heavy-riders.html` (keyword overlap: best)
+- Add link from `blog-diy-efoil-guide.html` (hub page with strong authority)
+- Add link from `efoil-configurator.html` (hub page with strong authority)
+- Add link from `efoil-finder.html` (hub page with strong authority)
+
+### blog-diy-efoil-build-logs.html (4 inbound)
+- Add link from `blog-best-efoils-2026.html` (hub page with strong authority)
+- Add link from `blog-efoil-cost-guide.html` (hub page with strong authority)
+- Add link from `blog-how-to-ride-efoil.html` (hub page with strong authority)
+- Add link from `efoil-configurator.html` (hub page with strong authority)
+- Add link from `efoil-finder.html` (hub page with strong authority)
+
+### blog-efoil-winter-storage.html (4 inbound)
+- Add link from `blog-best-efoils-2026.html` (hub page with strong authority)
+- Add link from `blog-diy-efoil-guide.html` (hub page with strong authority)
+- Add link from `efoil-configurator.html` (hub page with strong authority)
+- Add link from `efoil-finder.html` (hub page with strong authority)
 
 ### blog-efoil-optimizing-performance.html (5 inbound)
 - Add link from `efoil-configurator.html` (hub page with strong authority)
@@ -31,27 +76,14 @@ All blog pages meet inbound threshold.
 - Add link from `efoil-configurator.html` (hub page with strong authority)
 - Add link from `efoil-finder.html` (hub page with strong authority)
 
-### blog-efoil-speed-guide.html (6 inbound)
-- Add link from `efoil-configurator.html` (hub page with strong authority)
-- Add link from `efoil-finder.html` (hub page with strong authority)
-
-### blog-efoil-vs-wingfoil.html (6 inbound)
-- Add link from `blog-diy-efoil-guide.html` (hub page with strong authority)
-- Add link from `blog-how-to-ride-efoil.html` (hub page with strong authority)
-- Add link from `efoil-configurator.html` (hub page with strong authority)
-- Add link from `efoil-finder.html` (hub page with strong authority)
-
-### blog-parawing-foiling-guide.html (6 inbound)
-- Add link from `efoil-configurator.html` (hub page with strong authority)
-- Add link from `efoil-finder.html` (hub page with strong authority)
-
-### blog-efoil-laws-regulations.html (7 inbound)
+### blog-efoil-battery-charging-guide.html (6 inbound)
 - Add link from `blog-best-efoils-2026.html` (hub page with strong authority)
 - Add link from `blog-diy-efoil-guide.html` (hub page with strong authority)
+- Add link from `blog-efoil-cost-guide.html` (hub page with strong authority)
+- Add link from `blog-how-to-ride-efoil.html` (hub page with strong authority)
 - Add link from `efoil-configurator.html` (hub page with strong authority)
-- Add link from `efoil-finder.html` (hub page with strong authority)
 
-### blog-efoil-maintenance-guide.html (7 inbound)
+### blog-efoil-insurance.html (6 inbound)
 - Add link from `efoil-configurator.html` (hub page with strong authority)
 - Add link from `efoil-finder.html` (hub page with strong authority)
 
