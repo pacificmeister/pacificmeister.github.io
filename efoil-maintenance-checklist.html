@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>eFoil Maintenance Checklist (Free Printable + Tracker) — PacificMeister</title>
+  <meta name="description" content="Free eFoil maintenance checklist with pre-ride, post-ride, weekly, and monthly tasks. Track completion, print checklists, and avoid costly failures.">
+  <meta name="keywords" content="efoil maintenance checklist, efoil service checklist, efoil pre ride checklist, diy efoil maintenance">
+  <link rel="canonical" href="https://pacificmeister.github.io/efoil-maintenance-checklist.html">
+
+  <meta property="og:title" content="eFoil Maintenance Checklist (Free) — PacificMeister">
+  <meta property="og:description" content="Track pre-ride, post-ride, weekly, and monthly eFoil maintenance in one free tool.">
+  <meta property="og:url" content="https://pacificmeister.github.io/efoil-maintenance-checklist.html">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://pacificmeister.github.io/og-image.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="eFoil Maintenance Checklist (Free)">
+  <meta name="twitter:description" content="Printable and interactive service checklist to keep your eFoil reliable.">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "eFoil Maintenance Checklist",
+    "applicationCategory": "SportsApplication",
+    "operatingSystem": "Web",
+    "url": "https://pacificmeister.github.io/efoil-maintenance-checklist.html",
+    "description": "Free checklist and tracker for eFoil maintenance tasks by interval.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "PacificMeister"
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg:#0a1628;
+      --panel:#102742;
+      --text:#d3e2ef;
+      --muted:#8ea8bd;
+      --accent:#00d4aa;
+      --line:rgba(0,212,170,.25);
+      --white:#fff;
+    }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body {
+      font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+      background:linear-gradient(180deg,#091426 0%, #0f2847 40%, #091426 100%);
+      color:var(--text);
+      line-height:1.55;
+      min-height:100vh;
+    }
+    .wrap { max-width:1020px; margin:0 auto; padding:2rem 1.2rem 3rem; }
+    nav { display:flex; justify-content:space-between; align-items:center; margin-bottom:2rem; }
+    .logo { color:var(--white); text-decoration:none; font-weight:700; font-size:1.3rem; }
+    .logo span { color:var(--accent); }
+    .links a { color:var(--muted); text-decoration:none; margin-left:1rem; font-size:.9rem; }
+    .links a:hover { color:var(--accent); }
+
+    h1 { color:var(--white); font-size:clamp(1.8rem,4vw,2.4rem); margin-bottom:.5rem; }
+    .sub { color:var(--muted); margin-bottom:1.2rem; max-width:780px; }
+
+    .toolbar {
+      background:linear-gradient(140deg, rgba(16,39,66,.95), rgba(8,22,40,.95));
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:1rem;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:space-between;
+      gap:.8rem;
+      margin-bottom:1rem;
+      align-items:center;
+    }
+    .progress { color:var(--white); font-weight:600; }
+    .muted { color:var(--muted); font-size:.88rem; }
+    .btns { display:flex; gap:.5rem; flex-wrap:wrap; }
+    button {
+      border:1px solid var(--line);
+      background:rgba(0,212,170,.1);
+      color:var(--accent);
+      border-radius:999px;
+      padding:.45rem .82rem;
+      cursor:pointer;
+      font-size:.82rem;
+    }
+    .grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+    .card {
+      background:linear-gradient(140deg, rgba(16,39,66,.92), rgba(8,22,40,.92));
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:1rem;
+    }
+    .card h2 { color:var(--white); margin-bottom:.7rem; font-size:1.08rem; }
+    .checklist { display:grid; gap:.55rem; }
+    label.item {
+      display:flex;
+      gap:.55rem;
+      align-items:flex-start;
+      padding:.5rem .55rem;
+      border-radius:10px;
+      border:1px solid rgba(41,80,122,.45);
+      background:rgba(15,34,57,.85);
+      cursor:pointer;
+    }
+    label.item span { color:var(--text); font-size:.92rem; }
+    input[type="checkbox"] { margin-top:.17rem; accent-color:var(--accent); }
+    .note { margin-top:1.2rem; color:var(--muted); font-size:.86rem; }
+
+    .related {
+      margin-top:1.6rem;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:.8rem;
+    }
+    .related a {
+      display:block;
+      padding:.85rem;
+      border-radius:10px;
+      text-decoration:none;
+      border:1px solid var(--line);
+      background:#102742;
+    }
+    .related strong { color:var(--white); display:block; margin-bottom:.25rem; }
+    .related span { color:var(--muted); font-size:.88rem; }
+
+    @media (max-width: 860px) {
+      .grid { grid-template-columns:1fr; }
+      .links { display:none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav>
+      <a class="logo" href="/">Pacific<span>Meister</span></a>
+      <div class="links">
+        <a href="/">Home</a>
+        <a href="/blog.html">Blog</a>
+        <a href="/blog-efoil-maintenance-guide.html">Maintenance Guide</a>
+      </div>
+    </nav>
+
+    <h1>eFoil Maintenance Checklist</h1>
+    <p class="sub">Use this free tracker before and after sessions, then follow weekly and monthly service tasks to reduce failures, corrosion issues, and expensive battery or drivetrain damage.</p>
+
+    <div class="toolbar">
+      <div>
+        <div class="progress" id="progressText">0 / 0 tasks complete</div>
+        <div class="muted" id="updatedText">No tasks checked yet</div>
+      </div>
+      <div class="btns">
+        <button onclick="window.print()">Print checklist</button>
+        <button onclick="copySummary()">Copy service log</button>
+        <button onclick="resetChecks()">Reset all</button>
+      </div>
+    </div>
+
+    <div class="grid" id="checklistGrid"></div>
+
+    <p class="note">Tip: Add this page to your home screen and check items at the beach before packing up. Keeping electrical contacts dry and rinsing drivetrain parts after saltwater sessions makes a big reliability difference.</p>
+
+    <div class="related">
+      <a href="/blog-efoil-maintenance-guide.html"><strong>🔧 Full Maintenance Guide</strong><span>Detailed intervals, replacement signs, and troubleshooting flow.</span></a>
+      <a href="/blog-efoil-waterproofing-guide.html"><strong>💧 Waterproofing Guide</strong><span>Seal points, leak testing, and prevention checklist.</span></a>
+      <a href="/blog-efoil-troubleshooting.html"><strong>⚡ Troubleshooting Guide</strong><span>Symptom-based diagnosis when something still goes wrong.</span></a>
+      <a href="/efoil-range-calculator.html"><strong>📈 Range Calculator</strong><span>Estimate runtime and battery stress by riding style.</span></a>
+    </div>
+  </div>
+
+  <script>
+    const STORAGE_KEY = 'pm_efoil_maintenance_checklist_v1';
+    const checklistData = [
+      {
+        title: 'Before Every Ride',
+        items: [
+          'Battery latch fully engaged and seal visibly clean',
+          'Remote battery charged and emergency cutoff tested',
+          'Mast mount + fuselage bolts torqued and threadlocked',
+          'Prop/drive area clear (no line, seaweed, or sand)',
+          'Quick visual check for cracks at mast plate + board rails',
+          'Buddy + conditions check (wind, traffic, launch path)'
+        ]
+      },
+      {
+        title: 'After Every Ride',
+        items: [
+          'Rinse foil, mast, and drivetrain with fresh water',
+          'Dry electrical connectors before storage/charging',
+          'Inspect prop edges and guard for dings',
+          'Check mast/board screws for any movement',
+          'Log odd noises, vibration, or cutouts while still fresh',
+          'Store battery at safe temperature, out of direct sun'
+        ]
+      },
+      {
+        title: 'Weekly (or every 4-6 sessions)',
+        items: [
+          'Re-torque all structural fasteners to spec',
+          'Inspect O-rings and gasket surfaces for nicks or compression',
+          'Apply anti-corrosion protection to hardware (marine-safe)',
+          'Review battery charge history for unusual voltage sag',
+          'Check board vent / pressure equalization hardware',
+          'Clean + inspect cooling channels or water intakes (if present)'
+        ]
+      },
+      {
+        title: 'Monthly / 20+ Hours',
+        items: [
+          'Deep inspect wiring loom for chafe, pinch points, or salt bloom',
+          'Open and inspect critical enclosures for moisture traces',
+          'Run low-power bench test for smooth throttle response',
+          'Verify fail-safe behavior and reconnect sequence',
+          'Replace worn sacrificial hardware and suspect seals',
+          'Update maintenance log with parts changed + next due date'
+        ]
+      }
+    ];
+
+    function keyFor(sectionIdx, itemIdx) {
+      return `s${sectionIdx}i${itemIdx}`;
+    }
+
+    function loadState() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+      } catch {
+        return {};
+      }
+    }
+
+    function saveState(state) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
+
+    function render() {
+      const grid = document.getElementById('checklistGrid');
+      const state = loadState();
+      grid.innerHTML = '';
+
+      checklistData.forEach((section, sIdx) => {
+        const card = document.createElement('section');
+        card.className = 'card';
+
+        const h2 = document.createElement('h2');
+        h2.textContent = section.title;
+        card.appendChild(h2);
+
+        const list = document.createElement('div');
+        list.className = 'checklist';
+
+        section.items.forEach((item, iIdx) => {
+          const key = keyFor(sIdx, iIdx);
+          const checked = !!state[key];
+
+          const label = document.createElement('label');
+          label.className = 'item';
+
+          const cb = document.createElement('input');
+          cb.type = 'checkbox';
+          cb.checked = checked;
+          cb.dataset.key = key;
+          cb.addEventListener('change', onToggle);
+
+          const span = document.createElement('span');
+          span.textContent = item;
+
+          label.appendChild(cb);
+          label.appendChild(span);
+          list.appendChild(label);
+        });
+
+        card.appendChild(list);
+        grid.appendChild(card);
+      });
+
+      updateProgress();
+    }
+
+    function onToggle(e) {
+      const state = loadState();
+      const key = e.target.dataset.key;
+      state[key] = e.target.checked;
+      state.lastUpdated = new Date().toISOString();
+      saveState(state);
+      updateProgress();
+    }
+
+    function updateProgress() {
+      const boxes = Array.from(document.querySelectorAll('input[type="checkbox"]'));
+      const done = boxes.filter(b => b.checked).length;
+      const total = boxes.length;
+      document.getElementById('progressText').textContent = `${done} / ${total} tasks complete`;
+
+      const state = loadState();
+      const updated = state.lastUpdated ? new Date(state.lastUpdated) : null;
+      document.getElementById('updatedText').textContent = updated
+        ? `Last updated: ${updated.toLocaleString()}`
+        : 'No tasks checked yet';
+    }
+
+    function resetChecks() {
+      localStorage.removeItem(STORAGE_KEY);
+      render();
+    }
+
+    function copySummary() {
+      const state = loadState();
+      const lines = [];
+      lines.push(`eFoil Maintenance Log — ${new Date().toLocaleDateString()}`);
+      lines.push('');
+
+      checklistData.forEach((section, sIdx) => {
+        lines.push(section.title + ':');
+        section.items.forEach((item, iIdx) => {
+          const mark = state[keyFor(sIdx, iIdx)] ? '✓' : '○';
+          lines.push(`- ${mark} ${item}`);
+        });
+        lines.push('');
+      });
+
+      navigator.clipboard.writeText(lines.join('\n')).then(() => {
+        alert('Service log copied to clipboard.');
+      }).catch(() => {
+        alert('Could not access clipboard. You can print instead.');
+      });
+    }
+
+    render();
+  </script>
+</body>
+</html>
