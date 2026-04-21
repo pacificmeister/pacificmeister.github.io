@@ -1,6 +1,6 @@
 # PacificMeister SEO Audit Report
 
-- Generated: 2026-04-14 21:37 UTC
+- Generated: 2026-04-21 21:34 UTC
 - Blog pages scanned: 36
 - Inbound warning threshold: 5
 
@@ -10,13 +10,6 @@
 - Missing from blog.html index: 0
 
 ## Weakly Linked Pages
-
-### blog-tow-boogie-hull-design.html (3 inbound)
-- Add link from `blog-best-efoils-2026.html` (hub page with strong authority)
-- Add link from `blog-diy-efoil-guide.html` (hub page with strong authority)
-- Add link from `blog-efoil-cost-guide.html` (hub page with strong authority)
-- Add link from `blog-how-to-ride-efoil.html` (hub page with strong authority)
-- Add link from `efoil-configurator.html` (hub page with strong authority)
 
 ### blog-best-efoil-spots-california.html (4 inbound)
 - Add link from `blog-best-efoils-2026.html` (keyword overlap: best)
@@ -39,13 +32,6 @@
 - Add link from `efoil-finder.html` (hub page with strong authority)
 
 ## Reinforcement Opportunities
-
-### blog-tow-boogie-hull-design.html (3 inbound)
-- Add link from `blog-best-efoils-2026.html` (hub page with strong authority)
-- Add link from `blog-diy-efoil-guide.html` (hub page with strong authority)
-- Add link from `blog-efoil-cost-guide.html` (hub page with strong authority)
-- Add link from `blog-how-to-ride-efoil.html` (hub page with strong authority)
-- Add link from `efoil-configurator.html` (hub page with strong authority)
 
 ### blog-best-efoil-spots-california.html (4 inbound)
 - Add link from `blog-best-efoils-2026.html` (keyword overlap: best)
@@ -71,6 +57,13 @@
 - Add link from `efoil-configurator.html` (hub page with strong authority)
 - Add link from `efoil-finder.html` (hub page with strong authority)
 - Add link from `index.html` (hub page with strong authority)
+
+### blog-tow-boogie-hull-design.html (5 inbound)
+- Add link from `blog-best-efoils-2026.html` (hub page with strong authority)
+- Add link from `blog-efoil-cost-guide.html` (hub page with strong authority)
+- Add link from `blog-how-to-ride-efoil.html` (hub page with strong authority)
+- Add link from `efoil-configurator.html` (hub page with strong authority)
+- Add link from `efoil-finder.html` (hub page with strong authority)
 
 ### blog-efoil-accessories-guide.html (6 inbound)
 - Add link from `efoil-configurator.html` (hub page with strong authority)
