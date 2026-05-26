@@ -1,6 +1,6 @@
 # PacificMeister Content Freshness Report
 
-- Generated: 2026-05-19 22:36 UTC
+- Generated: 2026-05-26 22:36 UTC
 - Blog articles scanned: 36
 - Stale threshold: 120 days
 - High-priority inbound threshold: 4
@@ -11,133 +11,133 @@
 
 ### 1) [WATCH] blog-efoil-cost-guide.html
 - Title: How Much Does an eFoil Cost? Complete Price Breakdown (2026) — PacificMeister
-- Modified: 2026-03-21 (59 days ago)
+- Modified: 2026-03-21 (66 days ago)
 - Suggested refresh check date: 2026-05-20
 - Published: 2026-03-21
 - Inbound links: 26
 - Approx words: 4853
 - Evergreen signals: 3
-- Priority score: 56.8
-- Recommended refresh: refresh pricing tables and market alternatives
+- Priority score: 58.5
+- Recommended refresh: add updated step-by-step checks and one new failure pattern; refresh pricing tables and market alternatives
 
 ### 2) [WATCH] blog-diy-efoil-guide.html
 - Title: How to Build a DIY eFoil: The Complete Beginner's Guide (2026) — PacificMeister
-- Modified: 2026-03-17 (63 days ago)
+- Modified: 2026-03-17 (70 days ago)
 - Suggested refresh check date: 2026-05-16
 - Published: 2026-03-17
 - Inbound links: 30
 - Approx words: 5250
 - Evergreen signals: 2
-- Priority score: 53.8
+- Priority score: 55.5
 - Recommended refresh: add updated step-by-step checks and one new failure pattern
 
 ### 3) [WATCH] blog-efoil-troubleshooting.html
 - Title: DIY eFoil Troubleshooting Guide: Fix Every Common Problem (2026) — PacificMeister
-- Modified: 2026-03-20 (60 days ago)
+- Modified: 2026-03-20 (67 days ago)
 - Suggested refresh check date: 2026-05-19
 - Published: 2026-03-20
 - Inbound links: 22
 - Approx words: 6859
 - Evergreen signals: 2
-- Priority score: 53.0
+- Priority score: 54.8
 - Recommended refresh: add updated step-by-step checks and one new failure pattern
 
 ### 4) [WATCH] blog-how-to-ride-efoil.html
 - Title: How to Ride an eFoil: Complete Beginner's Guide (2026) — PacificMeister
-- Modified: 2026-03-22 (58 days ago)
+- Modified: 2026-03-22 (65 days ago)
 - Suggested refresh check date: 2026-05-21
 - Published: 2026-03-22
 - Inbound links: 21
 - Approx words: 6206
 - Evergreen signals: 2
-- Priority score: 52.5
-- Recommended refresh: monitor for now; refresh once older than ~60 days or after major product changes
+- Priority score: 54.2
+- Recommended refresh: add updated step-by-step checks and one new failure pattern
 
 ### 5) [WATCH] blog-efoil-battery-guide.html
 - Title: DIY eFoil Battery Guide: Cells, BMS, Waterproofing & Safety (2026) — PacificMeister
-- Modified: 2026-03-18 (62 days ago)
+- Modified: 2026-03-18 (69 days ago)
 - Suggested refresh check date: 2026-05-17
 - Published: 2026-03-18
 - Inbound links: 21
 - Approx words: 5348
 - Evergreen signals: 1
-- Priority score: 49.5
+- Priority score: 51.2
 - Recommended refresh: add updated step-by-step checks and one new failure pattern
 
 ### 6) [WATCH] blog-best-efoils-2026.html
 - Title: Best eFoils 2026: Honest Rankings from the DIY eFoil Pioneer — PacificMeister
-- Modified: 2026-03-23 (57 days ago)
+- Modified: 2026-03-23 (64 days ago)
 - Suggested refresh check date: 2026-05-22
 - Published: 2026-03-23
 - Inbound links: 23
 - Approx words: 5529
 - Evergreen signals: 1
-- Priority score: 48.2
+- Priority score: 50.0
 - Recommended refresh: refresh pricing tables and market alternatives
 
 ### 7) [WATCH] blog-efoil-motor-guide.html
 - Title: DIY eFoil Motor & Propulsion Guide: Inrunner vs Outrunner, ESC, Propellers (2026) — PacificMeister
-- Modified: 2026-03-18 (62 days ago)
+- Modified: 2026-03-18 (69 days ago)
 - Suggested refresh check date: 2026-05-17
 - Published: 2026-03-18
 - Inbound links: 13
 - Approx words: 5374
 - Evergreen signals: 2
-- Priority score: 43.0
+- Priority score: 44.8
 - Recommended refresh: add updated step-by-step checks and one new failure pattern
 
 ### 8) [WATCH] blog-efoil-wiring-guide.html
 - Title: DIY eFoil Wiring & Electronics Guide: Safe Power, Signal, and Waterproofing (2026) — PacificMeister
-- Modified: 2026-03-19 (61 days ago)
+- Modified: 2026-03-19 (68 days ago)
 - Suggested refresh check date: 2026-05-18
 - Published: 2026-03-19
 - Inbound links: 15
 - Approx words: 5541
 - Evergreen signals: 1
-- Priority score: 41.8
+- Priority score: 43.5
 - Recommended refresh: add updated step-by-step checks and one new failure pattern
 
 ### 9) [WATCH] blog-used-efoil-guide.html
 - Title: Used eFoil Buying Guide: How to Buy a Secondhand Electric Hydrofoil (2026) — PacificMeister
-- Modified: 2026-03-24 (56 days ago)
+- Modified: 2026-03-24 (63 days ago)
 - Suggested refresh check date: 2026-05-23
 - Published: 2026-03-24
 - Inbound links: 10
 - Approx words: 4747
 - Evergreen signals: 3
-- Priority score: 41.0
-- Recommended refresh: refresh pricing tables and market alternatives
+- Priority score: 42.8
+- Recommended refresh: add updated step-by-step checks and one new failure pattern; refresh pricing tables and market alternatives
 
 ### 10) [WATCH] blog-efoil-waterproofing-guide.html
 - Title: DIY eFoil Waterproofing Guide: Sealing Electronics, Batteries & Enclosures (2026) — PacificMeister
-- Modified: 2026-03-26 (54 days ago)
+- Modified: 2026-03-26 (61 days ago)
 - Suggested refresh check date: 2026-05-25
 - Published: 2026-03-26
 - Inbound links: 14
 - Approx words: 6357
 - Evergreen signals: 1
-- Priority score: 38.5
-- Recommended refresh: monitor for now; refresh once older than ~60 days or after major product changes
+- Priority score: 40.2
+- Recommended refresh: add updated step-by-step checks and one new failure pattern
 
 ### 11) [WATCH] blog-efoil-laws-regulations.html
 - Title: eFoil Laws &amp; Regulations: Registration, Licensing &amp; Where You Can Ride (2026) — PacificMeister
-- Modified: 2026-03-25 (55 days ago)
+- Modified: 2026-03-25 (62 days ago)
 - Suggested refresh check date: 2026-05-24
 - Published: 2026-03-25
 - Inbound links: 9
 - Approx words: 5380
 - Evergreen signals: 2
-- Priority score: 35.2
+- Priority score: 37.0
 - Recommended refresh: re-verify country/state rules and add dated source notes
 
 ### 12) [WATCH] blog-tow-boogie-vs-efoil.html
 - Title: Tow Boogie vs eFoil: Which One Is Right for You? — PacificMeister
-- Modified: 2026-03-16 (64 days ago)
+- Modified: 2026-03-16 (71 days ago)
 - Suggested refresh check date: 2026-05-15
 - Published: 2026-03-16
 - Inbound links: 10
 - Approx words: 3056
 - Evergreen signals: 1
-- Priority score: 35.0
+- Priority score: 36.8
 - Recommended refresh: monitor for now; refresh once older than ~60 days or after major product changes
 
