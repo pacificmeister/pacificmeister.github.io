@@ -1,6 +1,6 @@
 # PacificMeister Content Gap Briefs
 
-- Generated: 2026-08-04 22:35 UTC
+- Generated: 2026-08-11 22:11 UTC
 - Existing HTML pages scanned: 45
 - Topics in library: 15
 - Covered topics: 15
