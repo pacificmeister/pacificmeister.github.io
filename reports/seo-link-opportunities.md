@@ -1,6 +1,6 @@
 # PacificMeister SEO Audit Report
 
-- Generated: 2026-08-04 22:30 UTC
+- Generated: 2026-08-11 22:06 UTC
 - Blog pages scanned: 36
 - Inbound warning threshold: 5
 
