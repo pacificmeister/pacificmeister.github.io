@@ -1,6 +1,6 @@
 # PacificMeister Content Freshness Report
 
-- Generated: 2026-11-18 03:36 UTC
+- Generated: 2026-11-25 04:50 UTC
 - Blog articles scanned: 36
 - Stale threshold: 120 days
 - High-priority inbound threshold: 4
@@ -11,139 +11,139 @@
 
 ### 1) [HIGH] blog-efoil-cost-guide.html
 - Title: How Much Does an eFoil Cost? Complete Price Breakdown (2026) — PacificMeister
-- Modified: 2026-03-21 (242 days ago)
+- Modified: 2026-03-21 (249 days ago)
 - Suggested refresh check date: 2026-05-20
 - Published: 2026-03-21
 - Inbound links: 26
 - Approx words: 4853
 - Evergreen signals: 3
-- Priority score: 269.6
+- Priority score: 275.2
 - Recommended refresh: roll title/meta/year references to 2027 with fresh examples; add updated step-by-step checks and one new failure pattern; refresh pricing tables and market alternatives; publish a short companion update post and cross-link both ways
 
 ### 2) [HIGH] blog-diy-efoil-guide.html
 - Title: How to Build a DIY eFoil: The Complete Beginner's Guide (2026) — PacificMeister
-- Modified: 2026-03-17 (246 days ago)
+- Modified: 2026-03-17 (253 days ago)
 - Suggested refresh check date: 2026-05-16
 - Published: 2026-03-17
 - Inbound links: 30
 - Approx words: 5250
 - Evergreen signals: 2
-- Priority score: 268.8
+- Priority score: 274.4
 - Recommended refresh: roll title/meta/year references to 2027 with fresh examples; add updated step-by-step checks and one new failure pattern; publish a short companion update post and cross-link both ways
 
 ### 3) [HIGH] blog-efoil-troubleshooting.html
 - Title: DIY eFoil Troubleshooting Guide: Fix Every Common Problem (2026) — PacificMeister
-- Modified: 2026-03-20 (243 days ago)
+- Modified: 2026-03-20 (250 days ago)
 - Suggested refresh check date: 2026-05-19
 - Published: 2026-03-20
 - Inbound links: 22
 - Approx words: 6859
 - Evergreen signals: 2
-- Priority score: 266.4
+- Priority score: 272.0
 - Recommended refresh: roll title/meta/year references to 2027 with fresh examples; add updated step-by-step checks and one new failure pattern; publish a short companion update post and cross-link both ways
 
 ### 4) [HIGH] blog-how-to-ride-efoil.html
 - Title: How to Ride an eFoil: Complete Beginner's Guide (2026) — PacificMeister
-- Modified: 2026-03-22 (241 days ago)
+- Modified: 2026-03-22 (248 days ago)
 - Suggested refresh check date: 2026-05-21
 - Published: 2026-03-22
 - Inbound links: 21
 - Approx words: 6206
 - Evergreen signals: 2
-- Priority score: 264.8
+- Priority score: 270.4
 - Recommended refresh: roll title/meta/year references to 2027 with fresh examples; add updated step-by-step checks and one new failure pattern; publish a short companion update post and cross-link both ways
 
 ### 5) [HIGH] blog-efoil-battery-guide.html
 - Title: DIY eFoil Battery Guide: Cells, BMS, Waterproofing & Safety (2026) — PacificMeister
-- Modified: 2026-03-18 (245 days ago)
+- Modified: 2026-03-18 (252 days ago)
 - Suggested refresh check date: 2026-05-17
 - Published: 2026-03-18
 - Inbound links: 21
 - Approx words: 5348
 - Evergreen signals: 1
-- Priority score: 264.0
+- Priority score: 269.6
 - Recommended refresh: roll title/meta/year references to 2027 with fresh examples; add updated step-by-step checks and one new failure pattern; publish a short companion update post and cross-link both ways
 
 ### 6) [HIGH] blog-best-efoils-2026.html
 - Title: Best eFoils 2026: Honest Rankings from the DIY eFoil Pioneer — PacificMeister
-- Modified: 2026-03-23 (240 days ago)
+- Modified: 2026-03-23 (247 days ago)
 - Suggested refresh check date: 2026-05-22
 - Published: 2026-03-23
 - Inbound links: 23
 - Approx words: 5529
 - Evergreen signals: 1
-- Priority score: 260.0
-- Recommended refresh: roll title/meta/year references to 2027 with fresh examples; refresh pricing tables and market alternatives
+- Priority score: 265.6
+- Recommended refresh: roll title/meta/year references to 2027 with fresh examples; refresh pricing tables and market alternatives; publish a short companion update post and cross-link both ways
 
 ### 7) [HIGH] blog-efoil-motor-guide.html
 - Title: DIY eFoil Motor & Propulsion Guide: Inrunner vs Outrunner, ESC, Propellers (2026) — PacificMeister
-- Modified: 2026-03-18 (245 days ago)
+- Modified: 2026-03-18 (252 days ago)
 - Suggested refresh check date: 2026-05-17
 - Published: 2026-03-18
 - Inbound links: 13
 - Approx words: 5374
 - Evergreen signals: 2
-- Priority score: 257.5
+- Priority score: 263.1
 - Recommended refresh: roll title/meta/year references to 2027 with fresh examples; add updated step-by-step checks and one new failure pattern; publish a short companion update post and cross-link both ways
 
 ### 8) [HIGH] blog-efoil-wiring-guide.html
 - Title: DIY eFoil Wiring & Electronics Guide: Safe Power, Signal, and Waterproofing (2026) — PacificMeister
-- Modified: 2026-03-19 (244 days ago)
+- Modified: 2026-03-19 (251 days ago)
 - Suggested refresh check date: 2026-05-18
 - Published: 2026-03-19
 - Inbound links: 15
 - Approx words: 5541
 - Evergreen signals: 1
-- Priority score: 255.7
+- Priority score: 261.3
 - Recommended refresh: roll title/meta/year references to 2027 with fresh examples; add updated step-by-step checks and one new failure pattern; publish a short companion update post and cross-link both ways
 
 ### 9) [HIGH] blog-used-efoil-guide.html
 - Title: Used eFoil Buying Guide: How to Buy a Secondhand Electric Hydrofoil (2026) — PacificMeister
-- Modified: 2026-03-24 (239 days ago)
+- Modified: 2026-03-24 (246 days ago)
 - Suggested refresh check date: 2026-05-23
 - Published: 2026-03-24
 - Inbound links: 10
 - Approx words: 4747
 - Evergreen signals: 3
-- Priority score: 252.2
-- Recommended refresh: roll title/meta/year references to 2027 with fresh examples; add updated step-by-step checks and one new failure pattern; refresh pricing tables and market alternatives
+- Priority score: 257.8
+- Recommended refresh: roll title/meta/year references to 2027 with fresh examples; add updated step-by-step checks and one new failure pattern; refresh pricing tables and market alternatives; publish a short companion update post and cross-link both ways
 
 ### 10) [HIGH] blog-tow-boogie-vs-efoil.html
 - Title: Tow Boogie vs eFoil: Which One Is Right for You? — PacificMeister
-- Modified: 2026-03-16 (247 days ago)
+- Modified: 2026-03-16 (254 days ago)
 - Suggested refresh check date: 2026-05-15
 - Published: 2026-03-16
 - Inbound links: 10
 - Approx words: 3056
 - Evergreen signals: 1
-- Priority score: 250.6
+- Priority score: 256.2
 - Recommended refresh: monitor for now; refresh once older than ~60 days or after major product changes; publish a short companion update post and cross-link both ways
 
 ### 11) [HIGH] blog-efoil-waterproofing-guide.html
 - Title: DIY eFoil Waterproofing Guide: Sealing Electronics, Batteries & Enclosures (2026) — PacificMeister
-- Modified: 2026-03-26 (237 days ago)
+- Modified: 2026-03-26 (244 days ago)
 - Suggested refresh check date: 2026-05-25
 - Published: 2026-03-26
 - Inbound links: 14
 - Approx words: 6357
 - Evergreen signals: 1
-- Priority score: 248.6
-- Recommended refresh: roll title/meta/year references to 2027 with fresh examples; add updated step-by-step checks and one new failure pattern
+- Priority score: 254.2
+- Recommended refresh: roll title/meta/year references to 2027 with fresh examples; add updated step-by-step checks and one new failure pattern; publish a short companion update post and cross-link both ways
 
 ### 12) [HIGH] blog-efoil-laws-regulations.html
 - Title: eFoil Laws &amp; Regulations: Registration, Licensing &amp; Where You Can Ride (2026) — PacificMeister
-- Modified: 2026-03-25 (238 days ago)
+- Modified: 2026-03-25 (245 days ago)
 - Suggested refresh check date: 2026-05-24
 - Published: 2026-03-25
 - Inbound links: 9
 - Approx words: 5380
 - Evergreen signals: 2
-- Priority score: 245.9
-- Recommended refresh: roll title/meta/year references to 2027 with fresh examples; re-verify country/state rules and add dated source notes
+- Priority score: 251.5
+- Recommended refresh: roll title/meta/year references to 2027 with fresh examples; re-verify country/state rules and add dated source notes; publish a short companion update post and cross-link both ways
 
 ## Suggested Next 3 to Refresh
 
-- `blog-efoil-cost-guide.html` (score 269.6, 242 days stale, 26 inbound)
-- `blog-diy-efoil-guide.html` (score 268.8, 246 days stale, 30 inbound)
-- `blog-efoil-troubleshooting.html` (score 266.4, 243 days stale, 22 inbound)
+- `blog-efoil-cost-guide.html` (score 275.2, 249 days stale, 26 inbound)
+- `blog-diy-efoil-guide.html` (score 274.4, 253 days stale, 30 inbound)
+- `blog-efoil-troubleshooting.html` (score 272.0, 250 days stale, 22 inbound)
 
